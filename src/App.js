@@ -1,7 +1,9 @@
+import Text from "./components/UI/Text/Text";
+import {lan} from "./constants/lan";
 
 function App() {
   return (
-    <h1>Hello world! Dias check commit</h1>
+    <Text>{lan.aboutUs}</Text>
   );
 }
 
