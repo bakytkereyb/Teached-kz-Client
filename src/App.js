@@ -1,10 +1,10 @@
-import Text from "./components/UI/Text/Text";
-import {lan} from "./constants/lan";
+import Header from "./components/Header/Header";
+import HomePage from "./pages/HomePage";
 
 function App() {
-  return (
-    <Text>{lan.aboutUs}</Text>
-  );
+    return (
+        <HomePage/>
+    );
 }
 
 export default App;

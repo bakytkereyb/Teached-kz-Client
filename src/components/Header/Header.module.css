@@ -1,0 +1,23 @@
+.wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.header__left {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+}
+
+.header__right {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+}
+
+.header__svg {
+    width: 80px;
+}
+
+
