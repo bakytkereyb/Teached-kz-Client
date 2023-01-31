@@ -1,15 +1,11 @@
 import React from 'react';
-import cl from './BigText.module.css'
+import classes from './BigText.module.css';
 
-const BigText = ({children, colorText}) => {
+const BigText = ({children, ...props}) => {
     return (
-        <div className={cl.bigText}>
-            {colorText ?
-                <h1 style={{color: colorText}}>{children}</h1>
-                :
-                <h1>{children}</h1>
-            }
-        </div>
+        <p style={props.style} className={classes.bigText}>
+            {children}
+        </p>
     );
 };
 

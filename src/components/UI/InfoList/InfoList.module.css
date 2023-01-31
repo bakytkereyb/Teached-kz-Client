@@ -1,0 +1,37 @@
+.infoList {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 100px;
+    flex-wrap: wrap;
+    padding: 0 25px;
+    position: relative;
+}
+.infoItem {
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    position: relative;
+    gap: 20px;
+}
+.infoItem p {
+    font-family: 'Qanelas-Regular', sans-serif;
+    font-size: 1rem;
+    width: 200px;
+    text-align: center;
+}
+.infoItemImage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    border-radius: 100%;
+}
+
+.infoItemImage img {
+    width: 50px;
+}

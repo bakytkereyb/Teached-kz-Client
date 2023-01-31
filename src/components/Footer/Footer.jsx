@@ -6,21 +6,22 @@ import {lan} from "../../constants/lan";
 import logo from "../../images/logo_TeachEd_1.svg";
 import Select from "../UI/Select/Select";
 import Button from "../UI/Button/Button";
+import Logo from "../Logo/Logo";
 
 const Footer = () => {
     return (
-        <footer style={{backgroundColor: clrs.headerBackground}}>
+        <footer className={cl.footer} style={{backgroundColor: clrs.whiter}}>
             <div className={cl.wrapper}>
                 <div className={cl.footer__svg}>
-                    <img src={logo}/>
+                    <Logo/>
                 </div>
                 <div className={cl.footer__left}>
-                    <Text colorText={clrs.headerText}>{lan.aboutUs}</Text>
-                    <Text colorText={clrs.headerText}>{lan.team}</Text>
-                    <Text colorText={clrs.headerText}>{lan.publications}</Text>
+                    <Text style={{color:clrs.blackBlue}}>{lan.aboutUs}</Text>
+                    <Text style={{color:clrs.blackBlue}}>{lan.team}</Text>
+                    <Text style={{color:clrs.blackBlue}}>{lan.publications}</Text>
                 </div>
                 <div className={cl.footer__right}>
-                    <Text colorText={clrs.headerText}>email@email.com</Text>
+                    <Text style={{color:clrs.blackBlue}}>email@email.com</Text>
                 </div>
             </div>
         </footer>

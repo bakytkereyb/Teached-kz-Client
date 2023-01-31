@@ -1,6 +1,13 @@
 .bigText {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /*background-color: lawngreen;*/
+    text-align: center;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: #65676D;
+}
+
+@media screen and (max-width: 1024px) {
+    .bigText {
+        font-size: 1.25rem;
+    }
 }

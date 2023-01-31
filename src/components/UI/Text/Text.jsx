@@ -1,9 +1,9 @@
 import React from 'react';
 import classes from './Text.module.css';
 
-const Text = ({children, colorText}) => {
+const Text = ({children, ...props}) => {
     return (
-        <p style={{color: colorText}} className={classes.text}>{children}</p>
+        <p style={props.style} className={classes.text}>{children}</p>
     );
 };
 

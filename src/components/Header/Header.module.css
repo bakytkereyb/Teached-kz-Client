@@ -1,7 +1,19 @@
+.header {
+    background: #f0f3f5;
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 120px;
+}
+
 .wrapper {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    max-width: 1440px;
+    width: 100%;
 }
 
 .header__left {
