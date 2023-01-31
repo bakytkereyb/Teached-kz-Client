@@ -1,0 +1,13 @@
+.select {
+    appearance: none;
+    background-color: white;
+    border: 1px solid #153C6B;
+    border-radius: 6px;
+    padding: 6px 29px;
+    font-size: 0.8rem;
+    cursor: inherit;
+    line-height: inherit;
+    font-weight: 500;
+    color: #153C6B
+}
+
