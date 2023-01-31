@@ -1,12 +1,12 @@
 import React from 'react';
 import Header from "../components/Header/Header";
-import AboutUs from "../components/AboutUs";
+import AboutUs from "../components/AboutUs/AboutUs";
 import LevelOfCompetence from "../components/LevelOfCompetence";
-import ProjectTeam from "../components/ProjectTeam";
+import ProjectTeam from "../components/TeamMember/ProjectTeam";
 import BigText from "../components/UI/BigText/BigText";
 import {lan} from "../constants/lan";
 import Publication from "../components/Publication/Publication";
-import Publications from "../components/Publications";
+import Publications from "../components/Publication/Publications";
 import Footer from "../components/Footer/Footer";
 
 

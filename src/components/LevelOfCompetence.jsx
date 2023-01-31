@@ -1,10 +1,11 @@
 import React from 'react';
 import BigText from "./UI/BigText/BigText";
 import {lan} from "../constants/lan";
+import Block from "./UI/Block/Block";
 
 const LevelOfCompetence = () => {
     return (
-        <div>
+        <Block>
             <BigText>{lan.levelCompetence}</BigText>
             <p style={{
                 display: 'flex',
@@ -18,7 +19,7 @@ const LevelOfCompetence = () => {
                 consectetur adipiscing
                 elit, sed do eiusmod
                 tempor incididunt ut labore</p>
-        </div>
+        </Block>
     );
 };
 
