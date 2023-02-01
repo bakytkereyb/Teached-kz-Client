@@ -1,8 +1,18 @@
 import React from 'react';
 import cl from './Button.module.css'
-const Button = ({children, colorBack, colorText}) => {
+import {clrs} from "../../../constants/colors";
+const Button = ({children, type}) => {
+
+    if (type === 2) {
+        return (
+            <button className={cl.button} style={{backgroundColor: clrs.blackBlue, color: clrs.white}}>
+                {children}
+            </button>
+        );
+    }
+
     return (
-        <button className={cl.button} style={{backgroundColor: colorBack, color: colorText}}>
+        <button className={cl.button} style={{backgroundColor: clrs.red, color: clrs.white}}>
             {children}
         </button>
     );

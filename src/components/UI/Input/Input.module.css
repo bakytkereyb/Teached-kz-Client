@@ -1,0 +1,11 @@
+.myInput {
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-family: 'Qanelas-Regular';
+    border: none;
+}
+@media screen and (max-width:1200px) {
+    .myInput {
+        width: 100%;
+    }
+}

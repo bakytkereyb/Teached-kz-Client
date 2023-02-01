@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Header from "../components/Header/Header";
 import BigText from "../components/UI/BigText/BigText";
 import {lan} from "../constants/lan";
@@ -9,9 +9,18 @@ import img from '../images/naruto.jpg';
 import InfoItem from "../components/UI/InfoList/InfoItem";
 import TeamMember from "../components/TeamMember/TeamMember";
 import {clrs} from "../constants/colors";
+import FormBlock from "../components/Form/FormBlock";
+import FormInput from "../components/Form/FormInput";
+import Button from "../components/UI/Button/Button";
 
 
 const HomePage = () => {
+
+    const [username, setUsername] = useState('');
+
+    function onSubmitLogin(e) {
+        e.preventDefault();
+    }
 
     return (
         <div>
@@ -47,6 +56,22 @@ const HomePage = () => {
             <Block>
                 <BigText>{lan.publications}</BigText>
 
+            </Block>
+
+            <Block>
+                <FormBlock onSubmit={onSubmitLogin}>
+                    <FormInput
+                        labelText={"Username"}
+                        value={username}
+                        onChange={setUsername}
+                        id={"username"}
+                        type={"text"}
+                        required={true}
+                        maxWidth={"50%"}
+                    />
+
+                    <Button type={2}>Login</Button>
+                </FormBlock>
             </Block>
 
             <Footer/>
