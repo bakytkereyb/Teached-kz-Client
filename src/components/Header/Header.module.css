@@ -32,4 +32,18 @@
     width: 80px;
 }
 
+/*@media screen and (max-width: 1024px) {*/
+/*    .wrapper {*/
+/*        max-width: 1024px;*/
+/*        background-color: red;*/
+/*    }*/
+/*}*/
+
+@media screen and (max-width: 768px) {
+    .wrapper {
+        width: 768px;
+    }
+
+
+}
 

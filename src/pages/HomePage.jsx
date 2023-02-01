@@ -12,6 +12,7 @@ import {clrs} from "../constants/colors";
 import FormBlock from "../components/Form/FormBlock";
 import FormInput from "../components/Form/FormInput";
 import Button from "../components/UI/Button/Button";
+import Publication from "../components/Publication/Publication";
 
 
 const HomePage = () => {
@@ -42,23 +43,31 @@ const HomePage = () => {
                 <BigText>{lan.levelCompetence}</BigText>
             </Block>
 
-            <Block>
+            <Block tyle={{backgroundColor: clrs.green}}>
                 <div style={{marginBottom: '30px'}}>
                     <BigText colorText='white'>{lan.projectTeam}</BigText>
                 </div>
-                <div style={{display: 'flex', flexWrap: 'wrap', flexDirection: 'row', justifyContent: 'center',  marginTop: '10px'}}>
+                <InfoList>
                     <TeamMember/>
                     <TeamMember/>
                     <TeamMember/>
-                </div>
+                </InfoList>
             </Block>
 
             <Block>
                 <BigText>{lan.publications}</BigText>
+                <InfoList>
+                    <Publication/>
+                    <Publication/>
+                    <Publication/>
+                    <Publication/>
+                    <Publication/>
+                    <Publication/>
+                </InfoList>
 
             </Block>
 
-            <Block>
+            <Block s>
                 <FormBlock onSubmit={onSubmitLogin}>
                     <FormInput
                         labelText={"Username"}
