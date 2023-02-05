@@ -16,13 +16,6 @@ import Publication from "../components/Publication/Publication";
 
 
 const HomePage = () => {
-
-    const [username, setUsername] = useState('');
-
-    function onSubmitLogin(e) {
-        e.preventDefault();
-    }
-
     return (
         <div>
             <Header/>
@@ -66,23 +59,6 @@ const HomePage = () => {
                 </InfoList>
 
             </Block>
-
-            <Block s>
-                <FormBlock onSubmit={onSubmitLogin}>
-                    <FormInput
-                        labelText={"Username"}
-                        value={username}
-                        onChange={setUsername}
-                        id={"username"}
-                        type={"text"}
-                        required={true}
-                        maxWidth={"50%"}
-                    />
-
-                    <Button type={2}>Login</Button>
-                </FormBlock>
-            </Block>
-
             <Footer/>
         </div>
     );

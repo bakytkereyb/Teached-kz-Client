@@ -14,6 +14,10 @@ const eng = {
     contacts:"Contacts",
     levelCompetence: "Do you want to know the level of your competence?",
     projectTeam: "Project Team",
+    noAccount: "I don't have an account",
+    yesAccount: "I have an account",
+    login: "Login",
+    register: "Registration"
 }
 
 const kz = {
