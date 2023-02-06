@@ -1,5 +1,4 @@
-import React, {useState} from 'react';
-import Header from "../components/Header/Header";
+import React from 'react';
 import BigText from "../components/UI/BigText/BigText";
 import {lan} from "../constants/lan";
 import Footer from "../components/Footer/Footer";
@@ -9,13 +8,12 @@ import img from '../images/naruto.jpg';
 import InfoItem from "../components/UI/InfoList/InfoItem";
 import TeamMember from "../components/TeamMember/TeamMember";
 import {clrs} from "../constants/colors";
-import FormBlock from "../components/Form/FormBlock";
-import FormInput from "../components/Form/FormInput";
-import Button from "../components/UI/Button/Button";
 import Publication from "../components/Publication/Publication";
+import Header from "../components/Header/Header";
 
 
 const HomePage = () => {
+
     return (
         <div>
             <Header/>
