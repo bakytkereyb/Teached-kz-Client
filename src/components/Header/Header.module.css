@@ -43,16 +43,20 @@
     }
 
     .wrapper {
-        justify-content: stretch;
+        justify-content: start;
     }
 
     .menu {
         padding-left: 40px;
         display: flex;
-        /*marginLeft: 0 auto;*/
-        /*background-color: lawngreen;*/
-        /*justify-content: space-between;*/
         align-items: center;
+    }
+    .menu__items {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
     }
 
 
