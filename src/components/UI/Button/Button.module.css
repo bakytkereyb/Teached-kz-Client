@@ -5,4 +5,5 @@
     font-size: 0.9rem;
     font-weight: 600;
     cursor: pointer;
+    min-width: 125px;
 }

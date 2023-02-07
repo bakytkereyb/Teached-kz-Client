@@ -36,7 +36,7 @@
     display: none;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1200px) {
 
     .header__left, .header__right, .header__svg {
         display: none;

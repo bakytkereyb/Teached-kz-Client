@@ -23,9 +23,7 @@ const LoginPage = () => {
         <div>
             <Header/>
             <Block>
-                <BigText style={{fontWeight: 600}}>{lan.login}</BigText>
-            </Block>
-            <Block>
+                <BigText>{lan.login}</BigText>
                 <FormBlock onSubmit={onSubmitLogin}>
                     <FormInput
                         labelText={"Username"}
@@ -45,8 +43,8 @@ const LoginPage = () => {
                         required={true}
                         maxWidth={"50%"}
                     />
-                    <Button type={1}>Login</Button>
-                    <Text style = {{color: clrs.blackBlue}}>
+                    <Button>Login</Button>
+                    <Text to={"/register"} style = {{color: clrs.blackBlue}}>
                         {lan.noAccount}
                     </Text>
                 </FormBlock>

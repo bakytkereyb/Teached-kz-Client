@@ -4,15 +4,15 @@ import Text from "../UI/Text/Text";
 import cl from "./Header.module.css"
 import {clrs} from "../../constants/colors"
 import Button from "../UI/Button/Button";
-import Select from "../UI/Select/Select";
 import Logo from "../Logo/Logo";
 import {Divider, Drawer} from "antd";
 import burger from "../../images/hamburger.svg"
 import BigText from "../UI/BigText/BigText";
+import FormSelect from "../Form/FormSelect";
 
 
 const Header = () => {
-
+    const [selectedLan, setSelectedLan] = useState('ENG');
     const [open, setOpen] = useState(false);
     const showDrawer = () => {
         setOpen(true);
@@ -20,6 +20,8 @@ const Header = () => {
     const onClose = () => {
         setOpen(false);
     };
+
+
 
     return (
         <header className={cl.header}>
@@ -32,31 +34,49 @@ const Header = () => {
                     closable={false}
                     onClose={onClose} open={open}>
                     <div className={cl.menu__items}>
-                        <Logo/>
-                        <Divider>CONTENT</Divider>
-                        <BigText style={{color: clrs.blackBlue}}>{lan.aboutUs}</BigText>
-                        <BigText style={{color: clrs.blackBlue}}>{lan.team}</BigText>
-                        <BigText style={{color: clrs.blackBlue}}>{lan.publications}</BigText>
-                        <BigText style={{color: clrs.blackBlue}}>{lan.contacts}</BigText>
-                        <BigText style={{color: clrs.blackBlue}}>email@email.com</BigText>
-                        <Divider />
-                        <Select/>
-                        <Button colorText={clrs.white} colorBack={clrs.red}>Log in</Button>
+                        <Logo to={"/"}/>
+                        <br/>
+                        <Text to={"/#aboutUs"} style={{color: clrs.blackBlue}}>{lan.aboutUs}</Text>
+                        <Text to={"/#team"} style={{color: clrs.blackBlue}}>{lan.team}</Text>
+                        <Text to={"/#publications"} style={{color: clrs.blackBlue}}>{lan.publications}</Text>
+                        <Text to={"/#footer"} style={{color: clrs.blackBlue}}>{lan.contacts}</Text>
+                        <Text style={{color: clrs.blackBlue}}>email@email.com</Text>
+                        <br/>
+                        <FormSelect
+                            labelText={"Язык"}
+                            values={["ENG","РУС","ҚАЗ"]}
+                            onChange={setSelectedLan}
+                            id={"lan"}
+                            required={true}
+                            maxWidth={"200px"}
+                            selectedValue={selectedLan}
+                            withoutLabel={true}
+                        />
+                        <Button onClick={() => {window.location.assign("/login")}}>Log in</Button>
                     </div>
                 </Drawer>
                 <div className={cl.header__left}>
-                    <Text style={{color: clrs.blackBlue}}>{lan.aboutUs}</Text>
-                    <Text style={{color: clrs.blackBlue}}>{lan.team}</Text>
-                    <Text style={{color: clrs.blackBlue}}>{lan.publications}</Text>
-                    <Text style={{color: clrs.blackBlue}}>{lan.contacts}</Text>
+                    <Text to={"/#aboutUs"} style={{color: clrs.blackBlue}}>{lan.aboutUs}</Text>
+                    <Text to={"/#team"} style={{color: clrs.blackBlue}}>{lan.team}</Text>
+                    <Text to={"/#publications"} style={{color: clrs.blackBlue}}>{lan.publications}</Text>
+                    <Text to={"/#footer"} style={{color: clrs.blackBlue}}>{lan.contacts}</Text>
                 </div>
                 <div className={cl.header__svg}>
-                    <Logo/>
+                    <Logo to={"/"}/>
                 </div>
                 <div className={cl.header__right}>
                     <Text style={{color: clrs.blackBlue}}>email@email.com</Text>
-                    <Select/>
-                    <Button colorText={clrs.white} colorBack={clrs.red}>Log in</Button>
+                    <FormSelect
+                        labelText={"Язык"}
+                        values={["ENG","РУС","ҚАЗ"]}
+                        onChange={setSelectedLan}
+                        id={"lan"}
+                        required={true}
+                        maxWidth={"200px"}
+                        selectedValue={selectedLan}
+                        withoutLabel={true}
+                    />
+                    <Button onClick={() => {window.location.assign("/login")}}>Log in</Button>
                 </div>
             </div>
         </header>

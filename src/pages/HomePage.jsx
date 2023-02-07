@@ -10,6 +10,8 @@ import TeamMember from "../components/TeamMember/TeamMember";
 import {clrs} from "../constants/colors";
 import Publication from "../components/Publication/Publication";
 import Header from "../components/Header/Header";
+import naruto from "../images/naruto.jpg";
+import Banner from "../components/Banner/Banner";
 
 
 const HomePage = () => {
@@ -17,7 +19,8 @@ const HomePage = () => {
     return (
         <div>
             <Header/>
-            <Block>
+            <Banner/>
+            <Block id={"aboutUs"}>
                 <BigText>{lan.aboutUs}</BigText>
                 <InfoList>
                     <InfoItem image={img} text={"Добавьте ваш товар в корзину и оформите заказ"}/>
@@ -34,26 +37,53 @@ const HomePage = () => {
                 <BigText>{lan.levelCompetence}</BigText>
             </Block>
 
-            <Block tyle={{backgroundColor: clrs.green}}>
+            <Block id={"team"} style={{backgroundColor: clrs.green}}>
                 <div style={{marginBottom: '30px'}}>
-                    <BigText colorText='white'>{lan.projectTeam}</BigText>
+                    <BigText style={{color:clrs.white}}>{lan.projectTeam}</BigText>
                 </div>
                 <InfoList>
-                    <TeamMember/>
-                    <TeamMember/>
-                    <TeamMember/>
+                    <TeamMember
+                        image={naruto}
+                        fullName={"Bakytkereiuly Batyrbek"}
+                        position={"Backend Developer"}
+                        description={"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab ad alias hic magnam non officiis."}/>
+                    <TeamMember
+                        image={naruto}
+                        fullName={"Bakytkereiuly Batyrbek"}
+                        position={"Backend Developer"}
+                        description={"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab ad alias hic magnam non officiis."}/>
+                    <TeamMember
+                        image={naruto}
+                        fullName={"Bakytkereiuly Batyrbek"}
+                        position={"Backend Developer"}
+                        description={"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab ad alias hic magnam non officiis."}/>
+                    <TeamMember
+                        image={naruto}
+                        fullName={"Bakytkereiuly Batyrbek"}
+                        position={"Backend Developer"}
+                        description={"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab ad alias hic magnam non officiis."}/>
+                    <TeamMember
+                        image={naruto}
+                        fullName={"Bakytkereiuly Batyrbek"}
+                        position={"Backend Developer"}
+                        description={"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab ad alias hic magnam non officiis."}/>
+                    <TeamMember
+                        image={naruto}
+                        fullName={"Bakytkereiuly Batyrbek"}
+                        position={"Backend Developer"}
+                        description={"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab ad alias hic magnam non officiis."}/>
                 </InfoList>
             </Block>
 
-            <Block>
+            <Block id={"publications"}>
                 <BigText>{lan.publications}</BigText>
                 <InfoList>
-                    <Publication/>
-                    <Publication/>
-                    <Publication/>
-                    <Publication/>
-                    <Publication/>
-                    <Publication/>
+                    <Publication text={"Correspondence between dental and skeletal maturity parameters among patients with different sagittal relationships at the end of puberty period, Journal of International Dental and Medical Research, 2020, 13(1), pp. 223–228"}/>
+                    <Publication text={"Correspondence between dental and skeletal maturity parameters among patients with different sagittal relationships at the end of puberty period, Journal of International Dental and Medical Research, 2020, 13(1), pp. 223–228"}/>
+                    <Publication text={"Correspondence between dental and skeletal maturity parameters among patients with different sagittal relationships at the end of puberty period, Journal of International Dental and Medical Research, 2020, 13(1), pp. 223–228"}/>
+                    <Publication text={"Correspondence between dental and skeletal maturity parameters among patients with different sagittal relationships at the end of puberty period, Journal of International Dental and Medical Research, 2020, 13(1), pp. 223–228"}/>
+                    <Publication text={"Correspondence between dental and skeletal maturity parameters among patients with different sagittal relationships at the end of puberty period, Journal of International Dental and Medical Research, 2020, 13(1), pp. 223–228"}/>
+                    <Publication text={"Correspondence between dental and skeletal maturity parameters among patients with different sagittal relationships at the end of puberty period, Journal of International Dental and Medical Research, 2020, 13(1), pp. 223–228"}/>
                 </InfoList>
 
             </Block>

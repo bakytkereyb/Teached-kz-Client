@@ -26,11 +26,8 @@ const RegistrationPage = () => {
     return (
         <div>
             <Header/>
-            <Block style={{background: "red"}}>
-                <BigText style={{fontWeight: 600}}>{lan.register}</BigText>
-            </Block>
-
             <Block>
+                <BigText>{lan.register}</BigText>
                 <FormBlock onSubmit={onSubmitLogin}>
                     <FormInput
                         labelText={"First Name"}
@@ -86,8 +83,8 @@ const RegistrationPage = () => {
                         required={true}
                         maxWidth={"50%"}
                     />
-                    <Button type={1}>Register</Button>
-                    <Text style = {{color: clrs.blackBlue}}>
+                    <Button>Register</Button>
+                    <Text to={"/login"} style = {{color: clrs.blackBlue}}>
                         {lan.yesAccount}
                     </Text>
                 </FormBlock>

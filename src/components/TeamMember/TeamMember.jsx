@@ -2,17 +2,16 @@ import React from 'react';
 import rape from "../../images/naruto.jpg";
 import cl from "./TeamMember.module.css"
 
-const TeamMember = () => {
+const TeamMember = ({image, fullName, position, description}) => {
     return (
         <div className={cl.card}>
             <div className={cl.img}>
-                <img src={rape} alt=""/>
+                <img src={image} alt=""/>
             </div>
             <div className={cl.text}>
-                <p style={{fontWeight: 'bold'}}>Utebayev Dias 1</p>
-                <p style={{fontWeight: 'bold'}}>Front End Developer</p>
-                <p>Project management, performing all phases according to the
-                    project schedule and ensuring the necessary deliverables</p>
+                <p style={{fontWeight: 'bold'}}>{fullName}</p>
+                <p style={{fontWeight: 'bold'}}>{position}</p>
+                <p>{description}</p>
             </div>
         </div>
     );

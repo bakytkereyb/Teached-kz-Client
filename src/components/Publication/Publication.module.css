@@ -1,8 +1,6 @@
 .card {
     width: 300px;
     padding: 20px;
-}
-
-.card {
-    /*text-align: center;*/
+    background-color: #0B7A75;
+    color:white;
 }
