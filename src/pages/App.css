@@ -1,0 +1,14 @@
+.container {
+    display: flex;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px 100px;
+    transition: margin-left 0.3s ease-in-out;
+    background-color: violet;
+}
+
+.main-content--shifted {
+    margin-left: 250px;
+}
