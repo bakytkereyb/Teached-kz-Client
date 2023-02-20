@@ -16,7 +16,7 @@
     transition: 0.5s;
     overflow-y: auto;
 }
-.sidebar[opened=false] {
+.sidebar[opened=true] {
     left: 0;
 }
 
