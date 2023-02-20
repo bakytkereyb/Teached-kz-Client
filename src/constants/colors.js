@@ -6,4 +6,5 @@ export const clrs = {
     red: '#E83151',
     green: '#0B7A75',
     silver: '#65676D',
+    yellow: '#E5B600',
 }

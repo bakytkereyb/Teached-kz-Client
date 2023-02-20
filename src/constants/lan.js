@@ -17,7 +17,8 @@ const eng = {
     noAccount: "I don't have an account",
     yesAccount: "I have an account",
     login: "Login",
-    register: "Registration"
+    register: "Registration",
+    dashboard: "Dashboard"
 }
 
 const kz = {

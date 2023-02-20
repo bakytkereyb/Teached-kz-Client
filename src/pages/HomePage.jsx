@@ -29,30 +29,41 @@ const HomePage = () => {
             },
             colors: ["#bf8e35", "#292318"],
             labels: [
-                "Engagement",
-                "Leadership",
-                "Burnout",
-                "Commitment",
-                "Collaboration & Trust",
-                "Mission & Purpose",
-                "Vision",
+                "Knowledgeable",
+                "Design",
+                "Informational",
+                "Communicative",
+                "Reflective",
+                "Monitoring",
+                "Personal-motivational",
             ],
             dataLabels: {
                 enabled: true
             },
             stroke: {
-                width: 2
+                width: 2,
             },
             fill: {
                 opacity: 0
             },
             markers: {
-                size: 5
+                size: 5,
             },
             yaxis: {
                 max:100,
                 min:0,
                 tickAmount: 5,
+            },
+            xaxis: {
+                labels: {
+                    style: {
+                        colors: [],
+                        fontSize: '12px',
+                        fontFamily: 'Montserrat, Arial, sans-serif',
+                        fontWeight: 500,
+                        cssClass: 'apexcharts-xaxis-label',
+                    },
+                },
             },
         },
 

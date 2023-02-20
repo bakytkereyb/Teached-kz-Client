@@ -1,0 +1,27 @@
+.header {
+    padding: 0 25px;
+    width: calc(100% - 50px);
+    height: 75px;
+    background: white;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    position: fixed;
+    z-index: 10000;
+}
+
+.burger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    transition: 0.3s;
+}
+.burger:hover {
+    background: #f0f3f5;
+    cursor: pointer;
+    transition: 0.3s;
+}
