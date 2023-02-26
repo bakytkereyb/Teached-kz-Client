@@ -18,7 +18,26 @@ const eng = {
     yesAccount: "I have an account",
     login: "Login",
     register: "Registration",
-    dashboard: "Dashboard"
+    dashboard: "Dashboard",
+    coursesAll: "All courses",
+    coursesMy: "My courses",
+    coursesPre: "Pre-courses",
+    competenceMap: "Competence Map",
+    myTasks: "My Tasks",
+    chats: "Chats",
+    calendar: "Calendar",
+    setting: "Settings",
+    logout: "Logout",
+    error: "Error",
+    problem: "Sorry, we have some problems",
+    back: "Back",
+    taskDone: "Task Done",
+    lessons: "Lessons",
+    students: "Students",
+    posts: "Posts",
+    tests: "Tests",
+    tasks: "Tasks",
+    addLesson: "Add lesson"
 }
 
 const kz = {

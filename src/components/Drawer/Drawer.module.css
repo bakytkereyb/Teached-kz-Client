@@ -1,0 +1,22 @@
+.drawer {
+    position: fixed;
+    top: 0px;
+    left: -300px;
+    width: 275px;
+    height: calc(100% - 50px) ;
+    padding: 25px 0;
+    background: white;
+    z-index: 9999;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    transition: 0.5s;
+    overflow-y: auto;
+}
+
+.drawer[opened=true] {
+    left: 0;
+}

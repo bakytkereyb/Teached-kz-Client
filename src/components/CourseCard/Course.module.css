@@ -1,0 +1,40 @@
+.card {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    width: 360px;
+    background-color: white;
+    border-radius: 20px;
+    padding: 10px 20px;
+}
+
+.top__card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.progressBar {
+    margin-top: 10px;
+    width: 100%;
+}
+
+.categories {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.category {
+    background-color: #F0F8EF;
+    font-size: 12px;
+    font-weight: bold;
+    color: #60B158;
+    padding: 5px 10px;
+}

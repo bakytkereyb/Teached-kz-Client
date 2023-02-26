@@ -8,6 +8,16 @@
     height: 120px;
 }
 
+.background_drawer {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 5000;
+}
+
 .wrapper {
     display: flex;
     justify-content: space-around;

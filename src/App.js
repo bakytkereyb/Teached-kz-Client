@@ -5,6 +5,8 @@ import LoginPage from "./pages/LoginPage";
 import Error from "./pages/Error";
 import RegistrationPage from "./pages/RegistrationPage";
 import DashboardPage from "./pages/DashboardPage";
+import CoursesPage from "./pages/CoursesPage";
+import CoursePage from "./pages/CoursePage";
 
 function App() {
     return (
@@ -14,6 +16,8 @@ function App() {
                 <Route path='/login' element={<LoginPage/>}/>
                 <Route path='/register' element={<RegistrationPage/>}/>
                 <Route path='/my' element={<DashboardPage/>}/>
+                <Route path='/courses' element={<CoursesPage/>}/>
+                <Route path='/course' element={<CoursePage/>}/>
                 <Route path='*' element={<Error/>}/>
             </Routes>
         </Router>
