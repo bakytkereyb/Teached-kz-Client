@@ -1,0 +1,9 @@
+.post {
+    display: flex;
+    border: 1px solid black;
+    background-color: white;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}

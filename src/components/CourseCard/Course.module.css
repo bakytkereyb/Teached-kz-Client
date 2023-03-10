@@ -3,7 +3,8 @@
     align-items: flex-start;
     justify-content: center;
     flex-direction: column;
-    width: 360px;
+    width: calc(100% - 40px);
+    /*width: 360px;*/
     background-color: white;
     border-radius: 20px;
     padding: 10px 20px;
@@ -38,3 +39,9 @@
     color: #60B158;
     padding: 5px 10px;
 }
+
+/*@media only screen  and (max-width: 768px) {*/
+/*    .card {*/
+/*        width: 300px;*/
+/*    }*/
+/*}*/

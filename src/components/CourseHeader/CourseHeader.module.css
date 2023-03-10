@@ -1,0 +1,65 @@
+.courseHeader {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: row;
+    background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+    width: calc(100% - 200px);
+    border-radius: 25px;
+    padding: 20px 100px;
+    gap: 50px;
+}
+
+.courseHeaderTextDiv {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column
+}
+
+.courseHeader img {
+    width: 300px;
+    border-radius: 50%;
+}
+
+
+
+.courseButtons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+    width: calc(100% - 100px);
+    border-radius: 25px;
+    padding: 30px 50px;
+    gap: 50px;
+}
+
+@media only screen and (max-width: 1024px) {
+    .courseButtons {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+
+    .courseHeader {
+        flex-direction: column;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .courseHeader img {
+        width: 200px;
+    }
+
+    .courseHeaderTextDiv {
+        align-items: center;
+    }
+
+    .courseHeaderTextDiv>* {
+        text-align: center;
+    }
+}

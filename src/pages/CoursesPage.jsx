@@ -5,6 +5,7 @@ import {clrs} from "../constants/colors";
 import HeaderPlatform from "../components/HeaderPlatform/HeaderPlatform";
 import Course from "../components/CourseCard/Course";
 import BigText from "../components/UI/BigText/BigText";
+import MyMasonry from "../components/Masonry/MyMasonry";
 
 const CoursesPage = () => {
     const [isLoading, setLoading] = useState(true);
@@ -26,14 +27,23 @@ const CoursesPage = () => {
     return (
         <div style={{backgroundColor: clrs.whiter, width: "100%", minHeight: "100vh"}}>
             <HeaderPlatform/>
-            <Block style={{marginTop: "50px",flexWrap: "wrap", flexDirection: "row",justifyContent: 'center'}}>
-                <Course/>
-                <Course/>
-                <Course/>
-                <Course/>
-                <Course/>
-                <Course/>
-                <Course/>
+            <Block style={{marginTop: "50px"}}>
+                <MyMasonry>
+                    <Course pre={1}/>
+                    {/*<Course/>*/}
+                    {/*<Course/>*/}
+                    {/*<Course/>*/}
+                    {/*<Course/>*/}
+                    {/*<Course/>*/}
+                    {/*<Course/>*/}
+                </MyMasonry>
+            {/*    <Course pre={1}/>*/}
+            {/*    <Course/>*/}
+            {/*    <Course/>*/}
+            {/*    <Course/>*/}
+            {/*    <Course/>*/}
+            {/*    <Course/>*/}
+            {/*    <Course/>*/}
             </Block>
         </div>
     );
