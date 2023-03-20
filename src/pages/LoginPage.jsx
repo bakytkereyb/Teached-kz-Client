@@ -9,14 +9,37 @@ import Footer from "../components/Footer/Footer";
 import Text from "../components/UI/Text/Text";
 import {lan} from "../constants/lan";
 import {clrs} from "../constants/colors";
+import {login} from "../services/AuthService";
+import Cookies from "js-cookie";
 
 const LoginPage = () => {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
+    const [showError, setShowError] = useState(false);
+    const [errorMes, setErrorMes] = useState('');
+
+    // const token = Cookies.get('Authorization'); get cookie by name
+    // Cookies.remove('Authorization'); remove cookie
+
     function onSubmitLogin(e) {
         e.preventDefault();
+        login(username, password)
+            .then((result) => {
+                // console.log(result.data);
+                Cookies.set('Authorization', result.data.access_token);
+                window.location.assign('/my');
+            })
+            .catch((result) => {
+                if (result.response.data === "user not found" || result.response.data === "password is incorrect") {
+                    setErrorMes('Incorrect username or password');
+                } else {
+                    setErrorMes('ERROR');
+                }
+                setShowError(true);
+                // console.log(result);
+            })
     }
 
     return (
@@ -48,6 +71,15 @@ const LoginPage = () => {
                         {lan.noAccount}
                     </Text>
                 </FormBlock>
+                {
+                    showError ?
+                        <Text style = {{color: clrs.red}}>
+                            {errorMes}
+                        </Text>
+                        :
+                        ''
+                }
+
             </Block>
             <Footer/>
         </div>
