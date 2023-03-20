@@ -12,6 +12,7 @@ import CourseTasks from "../components/CourseTasks/CourseTasks";
 import CourseHeader from "../components/CourseHeader/CourseHeader";
 import CourseButtons from "../components/CourseHeader/CourseButtons";
 import CoursePosts from "../components/CoursePosts/CoursePosts";
+import CourseTests from "../components/CourseTests/CourseTests";
 
 const CoursePage = ({task, student, post, test, lesson}) => {
 
@@ -47,6 +48,7 @@ const CoursePage = ({task, student, post, test, lesson}) => {
                 {isComponent === 2 && <CourseStudents students={students}/>}
                 {isComponent === 3 && <CourseTasks tasks={tasks}/>}
                 {isComponent === 4 && <CoursePosts/>}
+                {isComponent === 5 && <CourseTests/>}
             </Block>
         </div>
     );
