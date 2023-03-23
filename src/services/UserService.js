@@ -1,6 +1,6 @@
 import axios from "axios";
-import {API_BASE_URL} from "../Constants";
 import Cookies from "js-cookie";
+import {API_BASE_URL} from "../constants/api";
 
 export function getUserByToken() {
     let data = new FormData();

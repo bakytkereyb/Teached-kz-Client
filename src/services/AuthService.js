@@ -1,5 +1,5 @@
 import axios from "axios";
-import {API_BASE_URL} from "../Constants";
+import {API_BASE_URL} from "../constants/api";
 
 export function login(username, password) {
     let data = new FormData();
