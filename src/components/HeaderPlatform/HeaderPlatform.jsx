@@ -3,6 +3,7 @@ import classes from './HeaderPlatform.module.css';
 import burger from '../../images/burger-nav-fill.svg';
 import profile from '../../images/profile.svg';
 import Sidebar from "../Sidebar/Sidebar";
+import {getUserByToken} from "../../services/UserService";
 
 const HeaderPlatform = () => {
 

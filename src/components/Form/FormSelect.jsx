@@ -11,7 +11,7 @@ const FormSelect = ({labelText, values, onChange, id, required, maxWidth, paddin
             }
 
             <select onChange={e => onChange(e.target.value)} id={id} required={required}>
-                <option value=""></option>
+                {/*<option value=""></option>*/}
                 {values.map((value) => {
                     if (selectedValue != null) {
                         if (value.includes(selectedValue)) {

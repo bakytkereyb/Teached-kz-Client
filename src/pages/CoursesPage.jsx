@@ -6,8 +6,13 @@ import HeaderPlatform from "../components/HeaderPlatform/HeaderPlatform";
 import Course from "../components/CourseCard/Course";
 import BigText from "../components/UI/BigText/BigText";
 import MyMasonry from "../components/Masonry/MyMasonry";
+import {getUserByToken} from "../services/UserService";
 
 const CoursesPage = () => {
+    // getUserByToken().then(response => {
+    // }).catch(error => {
+    //     window.location.assign('/');
+    // });
     const [isLoading, setLoading] = useState(true);
 
     useEffect(() => {

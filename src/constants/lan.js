@@ -17,6 +17,7 @@ const eng = {
     noAccount: "I don't have an account",
     yesAccount: "I have an account",
     login: "Login",
+    log_in: "Log in",
     register: "Registration",
     dashboard: "Dashboard",
     coursesAll: "All courses",
@@ -37,7 +38,8 @@ const eng = {
     posts: "Posts",
     tests: "Tests",
     tasks: "Tasks",
-    addLesson: "Add lesson"
+    addLesson: "Add lesson",
+    cabinet: "Cabinet"
 }
 
 const kz = {
@@ -45,4 +47,4 @@ const kz = {
 }
 
 
-export const lan = Cookies.get('lan') == null ? eng : (Cookies.get('lan') === "ru" ? ru : kz)
+export const lan = Cookies.get('lan') === "ENG" ? eng : (Cookies.get('lan') === "РУС" ? ru : kz)

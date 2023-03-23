@@ -29,7 +29,7 @@ const LoginPage = () => {
             .then((result) => {
                 // console.log(result.data);
                 Cookies.set('Authorization', result.data.access_token);
-                window.location.assign('/my');
+                    window.location.assign('/my');
             })
             .catch((result) => {
                 if (result.response.data === "user not found" || result.response.data === "password is incorrect") {

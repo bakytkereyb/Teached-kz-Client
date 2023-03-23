@@ -13,9 +13,12 @@ import Header from "../components/Header/Header";
 import naruto from "../images/naruto.jpg";
 import Banner from "../components/Banner/Banner";
 import Chart from "react-apexcharts";
+import Cookies from "js-cookie";
+
 
 
 const HomePage = () => {
+    // Cookies.remove('Authorization');
 
     const config = {
         options: {

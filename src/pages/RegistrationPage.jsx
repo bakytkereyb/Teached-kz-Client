@@ -9,6 +9,7 @@ import Text from "../components/UI/Text/Text";
 import {lan} from "../constants/lan";
 import Footer from "../components/Footer/Footer";
 import {clrs} from "../constants/colors";
+import {register} from "../services/AuthService";
 
 const RegistrationPage = () => {
 
@@ -19,8 +20,29 @@ const RegistrationPage = () => {
     const [password, setPassword] = useState('');
     const [password2, setPassword2] = useState('');
 
+    const [showError, setShowError] = useState(false);
+    const [errorMes, setErrorMes] = useState('');
+
     function onSubmitLogin(e) {
         e.preventDefault();
+        if(password === password2) {
+            register(username, password, firstName, secondName, email)
+                .then((result) => {
+                    window.location.assign('/login');
+                })
+                .catch((result) => {
+                    if (result.response.data === "user is already have") {
+                        setErrorMes('User is already registered');
+                    } else {
+                        setErrorMes('ERROR');
+                    }
+                    setShowError(true);
+                    // console.log(result);
+                })
+        } else {
+            setErrorMes('Passwords are not same');
+            setShowError(true);
+        }
     }
 
     return (
@@ -88,6 +110,14 @@ const RegistrationPage = () => {
                         {lan.yesAccount}
                     </Text>
                 </FormBlock>
+                {
+                    showError ?
+                        <Text style = {{color: clrs.red}}>
+                            {errorMes}
+                        </Text>
+                        :
+                        ''
+                }
             </Block>
             <Footer/>
         </div>

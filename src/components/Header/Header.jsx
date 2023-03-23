@@ -8,15 +8,32 @@ import Logo from "../Logo/Logo";
 import burger from "../../images/hamburger.svg"
 import FormSelect from "../Form/FormSelect";
 import Drawer from "../Drawer/Drawer";
+import {getUserByToken} from "../../services/UserService";
+import Cookies from "js-cookie";
 
 
 const Header = () => {
-    const [selectedLan, setSelectedLan] = useState('ENG');
+    const [selectedLan, setSelectedLan] = useState(Cookies.get('lan'));
     const [isOpen, setIsOpen] = useState(false);
     const toggleDrawer = () => {
         setIsOpen(!isOpen);
     };
+    // Cookies.remove('Authorization');
+    const [username,setUsername] = useState(null);
 
+    getUserByToken().then(response => {
+        const userData = response.data;
+        setUsername(userData.username)
+    }).catch(error => {
+        console.error(error);
+        setUsername(null)
+    });
+
+    const changeLang = (selectedLang) => {
+        Cookies.set('lan', selectedLang);
+        setSelectedLan(selectedLang)
+        window.location.reload();
+    }
 
     return (
         <header className={cl.header}>
@@ -26,32 +43,6 @@ const Header = () => {
                 </div>
                 <Drawer isOpen={isOpen}/>
                 {isOpen && <div className={cl.background_drawer} onClick={toggleDrawer}/>}
-                {/*<Drawer*/}
-                {/*    placement="left"*/}
-                {/*    closable={false}*/}
-                {/*    onClose={onClose} open={open}>*/}
-                {/*    <div className={cl.menu__items}>*/}
-                {/*        <Logo to={"/"}/>*/}
-                {/*        <br/>*/}
-                {/*        <Text to={"/#aboutUs"} style={{color: clrs.blackBlue}}>{lan.aboutUs}</Text>*/}
-                {/*        <Text to={"/#team"} style={{color: clrs.blackBlue}}>{lan.team}</Text>*/}
-                {/*        <Text to={"/#publications"} style={{color: clrs.blackBlue}}>{lan.publications}</Text>*/}
-                {/*        <Text to={"/#footer"} style={{color: clrs.blackBlue}}>{lan.contacts}</Text>*/}
-                {/*        <Text style={{color: clrs.blackBlue}}>email@email.com</Text>*/}
-                {/*        <br/>*/}
-                {/*        <FormSelect*/}
-                {/*            labelText={"Язык"}*/}
-                {/*            values={["ENG","РУС","ҚАЗ"]}*/}
-                {/*            onChange={setSelectedLan}*/}
-                {/*            id={"lan"}*/}
-                {/*            required={true}*/}
-                {/*            maxWidth={"200px"}*/}
-                {/*            selectedValue={selectedLan}*/}
-                {/*            withoutLabel={true}*/}
-                {/*        />*/}
-                {/*        <Button onClick={() => {window.location.assign("/login")}}>Log in</Button>*/}
-                {/*    </div>*/}
-                {/*</Drawer>*/}
                 <div className={cl.header__left}>
                     <Text to={"/#aboutUs"} style={{color: clrs.blackBlue}}>{lan.aboutUs}</Text>
                     <Text to={"/#team"} style={{color: clrs.blackBlue}}>{lan.team}</Text>
@@ -66,16 +57,23 @@ const Header = () => {
                     <FormSelect
                         labelText={"Язык"}
                         values={["ENG", "РУС", "ҚАЗ"]}
-                        onChange={setSelectedLan}
+                        onChange={changeLang}
                         id={"lan"}
                         required={true}
                         maxWidth={"200px"}
                         selectedValue={selectedLan}
                         withoutLabel={true}
                     />
-                    <Button onClick={() => {
-                        window.location.assign("/login")
-                    }}>Log in</Button>
+                    {
+                        !username ?
+                            <Button onClick={() => {
+                                window.location.assign("/login")
+                            }}>{lan.log_in}</Button>
+                            :
+                            <Button onClick={() => {
+                                window.location.assign("/my")
+                            }}>{lan.cabinet}</Button>
+                    }
                 </div>
             </div>
         </header>

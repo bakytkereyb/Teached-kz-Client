@@ -1,11 +1,7 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {clrs} from "../constants/colors";
 import HeaderPlatform from "../components/HeaderPlatform/HeaderPlatform";
 import Block from "../components/UI/Block/Block";
-import naruto from "../images/naruto.jpg"
-import Text from "../components/UI/Text/Text";
-import Button from "../components/UI/Button/Button";
-import {lan} from "../constants/lan";
 import CourseLessons from "../components/CourseLessons/CourseLessons";
 import CourseStudents from "../components/CourseStudents/CourseStudents";
 import CourseTasks from "../components/CourseTasks/CourseTasks";
@@ -13,10 +9,39 @@ import CourseHeader from "../components/CourseHeader/CourseHeader";
 import CourseButtons from "../components/CourseHeader/CourseButtons";
 import CoursePosts from "../components/CoursePosts/CoursePosts";
 import CourseTests from "../components/CourseTests/CourseTests";
+import {getUserByToken} from "../services/UserService";
+import PageLoader from "../components/PageLoader/PageLoader";
 
 const CoursePage = ({task, student, post, test, lesson}) => {
 
     const [isComponent, setIsComponent] = useState(1);
+    const [isLoading, setLoading] = useState(true);
+    const [userData, setUserData] = useState();
+
+    useEffect(() => {
+        setTimeout(() => {
+            setLoading(false);
+        }, 2000)
+    }, []);
+
+
+    useEffect(() => {
+        getUserByToken().then(response => {
+            setUserData(response.data);
+        }).catch(error => {
+            window.location.assign('/');
+            console.error(error);
+        });
+    }, [])
+
+    if (isLoading) {
+        return (
+            <Block>
+                <PageLoader/>
+            </Block>
+        )
+    }
+
 
     const tasks = [
         {name: 'Java', id: 1, index: "1", complete: true},
@@ -37,12 +62,14 @@ const CoursePage = ({task, student, post, test, lesson}) => {
     }
 
 
+    console.log(userData)
+
 
     return (
         <div style={{backgroundColor: clrs.whiter, width: "100%", minHeight: "100vh"}}>
             <HeaderPlatform/>
             <Block style={{marginTop: "50px"}}>
-                <CourseHeader/>
+                <CourseHeader user={userData}/>
                 <CourseButtons index={setComponentIndex}/>
                 {isComponent === 1 && <CourseLessons/>}
                 {isComponent === 2 && <CourseStudents students={students}/>}

@@ -6,8 +6,14 @@ import PageLoader from "../components/PageLoader/PageLoader";
 import MyTasks from "../components/MyTasksCard/MyTasks";
 import Course from "../components/CourseCard/Course";
 import MyMasonry from "../components/Masonry/MyMasonry";
+import {getUserByToken} from "../services/UserService";
 
 const DashboardPage = () => {
+
+    getUserByToken().then(response => {
+    }).catch(error => {
+        window.location.assign('/');
+    });
 
     const [isLoading, setLoading] = useState(true);
 
