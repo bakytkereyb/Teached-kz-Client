@@ -17,30 +17,48 @@ const CoursePage = ({task, student, post, test, lesson}) => {
     const [isComponent, setIsComponent] = useState(1);
     const [isLoading, setLoading] = useState(true);
     const [userData, setUserData] = useState();
+    //
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         setLoading(false);
+    //     }, 2000)
+    // }, []);
+
 
     useEffect(() => {
-        setTimeout(() => {
-            setLoading(false);
-        }, 2000)
-    }, []);
+        const getUser = async () => {
+            await getUserByToken().then(response => {
+                setUserData(response.data);
+                setLoading(response.status);
+            }).catch(error => {
+                window.location.assign('/');
+                console.error(error);
+            });
+        }
 
-
-    useEffect(() => {
-        getUserByToken().then(response => {
-            setUserData(response.data);
-        }).catch(error => {
-            window.location.assign('/');
-            console.error(error);
-        });
+        getUser();
+        // getUserByToken().then(response => {
+        //     setUserData(response.data);
+        // }).catch(error => {
+        //     window.location.assign('/');
+        //     console.error(error);
+        // });
     }, [])
 
-    if (isLoading) {
+    if (!isLoading || !userData) {
         return (
-            <Block>
-                <PageLoader/>
-            </Block>
-        )
+                <Block>
+                    <PageLoader/>
+                </Block>
+            )
     }
+    // if (isLoading) {
+    //     return (
+    //         <Block>
+    //             <PageLoader/>
+    //         </Block>
+    //     )
+    // }
 
 
     const tasks = [

@@ -9,19 +9,23 @@ import MyMasonry from "../components/Masonry/MyMasonry";
 import {getUserByToken} from "../services/UserService";
 
 const CoursesPage = () => {
-    // getUserByToken().then(response => {
-    // }).catch(error => {
-    //     window.location.assign('/');
-    // });
     const [isLoading, setLoading] = useState(true);
-
+    const [userData, setUserData] = useState();
     useEffect(() => {
-        setTimeout(() => {
-            setLoading(false);
-        }, 2000)
-    }, []);
+        const getUser = async () => {
+            await getUserByToken().then(response => {
+                setUserData(response.data);
+                setLoading(response.status);
+            }).catch(error => {
+                window.location.assign('/');
+                console.error(error);
+            });
+        }
 
-    if (isLoading) {
+        getUser();
+    }, [])
+
+    if (!isLoading || !userData) {
         return (
             <Block>
                 <PageLoader/>

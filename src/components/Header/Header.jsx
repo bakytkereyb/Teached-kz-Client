@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {lan} from "../../constants/lan";
 import Text from "../UI/Text/Text";
 import cl from "./Header.module.css"
@@ -19,15 +19,17 @@ const Header = () => {
         setIsOpen(!isOpen);
     };
     // Cookies.remove('Authorization');
-    const [username,setUsername] = useState(null);
+    const [username, setUsername] = useState(null);
 
-    getUserByToken().then(response => {
-        const userData = response.data;
-        setUsername(userData.username)
-    }).catch(error => {
-        console.error(error);
-        setUsername(null)
-    });
+    useEffect(() => {
+        getUserByToken().then(response => {
+            const userData = response.data;
+            setUsername(userData.username)
+        }).catch(error => {
+            console.error(error);
+            setUsername(null)
+        });
+    }, [])
 
     const changeLang = (selectedLang) => {
         Cookies.set('lan', selectedLang);
