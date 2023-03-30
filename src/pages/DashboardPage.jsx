@@ -7,30 +7,27 @@ import MyTasks from "../components/MyTasksCard/MyTasks";
 import Course from "../components/CourseCard/Course";
 import MyMasonry from "../components/Masonry/MyMasonry";
 import {getUserByToken} from "../services/UserService";
+import Card from "../components/LoadingComponents/Card";
 
 const DashboardPage = () => {
     const [isLoading, setLoading] = useState(true);
-    const [userData, setUserData] = useState();
-    useEffect(() => {
-        const getUser = async () => {
-            await getUserByToken().then(response => {
-                setUserData(response.data);
-                setLoading(response.status);
-            }).catch(error => {
-                window.location.assign('/');
-                console.error(error);
-            });
-        }
 
-        getUser();
-    }, [])
-
-    if (!isLoading || !userData) {
+    if (isLoading) {
         return (
-            <Block>
-                <PageLoader/>
-            </Block>
-        )
+            <div style={{backgroundColor: clrs.whiter, width: "100%", minHeight: "100vh"}}>
+                <HeaderPlatform/>
+                <Block style={{marginTop: "50px"}}>
+                    <MyMasonry>
+                        <Card type={"calendar"}/>
+                        <Card/>
+                        <Card type={"big-card"}/>
+                        <Card/>
+                        <Card/>
+                        <Card/>
+                    </MyMasonry>
+                </Block>
+            </div>
+        );
     }
 
     return (
@@ -49,8 +46,7 @@ const DashboardPage = () => {
                 </MyMasonry>
             </Block>
         </div>
-    )
-        ;
+    );
 };
 
 export default DashboardPage;

@@ -11,54 +11,25 @@ import CoursePosts from "../components/CoursePosts/CoursePosts";
 import CourseTests from "../components/CourseTests/CourseTests";
 import {getUserByToken} from "../services/UserService";
 import PageLoader from "../components/PageLoader/PageLoader";
+import Card from "../components/LoadingComponents/Card";
 
 const CoursePage = ({task, student, post, test, lesson}) => {
 
     const [isComponent, setIsComponent] = useState(1);
     const [isLoading, setLoading] = useState(true);
-    const [userData, setUserData] = useState();
-    //
-    // useEffect(() => {
-    //     setTimeout(() => {
-    //         setLoading(false);
-    //     }, 2000)
-    // }, []);
 
-
-    useEffect(() => {
-        const getUser = async () => {
-            await getUserByToken().then(response => {
-                setUserData(response.data);
-                setLoading(response.status);
-            }).catch(error => {
-                window.location.assign('/');
-                console.error(error);
-            });
-        }
-
-        getUser();
-        // getUserByToken().then(response => {
-        //     setUserData(response.data);
-        // }).catch(error => {
-        //     window.location.assign('/');
-        //     console.error(error);
-        // });
-    }, [])
-
-    if (!isLoading || !userData) {
+    if (isLoading) {
         return (
-                <Block>
-                    <PageLoader/>
+            <div style={{backgroundColor: clrs.whiter, width: "100%", minHeight: "100vh"}}>
+                <HeaderPlatform/>
+                <Block style={{marginTop: "50px"}}>
+                    <Card type={"horizontal-circle"}/>
+                    <Card type={"horizontal-small"}/>
+                    <Card type={"horizontal"}/>
                 </Block>
-            )
+            </div>
+        );
     }
-    // if (isLoading) {
-    //     return (
-    //         <Block>
-    //             <PageLoader/>
-    //         </Block>
-    //     )
-    // }
 
 
     const tasks = [
@@ -80,14 +51,11 @@ const CoursePage = ({task, student, post, test, lesson}) => {
     }
 
 
-    console.log(userData)
-
-
     return (
         <div style={{backgroundColor: clrs.whiter, width: "100%", minHeight: "100vh"}}>
             <HeaderPlatform/>
             <Block style={{marginTop: "50px"}}>
-                <CourseHeader user={userData}/>
+                <CourseHeader/>
                 <CourseButtons index={setComponentIndex}/>
                 {isComponent === 1 && <CourseLessons/>}
                 {isComponent === 2 && <CourseStudents students={students}/>}

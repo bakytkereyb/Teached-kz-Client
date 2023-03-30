@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import cl from './Drawer.module.css'
 import Logo from "../Logo/Logo";
 import DrawerItem from "./DrawerItem";
@@ -7,19 +7,12 @@ import FormSelect from "../Form/FormSelect";
 import Button from "../UI/Button/Button";
 import {getUserByToken} from "../../services/UserService";
 import Cookies from "js-cookie";
+import MyLink from "../UI/MyLink/MyLink";
+import {useSelector} from "react-redux";
 
 const Drawer = ({isOpen}) => {
+    const user = useSelector(state => state.user.user);
     const [selectedLan, setSelectedLan] = useState('ENG');
-
-    const [username,setUsername] = useState(null);
-
-    getUserByToken().then(response => {
-        const userData = response.data;
-        setUsername(userData.username)
-    }).catch(error => {
-        console.error(error);
-        setUsername(null)
-    });
 
     const changeLang = (selectedLang) => {
         Cookies.set('lan', selectedLang);
@@ -48,14 +41,10 @@ const Drawer = ({isOpen}) => {
                     withoutLabel={true}
                 />
                 {
-                    !username ?
-                        <Button onClick={() => {
-                            window.location.assign("/login")
-                        }}>{lan.log_in}</Button>
+                    user === null ?
+                        <MyLink to={"/login"}>{lan.log_in}</MyLink>
                         :
-                        <Button onClick={() => {
-                            window.location.assign("/my")
-                        }}>{lan.cabinet}</Button>
+                        <MyLink to={"/my"}>{lan.cabinet}</MyLink>
                 }
             </div>
         </div>

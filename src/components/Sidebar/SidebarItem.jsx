@@ -1,12 +1,15 @@
 import React from 'react';
 import Text from "../UI/Text/Text";
 import classes from './Sidebar.module.css';
+import {useNavigate} from "react-router-dom";
 
 const SidebarItem = ({icon, text, to}) => {
 
+    const navigate = useNavigate();
+
     function openPage() {
         if (to != null) {
-            window.location.assign(to);
+            navigate(to);
         }
 
     }

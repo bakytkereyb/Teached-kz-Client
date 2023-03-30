@@ -47,4 +47,4 @@ const kz = {
 }
 
 
-export const lan = Cookies.get('lan') === "ENG" ? eng : (Cookies.get('lan') === "РУС" ? ru : kz)
+export const lan = Cookies.get('lan') === "ENG" ? eng : (Cookies.get('lan') === "РУС" ? ru : (Cookies.get('lan') === "ҚАЗ" ? kz : eng))

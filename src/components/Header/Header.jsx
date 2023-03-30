@@ -10,26 +10,21 @@ import FormSelect from "../Form/FormSelect";
 import Drawer from "../Drawer/Drawer";
 import {getUserByToken} from "../../services/UserService";
 import Cookies from "js-cookie";
+import {useDispatch, useSelector} from "react-redux";
+import {setUser} from "../../store/userSlice";
+import MyLink from "../UI/MyLink/MyLink";
 
 
 const Header = () => {
+
+    const user = useSelector(state => state.user.user);
     const [selectedLan, setSelectedLan] = useState(Cookies.get('lan'));
     const [isOpen, setIsOpen] = useState(false);
     const toggleDrawer = () => {
         setIsOpen(!isOpen);
     };
-    // Cookies.remove('Authorization');
-    const [username, setUsername] = useState(null);
 
-    useEffect(() => {
-        getUserByToken().then(response => {
-            const userData = response.data;
-            setUsername(userData.username)
-        }).catch(error => {
-            console.error(error);
-            setUsername(null)
-        });
-    }, [])
+    // Cookies.remove('Authorization');
 
     const changeLang = (selectedLang) => {
         Cookies.set('lan', selectedLang);
@@ -67,14 +62,17 @@ const Header = () => {
                         withoutLabel={true}
                     />
                     {
-                        !username ?
-                            <Button onClick={() => {
-                                window.location.assign("/login")
-                            }}>{lan.log_in}</Button>
+                        user === null ?
+                            // <Button onClick={() => {
+                            //     window.location.assign("/login")
+                            // }}>{lan.log_in}</Button>
+                            <MyLink to={"/login"}>{lan.log_in}</MyLink>
                             :
-                            <Button onClick={() => {
-                                window.location.assign("/my")
-                            }}>{lan.cabinet}</Button>
+                            <MyLink to={"/my"}>{lan.cabinet}</MyLink>
+                            // <Button onClick={() => {
+                            //     window.location.assign("/my")
+                            // }}>{lan.cabinet}</Button>
+
                     }
                 </div>
             </div>

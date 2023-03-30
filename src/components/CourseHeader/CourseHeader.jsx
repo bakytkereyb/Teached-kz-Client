@@ -3,8 +3,11 @@ import naruto from "../../images/naruto.jpg";
 import Text from "../UI/Text/Text";
 import cl from "./CourseHeader.module.css"
 import {getUserByToken} from "../../services/UserService";
+import {useSelector} from "react-redux";
 
-const CourseHeader = ({user}) => {
+const CourseHeader = () => {
+
+    const user = useSelector(state => state.user.user);
 
     return (
         <div className={cl.courseHeader}>
