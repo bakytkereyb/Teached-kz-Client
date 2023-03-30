@@ -26,7 +26,7 @@ const Sidebar = ({isOpen}) => {
             <SidebarItem icon={calendar} text={lan.calendar}/>
             <SidebarItem icon={courses} text={lan.coursesPre}/>
             <SidebarItem icon={setting} text={lan.setting}/>
-            <SidebarItem icon={logout} text={lan.logout}/>
+            <SidebarItem to={"/logout"} icon={logout} text={lan.logout}/>
 
         </div>
     );

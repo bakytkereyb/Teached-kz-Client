@@ -12,6 +12,7 @@ import {useEffect} from "react";
 import {setUser} from "./store/userSlice";
 import {getUserByToken} from "./services/UserService";
 import Cookies from "js-cookie";
+import Logout from "./pages/Logout";
 
 function App() {
     const dispatch = useDispatch();
@@ -39,6 +40,7 @@ function App() {
                 <Route path='/courses' element={user !== null ? <CoursesPage/> : <Navigate to="/login" replace />}/>
                 <Route path='/course' element={user !== null ? <CoursePage/> : <Navigate to="/login" replace />}/>
                 <Route path='*' element={<Error/>}/>
+                <Route path='/logout' element={<Logout/>}/>
             </Routes>
         </Router>
     );
