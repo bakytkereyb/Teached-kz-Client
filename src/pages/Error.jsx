@@ -5,6 +5,7 @@ import Text from "../components/UI/Text/Text";
 import {lan} from "../constants/lan";
 import BigText from "../components/UI/BigText/BigText";
 import Button from "../components/UI/Button/Button";
+import MyLink from "../components/UI/MyLink/MyLink";
 
 const Error = () => {
     return (
@@ -13,7 +14,7 @@ const Error = () => {
                 <img src={error} alt="Error" style={{width: '100px', height: '100px'}}/>
                 <BigText>{lan.error}</BigText>
                 <Text style={{fontWeight: 400}}>{lan.problem}</Text>
-                <Button type="2">{lan.back}</Button>
+                <MyLink to={"/"}>{lan.back}</MyLink>
             </Block>
         </div>
     );
