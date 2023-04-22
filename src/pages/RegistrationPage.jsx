@@ -9,7 +9,8 @@ import Text from "../components/UI/Text/Text";
 import {lan} from "../constants/lan";
 import Footer from "../components/Footer/Footer";
 import {clrs} from "../constants/colors";
-import {register} from "../services/AuthService";
+import AuthService from "../services/AuthService";
+import {useNavigate} from "react-router-dom";
 
 const RegistrationPage = () => {
 
@@ -23,12 +24,14 @@ const RegistrationPage = () => {
     const [showError, setShowError] = useState(false);
     const [errorMes, setErrorMes] = useState('');
 
+    const navigate = useNavigate();
+
     function onSubmitLogin(e) {
         e.preventDefault();
         if(password === password2) {
-            register(username, password, firstName, secondName, email)
+            AuthService.register(username, password, firstName, secondName, email)
                 .then((result) => {
-                    window.location.assign('/login');
+                    navigate('/login');
                 })
                 .catch((result) => {
                     if (result.response.data === "user is already have") {

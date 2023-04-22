@@ -9,16 +9,15 @@ import burger from "../../images/hamburger.svg"
 import FormSelect from "../Form/FormSelect";
 import Drawer from "../Drawer/Drawer";
 import {getUserByToken} from "../../services/UserService";
-import Cookies from "js-cookie";
 import {useDispatch, useSelector} from "react-redux";
-import {setUser} from "../../store/userSlice";
+import {setUser} from "../../store/slices/userSlice";
 import MyLink from "../UI/MyLink/MyLink";
 
 
 const Header = () => {
 
     const user = useSelector(state => state.user.user);
-    const [selectedLan, setSelectedLan] = useState(Cookies.get('lan'));
+    const [selectedLan, setSelectedLan] = useState(localStorage.getItem('lan'));
     const [isOpen, setIsOpen] = useState(false);
     const toggleDrawer = () => {
         setIsOpen(!isOpen);
@@ -27,7 +26,7 @@ const Header = () => {
     // Cookies.remove('Authorization');
 
     const changeLang = (selectedLang) => {
-        Cookies.set('lan', selectedLang);
+        localStorage.setItem('lan', selectedLang);
         setSelectedLan(selectedLang)
         window.location.reload();
     }

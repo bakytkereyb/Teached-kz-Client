@@ -9,26 +9,25 @@ import CoursesPage from "./pages/CoursesPage";
 import CoursePage from "./pages/CoursePage";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {setUser} from "./store/userSlice";
-import {getUserByToken} from "./services/UserService";
-import Cookies from "js-cookie";
+import {getUserByToken, setUser} from "./store/slices/userSlice";
 import Logout from "./pages/Logout";
 
 function App() {
     const dispatch = useDispatch();
     const user = useSelector(state => state.user.user);
     useEffect(() => {
-        const getUser = async () => {
-            await getUserByToken()
-                .then((result) => {
-                    dispatch(setUser(result.data))
-                })
-                .catch(() => {
-                    dispatch(setUser(null))
-                    Cookies.remove('Authorization');
-                })
-        }
-        getUser();
+        dispatch(getUserByToken())
+        // const getUser = async () => {
+        //     await getUserByToken()
+        //         .then((result) => {
+        //             dispatch(setUser(result.data))
+        //         })
+        //         .catch(() => {
+        //             dispatch(setUser(null))
+        //             localStorage.removeItem('Authorization');
+        //         })
+        // }
+        // getUser();
     }, []);
     return (
         <Router>

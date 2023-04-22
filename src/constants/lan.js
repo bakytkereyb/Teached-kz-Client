@@ -1,5 +1,3 @@
-import Cookies from "js-cookie";
-
 const ru = {
     aboutUs:"О Нас",
     team:"Команда",
@@ -47,4 +45,4 @@ const kz = {
 }
 
 
-export const lan = Cookies.get('lan') === "ENG" ? eng : (Cookies.get('lan') === "РУС" ? ru : (Cookies.get('lan') === "ҚАЗ" ? kz : eng))
+export const lan = localStorage.getItem('lan') === "ENG" ? eng : (localStorage.getItem('lan') === "РУС" ? ru : (localStorage.getItem('lan') === "ҚАЗ" ? kz : eng))

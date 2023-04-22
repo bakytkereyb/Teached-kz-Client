@@ -13,7 +13,14 @@ import Header from "../components/Header/Header";
 import naruto from "../images/naruto.jpg";
 import Banner from "../components/Banner/Banner";
 import Chart from "react-apexcharts";
-import Cookies from "js-cookie";
+import tm1 from '../images/tm1.png';
+import tm2 from '../images/tm2.jpg';
+import tm3 from '../images/tm3.jpg';
+import tm4 from '../images/tm4.png';
+import tm5 from '../images/tm5.jpeg';
+import tm6 from '../images/tm6.jpg';
+import tm7 from '../images/tm7.jpg';
+import tm8 from '../images/tm8.jpg';
 
 
 
@@ -131,35 +138,45 @@ const HomePage = () => {
                 </div>
                 <InfoList>
                     <TeamMember
-                        image={naruto}
-                        fullName={"Bakytkereiuly Batyrbek"}
-                        position={"Backend Developer"}
-                        description={"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab ad alias hic magnam non officiis."}/>
+                        image={tm1}
+                        fullName={"Мухатаев Айдос"}
+                        position={"Руководитель проекта, к.п.н., доцент."}
+                        description={"Директор НЦРВО МНВО РК"}/>
                     <TeamMember
-                        image={naruto}
-                        fullName={"Bakytkereiuly Batyrbek"}
-                        position={"Backend Developer"}
-                        description={"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab ad alias hic magnam non officiis."}/>
+                        image={tm2}
+                        fullName={"Омирбаев Серик"}
+                        position={"СНС, д.э.н., профессор."}
+                        description={"Первый проректор Astana IT University"}/>
                     <TeamMember
-                        image={naruto}
-                        fullName={"Bakytkereiuly Batyrbek"}
-                        position={"Backend Developer"}
-                        description={"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab ad alias hic magnam non officiis."}/>
+                        image={tm3}
+                        fullName={"Белощицкий Андрей"}
+                        position={"СНС, д.т.н., профессор."}
+                        description={"Проректор по науке и инновациям Astana IT University"}/>
                     <TeamMember
-                        image={naruto}
-                        fullName={"Bakytkereiuly Batyrbek"}
-                        position={"Backend Developer"}
-                        description={"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab ad alias hic magnam non officiis."}/>
+                        image={tm4}
+                        fullName={"Касенов Ханат"}
+                        position={"НС, PhD of Education."}
+                        description={"Директор департамента обеспечения качества AITU"}/>
                     <TeamMember
-                        image={naruto}
-                        fullName={"Bakytkereiuly Batyrbek"}
-                        position={"Backend Developer"}
-                        description={"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab ad alias hic magnam non officiis."}/>
+                        image={tm5}
+                        fullName={"Куангалиева Турсынзада"}
+                        position={"НС, к.эн., доцент."}
+                        description={"Проректор по академической деятельности APEMS"}/>
                     <TeamMember
-                        image={naruto}
-                        fullName={"Bakytkereiuly Batyrbek"}
-                        position={"Backend Developer"}
-                        description={"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab ad alias hic magnam non officiis."}/>
+                        image={tm6}
+                        fullName={"Токсанов Сапар"}
+                        position={"МНС, PhD candidate."}
+                        description={"Директор Центра компетенций и совершенства AITU"}/>
+                    <TeamMember
+                        image={tm7}
+                        fullName={"Файзуллин Адиль"}
+                        position={"МНС, PhD candidate."}
+                        description={"Директор департамента стратегии и корпоративного управления AITU"}/>
+                    <TeamMember
+                        image={tm8}
+                        fullName={"Омарова Сафура"}
+                        position={"МНС, PhD докторант"}
+                        description={"ЕНУ им. Л.Н.Гумилева"}/>
                 </InfoList>
             </Block>
 

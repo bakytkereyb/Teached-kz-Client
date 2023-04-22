@@ -6,7 +6,6 @@ import {lan} from "../../constants/lan";
 import FormSelect from "../Form/FormSelect";
 import Button from "../UI/Button/Button";
 import {getUserByToken} from "../../services/UserService";
-import Cookies from "js-cookie";
 import MyLink from "../UI/MyLink/MyLink";
 import {useSelector} from "react-redux";
 
@@ -15,7 +14,7 @@ const Drawer = ({isOpen}) => {
     const [selectedLan, setSelectedLan] = useState('ENG');
 
     const changeLang = (selectedLang) => {
-        Cookies.set('lan', selectedLang);
+        localStorage.setItem('lan', selectedLang);
         setSelectedLan(selectedLang)
         window.location.reload();
     }

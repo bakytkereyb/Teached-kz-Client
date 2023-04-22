@@ -1,8 +1,7 @@
 import React, {useEffect} from 'react';
 import {useNavigate} from "react-router-dom";
-import Cookies from "js-cookie";
 import {useDispatch} from "react-redux";
-import {setUser} from "../store/userSlice";
+import {setUser} from "../store/slices/userSlice";
 
 const Logout = () => {
     const dispatch = useDispatch();
@@ -10,7 +9,7 @@ const Logout = () => {
 
     useEffect(() => {
         dispatch(setUser(null))
-        Cookies.remove('Authorization');
+        localStorage.removeItem('Authorization');
         navigate("/login");
     }, [])
 

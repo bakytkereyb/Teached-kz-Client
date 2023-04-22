@@ -9,8 +9,8 @@ import Footer from "../components/Footer/Footer";
 import Text from "../components/UI/Text/Text";
 import {lan} from "../constants/lan";
 import {clrs} from "../constants/colors";
-import {login} from "../services/AuthService";
-import Cookies from "js-cookie";
+import AuthService from "../services/AuthService";
+import {useNavigate} from "react-router-dom";
 
 const LoginPage = () => {
 
@@ -20,16 +20,18 @@ const LoginPage = () => {
     const [showError, setShowError] = useState(false);
     const [errorMes, setErrorMes] = useState('');
 
+    const navigate = useNavigate();
+
     // const token = Cookies.get('Authorization'); get cookie by name
     // Cookies.remove('Authorization'); remove cookie
 
     function onSubmitLogin(e) {
         e.preventDefault();
-        login(username, password)
+        AuthService.login(username, password)
             .then((result) => {
                 // console.log(result.data);
-                Cookies.set('Authorization', result.data.access_token);
-                    window.location.assign('/my');
+                localStorage.setItem('Authorization', result.data.access_token);
+                navigate('/my');
             })
             .catch((result) => {
                 if (result.response.data === "user not found" || result.response.data === "password is incorrect") {

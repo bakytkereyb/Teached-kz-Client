@@ -1,7 +1,8 @@
 import axios from "axios";
 import {API_BASE_URL} from "../constants/api";
 
-export function login(username, password) {
+const AuthService = {};
+AuthService.login = async function (username, password) {
     let data = new FormData();
     data.append("username", username);
     data.append("password", password);
@@ -16,7 +17,7 @@ export function login(username, password) {
     });
 }
 
-export function register(username, password, firstName, secondName, email) {
+AuthService.register = async function(username, password, firstName, secondName, email) {
     let data = new FormData();
     data.append("username", username);
     data.append("password", password);
@@ -29,7 +30,9 @@ export function register(username, password, firstName, secondName, email) {
         url: API_BASE_URL + "/api/user/save",
         data: data,
         headers: {
-            "Content-Type": "multipart/form-data"
+            "Content-Type": "multipart/form-data",
         }
     });
 }
+
+export default AuthService;
