@@ -2,7 +2,6 @@ import React from 'react';
 import naruto from "../../images/naruto.jpg";
 import Text from "../UI/Text/Text";
 import cl from "./CourseHeader.module.css"
-import {getUserByToken} from "../../services/UserService";
 import {useSelector} from "react-redux";
 
 const CourseHeader = () => {
@@ -11,10 +10,14 @@ const CourseHeader = () => {
 
     return (
         <div className={cl.courseHeader}>
-            <img src={naruto} alt="avatar" />
+            <img src={naruto} alt="avatar"/>
             <div className={cl.courseHeaderTextDiv}>
                 <Text style={{fontWeight: 400, fontSize: '1rem'}}>Trainer</Text>
-                <Text style={{fontWeight: 600, fontSize: '1.2rem'}}>{user.firstName} {user.secondName}</Text>
+                <Text style={{
+                    fontWeight: 600,
+                    fontSize: '1.2rem',
+                    textTransform: 'capitalize'
+                }}>{user.firstName} {user.secondName} {user.middleName}</Text>
             </div>
             <div className={cl.courseHeaderTextDiv}>
                 <Text style={{fontWeight: 400, fontSize: '1rem'}}>Lessons</Text>

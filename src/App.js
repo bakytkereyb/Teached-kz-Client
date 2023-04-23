@@ -12,6 +12,7 @@ import {useEffect} from "react";
 import {getUserByToken, setUser} from "./store/slices/userSlice";
 import Logout from "./pages/Logout";
 import FullLoading from "./components/LoadingComponents/FullLoading";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
 
 function App() {
     const dispatch = useDispatch();
@@ -33,6 +34,7 @@ function App() {
                 <Route path='/my' element={user !== null ? <DashboardPage/> : <Navigate to="/login" replace />}/>
                 <Route path='/courses' element={user !== null ? <CoursesPage/> : <Navigate to="/login" replace />}/>
                 <Route path='/course' element={user !== null ? <CoursePage/> : <Navigate to="/login" replace />}/>
+                <Route path='/profile/:username' element={user !== null ? <ProfilePage/> : <Navigate to="/login" replace />}/>
                 <Route path='*' element={<Error/>}/>
                 <Route path='/logout' element={<Logout/>}/>
             </Routes>

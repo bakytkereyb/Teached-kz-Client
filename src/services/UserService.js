@@ -30,4 +30,27 @@ UserService.getUserByUsername = async function (username) {
     });
 }
 
+UserService.getUsers = async function (skip, limit) {
+    return axios({
+        method: "get",
+        url: API_BASE_URL + `/api/user/get?skip=${skip}&limit=${limit}`,
+        headers: {
+            "Content-Type": "application/json",
+            'Authorization': `${localStorage.getItem(ACCESS_TOKEN)}`,
+        }
+    });
+}
+
+UserService.updateUserByUsername = async function (data) {
+    return axios({
+        method: "PUT",
+        url: API_BASE_URL + `/api/user/${data.username}`,
+        data: data,
+        headers: {
+            "Content-Type": "application/json",
+            'Authorization': `${localStorage.getItem(ACCESS_TOKEN)}`,
+        }
+    });
+}
+
 export default UserService;

@@ -2,7 +2,6 @@ import forecasting from "../images/forecasting-model.svg";
 import concept from "../images/concept.svg";
 import rise from "../images/selection-raise-symbolic.svg";
 import course from "../images/e-learning-completed-course.svg";
-import education from "../images/school.svg";
 import practice from "../images/clipboard-alt.svg";
 import innovation from "../images/innovation.svg";
 import software from "../images/software-layout-header-complex2.svg";
@@ -24,6 +23,21 @@ const ru = {
     banner2: "Система курсовой и посткурсовой поддержки преподавателей IT дисциплин",
     banner3: "Внедрение уровневых стандартов на основе профессионального стандарта \"Педагог\"",
     banner4: "Система прогнозирования и непрерывной поддержки развития методической компетенции преподавателей",
+    education: "Образование",
+    jobInformation: "Сведения о работе",
+    generalInformation: "Общие сведения",
+    email: "Почта",
+    birthDate: "Дата рождения",
+    university: "Унивеситет",
+    graduationYear: "Год окончания",
+    specialization: "Специальность",
+    admissionDate: "Дата поступления",
+    degreeAwarded: "Присвоенная степень",
+    degree: "Степень",
+    position: "Должность",
+    rank: "Звание",
+    disciplineNames: "Преподаваемые дисциплины",
+    userNotFound: "Пользователь не найден",
 }
 
 const eng = {
@@ -71,10 +85,41 @@ const eng = {
     banner2: "System of course and post-course support for teachers of IT disciplines",
     banner3: "Introduction of level standards on the basis of the professional standard \"Teacher\"",
     banner4: "The system of forecasting and continuous support for the development of methodological competence of teachers",
+    education: "Education",
+    jobInformation: "Job information",
+    generalInformation: "General information",
+    email: "Email",
+    birthDate: "Birth date",
+    university: "University",
+    graduationYear: "Graduation year",
+    specialization: "Specialization",
+    admissionDate: "Admission date",
+    degreeAwarded: "Degree awarded",
+    degree: "Degree",
+    position: "Position",
+    rank: "Rank",
+    disciplineNames: "Disciplines",
+    userNotFound: "User not found",
+
 }
 
 const kz = {
     aboutUs:"Біз туралы",
+    education: "Білім",
+    jobInformation: "Жұмыс туралы мәліметтер",
+    generalInformation: "Жалпы мәліметтер",
+    email: "Почта",
+    birthDate: "Туған күні",
+    university: "Университет",
+    graduationYear: "Бітіру жылы",
+    specialization: "Мамандандығы",
+    admissionDate: "Түскен күні",
+    degreeAwarded: "Берілген дәреже",
+    degree: "Дәреже",
+    position: "Позиция",
+    rank: "Атағы",
+    disciplineNames: "Оқытылатын пәндер",
+    userNotFound: "Пайдаланушы табылмады",
 }
 
 
