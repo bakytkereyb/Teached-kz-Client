@@ -3,7 +3,7 @@ import UserService from "../../services/UserService";
 
 let initialState = {
     user: null,
-    isLoading: false,
+    isLoading: true,
     error: null,
 }
 
@@ -34,14 +34,15 @@ const userSlice = createSlice({
                 state.user = null;
             })
             .addCase(getUserByToken.fulfilled, (state, action) => {
-                state.isLoading = false;
                 state.user = action.payload;
+                state.isLoading = false;
                 state.error = null;
             })
             .addCase(getUserByToken.rejected, (state, action) => {
                 state.isLoading = false;
                 state.user = null;
                 state.error = action.payload;
+                localStorage.removeItem('Authorization');
             })
     }
 });

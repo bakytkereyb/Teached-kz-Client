@@ -11,24 +11,19 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {getUserByToken, setUser} from "./store/slices/userSlice";
 import Logout from "./pages/Logout";
+import FullLoading from "./components/LoadingComponents/FullLoading";
 
 function App() {
     const dispatch = useDispatch();
-    const user = useSelector(state => state.user.user);
+    const {user, isLoading} = useSelector(state => state.user);
     useEffect(() => {
-        dispatch(getUserByToken())
-        // const getUser = async () => {
-        //     await getUserByToken()
-        //         .then((result) => {
-        //             dispatch(setUser(result.data))
-        //         })
-        //         .catch(() => {
-        //             dispatch(setUser(null))
-        //             localStorage.removeItem('Authorization');
-        //         })
-        // }
-        // getUser();
+        dispatch(getUserByToken());
     }, []);
+
+    if (isLoading) {
+        return <FullLoading/>;
+    }
+
     return (
         <Router>
             <Routes>
