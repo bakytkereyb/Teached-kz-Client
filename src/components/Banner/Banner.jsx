@@ -1,21 +1,25 @@
 import React, {useEffect, useState} from 'react';
 import classes from './Banner.module.css';
-import banner1 from '../../images/backBannerTmp.jpg';
+import banner1 from '../../images/bulletin-board-g5a8e9f182_1920.jpg';
+import banner2 from '../../images/business-g1ec1364f9_1920.jpg';
+import banner3 from '../../images/laptop-g9c9893bfd_1920.jpg';
+import banner4 from '../../images/never-stop-learning-g09d1ec508_1920.jpg';
 import BannerItem from "./BannerItem";
 import {Carousel} from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import {lan} from "../../constants/lan";
 
 const Banner = () => {
 
     const [bannerTexts, setBannerTexts] = useState([
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusamus animi, blanditiis consequatur dolorem, ea eligendi fuga ipsa maiores",
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. ",
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusamus animi, blanditiis consequatur ",
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusamus animi, blanditiis consequatur dolorem, ea",
+        lan.banner1,
+        lan.banner2,
+        lan.banner3,
+        lan.banner4,
     ]);
 
     const [bannerImages, setBannerImages] = useState([
-        banner1, banner1, banner1, banner1
+        banner2, banner3, banner1, banner4
     ])
 
     return (

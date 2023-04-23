@@ -20,6 +20,10 @@ const ru = {
     aboutUs_practice: "Практические занятия",
     aboutUs_innovation: "Инновационный подход",
     aboutUs_software: "Программное и учебно-методическое обеспечение",
+    banner1: "Концепция развития методических компетенций преподавателей IT дисциплин",
+    banner2: "Система курсовой и посткурсовой поддержки преподавателей IT дисциплин",
+    banner3: "Внедрение уровневых стандартов на основе профессионального стандарта \"Педагог\"",
+    banner4: "Система прогнозирования и непрерывной поддержки развития методической компетенции преподавателей",
 }
 
 const eng = {
@@ -63,6 +67,10 @@ const eng = {
     aboutUs_practice: "Practical training",
     aboutUs_innovation: "Innovative Approach",
     aboutUs_software: "Software and educational-methodical support",
+    banner1: "The concept of development of methodological competencies of teachers of IT disciplines",
+    banner2: "System of course and post-course support for teachers of IT disciplines",
+    banner3: "Introduction of level standards on the basis of the professional standard \"Teacher\"",
+    banner4: "The system of forecasting and continuous support for the development of methodological competence of teachers",
 }
 
 const kz = {
