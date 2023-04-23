@@ -17,10 +17,11 @@
     gap: 20px;
 }
 .infoItem p {
-    font-family: 'Qanelas-Regular', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 1rem;
     width: 200px;
     text-align: center;
+    font-weight: 500;
 }
 .infoItemImage {
     display: flex;

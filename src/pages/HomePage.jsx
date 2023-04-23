@@ -21,6 +21,14 @@ import tm5 from '../images/tm5.jpeg';
 import tm6 from '../images/tm6.jpg';
 import tm7 from '../images/tm7.jpg';
 import tm8 from '../images/tm8.jpg';
+import forecasting from '../images/forecasting-model.svg';
+import concept from '../images/concept.svg';
+import rise from '../images/selection-raise-symbolic.svg';
+import course from '../images/e-learning-completed-course.svg';
+import education from '../images/school.svg';
+import practice from '../images/clipboard-alt.svg';
+import innovation from '../images/innovation.svg';
+import software from '../images/software-layout-header-complex2.svg';
 
 
 
@@ -112,14 +120,14 @@ const HomePage = () => {
             <Block id={"aboutUs"}>
                 <BigText>{lan.aboutUs}</BigText>
                 <InfoList>
-                    <InfoItem image={img} text={"Добавьте ваш товар в корзину и оформите заказ"}/>
-                    <InfoItem image={img} text={"Мы выкупим ваш товар у поставщиков"}/>
-                    <InfoItem image={img} text={"Мы доставим ваш товар до двери"}/>
-                    <InfoItem image={img} text={"Мы доставим ваш товар до двери"}/>
-                    <InfoItem image={img} text={"Мы доставим ваш товар до двери"}/>
-                    <InfoItem image={img} text={"Мы доставим ваш товар до двери"}/>
-                    <InfoItem image={img} text={"Мы доставим ваш товар до двери"}/>
-                    <InfoItem image={img} text={"Мы доставим ваш товар до двери"}/>
+                    <InfoItem image={forecasting} text={lan.aboutUs_forecasting}/>
+                    <InfoItem image={concept} text={lan.aboutUs_concept}/>
+                    <InfoItem image={rise} text={lan.aboutUs_rise}/>
+                    <InfoItem image={course} text={lan.aboutUs_course}/>
+                    <InfoItem image={education} text={lan.aboutUs_education}/>
+                    <InfoItem image={practice} text={lan.aboutUs_practice}/>
+                    <InfoItem image={innovation} text={lan.aboutUs_innovation}/>
+                    <InfoItem image={software} text={lan.aboutUs_software}/>
                 </InfoList>
             </Block>
             <Block>

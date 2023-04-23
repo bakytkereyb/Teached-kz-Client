@@ -19,6 +19,18 @@ export const getUserByToken = createAsyncThunk(
     },
 );
 
+export const getUserByUsername = createAsyncThunk(
+    'getUserByToken',
+    async (username, { getState, thunkAPI, dispatch }) => {
+        try {
+            const response = await UserService.getUserByUsername(username);
+            return response?.data;
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error?.response?.data);
+        }
+    },
+);
+
 const userSlice = createSlice({
     name: 'user',
     initialState,

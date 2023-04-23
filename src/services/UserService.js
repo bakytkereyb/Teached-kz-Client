@@ -24,7 +24,7 @@ UserService.getUserByUsername = async function (username) {
         method: "get",
         url: API_BASE_URL + `/api/user/get/${username}`,
         headers: {
-            "Content-Type": "multipart/form-data",
+            "Content-Type": "application/json",
             'Authorization': `${localStorage.getItem(ACCESS_TOKEN)}`,
         }
     });
