@@ -21,7 +21,7 @@ export const getUserByToken = createAsyncThunk(
 
 export const updateUserByUsername = createAsyncThunk(
     'updateUserByUsername',
-    async ({data}, { getState, thunkAPI, dispatch }) => {
+    async (data, { getState, thunkAPI, dispatch }) => {
         try {
             const response = await UserService.updateUserByUsername(data);
             return response?.data;
@@ -41,21 +41,6 @@ const userSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-            .addCase(getUserByToken.pending, (state) => {
-                state.isLoading = true;
-                state.user = null;
-            })
-            .addCase(getUserByToken.fulfilled, (state, action) => {
-                state.user = action.payload;
-                state.isLoading = false;
-                state.error = null;
-            })
-            .addCase(getUserByToken.rejected, (state, action) => {
-                state.isLoading = false;
-                state.user = null;
-                state.error = action.payload;
-                localStorage.removeItem('Authorization');
-            })
             .addCase(getUserByToken.pending, (state) => {
                 state.isLoading = true;
                 state.user = null;

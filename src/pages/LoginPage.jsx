@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Header from "../components/Header/Header";
 import Block from "../components/UI/Block/Block";
 import BigText from "../components/UI/BigText/BigText";
@@ -11,6 +11,8 @@ import {lan} from "../constants/lan";
 import {clrs} from "../constants/colors";
 import AuthService from "../services/AuthService";
 import {useNavigate} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {getUserByToken} from "../store/slices/userSlice";
 
 const LoginPage = () => {
 
@@ -25,13 +27,20 @@ const LoginPage = () => {
     // const token = Cookies.get('Authorization'); get cookie by name
     // Cookies.remove('Authorization'); remove cookie
 
+    const {user, isLoading} = useSelector(state => state.user);
+    const dispatch = useDispatch();
+
+    if (user !== null && !isLoading) {
+        navigate('/my');
+    }
+
     function onSubmitLogin(e) {
         e.preventDefault();
         AuthService.login(username, password)
             .then((result) => {
                 // console.log(result.data);
                 localStorage.setItem('Authorization', result.data.access_token);
-                navigate('/my');
+                dispatch(getUserByToken());
             })
             .catch((result) => {
                 if (result.response.data === "user not found" || result.response.data === "password is incorrect") {

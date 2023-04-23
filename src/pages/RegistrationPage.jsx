@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Header from "../components/Header/Header";
 import Block from "../components/UI/Block/Block";
 import BigText from "../components/UI/BigText/BigText";
@@ -11,6 +11,7 @@ import Footer from "../components/Footer/Footer";
 import {clrs} from "../constants/colors";
 import AuthService from "../services/AuthService";
 import {useNavigate} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
 
 const RegistrationPage = () => {
 
@@ -24,7 +25,15 @@ const RegistrationPage = () => {
     const [showError, setShowError] = useState(false);
     const [errorMes, setErrorMes] = useState('');
 
+    const {user, isLoading} = useSelector(state => state.user);
+
     const navigate = useNavigate();
+
+    const dispatch = useDispatch();
+
+    if (user !== null && !isLoading) {
+        navigate('/my');
+    }
 
     function onSubmitLogin(e) {
         e.preventDefault();
