@@ -91,6 +91,8 @@ const eng = {
     email: "Email",
     birthDate: "Birth date",
     university: "University",
+    universityName: "University",
+    universityJobName: "University",
     graduationYear: "Graduation year",
     specialization: "Specialization",
     admissionDate: "Admission date",
@@ -100,6 +102,13 @@ const eng = {
     rank: "Rank",
     disciplineNames: "Disciplines",
     userNotFound: "User not found",
+    profile: "Profile",
+    emailConfirm: "Email confirmation",
+    save: "Save",
+    firstName: "First name",
+    secondName: "Second name",
+    middleName: "Middle name",
+    fillAllFields: "Fill in all the fields",
 
 }
 

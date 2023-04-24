@@ -15,7 +15,7 @@ import {getUserByUsername} from "../../store/slices/publicUserSlice";
 const ProfilePage = () => {
     const {user, isLoading} = useSelector(state => state.publicUser);
     const {username} = useParams();
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getUserByUsername(username))
@@ -53,7 +53,7 @@ const ProfilePage = () => {
             <Block style={{marginTop: "50px"}}>
                 <div className={`${style.info} ${style.generalInfo}`}>
                     <img src={naruto} alt=""/>
-                    <div>
+                    <div style={{display: "flex", flexDirection: "column", gap: "10px"}}>
                         <Text style={{fontSize: '1.1rem', textTransform: 'capitalize'}}>
                             {user.firstName} {user.secondName} {user.middleName}
                         </Text>
@@ -71,7 +71,7 @@ const ProfilePage = () => {
                         {lan.university}: {user.universityName}
                     </Text>
                     <Text style={{fontSize: '1rem', fontWeight: 400}}>
-                        {lan.specialization}: {user.specialization}
+                        {lan.specialization}: {user.specializationName}
                     </Text>
                     <Text style={{fontSize: '1rem', fontWeight: 400}}>
                         {lan.admissionDate}: {new Date(user.admissionDate).toLocaleDateString()}

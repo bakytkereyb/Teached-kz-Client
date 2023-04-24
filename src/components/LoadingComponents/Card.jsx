@@ -16,7 +16,7 @@ const Card = ({type}) => {
 
     if (type === "horizontal-small") {
         return (
-            <div className={classes.loader} style={{width: "100%"}}>
+            <div className={classes.loader} style={{width: "calc(100% - 30px)"}}>
                 <div className={classes.wrapper} style={{flexDirection: "row", alignItems:"center", gap: "30px"}}>
                     <div className={classes.line1} style={{height: "75px"}}></div>
                 </div>
@@ -26,7 +26,7 @@ const Card = ({type}) => {
 
     if (type === "horizontal") {
         return (
-            <div className={classes.loader} style={{width: "100%"}}>
+            <div className={classes.loader} style={{width: "calc(100% - 30px)"}}>
                 <div className={classes.wrapper} style={{flexDirection: "row", alignItems:"center", gap: "30px"}}>
                     <div className={classes.line1} style={{height: "300px"}}></div>
                 </div>
@@ -36,7 +36,7 @@ const Card = ({type}) => {
 
     if (type === "horizontal-circle") {
         return (
-            <div className={classes.loader} style={{height: "350px", width: "100%"}}>
+            <div className={classes.loader} style={{height: "350px", width: "calc(100% - 30px)"}}>
                 <div className={classes.wrapper} style={{flexDirection: "row", alignItems:"center", gap: "30px"}}>
                     <div className={classes.circle}></div>
                     <div className={classes.wrapper}

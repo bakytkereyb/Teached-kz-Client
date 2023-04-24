@@ -31,3 +31,11 @@
     justify-content: center;
     flex-direction: column;
 }
+
+@media screen and (max-width: 600px){
+    .generalInfo {
+        align-items: center;
+        justify-content: start;
+        flex-direction: column;
+    }
+}
