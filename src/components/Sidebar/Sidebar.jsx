@@ -25,7 +25,7 @@ const Sidebar = ({isOpen}) => {
             <SidebarItem icon={chats} text={lan.chats}/>
             <SidebarItem icon={calendar} text={lan.calendar}/>
             <SidebarItem icon={courses} text={lan.coursesPre}/>
-            <SidebarItem icon={setting} text={lan.setting}/>
+            <SidebarItem to={"/settings"} icon={setting} text={lan.setting}/>
             <SidebarItem to={"/logout"} icon={logout} text={lan.logout}/>
 
         </div>
