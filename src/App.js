@@ -14,6 +14,7 @@ import Logout from "./pages/Logout";
 import FullLoading from "./components/LoadingComponents/FullLoading";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import Settings from "./pages/Settings";
+import AdminPage from "./pages/admin/AdminPage";
 
 function App() {
     const {user, isLoading} = useSelector(state => state.user);
@@ -38,6 +39,9 @@ function App() {
                 <Route path='/course' element={user !== null ? <CoursePage/> : <Navigate to="/login" replace />}/>
                 <Route path='/profile/:username' element={user !== null ? <ProfilePage/> : <Navigate to="/login" replace />}/>
                 <Route path='/settings' element={user !== null ? <Settings/> : <Navigate to="/login" replace />}/>
+                <Route path='/admin'>
+                    <Route path='my' element={user !== null && user?.admin ? <AdminPage/> : <Navigate to="/login" replace /> }/>
+                </Route>
                 <Route path='*' element={<Error/>}/>
                 <Route path='/logout' element={<Logout/>}/>
             </Routes>

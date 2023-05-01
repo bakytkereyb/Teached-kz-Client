@@ -43,6 +43,7 @@
 }
 
 .menu {
+    cursor: pointer;
     display: none;
 }
 

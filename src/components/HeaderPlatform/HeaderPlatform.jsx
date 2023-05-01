@@ -6,14 +6,14 @@ import Sidebar from "../Sidebar/Sidebar";
 import {getUserByToken} from "../../services/UserService";
 import {useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
+import SidebarAdmin from "../Sidebar/SidebarAdmin";
 
 const HeaderPlatform = () => {
 
     const [isOpenSidebar, setOpenSidebar] = useState(false);
     const navigate = useNavigate()
 
-    const {username} = useSelector(state => state.user.user)
-
+    const {username, admin} = useSelector(state => state.user.user)
 
     return (
         <header className={classes.header}>
@@ -23,7 +23,12 @@ const HeaderPlatform = () => {
             <div className={classes.burger} onClick={() => navigate(`/profile/${username}`)}>
                 <img src={profile} alt=""/>
             </div>
-            <Sidebar isOpen={isOpenSidebar}/>
+            {
+                admin ?
+                    <SidebarAdmin isOpen={isOpenSidebar}/>
+                    :
+                    <Sidebar isOpen={isOpenSidebar}/>
+            }
         </header>
     );
 };

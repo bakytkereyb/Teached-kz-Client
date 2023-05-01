@@ -16,7 +16,7 @@ import Card from "../components/LoadingComponents/Card";
 const CoursePage = ({task, student, post, test, lesson}) => {
 
     const [isComponent, setIsComponent] = useState(1);
-    const [isLoading, setLoading] = useState(true);
+    const [isLoading, setLoading] = useState(false);
 
     if (isLoading) {
         return (

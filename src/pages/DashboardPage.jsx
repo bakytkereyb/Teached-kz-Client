@@ -8,9 +8,21 @@ import Course from "../components/CourseCard/Course";
 import MyMasonry from "../components/Masonry/MyMasonry";
 import {getUserByToken} from "../services/UserService";
 import Card from "../components/LoadingComponents/Card";
+import {useSelector} from "react-redux";
+import {useNavigate} from "react-router-dom";
 
 const DashboardPage = () => {
-    const [isLoading, setLoading] = useState(true);
+    const [isLoading, setLoading] = useState(false);
+
+    const {admin} = useSelector(state => state.user.user);
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (admin) {
+            navigate('/admin/my');
+        }
+    }, [admin])
 
     if (isLoading) {
         return (

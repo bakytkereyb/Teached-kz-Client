@@ -10,7 +10,7 @@ import {getUserByToken} from "../services/UserService";
 import Card from "../components/LoadingComponents/Card";
 
 const CoursesPage = () => {
-    const [isLoading, setLoading] = useState(true);
+    const [isLoading, setLoading] = useState(false);
 
     if (isLoading) {
         return (

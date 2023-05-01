@@ -1,7 +1,7 @@
 import React from 'react';
 import cl from "./Course.module.css"
 import Text from "../UI/Text/Text";
-import arrow from "../../images/hamburger.svg"
+import arrowRight from "../../images/arrow-circle-right.svg"
 import {lan} from "../../constants/lan";
 
 const Course = ({taskDone, taskTotal, pre}) => {
@@ -11,7 +11,7 @@ const Course = ({taskDone, taskTotal, pre}) => {
             <div className={cl.card}>
                 <div className={cl.top__card}>
                     <Text>Course 1</Text>
-                    <img src={arrow} alt=""/>
+                    <img src={arrowRight} alt=""/>
                 </div>
                 <br/>
                 <div className={cl.categories}>
@@ -30,7 +30,7 @@ const Course = ({taskDone, taskTotal, pre}) => {
         <div className={cl.card}>
             <div className={cl.top__card}>
                 <Text>Course 1</Text>
-                <img src={arrow} alt=""/>
+                <img src={arrowRight} alt=""/>
             </div>
             <br/>
             <Text>{lan.taskDone} : 25/50</Text>
