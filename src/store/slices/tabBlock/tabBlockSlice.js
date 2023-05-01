@@ -8,12 +8,15 @@ const tabBlockSlice = createSlice({
     name: 'tabBlock',
     initialState,
     reducers: {
+        resetTab(state) {
+            state.tabNum = 0;
+        },
         setTab(state, action) {
             state.tabNum = action.payload;
         }
     },
 });
 
-export const {setTab} = tabBlockSlice.actions;
+export const {setTab, resetTab} = tabBlockSlice.actions;
 
 export default tabBlockSlice.reducer;
