@@ -11,10 +11,13 @@ import {useSelector} from "react-redux";
 
 const Drawer = ({isOpen}) => {
     const user = useSelector(state => state.user.user);
-    const [selectedLan, setSelectedLan] = useState('ENG');
+    const [selectedLan, setSelectedLan] = useState({
+        value: localStorage.getItem('lan'),
+        label: localStorage.getItem('lan')
+    });
 
     const changeLang = (selectedLang) => {
-        localStorage.setItem('lan', selectedLang);
+        localStorage.setItem('lan', selectedLang.value);
         setSelectedLan(selectedLang)
         window.location.reload();
     }
@@ -31,7 +34,20 @@ const Drawer = ({isOpen}) => {
             <div style={{display: "flex", flexDirection: "column", gap: '20px'}}>
                 <FormSelect
                     labelText={"Язык"}
-                    values={["ENG", "РУС", "ҚАЗ"]}
+                    values={[
+                        {
+                            value: "ENG",
+                            label: "ENG"
+                        },
+                        {
+                            value: "РУС",
+                            label: "РУС"
+                        },
+                        {
+                            value: "ҚАЗ",
+                            label: "ҚАЗ"
+                        },
+                    ]}
                     onChange={changeLang}
                     id={"lan"}
                     required={true}

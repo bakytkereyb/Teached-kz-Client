@@ -5,7 +5,7 @@ import cl from "./Header.module.css"
 import {clrs} from "../../constants/colors"
 import Button from "../UI/Button/Button";
 import Logo from "../Logo/Logo";
-import burger from "../../images/hamburger.svg"
+import burger from "../../images/burger-nav-fill.svg"
 import FormSelect from "../Form/FormSelect";
 import Drawer from "../Drawer/Drawer";
 import {getUserByToken} from "../../services/UserService";
@@ -17,7 +17,10 @@ import MyLink from "../UI/MyLink/MyLink";
 const Header = () => {
 
     const user = useSelector(state => state.user.user);
-    const [selectedLan, setSelectedLan] = useState(localStorage.getItem('lan'));
+    const [selectedLan, setSelectedLan] = useState({
+        value: localStorage.getItem('lan'),
+        label: localStorage.getItem('lan')
+    });
     const [isOpen, setIsOpen] = useState(false);
     const toggleDrawer = () => {
         setIsOpen(!isOpen);
@@ -26,7 +29,7 @@ const Header = () => {
     // Cookies.remove('Authorization');
 
     const changeLang = (selectedLang) => {
-        localStorage.setItem('lan', selectedLang);
+        localStorage.setItem('lan', selectedLang.value);
         setSelectedLan(selectedLang)
         window.location.reload();
     }
@@ -52,7 +55,20 @@ const Header = () => {
                     <Text style={{color: clrs.blackBlue}}>email@email.com</Text>
                     <FormSelect
                         labelText={"Язык"}
-                        values={["ENG", "РУС", "ҚАЗ"]}
+                        values={[
+                            {
+                                value: "ENG",
+                                label: "ENG"
+                            },
+                            {
+                                value: "РУС",
+                                label: "РУС"
+                            },
+                            {
+                                value: "ҚАЗ",
+                                label: "ҚАЗ"
+                            },
+                        ]}
                         onChange={changeLang}
                         id={"lan"}
                         required={true}

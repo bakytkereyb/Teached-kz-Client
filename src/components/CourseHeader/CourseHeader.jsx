@@ -1,5 +1,5 @@
 import React from 'react';
-import naruto from "../../images/naruto.jpg";
+import teacher from "../../images/tm1.png";
 import Text from "../UI/Text/Text";
 import cl from "./CourseHeader.module.css"
 import {useSelector} from "react-redux";
@@ -10,7 +10,9 @@ const CourseHeader = () => {
 
     return (
         <div className={cl.courseHeader}>
-            <img src={naruto} alt="avatar"/>
+            <div className={cl.image}>
+                <img src={teacher} alt="avatar"/>
+            </div>
             <div className={cl.courseHeaderTextDiv}>
                 <Text style={{fontWeight: 400, fontSize: '1rem'}}>Trainer</Text>
                 <Text style={{

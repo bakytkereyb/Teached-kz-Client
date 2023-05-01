@@ -1,7 +1,7 @@
 import React from 'react';
 import cl from './MyTasks.module.css'
 import Text from "../UI/Text/Text";
-import humber from "../../images/hamburger.svg"
+import arrowRight from "../../images/arrow-circle-right.svg"
 import Task from "./Task";
 
 const MyTasks = () => {
@@ -12,7 +12,7 @@ const MyTasks = () => {
                     <Text style={{fontWeight: '800'}}>My Tasks</Text>
                     <Text style={{color: '#65676D'}}>(04)</Text>
                 </div>
-                <img src={humber} alt="Go"/>
+                <img src={arrowRight} alt="Go"/>
             </div>
             <br/>
            <Task/>
