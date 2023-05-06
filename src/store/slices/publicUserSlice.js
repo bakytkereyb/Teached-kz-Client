@@ -8,24 +8,24 @@ let initialState = {
 }
 export const getUserByUsername = createAsyncThunk(
     'getUserByUsername',
-    async (username, { getState, thunkAPI, dispatch }) => {
+    async (username, { getState, rejectWithValue, dispatch }) => {
         try {
             const response = await UserService.getUserByUsername(username);
             return response?.data;
         } catch (error) {
-            return thunkAPI.rejectWithValue(error?.response?.data);
+            return rejectWithValue(error?.response?.data);
         }
     },
 );
 
 export const getUsers = createAsyncThunk(
     'getUsers',
-    async ({skip,limit}, { getState, thunkAPI, dispatch }) => {
+    async ({skip,limit}, { getState, rejectWithValue, dispatch }) => {
         try {
             const response = await UserService.getUserByUsername(skip, limit);
             return response?.data;
         } catch (error) {
-            return thunkAPI.rejectWithValue(error?.response?.data);
+            return rejectWithValue(error?.response?.data);
         }
     },
 );

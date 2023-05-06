@@ -27,24 +27,24 @@ let initialState = {
 
 export const getUserByToken = createAsyncThunk(
     'getUserByToken',
-    async (_, { getState, thunkAPI, dispatch }) => {
+    async (_, { getState, rejectWithValue, dispatch }) => {
         try {
             const response = await UserService.getUserByToken();
             return response?.data;
         } catch (error) {
-            return thunkAPI.rejectWithValue(error?.response?.data);
+            return rejectWithValue(error?.response?.data);
         }
     },
 );
 
 export const updateUserByUsername = createAsyncThunk(
     'updateUserByUsername',
-    async (data, { getState, thunkAPI, dispatch }) => {
+    async (data, { getState, rejectWithValue, dispatch }) => {
         try {
             const response = await UserService.updateUserByUsername(data);
             return response?.data;
         } catch (error) {
-            return thunkAPI.rejectWithValue(error?.response?.data);
+            return rejectWithValue(error?.response?.data);
         }
     },
 );
