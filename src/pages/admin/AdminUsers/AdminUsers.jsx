@@ -5,9 +5,7 @@ import Block from "../../../components/UI/Block/Block";
 import Text from "../../../components/UI/Text/Text";
 import TabBlock from "../../../components/UI/TabBlock/TabBlock";
 import TabItem from "../../../components/UI/TabBlock/TabItem";
-import AdminCourseList from "../AdminCourse/Components/AdminCourseList";
 import BlockLoading from "../../../components/LoadingComponents/BlockLoading";
-import AdminCourseCreate from "../AdminCourse/Components/AdminCourseCreate";
 import AdminUsersList from "./Components/AdminUsersList";
 import AdminUserCreate from "./Components/AdminUserCreate";
 
