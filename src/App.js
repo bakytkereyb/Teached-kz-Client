@@ -16,6 +16,7 @@ import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import Settings from "./pages/Settings";
 import AdminPage from "./pages/admin/AdminPage";
 import {NotificationContainer} from "react-notifications";
+import AdminCourse from "./pages/admin/AdminCourse/AdminCourse";
 
 function App() {
     const {user, isLoading} = useSelector(state => state.user);
@@ -43,6 +44,7 @@ function App() {
                 <Route path='/settings' element={user !== null ? <Settings/> : <Navigate to="/login" replace />}/>
                 <Route path='/admin'>
                     <Route path='my' element={user !== null && user?.admin ? <AdminPage/> : <Navigate to="/login" replace /> }/>
+                    <Route path='course' element={user !== null && user?.admin ? <AdminCourse/> : <Navigate to="/login" replace /> }/>
                 </Route>
                 <Route path='*' element={<Error/>}/>
                 <Route path='/logout' element={<Logout/>}/>
