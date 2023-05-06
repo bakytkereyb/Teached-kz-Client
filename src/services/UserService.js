@@ -53,4 +53,15 @@ UserService.updateUserByUsername = async function (data) {
     });
 }
 
+UserService.getTrainers = async function () {
+    return axios({
+        method: "get",
+        url: API_BASE_URL + `/api/user/get/trainer/all`,
+        headers: {
+            "Content-Type": "application/json",
+            'Authorization': `${localStorage.getItem(ACCESS_TOKEN)}`,
+        }
+    });
+}
+
 export default UserService;
