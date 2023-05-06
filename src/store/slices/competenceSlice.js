@@ -9,40 +9,68 @@ let initialState = {
     errorCreatComponent: null,
     isLoadingCreateAnketa: false,
     errorCreatAnketa: null,
+    isLoadingDeleteComponent: false,
+    errorDeleteComponent: null,
+    isLoadingDeleteQuestionnaire: false,
+    errorDeleteQuestionnaire: null,
 }
 
 export const getCompetenceBank = createAsyncThunk(
     'getCompetenceBank',
-    async (_, { getState, thunkAPI, dispatch }) => {
+    async (_, { getState, rejectWithValue, dispatch }) => {
         try {
             const response = await CompetenceService.getCompetenceBank();
             return response?.data;
         } catch (error) {
-            return thunkAPI.rejectWithValue(error?.response?.data);
+            return rejectWithValue(error?.response?.data);
         }
     },
 );
 
 export const createComponentBank = createAsyncThunk(
     'createComponentBank',
-    async ({name, nameKz, nameRu}, { getState, thunkAPI, dispatch }) => {
+    async ({name, nameKz, nameRu}, { getState, rejectWithValue, dispatch }) => {
         try {
             const response = await CompetenceService.createComponentBank(name,nameKz,nameRu);
             return response?.data;
         } catch (error) {
-            return thunkAPI.rejectWithValue(error?.response?.data);
+            return rejectWithValue(error?.response?.data);
+        }
+    },
+);
+
+export const deleteComponentById = createAsyncThunk(
+    'deleteComponentById',
+    async ({id}, { getState, rejectWithValue, dispatch }) => {
+        try {
+            const response = await CompetenceService.deleteComponentById(id);
+            return response?.data;
+        } catch (error) {
+            return rejectWithValue(error?.response?.data);
+        }
+    },
+);
+
+export const deleteQuestionnaireById = createAsyncThunk(
+    'deleteQuestionnaireById',
+    async ({id}, { getState, rejectWithValue, dispatch }) => {
+        try {
+            const response = await CompetenceService.deleteQuestionnaireById(id);
+            return response?.data;
+        } catch (error) {
+            return rejectWithValue(error?.response?.data);
         }
     },
 );
 
 export const createAnketaBank = createAsyncThunk(
     'createAnketaBank',
-    async ({data, componentId}, { getState, thunkAPI, dispatch }) => {
+    async ({data, componentId}, { getState, rejectWithValue, dispatch }) => {
         try {
             const response = await CompetenceService.createAnketaBank(data, componentId);
             return response?.data;
         } catch (error) {
-            return thunkAPI.rejectWithValue(error?.response?.data);
+            return rejectWithValue(error?.response?.data);
         }
     },
 );
@@ -89,6 +117,28 @@ const competenceBankSlice = createSlice({
             .addCase(createAnketaBank.rejected, (state, action) => {
                 state.isLoadingCreateAnketa = false;
                 state.errorCreatAnketa = action.payload;
+            })
+            .addCase(deleteComponentById.pending, (state) => {
+                state.isLoadingDeleteComponent = true;
+                state.errorDeleteComponent = null;
+            })
+            .addCase(deleteComponentById.fulfilled, (state, action) => {
+                state.isLoadingDeleteComponent = false;
+            })
+            .addCase(deleteComponentById.rejected, (state, action) => {
+                state.isLoadingDeleteComponent = false;
+                state.errorDeleteComponent = action.payload;
+            })
+            .addCase(deleteQuestionnaireById.pending, (state) => {
+                state.isLoadingDeleteQuestionnaire = true;
+                state.errorDeleteQuestionnaire = null;
+            })
+            .addCase(deleteQuestionnaireById.fulfilled, (state, action) => {
+                state.isLoadingDeleteQuestionnaire = false;
+            })
+            .addCase(deleteQuestionnaireById.rejected, (state, action) => {
+                state.isLoadingDeleteQuestionnaire = false;
+                state.errorDeleteQuestionnaire = action.payload;
             })
     }
 });

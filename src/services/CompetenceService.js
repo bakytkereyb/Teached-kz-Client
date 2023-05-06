@@ -16,6 +16,42 @@ CompetenceService.getCompetenceBank = async function () {
     });
 }
 
+CompetenceService.getQuestionnaireById = async function (id) {
+
+    return axios({
+        method: "get",
+        url: API_BASE_URL + `/api/questionnaire-bank/get/${id}`,
+        headers: {
+            "Content-Type": "application/json",
+            'Authorization': `${localStorage.getItem(ACCESS_TOKEN)}`,
+        }
+    });
+}
+
+CompetenceService.deleteComponentById = async function (id) {
+
+    return axios({
+        method: "delete",
+        url: API_BASE_URL + `/api/component-bank/delete/${id}`,
+        headers: {
+            "Content-Type": "application/json",
+            'Authorization': `${localStorage.getItem(ACCESS_TOKEN)}`,
+        }
+    });
+}
+
+CompetenceService.deleteQuestionnaireById = async function (id) {
+
+    return axios({
+        method: "delete",
+        url: API_BASE_URL + `/api/questionnaire-bank/delete/${id}`,
+        headers: {
+            "Content-Type": "application/json",
+            'Authorization': `${localStorage.getItem(ACCESS_TOKEN)}`,
+        }
+    });
+}
+
 CompetenceService.createComponentBank = async function (name, nameKz, nameRu) {
 
     let data = new FormData();
