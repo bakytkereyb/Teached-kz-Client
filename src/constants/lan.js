@@ -121,6 +121,8 @@ const eng = {
     addSection: "Add Section",
     addQuestion: "Add Question",
     delete: "Delete",
+    deleteComponent: "Delete component",
+    deleteQuestionnaire: "Delete questionnaire",
     sectionName: "Section name",
     question: "Question",
     answer: "Answer",
@@ -128,7 +130,9 @@ const eng = {
     addCorrectAnswer: "Add correct answer",
     addInCorrectAnswer: "Add incorrect answer",
     createAnketaFormValidationError: "Incorrectly formed questionnaire",
-
+    components: "Components",
+    questionnaires: "Questionnaires",
+    errorDeleteComponent: "Deletion failed",
 }
 
 const kz = {
