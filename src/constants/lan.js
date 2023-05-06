@@ -38,6 +38,12 @@ const ru = {
     rank: "Звание",
     disciplineNames: "Преподаваемые дисциплины",
     userNotFound: "Пользователь не найден",
+    admin: "Админ",
+    trainer: "Тренер",
+    role: "Роль",
+    password: "Пароль",
+    confirmPassword: "Подтвердить пароль",
+    username: "Имя пользователя"
 }
 
 const eng = {
@@ -111,6 +117,8 @@ const eng = {
     middleName: "Middle name",
     fillAllFields: "Fill in all the fields",
     admin: "Admin",
+    trainer: "Trainer",
+    role: "Role",
     competenceBank: "Competence Bank",
     createComponentBank: "Create Component",
     createAnketaBank: "Create Questionnaire",
@@ -137,6 +145,9 @@ const eng = {
     components: "Components",
     questionnaires: "Questionnaires",
     errorDeleteComponent: "Deletion failed",
+    password: "Password",
+    confirmPassword: "Confirm password",
+    username: "Username",
 }
 
 const kz = {
@@ -156,6 +167,12 @@ const kz = {
     rank: "Атағы",
     disciplineNames: "Оқытылатын пәндер",
     userNotFound: "Пайдаланушы табылмады",
+    admin: "Админ",
+    trainer: "Жаттықтырушы",
+    role: "Рөлі",
+    username: "Пайдаланушы аты",
+    password: "Пароль",
+    confirmPassword: "Подтвердить пароль",
 }
 
 

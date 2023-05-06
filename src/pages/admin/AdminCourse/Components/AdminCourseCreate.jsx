@@ -128,7 +128,7 @@ const AdminCourseCreate = () => {
                 required={true}
                 maxWidth={"100%"}
                 selectedValue={selectedTrainer}
-                withoutLabel={true}
+                withoutLabel={false}
             />
             <Button>{lan.create}</Button>
         </FormBlock>
