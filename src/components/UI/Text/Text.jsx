@@ -5,7 +5,15 @@ import {clrs} from "../../../constants/colors";
 
 const Text = ({children, to, type, ...props}) => {
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+
+    const propsToAdd = {}
+    if (props.default) {
+        propsToAdd.fontSize = "1rem";
+    }
+    if (props.normalWeight) {
+        propsToAdd.fontWeight = "500";
+    }
 
     function handleOnClick() {
         if (to.startsWith('/#')) {
@@ -46,8 +54,15 @@ const Text = ({children, to, type, ...props}) => {
         );
     }
 
+    if (props.default || props.normalWeight) {
+        return (
+            <p style={{...propsToAdd, ...props.style}} className={classes.text}>{children}</p>
+        );
+    }
+
+
     return (
-        <p style={props.style} className={classes.text}>{children}</p>
+        <p style={{...{fontSize: "1rem"}, ...props.style}} className={classes.text}>{children}</p>
     );
 };
 
