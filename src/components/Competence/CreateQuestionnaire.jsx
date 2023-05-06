@@ -255,7 +255,6 @@ const CreateQuestionnaire = () => {
 
     return (
         <FormBlock style={{alignItems:"flex-start"}} onSubmit={handleOnSubmit}>
-            <NotificationContainer/>
             <FormSelect
                 labelText={lan.chooseComponent}
                 values={components}

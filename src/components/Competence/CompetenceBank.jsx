@@ -72,7 +72,6 @@ const CompetenceBank = () => {
 
     return (
         <Block style={{padding: 0, gap: "20px"}}>
-            <NotificationContainer/>
             <Text default>{lan.components}</Text>
             <BlockLoading isLoading={isLoading}/>
             <FlexBlock style={{flexWrap: "wrap", justifyContent: "flex-start"}}>

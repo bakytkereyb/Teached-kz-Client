@@ -8,13 +8,14 @@ import DashboardPage from "./pages/DashboardPage";
 import CoursesPage from "./pages/CoursesPage";
 import CoursePage from "./pages/CoursePage";
 import {useDispatch, useSelector} from "react-redux";
-import {useEffect, useLayoutEffect} from "react";
+import React, {useEffect, useLayoutEffect} from "react";
 import {getUserByToken, setUser} from "./store/slices/userSlice";
 import Logout from "./pages/Logout";
 import FullLoading from "./components/LoadingComponents/FullLoading";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import Settings from "./pages/Settings";
 import AdminPage from "./pages/admin/AdminPage";
+import {NotificationContainer} from "react-notifications";
 
 function App() {
     const {user, isLoading} = useSelector(state => state.user);
@@ -30,6 +31,7 @@ function App() {
 
     return (
         <Router>
+            <NotificationContainer/>
             <Routes>
                 <Route path='/' element={<HomePage/>}/>
                 <Route path='/login' element={user === null ? <LoginPage/> : <Navigate to="/my" replace />}/>
