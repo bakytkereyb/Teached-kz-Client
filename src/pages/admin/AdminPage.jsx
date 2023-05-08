@@ -6,12 +6,12 @@ import {lan} from "../../constants/lan";
 import Text from "../../components/UI/Text/Text";
 import TabBlock from "../../components/UI/TabBlock/TabBlock";
 import TabItem from "../../components/UI/TabBlock/TabItem";
-import CreateComponent from "../../components/Competence/CreateComponent";
+import CreateComponent from "./Competence/CreateComponent";
 import {useDispatch, useSelector} from "react-redux";
 import {getCompetenceBank} from "../../store/slices/competenceSlice";
-import CompetenceBank from "../../components/Competence/CompetenceBank";
+import CompetenceBank from "./Competence/CompetenceBank";
 import BlockLoading from "../../components/LoadingComponents/BlockLoading";
-import CreateQuestionnaire from "../../components/Competence/CreateQuestionnaire";
+import CreateQuestionnaire from "./Competence/CreateQuestionnaire";
 import {NotificationContainer} from "react-notifications";
 
 const AdminPage = () => {

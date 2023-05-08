@@ -8,13 +8,14 @@ import TabItem from "../../../components/UI/TabBlock/TabItem";
 import BlockLoading from "../../../components/LoadingComponents/BlockLoading";
 import AdminUsersList from "./Components/AdminUsersList";
 import AdminUserCreate from "./Components/AdminUserCreate";
+import {lan} from "../../../constants/lan";
 
 const AdminUsers = () => {
     return (
         <div style={{backgroundColor: clrs.whiter, width: "100%", minHeight: "100vh"}}>
             <HeaderPlatform/>
             <Block style={{marginTop: "50px"}}>
-                <Text style={{textTransform: "uppercase", fontSize: "1rem"}}>Course</Text>
+                <Text style={{textTransform: "uppercase", fontSize: "1rem"}}>{lan.users}</Text>
                 <TabBlock headers={["Users", "Create user"]}>
                     <TabItem item={0}>
                         <AdminUsersList/>
