@@ -4,10 +4,46 @@ import {ACCESS_TOKEN} from "../constants/auth";
 
 const AdminCourseService = {};
 
-AdminCourseService.getAllCourses = async function () {
-    return axios({
+AdminCourseService.getAllCourses = async function (page, limit) {
+    const response = await axios({
         method: "get",
-        url: API_BASE_URL + "/api/course/get?skip=0&limit=100",
+        url: API_BASE_URL + `/api/course/get?page=${page - 1}&limit=${limit}`,
+        headers: {
+            "Content-Type": "application/json",
+            'Authorization': `${localStorage.getItem(ACCESS_TOKEN)}`,
+        }
+    });
+    const data = response.data.list;
+    const hasMore = response.data.hasMore;
+    return { data, hasMore };
+}
+
+AdminCourseService.deleteCourseById = async function (id) {
+    return axios({
+        method: "delete",
+        url: API_BASE_URL + `/api/course/delete/${id}`,
+        headers: {
+            "Content-Type": "application/json",
+            'Authorization': `${localStorage.getItem(ACCESS_TOKEN)}`,
+        }
+    });
+}
+
+AdminCourseService.makeCourseAsPublic = async function (id) {
+    return axios({
+        method: "patch",
+        url: API_BASE_URL + `/api/course/${id}/status/public`,
+        headers: {
+            "Content-Type": "application/json",
+            'Authorization': `${localStorage.getItem(ACCESS_TOKEN)}`,
+        }
+    });
+}
+
+AdminCourseService.makeCourseAsPrivate = async function (id) {
+    return axios({
+        method: "patch",
+        url: API_BASE_URL + `/api/course/${id}/status/private`,
         headers: {
             "Content-Type": "application/json",
             'Authorization': `${localStorage.getItem(ACCESS_TOKEN)}`,
