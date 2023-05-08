@@ -8,4 +8,5 @@ export const clrs = {
     green: '#0B7A75',
     silver: '#65676D',
     yellow: '#E5B600',
+    skin: '#FCE5D3',
 }
