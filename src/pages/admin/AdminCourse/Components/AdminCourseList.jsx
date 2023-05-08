@@ -86,6 +86,9 @@ const AdminCourseList = () => {
 
     return (
         <TableWithPagination
+            expandable={{
+                expandedRowRender: (record) => <Text normalWeight>{LocalName.getDescription(record)}</Text>,
+            }}
             isLoading={isLoading || isLoadingDeleteCourse}
             dataSource={courses}
             columns={columns}
