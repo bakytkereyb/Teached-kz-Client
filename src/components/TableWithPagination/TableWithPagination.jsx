@@ -10,6 +10,7 @@ const TableWithPagination = ({
     initialPage = 1,
     initialPageSize = 5,
     hasMore = true,
+    expandable
 }) => {
     const [currentPage, setCurrentPage] = useState(initialPage);
     const [currentPageSize, setCurrentPageSize] = useState(initialPageSize);
@@ -43,6 +44,7 @@ const TableWithPagination = ({
 
     return (
         <Table
+            expandable={expandable}
             bordered
             columns={columns}
             dataSource={dataSource}
