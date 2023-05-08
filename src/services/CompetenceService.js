@@ -16,6 +16,18 @@ CompetenceService.getCompetenceBank = async function () {
     });
 }
 
+CompetenceService.getCompetenceBankByUserId = async function (id) {
+
+    return axios({
+        method: "get",
+        url: API_BASE_URL + `/api/competence-bank/get/user/${id}`,
+        headers: {
+            "Content-Type": "application/json",
+            'Authorization': `${localStorage.getItem(ACCESS_TOKEN)}`,
+        }
+    });
+}
+
 CompetenceService.getQuestionnaireById = async function (id) {
 
     return axios({
