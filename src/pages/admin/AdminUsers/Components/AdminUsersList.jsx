@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import TableWithPagination from "../../../../components/TableWithPagination/TableWithPagination";
 import {useDispatch, useSelector} from "react-redux";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {getAllUsers} from "../../../../store/slices/admin/adminUserSlice"
 import {lan} from "../../../../constants/lan";
 import Text from "../../../../components/UI/Text/Text";
@@ -25,8 +25,8 @@ const AdminUsersList = () => {
 
     const columns = [
         {
-            title: lan.fullName,
-            render: (_, record) => <Text>{record.fullName}</Text>,
+            title: lan.fullName + ` (${lan.username})`,
+            render: (_, record) => <Text normalWeight>{record.fullName} <b>({record.username})</b></Text>,
         },
         {
             title: lan.fullFilled,
@@ -39,13 +39,11 @@ const AdminUsersList = () => {
             width: '10%',
         },
         {
-            title: lan.competenceMap,
+            title: lan.profile,
             render: (_, record) => (
-                <FlexBlock>
-                    <Text type={"button-red"}>{lan.view}</Text>
-                </FlexBlock>
+                <Link to={`/profile/${record.username}`} target="_blank">{lan.view}</Link>
             ),
-            width: '15%',
+            width: '5%',
         },
         {
             title: lan.actions,
