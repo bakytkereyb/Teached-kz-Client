@@ -18,7 +18,7 @@ const Sidebar = ({isOpen}) => {
             <Logo/>
             <br/>
             <SidebarItem to={"/my"} icon={dashboard} text={lan.dashboard}/>
-            <SidebarItem icon={competence} text={lan.competenceMap}/>
+            <SidebarItem to={"/competence-map"} icon={competence} text={lan.competenceMap}/>
             <SidebarItem to={"/course"} icon={courses} text={lan.coursesMy}/>
             <SidebarItem to={"/courses"} icon={courses} text={lan.coursesAll}/>
             <SidebarItem icon={tasks} text={lan.tasks}/>
