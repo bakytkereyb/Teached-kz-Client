@@ -4,11 +4,13 @@ import publicUserReducer from "./slices/publicUserSlice";
 import tabBlock from "./slices/tabBlock/tabBlockSlice";
 import competence from "./slices/competenceSlice";
 import adminCourse from "./slices/admin/adminCourseSlice";
+import courses from "./slices/coursesSlice";
 import trainersList from "./slices/trainerListSlice";
 import adminUser from "./slices/admin/adminUserSlice"
 import questionnaire from "./slices/anketaSlice"
 import adminCoursesTableController from "./slices/tableController/AdminCoursersTableController"
 import adminUsersTableController from "./slices/tableController/AdminUsersTableController"
+import coursesTableController from "./slices/tableController/CoursesTableController"
 
 export default configureStore({
     reducer: {
@@ -17,10 +19,12 @@ export default configureStore({
         tabBlock: tabBlock,
         competenceBank: competence,
         adminCourse: adminCourse,
+        courses: courses,
         trainersList: trainersList,
         adminUser: adminUser,
         questionnaire: questionnaire,
         adminCoursesTableController: adminCoursesTableController,
         adminUsersTableController: adminUsersTableController,
+        coursesTableController: coursesTableController,
     },
 });
