@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react';
-import FormBlock from "../Form/FormBlock";
-import {lan} from "../../constants/lan";
-import FormInput from "../Form/FormInput";
-import Button from "../UI/Button/Button";
+import FormBlock from "../../../components/Form/FormBlock";
+import {lan} from "../../../constants/lan";
+import FormInput from "../../../components/Form/FormInput";
+import Button from "../../../components/UI/Button/Button";
 import {useDispatch} from "react-redux";
-import {createComponentBank} from "../../store/slices/competenceSlice";
-import CompetenceService from "../../services/CompetenceService";
-import {setTab} from "../../store/slices/tabBlock/tabBlockSlice";
-import BlockLoading from "../LoadingComponents/BlockLoading";
+import {createComponentBank} from "../../../store/slices/competenceSlice";
+import CompetenceService from "../../../services/CompetenceService";
+import {setTab} from "../../../store/slices/tabBlock/tabBlockSlice";
+import BlockLoading from "../../../components/LoadingComponents/BlockLoading";
 
 const CreateComponent = () => {
 

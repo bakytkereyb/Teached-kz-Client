@@ -1,20 +1,20 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {setTab} from "../../store/slices/tabBlock/tabBlockSlice";
-import FormInput from "../Form/FormInput";
-import {lan} from "../../constants/lan";
-import Button from "../UI/Button/Button";
-import FormBlock from "../Form/FormBlock";
-import FormSelect from "../Form/FormSelect";
-import {LocalName} from "../../utils/LocalName";
-import HorizontalDivider from "../UI/Divider/HorizontalDivider";
-import Text from "../UI/Text/Text";
-import FlexBlock from "../UI/FlexBlock/FlexBlock";
+import {setTab} from "../../../store/slices/tabBlock/tabBlockSlice";
+import FormInput from "../../../components/Form/FormInput";
+import {lan} from "../../../constants/lan";
+import Button from "../../../components/UI/Button/Button";
+import FormBlock from "../../../components/Form/FormBlock";
+import FormSelect from "../../../components/Form/FormSelect";
+import {LocalName} from "../../../utils/LocalName";
+import HorizontalDivider from "../../../components/UI/Divider/HorizontalDivider";
+import Text from "../../../components/UI/Text/Text";
+import FlexBlock from "../../../components/UI/FlexBlock/FlexBlock";
 import { v4 as uuidv4 } from 'uuid';
-import {clrs} from "../../constants/colors";
+import {clrs} from "../../../constants/colors";
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
-import {createAnketaBank} from "../../store/slices/competenceSlice";
+import {createAnketaBank} from "../../../store/slices/competenceSlice";
 
 const CreateQuestionnaire = () => {
     const [nameEng, setNameEng] = useState('');
@@ -347,10 +347,10 @@ const CreateQuestionnaire = () => {
                                                                 value: 'MCQ',
                                                                 label: 'MCQ'
                                                             },
-                                                            {
-                                                                value: 'OPEN',
-                                                                label: 'OPEN'
-                                                            }
+                                                            // {
+                                                            //     value: 'OPEN',
+                                                            //     label: 'OPEN'
+                                                            // }
                                                         ]}
                                                         onChange={(value) => {onChangeQuestion(question.id, null, value.value)}}
                                                         id={question.id + 1}
