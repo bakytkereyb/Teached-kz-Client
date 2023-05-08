@@ -5,7 +5,7 @@ import LoginPage from "./pages/LoginPage";
 import Error from "./pages/Error";
 import RegistrationPage from "./pages/RegistrationPage";
 import DashboardPage from "./pages/DashboardPage";
-import CoursesPage from "./pages/CoursesPage";
+import CoursesPage from "./pages/Courses/CoursesPage";
 import CoursePage from "./pages/CoursePage";
 import {useDispatch, useSelector} from "react-redux";
 import React, {useEffect, useLayoutEffect} from "react";
