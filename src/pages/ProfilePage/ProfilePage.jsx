@@ -9,13 +9,17 @@ import naruto from "../../images/tm6.jpg";
 import Text from "../../components/UI/Text/Text";
 import BigText from "../../components/UI/BigText/BigText";
 import {lan} from "../../constants/lan";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {getUserByUsername} from "../../store/slices/publicUserSlice";
+import Button from "../../components/UI/Button/Button";
+import FlexBlock from "../../components/UI/FlexBlock/FlexBlock";
 
 const ProfilePage = () => {
     const {user, isLoading} = useSelector(state => state.publicUser);
     const {username} = useParams();
     const dispatch = useDispatch();
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         dispatch(getUserByUsername(username))
@@ -65,6 +69,15 @@ const ProfilePage = () => {
                         </Text>
                     </div>
                 </div>
+                <FlexBlock style={{
+                    backgroundColor: clrs.white,
+                    borderRadius: "15px",
+                    padding: "20px",
+                    width: "calc(100% - 40px)",
+                    justifyContent: "flex-start"
+                }}>
+                    <Button onClick={() => {window.open(`/competence-map/${user.id}`, "_blank")}}>{lan.competenceBank}</Button>
+                </FlexBlock>
                 <div className={ `${style.info} ${style.education}`}>
                     <BigText style={{fontSize: '1.2rem'}}>{lan.education}</BigText>
                     <Text style={{fontSize: '1rem', fontWeight: 400}}>
