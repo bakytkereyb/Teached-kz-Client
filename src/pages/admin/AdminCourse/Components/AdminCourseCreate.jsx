@@ -27,10 +27,6 @@ const AdminCourseCreate = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getAllTrainers())
-    }, [])
-
-    useEffect(() => {
         setTrainers(trainerList.map(item => {
             return {
                 value: item.username,
@@ -67,68 +63,67 @@ const AdminCourseCreate = () => {
     return (
         <FormBlock onSubmit={handleOnSubmit}>
             <FormInput
-                labelText={lan.courseName}
+                labelText={lan.nameEng}
                 value={name}
                 onChange={setName}
-                id={"courseName"}
+                id={"nameEng"}
                 type={"text"}
                 required={true}
                 maxWidth={"100%"}
             />
             <FormInput
-                labelText={lan.courseName + "in Kazakh"}
+                labelText={lan.nameKz}
                 value={nameKz}
                 onChange={setNameKz}
-                id={"courseName"}
+                id={"nameKz"}
                 type={"text"}
                 required={true}
                 maxWidth={"100%"}
             />
             <FormInput
-                labelText={lan.courseName + "in Russia"}
+                labelText={lan.nameRu}
                 value={nameRu}
                 onChange={setNameRu}
-                id={"courseName"}
+                id={"nameRu"}
                 type={"text"}
                 required={true}
                 maxWidth={"100%"}
             />
             <FormInput
-                labelText={lan.courseDescription}
+                labelText={lan.descriptionEng}
                 value={description}
                 onChange={setDescription}
-                id={"courseDescription"}
+                id={"descriptionEng"}
                 type={"text"}
                 required={true}
                 maxWidth={"100%"}
             />
             <FormInput
-                labelText={lan.courseDescription + "in Kazakh"}
+                labelText={lan.descriptionKz}
                 value={descriptionKz}
                 onChange={setDescriptionKz}
-                id={"courseDescription"}
+                id={"descriptionKz"}
                 type={"text"}
                 required={true}
                 maxWidth={"100%"}
             />
             <FormInput
-                labelText={lan.courseDescription + "in Russia"}
+                labelText={lan.descriptionRu}
                 value={descriptionRu}
                 onChange={setDescriptionRu}
-                id={"courseDescription"}
+                id={"descriptionRu"}
                 type={"text"}
                 required={true}
                 maxWidth={"100%"}
             />
             <FormSelect
-                labelText={"Trainers"}
+                labelText={lan.trainer}
                 values={trainers}
                 onChange={setSelectedTrainer}
-                id={"trainers"}
+                id={"trainer"}
                 required={true}
                 maxWidth={"100%"}
                 selectedValue={selectedTrainer}
-                withoutLabel={false}
             />
             <Button>{lan.create}</Button>
         </FormBlock>
