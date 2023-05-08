@@ -1,17 +1,17 @@
 import React, {useEffect, useState} from 'react';
-import Block from "../components/UI/Block/Block";
-import {clrs} from "../constants/colors";
-import HeaderPlatform from "../components/HeaderPlatform/HeaderPlatform";
-import Card from "../components/LoadingComponents/Card";
-import Text from "../components/UI/Text/Text";
-import {lan} from "../constants/lan";
-import FlexBlock from "../components/UI/FlexBlock/FlexBlock";
-import {LocalName} from "../utils/LocalName";
-import TableWithPagination from "../components/TableWithPagination/TableWithPagination";
+import Block from "../../components/UI/Block/Block";
+import {clrs} from "../../constants/colors";
+import HeaderPlatform from "../../components/HeaderPlatform/HeaderPlatform";
+import Card from "../../components/LoadingComponents/Card";
+import Text from "../../components/UI/Text/Text";
+import {lan} from "../../constants/lan";
+import FlexBlock from "../../components/UI/FlexBlock/FlexBlock";
+import {LocalName} from "../../utils/LocalName";
+import TableWithPagination from "../../components/TableWithPagination/TableWithPagination";
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
-import {getAllPublicCourses} from "../store/slices/coursesSlice";
-import {changeCurrentPage} from "../store/slices/tableController/CoursesTableController";
+import {getAllPublicCourses} from "../../store/slices/coursesSlice";
+import {changeCurrentPage} from "../../store/slices/tableController/CoursesTableController";
 
 const CoursesPage = () => {
 
