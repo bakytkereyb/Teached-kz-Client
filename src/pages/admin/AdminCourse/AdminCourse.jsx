@@ -11,22 +11,29 @@ import AdminCourseCreate from "./Components/AdminCourseCreate";
 import {useDispatch, useSelector} from "react-redux";
 import {getCompetenceBank} from "../../../store/slices/competenceSlice";
 import {getAllCourses} from "../../../store/slices/admin/adminCourseSlice";
+import {changeCurrentPage} from "../../../store/slices/tableController/AdminCoursersTableController";
+import {getAllTrainers} from "../../../store/slices/trainerListSlice";
+import {lan} from "../../../constants/lan";
 
 const AdminCourse = () => {
     const tabNum = useSelector(state => state.tabBlock.tabNum);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if (tabNum === 0 || tabNum === 2) {
-            dispatch(getAllCourses());
+        if (tabNum === 0) {
+            dispatch(changeCurrentPage({ page: 1, limit: 5 }));
+            dispatch(getAllCourses({ page: 1, limit: 5 }));
+        }
+        if (tabNum === 1) {
+            dispatch(getAllTrainers())
         }
     }, [tabNum])
     return (
         <div style={{backgroundColor: clrs.whiter, width: "100%", minHeight: "100vh"}}>
             <HeaderPlatform/>
             <Block style={{marginTop: "50px"}}>
-                <Text style={{textTransform: "uppercase", fontSize: "1rem"}}>Course</Text>
-                <TabBlock headers={["Course", "Create course"]}>
+                <Text style={{textTransform: "uppercase", fontSize: "1rem"}}>{lan.courses}</Text>
+                <TabBlock headers={[lan.coursesList, lan.createCourse]}>
                     <TabItem item={0}>
                         <AdminCourseList/>
                     </TabItem>
