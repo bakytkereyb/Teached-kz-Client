@@ -9,7 +9,7 @@ import FlexBlock from "../../components/UI/FlexBlock/FlexBlock";
 import {LocalName} from "../../utils/LocalName";
 import TableWithPagination from "../../components/TableWithPagination/TableWithPagination";
 import {useDispatch, useSelector} from "react-redux";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {getAllPublicCourses} from "../../store/slices/coursesSlice";
 import {changeCurrentPage} from "../../store/slices/tableController/CoursesTableController";
 
@@ -39,6 +39,11 @@ const CoursesPage = () => {
         {
             title: lan.course,
             render: (_, record) => <Text>{LocalName.getName(record)}</Text>,
+        },
+        {
+            title: lan.trainer,
+            render: (_, record) => <Link  to={`/profile/${record.trainer.username}`} target="_blank">{record.trainer.fullName}</Link>,
+            width: '25%',
         },
         {
             title: lan.actions,
