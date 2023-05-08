@@ -79,7 +79,15 @@ export const createAnketaBank = createAsyncThunk(
 const competenceBankSlice = createSlice({
     name: 'competenceBankSlice',
     initialState,
-    reducers: {},
+    reducers: {
+        resetError(state) {
+            state.error = null;
+            state.errorCreatComponent = null;
+            state.errorCreatAnketa = null;
+            state.errorDeleteComponent = null;
+            state.errorDeleteQuestionnaire = null;
+        }
+    },
     extraReducers: (builder) => {
         builder
             .addCase(getCompetenceBank.pending, (state) => {
@@ -143,6 +151,6 @@ const competenceBankSlice = createSlice({
     }
 });
 
-export const {} = competenceBankSlice.actions;
+export const {resetError} = competenceBankSlice.actions;
 
 export default competenceBankSlice.reducer;
