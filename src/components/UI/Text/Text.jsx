@@ -62,7 +62,7 @@ const Text = ({children, to, type, ...props}) => {
 
 
     return (
-        <p style={{...{fontSize: "1rem"}, ...props.style}} className={classes.text}>{children}</p>
+        <p style={props.style} className={classes.text}>{children}</p>
     );
 };
 
