@@ -8,4 +8,14 @@ export class LocalName {
         }
         return item?.name;
     }
+
+    static getDescription(item) {
+        if (localStorage.getItem('lan') === "РУС") {
+            return item?.descriptionRu;
+        }
+        if (localStorage.getItem('lan') === "ҚАЗ") {
+            return item?.descriptionKz;
+        }
+        return item?.description;
+    }
 }
