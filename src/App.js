@@ -22,6 +22,7 @@ import CompetenceMap from "./pages/CompetenceMap/CompetenceMap";
 import CompetenceBank from "./pages/CompetenceBank/CompetenceBank";
 import QuestionnairePass from "./pages/Questionnaire/QuestionnairePass";
 import PublicCompetenceMap from "./pages/CompetenceMap/PublicCompetenceMap";
+import QuestionnaireView from "./pages/Questionnaire/QuestionnaireView";
 
 function App() {
     const {user, isLoading} = useSelector(state => state.user);
@@ -48,6 +49,7 @@ function App() {
                 <Route path='/competence-map/:id' element={user !== null ? <PublicCompetenceMap/> : <Navigate to="/login" replace />}/>
                 <Route path='/competence-bank' element={user !== null ? <CompetenceBank/> : <Navigate to="/login" replace />}/>
                 <Route path='/questionnaire/:id/pass' element={user !== null ? <QuestionnairePass/> : <Navigate to="/login" replace />}/>
+                <Route path='/questionnaire/:id/view' element={user !== null ? <QuestionnaireView/> : <Navigate to="/login" replace />}/>
                 <Route path='/course' element={user !== null ? <CoursePage/> : <Navigate to="/login" replace />}/>
                 <Route path='/profile/:username' element={user !== null ? <ProfilePage/> : <Navigate to="/login" replace />}/>
                 <Route path='/settings' element={user !== null ? <Settings/> : <Navigate to="/login" replace />}/>
