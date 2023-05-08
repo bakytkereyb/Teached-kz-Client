@@ -52,6 +52,19 @@ CompetenceService.deleteQuestionnaireById = async function (id) {
     });
 }
 
+CompetenceService.passQuestionnaireById = async function (id, data) {
+
+    return axios({
+        method: "post",
+        url: API_BASE_URL + `/api/questionnaire-bank/${id}/pass`,
+        data: data,
+        headers: {
+            "Content-Type": "application/json",
+            'Authorization': `${localStorage.getItem(ACCESS_TOKEN)}`,
+        }
+    });
+}
+
 CompetenceService.createComponentBank = async function (name, nameKz, nameRu) {
 
     let data = new FormData();
