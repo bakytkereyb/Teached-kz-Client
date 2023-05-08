@@ -5,7 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {lan} from "../../../../constants/lan";
 import {LocalName} from "../../../../utils/LocalName";
 import FlexBlock from "../../../../components/UI/FlexBlock/FlexBlock";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {Pagination, Table} from "antd";
 import TableWithPagination from "../../../../components/TableWithPagination/TableWithPagination";
 import {deleteCourseById, getAllCourses} from "../../../../store/slices/admin/adminCourseSlice";
@@ -60,6 +60,11 @@ const AdminCourseList = () => {
         {
             title: lan.course,
             render: (_, record) => <Text>{LocalName.getName(record)}</Text>,
+        },
+        {
+            title: lan.trainer,
+            render: (_, record) => <Link  to={`/profile/${record.trainer.username}`} target="_blank">{record.trainer.fullName}</Link>,
+            width: '25%',
         },
         {
             title: lan.status,
