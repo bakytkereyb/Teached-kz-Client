@@ -3,7 +3,7 @@ import userReducer from "./slices/userSlice";
 import publicUserReducer from "./slices/publicUserSlice";
 import tabBlock from "./slices/tabBlock/tabBlockSlice";
 import competence from "./slices/competenceSlice";
-import publicCompetence from "./slices/publicCompetence";
+import publicCompetence from "./slices/publicCompetenceSlice";
 import adminCourse from "./slices/admin/adminCourseSlice";
 import courses from "./slices/coursesSlice";
 import trainersList from "./slices/trainerListSlice";
