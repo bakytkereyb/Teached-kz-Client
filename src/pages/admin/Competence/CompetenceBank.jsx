@@ -82,7 +82,7 @@ const CompetenceBank = () => {
             title: lan.actions,
             render: (_, record) => (
                 <FlexBlock>
-                    <Text onClick={() => {navigate(`/questionnaire/${record.id}/view`)}} type={"button"}>{lan.view}</Text>
+                    <Text onClick={() => {window.open(`/questionnaire/${record.id}/view`, "_blank")}} type={"button"}>{lan.view}</Text>
                     <Text onClick={() => {handleDeleteAnketaById(record.id)}} type={"button-black"}>{lan.delete}</Text>
                 </FlexBlock>
             ),
