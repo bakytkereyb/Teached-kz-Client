@@ -34,6 +34,16 @@ const Card = ({type}) => {
         );
     }
 
+    if (type === "horizontal-big") {
+        return (
+            <div className={classes.loader} style={{width: "calc(100% - 30px)", height: "600px"}}>
+                <div className={classes.wrapper} style={{flexDirection: "row", alignItems:"center", gap: "30px"}}>
+                    <div className={classes.line1} style={{height: "600px"}}></div>
+                </div>
+            </div>
+        );
+    }
+
     if (type === "horizontal-circle") {
         return (
             <div className={classes.loader} style={{height: "350px", width: "calc(100% - 30px)"}}>
