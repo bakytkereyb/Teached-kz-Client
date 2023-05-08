@@ -18,6 +18,9 @@ import AdminPage from "./pages/admin/AdminPage";
 import {NotificationContainer} from "react-notifications";
 import AdminCourse from "./pages/admin/AdminCourse/AdminCourse";
 import AdminUsers from "./pages/admin/AdminUsers/AdminUsers";
+import CompetenceMap from "./pages/CompetenceMap/CompetenceMap";
+import CompetenceBank from "./pages/CompetenceBank/CompetenceBank";
+import QuestionnairePass from "./pages/Questionnaire/QuestionnairePass";
 
 function App() {
     const {user, isLoading} = useSelector(state => state.user);
@@ -40,6 +43,9 @@ function App() {
                 <Route path='/register' element={user === null ? <RegistrationPage/> : <Navigate to="/my" replace />}/>
                 <Route path='/my' element={user !== null ? <DashboardPage/> : <Navigate to="/login" replace />}/>
                 <Route path='/courses' element={user !== null ? <CoursesPage/> : <Navigate to="/login" replace />}/>
+                <Route path='/competence-map' element={user !== null ? <CompetenceMap/> : <Navigate to="/login" replace />}/>
+                <Route path='/competence-bank' element={user !== null ? <CompetenceBank/> : <Navigate to="/login" replace />}/>
+                <Route path='/questionnaire/:id/pass' element={user !== null ? <QuestionnairePass/> : <Navigate to="/login" replace />}/>
                 <Route path='/course' element={user !== null ? <CoursePage/> : <Navigate to="/login" replace />}/>
                 <Route path='/profile/:username' element={user !== null ? <ProfilePage/> : <Navigate to="/login" replace />}/>
                 <Route path='/settings' element={user !== null ? <Settings/> : <Navigate to="/login" replace />}/>
