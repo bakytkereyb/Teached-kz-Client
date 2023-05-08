@@ -4,16 +4,19 @@ import {ACCESS_TOKEN} from "../constants/auth";
 
 const AdminUserService = {};
 
-// AdminUserService.getAllUsers = async function () {
-//     return axios({
-//         method: "get",
-//         url: API_BASE_URL + "/api/course/get?skip=0&limit=100",
-//         headers: {
-//             "Content-Type": "application/json",
-//             'Authorization': `${localStorage.getItem(ACCESS_TOKEN)}`,
-//         }
-//     });
-// }
+AdminUserService.getAllUsers = async function (page, limit) {
+    const response = await axios({
+        method: "get",
+        url: API_BASE_URL + `/api/user/get?page=${page - 1}&limit=${limit}`,
+        headers: {
+            "Content-Type": "application/json",
+            'Authorization': `${localStorage.getItem(ACCESS_TOKEN)}`,
+        }
+    });
+    const data = response.data.list;
+    const hasMore = response.data.hasMore;
+    return { data, hasMore };
+}
 
 AdminUserService.createAdmin = async function (username, firstName, secondName, password, email) {
 

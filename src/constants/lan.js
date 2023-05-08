@@ -172,6 +172,11 @@ const eng = {
     numQuestions: "Number of questions",
     user: "User",
     users: "Users",
+    userCreate: "Create user",
+    fullName: "Full name",
+    fullFilled: "Full filled",
+    filled: "Filled",
+    notFilled: "Not filled",
 }
 
 const kz = {

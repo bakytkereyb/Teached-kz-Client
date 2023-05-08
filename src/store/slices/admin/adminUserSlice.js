@@ -5,23 +5,24 @@ let initialState = {
     users: [],
     isLoading: true,
     error: null,
+    hasMore: false,
     isLoadingCreateAdmin: false,
     errorCreateAdmin: null,
     isLoadingCreateTrainer: false,
     errorCreateTrainer: null,
 }
 
-// export const getAllUsers = createAsyncThunk(
-//     'getAllUsers',
-//     async (_, { getState, rejectWithValue, dispatch }) => {
-//         try {
-//             const response = await AdminCourseService.getAllCourses();
-//             return response?.data;
-//         } catch (error) {
-//             return rejectWithValue(error?.response?.data);
-//         }
-//     },
-// );
+export const getAllUsers = createAsyncThunk(
+    'getAllUsers',
+    async ({ page, limit }, { getState, rejectWithValue, dispatch }) => {
+        try {
+            const response = await AdminUserService.getAllUsers(page, limit);
+            return response;
+        } catch (error) {
+            return rejectWithValue(error?.response?.data);
+        }
+    },
+);
 
 export const createUserAdmin = createAsyncThunk(
     'createUserAdmin',
@@ -61,6 +62,21 @@ const adminUserSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
+            .addCase(getAllUsers.pending, (state) => {
+                state.isLoading = true;
+                state.error = null;
+                state.hasMore = false;
+                state.users = [];
+            })
+            .addCase(getAllUsers.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.users = action.payload.data;
+                state.hasMore = action.payload.hasMore;
+            })
+            .addCase(getAllUsers.rejected, (state, action) => {
+                state.isLoading = false;
+                state.error = action.payload;
+            })
             .addCase(createUserAdmin.pending, (state) => {
                 state.isLoadingCreateAdmin = true;
                 state.errorCreateAdmin = null;

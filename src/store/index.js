@@ -8,6 +8,7 @@ import trainersList from "./slices/trainerListSlice";
 import adminUser from "./slices/admin/adminUserSlice"
 import questionnaire from "./slices/anketaSlice"
 import adminCoursesTableController from "./slices/tableController/AdminCoursersTableController"
+import adminUsersTableController from "./slices/tableController/AdminUsersTableController"
 
 export default configureStore({
     reducer: {
@@ -20,5 +21,6 @@ export default configureStore({
         adminUser: adminUser,
         questionnaire: questionnaire,
         adminCoursesTableController: adminCoursesTableController,
+        adminUsersTableController: adminUsersTableController,
     },
 });
