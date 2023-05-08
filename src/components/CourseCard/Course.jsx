@@ -14,14 +14,6 @@ const Course = ({taskDone, taskTotal, pre}) => {
                     <img src={arrowRight} alt=""/>
                 </div>
                 <br/>
-                <div className={cl.categories}>
-                    <div className={cl.category}>
-                        <p>TEACHING</p>
-                    </div>
-                    <div className={cl.category}>
-                        <p>IT</p>
-                    </div>
-                </div>
             </div>
         );
     }
@@ -35,14 +27,6 @@ const Course = ({taskDone, taskTotal, pre}) => {
             <br/>
             <Text>{lan.taskDone} : 25/50</Text>
             <progress className={cl.progressBar} value={25} max={50}/>
-            <div className={cl.categories}>
-                <div className={cl.category}>
-                    <p>TEACHING</p>
-                </div>
-                <div className={cl.category}>
-                    <p>IT</p>
-                </div>
-            </div>
         </div>
     );
 };
