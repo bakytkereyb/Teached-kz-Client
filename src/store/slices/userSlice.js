@@ -11,6 +11,7 @@ let initialState = {
         secondName :"",
         middleName :"",
         birthDay :"",
+        telNumber: "",
         universityName :"",
         specializationName :"",
         admissionDate :"",
@@ -65,6 +66,7 @@ const userSlice = createSlice({
                 state.editUser.secondName = state.user.secondName;
                 state.editUser.middleName = state.user.middleName;
                 state.editUser.birthDay = state.user.birthDay;
+                state.editUser.telNumber = state.user.telNumber;
                 state.editUser.universityName = state.user.universityName;
                 state.editUser.specializationName = state.user.specializationName;
                 state.editUser.admissionDate = state.user.admissionDate;
@@ -89,6 +91,9 @@ const userSlice = createSlice({
         },
         setBirthDay(state, action) {
             state.editUser.birthDay = action.payload;
+        },
+        setTelNumber(state, action) {
+            state.editUser.telNumber = action.payload;
         },
         setUniversityName(state, action) {
             state.editUser.universityName = action.payload;
@@ -163,6 +168,7 @@ export const {
     setSecondName,
     setMiddleName,
     setBirthDay,
+    setTelNumber,
     setUniversityName,
     setSpecializationName,
     setAdmissionDate,

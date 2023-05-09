@@ -177,6 +177,7 @@ const eng = {
     fullFilled: "Full filled",
     filled: "Filled",
     notFilled: "Not filled",
+    telNumber: "Phone number"
 }
 
 const kz = {
@@ -202,6 +203,7 @@ const kz = {
     username: "Пайдаланушы аты",
     password: "Пароль",
     confirmPassword: "Подтвердить пароль",
+
 }
 
 

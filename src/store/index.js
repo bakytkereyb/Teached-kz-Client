@@ -12,6 +12,7 @@ import questionnaire from "./slices/anketaSlice"
 import adminCoursesTableController from "./slices/tableController/AdminCoursersTableController"
 import adminUsersTableController from "./slices/tableController/AdminUsersTableController"
 import coursesTableController from "./slices/tableController/CoursesTableController"
+import chatUsersTableController from "./slices/tableController/ChatUsersTableController";
 
 export default configureStore({
     reducer: {
@@ -28,5 +29,6 @@ export default configureStore({
         adminCoursesTableController: adminCoursesTableController,
         adminUsersTableController: adminUsersTableController,
         coursesTableController: coursesTableController,
+        chatUsersTableController: chatUsersTableController,
     },
 });

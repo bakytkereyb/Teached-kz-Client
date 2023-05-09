@@ -22,7 +22,7 @@ import {
     setBirthDay, setDegree, setDegreeAwarded, setDisciplineNames,
     setFirstName, setGraduationYear,
     setMiddleName, setPosition, setRank,
-    setSecondName, setSpecializationName, setUniversityJobName,
+    setSecondName, setSpecializationName, setTelNumber, setUniversityJobName,
     setUniversityName, updateUserByUsername
 } from "../store/slices/userSlice";
 import HorizontalDivider from "../components/UI/Divider/HorizontalDivider";
@@ -47,6 +47,7 @@ const Settings = () => {
             "secondName": editUser.secondName,
             "middleName": editUser.middleName,
             "birthDay": editUser.birthDay,
+            "telNumber": editUser.telNumber,
             "universityName": editUser.universityName,
             "specializationName": editUser.specializationName,
             "admissionDate": editUser.admissionDate,
@@ -106,6 +107,15 @@ const Settings = () => {
                                 onChange={(value) => {dispatch(setBirthDay(value))}}
                                 id={"birthDate"}
                                 type={"date"}
+                                required={false}
+                                maxWidth={"100%"}
+                            />
+                            <FormInput
+                                labelText={lan.telNumber}
+                                value={editUser.telNumber}
+                                onChange={(value) => {dispatch(setTelNumber(value))}}
+                                id={"telNumber"}
+                                type={"text"}
                                 required={false}
                                 maxWidth={"100%"}
                             />

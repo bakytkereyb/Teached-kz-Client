@@ -22,7 +22,7 @@ const Sidebar = ({isOpen}) => {
             <SidebarItem to={"/course"} icon={courses} text={lan.coursesMy}/>
             <SidebarItem to={"/courses"} icon={courses} text={lan.coursesAll}/>
             <SidebarItem icon={tasks} text={lan.tasks}/>
-            <SidebarItem to={"/chat"} icon={chats} text={lan.chats}/>
+            <SidebarItem to={"/chats"} icon={chats} text={lan.chats}/>
             <SidebarItem to={"/calendar"} icon={calendar} text={lan.calendar}/>
             <SidebarItem icon={courses} text={lan.coursesPre}/>
             <SidebarItem to={"/settings"} icon={setting} text={lan.setting}/>

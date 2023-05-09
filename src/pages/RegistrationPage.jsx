@@ -117,7 +117,7 @@ const RegistrationPage = () => {
                         required={true}
                         maxWidth={"50%"}
                     />
-                    <Button>Register</Button>
+                    <Button>{lan.register}</Button>
                     <Text to={"/login"} style = {{color: clrs.blackBlue}}>
                         {lan.yesAccount}
                     </Text>
