@@ -23,6 +23,8 @@ import CompetenceBank from "./pages/CompetenceBank/CompetenceBank";
 import QuestionnairePass from "./pages/Questionnaire/QuestionnairePass";
 import PublicCompetenceMap from "./pages/CompetenceMap/PublicCompetenceMap";
 import QuestionnaireView from "./pages/Questionnaire/QuestionnaireView";
+import ChatPage from "./pages/Chat/ChatPage";
+import CalendarPage from "./pages/Calendar/CalendarPage";
 
 function App() {
     const {user, isLoading} = useSelector(state => state.user);
@@ -45,6 +47,8 @@ function App() {
                 <Route path='/register' element={user === null ? <RegistrationPage/> : <Navigate to="/my" replace />}/>
                 <Route path='/my' element={user !== null ? <DashboardPage/> : <Navigate to="/login" replace />}/>
                 <Route path='/courses' element={user !== null ? <CoursesPage/> : <Navigate to="/login" replace />}/>
+                <Route path='/chat' element={user !== null ? <ChatPage/> : <Navigate to="/login" replace />}/>
+                <Route path='/calendar' element={user !== null ? <CalendarPage/> : <Navigate to="/login" replace />}/>
                 <Route path='/competence-map' element={user !== null ? <CompetenceMap/> : <Navigate to="/login" replace />}/>
                 <Route path='/competence-map/:id' element={user !== null ? <PublicCompetenceMap/> : <Navigate to="/login" replace />}/>
                 <Route path='/competence-bank' element={user !== null ? <CompetenceBank/> : <Navigate to="/login" replace />}/>
