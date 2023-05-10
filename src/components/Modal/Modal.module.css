@@ -6,13 +6,15 @@
     bottom: 0;
     display: none;
     background: rgba(0, 0, 0, 0.5);
+    z-index: 10000;
 }
 
 .myModalContent {
     padding: 25px;
     background: white;
     border-radius: 16px;
-    min-width: 250px;
+    max-width: 500px;
+    width: 100%;
 }
 
 .myModal.active {
