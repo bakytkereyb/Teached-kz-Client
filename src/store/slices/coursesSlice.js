@@ -20,6 +20,18 @@ export const getAllPublicCourses = createAsyncThunk(
     },
 );
 
+export const getAllMyCourses = createAsyncThunk(
+    'getAllMyCourses',
+    async ({ page, limit }, { getState, rejectWithValue, dispatch }) => {
+        try {
+            const response = await CourseService.getAllMyCourses(page, limit);
+            return response;
+        } catch (error) {
+            return rejectWithValue(error?.response?.data);
+        }
+    },
+);
+
 const coursesSlice = createSlice({
     name: 'coursesSlice',
     initialState,
@@ -38,6 +50,21 @@ const coursesSlice = createSlice({
                 state.hasMore = action.payload.hasMore;
             })
             .addCase(getAllPublicCourses.rejected, (state, action) => {
+                state.isLoading = false;
+                state.error = action.payload;
+            })
+            .addCase(getAllMyCourses.pending, (state) => {
+                state.isLoading = true;
+                state.error = null;
+                state.courses = [];
+                state.hasMore = false;
+            })
+            .addCase(getAllMyCourses.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.courses = action.payload.data;
+                state.hasMore = action.payload.hasMore;
+            })
+            .addCase(getAllMyCourses.rejected, (state, action) => {
                 state.isLoading = false;
                 state.error = action.payload;
             })
