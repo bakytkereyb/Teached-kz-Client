@@ -56,13 +56,13 @@ const Text = ({children, to, type, ...props}) => {
 
     if (props.default || props.normalWeight) {
         return (
-            <p style={{...propsToAdd, ...props.style}} className={classes.text}>{children}</p>
+            <p style={{...propsToAdd, ...props.style}} onClick={props.onClick} className={classes.text}>{children}</p>
         );
     }
 
 
     return (
-        <p style={props.style} className={classes.text}>{children}</p>
+        <p style={props.style} onClick={props.onClick} className={classes.text}>{children}</p>
     );
 };
 
