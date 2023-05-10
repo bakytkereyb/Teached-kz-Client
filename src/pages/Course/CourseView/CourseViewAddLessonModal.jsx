@@ -8,7 +8,7 @@ import {lan} from "../../../constants/lan";
 import FormBlock from "../../../components/Form/FormBlock";
 import {useDispatch} from "react-redux";
 import {useParams} from "react-router-dom";
-import {addSectionToCourseById} from "../../../store/slices/course/courseSlice";
+import {addSectionToCourseById, getCourseById} from '../../../store/slices/course/courseSlice';
 
 const CourseViewAddLessonModal = ({modal, setModal}) => {
 
@@ -18,12 +18,13 @@ const CourseViewAddLessonModal = ({modal, setModal}) => {
 
     const {id} = useParams();
 
-    function handleSubmitForm(e) {
+    async function handleSubmitForm(e) {
         e.preventDefault();
         setName('');
         setModal(false);
 
-        dispatch(addSectionToCourseById({id: id, sectionName: name}));
+        await dispatch(addSectionToCourseById({id: id, sectionName: name}));
+        await dispatch(getCourseById({id: id}));
     }
 
     return (
