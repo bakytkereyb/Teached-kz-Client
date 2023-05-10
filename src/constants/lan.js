@@ -74,6 +74,7 @@ const eng = {
     taskDone: "Task Done",
     lessons: "Lessons",
     sections: "Sections",
+    section: "Section",
     progress: "Progress",
     students: "Students",
     posts: "Posts",
@@ -142,6 +143,7 @@ const eng = {
     createCourse: "Create course",
     chooseComponent: "Choose component",
     addSection: "Add Section",
+    addTask: "Add Task",
     addQuestion: "Add Question",
     delete: "Delete",
     deleteComponent: "Delete component",
@@ -188,7 +190,9 @@ const eng = {
     file: "File",
     label: "Label",
     certificate: "Certificate",
-    telNumber: "Phone number"
+    telNumber: "Phone number",
+    task: "Task",
+    deadline: "Deadline",
 }
 
 const kz = {
