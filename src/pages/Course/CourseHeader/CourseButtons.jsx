@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import Button from "../UI/Button/Button";
-import {lan} from "../../constants/lan";
+import Button from "../../../components/UI/Button/Button";
+import {lan} from "../../../constants/lan";
 import cl from "./CourseHeader.module.css"
 
 const CourseButtons = ({index}) => {
