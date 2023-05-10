@@ -6,7 +6,7 @@ import Error from "./pages/Error";
 import RegistrationPage from "./pages/RegistrationPage";
 import DashboardPage from "./pages/DashboardPage";
 import CoursesPage from "./pages/Courses/CoursesPage";
-import CoursePage from "./pages/CoursePage";
+import CoursePage from "./pages/Course/CoursePage";
 import {useDispatch, useSelector} from "react-redux";
 import React, {useEffect, useLayoutEffect} from "react";
 import {getUserByToken, setUser} from "./store/slices/userSlice";
@@ -25,6 +25,8 @@ import PublicCompetenceMap from "./pages/CompetenceMap/PublicCompetenceMap";
 import QuestionnaireView from "./pages/Questionnaire/QuestionnaireView";
 import ChatPage from "./pages/Chat/ChatPage";
 import CalendarPage from "./pages/Calendar/CalendarPage";
+import CourseView from "./pages/Course/CourseView/CourseView";
+import MyCoursesPage from './pages/MyCourses/MyCoursesPage';
 
 function App() {
     const {user, isLoading} = useSelector(state => state.user);
@@ -47,6 +49,7 @@ function App() {
                 <Route path='/register' element={user === null ? <RegistrationPage/> : <Navigate to="/my" replace />}/>
                 <Route path='/my' element={user !== null ? <DashboardPage/> : <Navigate to="/login" replace />}/>
                 <Route path='/courses' element={user !== null ? <CoursesPage/> : <Navigate to="/login" replace />}/>
+                <Route path='/courses/my' element={user !== null ? <MyCoursesPage/> : <Navigate to="/login" replace />}/>
                 <Route path='/chat' element={user !== null ? <ChatPage/> : <Navigate to="/login" replace />}/>
                 <Route path='/calendar' element={user !== null ? <CalendarPage/> : <Navigate to="/login" replace />}/>
                 <Route path='/competence-map' element={user !== null ? <CompetenceMap/> : <Navigate to="/login" replace />}/>
@@ -54,7 +57,12 @@ function App() {
                 <Route path='/competence-bank' element={user !== null ? <CompetenceBank/> : <Navigate to="/login" replace />}/>
                 <Route path='/questionnaire/:id/pass' element={user !== null ? <QuestionnairePass/> : <Navigate to="/login" replace />}/>
                 <Route path='/questionnaire/:id/view' element={user !== null ? <QuestionnaireView/> : <Navigate to="/login" replace />}/>
-                <Route path='/course' element={user !== null ? <CoursePage/> : <Navigate to="/login" replace />}/>
+                <Route path='/course/:id/' element={user !== null ? <CoursePage/> : <Navigate to="/login" replace />}/>
+                <Route path='/course/:id/view' element={user !== null ?
+                    (user.admin || user.trainer) ?  <CourseView/> : <Navigate to="/my" replace />
+                    :
+                    <Navigate to="/my" replace />
+                }/>
                 <Route path='/profile/:username' element={user !== null ? <ProfilePage/> : <Navigate to="/login" replace />}/>
                 <Route path='/settings' element={user !== null ? <Settings/> : <Navigate to="/login" replace />}/>
                 <Route path='/admin'>
