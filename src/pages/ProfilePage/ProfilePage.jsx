@@ -67,6 +67,9 @@ const ProfilePage = () => {
                         <Text style={{fontSize: '1rem', fontWeight: 400}}>
                             {lan.birthDate}: {new Date(user.birthDay).toLocaleDateString()}
                         </Text>
+                        <Text style={{fontSize: '1rem', fontWeight: 400}}>
+                            {lan.telNumber}: {user?.telNumber}
+                        </Text>
                     </div>
                 </div>
                 <FlexBlock style={{

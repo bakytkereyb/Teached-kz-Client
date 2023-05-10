@@ -66,7 +66,7 @@ const AdminUserCreate = () => {
                 labelText={lan.username}
                 value={username}
                 onChange={setUsername}
-                id={"courseName"}
+                id={"username"}
                 type={"text"}
                 required={true}
                 maxWidth={"100%"}
@@ -75,7 +75,7 @@ const AdminUserCreate = () => {
                 labelText={lan.firstName}
                 value={firstName}
                 onChange={setFirstName}
-                id={"courseDescription"}
+                id={"firstName"}
                 type={"text"}
                 required={true}
                 maxWidth={"100%"}
@@ -84,7 +84,7 @@ const AdminUserCreate = () => {
                 labelText={lan.secondName}
                 value={secondName}
                 onChange={setSecondName}
-                id={"courseDescription"}
+                id={"secondName"}
                 type={"text"}
                 required={true}
                 maxWidth={"100%"}
@@ -93,7 +93,7 @@ const AdminUserCreate = () => {
                 labelText={lan.email}
                 value={email}
                 onChange={setEmail}
-                id={"courseDescription"}
+                id={"email"}
                 type={"text"}
                 required={true}
                 maxWidth={"100%"}
@@ -102,7 +102,7 @@ const AdminUserCreate = () => {
                 labelText={lan.password}
                 value={password}
                 onChange={setPassword}
-                id={"courseDescription"}
+                id={"password"}
                 type={"text"}
                 required={true}
                 maxWidth={"100%"}
@@ -111,7 +111,7 @@ const AdminUserCreate = () => {
                 labelText={lan.confirmPassword}
                 value={passwordConfirm}
                 onChange={setPasswordConfirm}
-                id={"courseDescription"}
+                id={"confirmPassword"}
                 type={"text"}
                 required={true}
                 maxWidth={"100%"}
@@ -130,7 +130,7 @@ const AdminUserCreate = () => {
                     },
                 ]}
                 onChange={setSelectedRole}
-                id={"trainers"}
+                id={"role"}
                 required={true}
                 maxWidth={"100%"}
                 selectedValue={selectedRole}

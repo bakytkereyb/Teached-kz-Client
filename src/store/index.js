@@ -14,6 +14,7 @@ import adminUsersTableController from "./slices/tableController/AdminUsersTableC
 import coursesTableController from "./slices/tableController/CoursesTableController"
 import myCoursesTableController from "./slices/tableController/MyCoursesTableController"
 import course from "./slices/course/courseSlice"
+import chatUsersTableController from "./slices/tableController/ChatUsersTableController";
 
 export default configureStore({
     reducer: {
@@ -32,5 +33,6 @@ export default configureStore({
         coursesTableController: coursesTableController,
         myCoursesTableController: myCoursesTableController,
         course: course,
+        chatUsersTableController: chatUsersTableController,
     },
 });

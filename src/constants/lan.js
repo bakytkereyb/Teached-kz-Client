@@ -188,6 +188,7 @@ const eng = {
     file: "File",
     label: "Label",
     certificate: "Certificate",
+    telNumber: "Phone number"
 }
 
 const kz = {
@@ -213,6 +214,7 @@ const kz = {
     username: "Пайдаланушы аты",
     password: "Пароль",
     confirmPassword: "Подтвердить пароль",
+
 }
 
 
