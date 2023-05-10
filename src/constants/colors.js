@@ -1,5 +1,6 @@
 export const clrs = {
     whiter: '#f0f3f5',
+    whiter2: '#e8e8e8',
     blackBlue: '#153C6B',
     white: '#ffffff',
     black: '#000000',
