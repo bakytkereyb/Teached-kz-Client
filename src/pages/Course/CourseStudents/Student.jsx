@@ -1,8 +1,8 @@
 import React from 'react';
 import cl from "./CourseStudents.module.css"
-import user from "../../images/user.svg"
-import naruto from "../../images/naruto.jpg"
-import Text from "../UI/Text/Text";
+import user from "../../../images/user.svg"
+import naruto from "../../../images/naruto.jpg"
+import Text from "../../../components/UI/Text/Text";
 const Student = ({student}) => {
     return (
         <div className={cl.student}>

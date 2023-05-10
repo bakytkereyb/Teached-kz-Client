@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import cl from "./CourseTasks.module.css";
-import Text from "../UI/Text/Text";
-import taskDoneIcon from "../../images/taskDone.svg"
-import taskIcon from "../../images/task.svg"
+import Text from "../../../components/UI/Text/Text";
+import taskDoneIcon from "../../../images/taskDone.svg"
+import taskIcon from "../../../images/task.svg"
 
 
 const Task = ({task, index}) => {
