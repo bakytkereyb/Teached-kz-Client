@@ -11,6 +11,7 @@ import {useParams} from "react-router-dom";
 import {removeSectionByIdFromCourseById} from "../../../store/slices/course/courseSlice";
 import SectionFile from "./SectionFile";
 import {lan} from "../../../constants/lan";
+import SectionTask from './SectionTask';
 
 const CourseViewSection = ({section, setModal2, setSelectedSection, isCertificate}) => {
 
@@ -53,6 +54,13 @@ const CourseViewSection = ({section, setModal2, setSelectedSection, isCertificat
                 section?.files?.map((file,i) => {
                     return (
                         <SectionFile key={file.id} file={file} section={section}/>
+                    )
+                })
+            }
+            {
+                section?.tasks.map((task, i) => {
+                    return (
+                        <SectionTask key={task.id} task={task} section={section}/>
                     )
                 })
             }
