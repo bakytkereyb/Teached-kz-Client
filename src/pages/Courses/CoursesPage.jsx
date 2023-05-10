@@ -12,10 +12,14 @@ import {useDispatch, useSelector} from "react-redux";
 import {Link, useNavigate} from "react-router-dom";
 import {getAllPublicCourses} from "../../store/slices/coursesSlice";
 import {changeCurrentPage} from "../../store/slices/tableController/CoursesTableController";
+import CourseService from "../../services/CourseService";
 
 const CoursesPage = () => {
 
     const {courses, hasMore, isLoading} = useSelector(state => state.courses);
+
+    const {user} = useSelector(state => state.user);
+
 
     const {currentPage, pageSize} = useSelector(state => state.coursesTableController);
 
@@ -35,6 +39,14 @@ const CoursesPage = () => {
         dispatch(changeCurrentPage({ page: page, pageSize: pageSize }));
     };
 
+    async function handleRegisterCourse(id) {
+        await CourseService.registerUserToCourse(id)
+            .then(async () => {
+                await dispatch(changeCurrentPage({page: 1, limit: 5}));
+                await dispatch(getAllPublicCourses({page: 1, limit: 5}));
+            })
+    }
+
     const columns = [
         {
             title: lan.course,
@@ -49,7 +61,10 @@ const CoursesPage = () => {
             title: lan.actions,
             render: (_, record) => (
                 <FlexBlock>
-                    <Text type={"button"}>{lan.view}</Text>
+                    {
+                        !record.students.find(student => student.id === user.id) &&
+                        <Text onClick={() => {handleRegisterCourse(record.id)}} type={"button"}>{lan.register}</Text>
+                    }
                 </FlexBlock>
             ),
             width: '10%',
