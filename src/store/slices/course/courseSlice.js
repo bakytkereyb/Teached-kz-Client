@@ -10,6 +10,10 @@ let initialState = {
     addFileToSectionError: null,
     removeFileToSectionLoading: false,
     removeFileToSectionError: null,
+    addTaskToSectionLoading: false,
+    addTaskToSectionError: null,
+    removeTaskToSectionLoading: false,
+    removeTaskToSectionError: null,
 }
 
 export const getCourseById = createAsyncThunk(
@@ -65,6 +69,30 @@ export const removeFileToSection = createAsyncThunk(
     async ({sectionId, fileId}, { getState, rejectWithValue, dispatch }) => {
         try {
             const response = await CourseService.removeFileToSection(sectionId, fileId);
+            return response.data;
+        } catch (error) {
+            return rejectWithValue(error?.response?.data);
+        }
+    },
+);
+
+export const addTaskToSection = createAsyncThunk(
+    'addTaskToSection',
+    async ({sectionId, name, description, deadline}, { getState, rejectWithValue, dispatch }) => {
+        try {
+            const response = await CourseService.addTaskToSection(sectionId, name, description, deadline);
+            return response.data;
+        } catch (error) {
+            return rejectWithValue(error?.response?.data);
+        }
+    },
+);
+
+export const removeTaskToSection = createAsyncThunk(
+    'removeTaskToSection',
+    async ({sectionId, taskId}, { getState, rejectWithValue, dispatch }) => {
+        try {
+            const response = await CourseService.removeTaskToSection(sectionId, taskId);
             return response.data;
         } catch (error) {
             return rejectWithValue(error?.response?.data);
@@ -138,6 +166,28 @@ const courseSlice = createSlice({
             .addCase(removeFileToSection.rejected, (state, action) => {
                 state.removeFileToSectionLoading = false;
                 state.removeFileToSectionError = action.payload;
+            })
+            .addCase(addTaskToSection.pending, (state) => {
+                state.addTaskToSectionLoading = true;
+                state.addTaskToSectionError = null;
+            })
+            .addCase(addTaskToSection.fulfilled, (state, action) => {
+                state.addTaskToSectionLoading = false;
+            })
+            .addCase(addTaskToSection.rejected, (state, action) => {
+                state.addTaskToSectionLoading = false;
+                state.addTaskToSectionError = action.payload;
+            })
+            .addCase(removeTaskToSection.pending, (state) => {
+                state.removeTaskToSectionLoading = true;
+                state.removeTaskToSectionError = null;
+            })
+            .addCase(removeTaskToSection.fulfilled, (state, action) => {
+                state.removeTaskToSectionLoading = false;
+            })
+            .addCase(removeTaskToSection.rejected, (state, action) => {
+                state.removeTaskToSectionLoading = false;
+                state.removeTaskToSectionError = action.payload;
             })
     }
 });
