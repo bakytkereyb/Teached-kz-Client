@@ -12,6 +12,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useNavigate, useParams} from "react-router-dom";
 import {getCourseById} from "../../../store/slices/course/courseSlice";
 import BigText from "../../../components/UI/BigText/BigText";
+import CourseViewTasks from './CourseViewTasks';
 
 const CourseView = () => {
 
@@ -65,6 +66,7 @@ const CourseView = () => {
                 <CourseViewButtons tabNum={tabNum} setTabNum={setTabNum}/>
 
                 {tabNum === 1 && <CourseViewLessons/>}
+                {tabNum === 3 && <CourseViewTasks/>}
             </Block>
         </div>
     );
