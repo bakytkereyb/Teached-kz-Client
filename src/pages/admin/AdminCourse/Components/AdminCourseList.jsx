@@ -75,7 +75,7 @@ const AdminCourseList = () => {
             title: lan.actions,
             render: (_, record) => (
                 <FlexBlock>
-                    <Text type={"button"}>{lan.view}</Text>
+                    <Text onClick={() => {window.open(`/course/${record.id}/view`, "_blank")}} type={"button"}>{lan.view}</Text>
                     {
                         record.status === 'PUBLIC' ?
                             <Text onClick={() => {changeCourseStatus(record.id, 'PRIVATE')}} type={"button-red"}>{lan.deactivate}</Text>
