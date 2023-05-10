@@ -95,6 +95,33 @@ CourseService.removeFileToSection = async function (sectionId, fileId) {
     });
 }
 
+CourseService.addTaskToSection = async function (sectionId, name, description, deadline) {
+    let data = new FormData();
+    data.append("name", name);
+    data.append("description", description);
+    data.append("deadline", deadline);
+    return axios({
+        method: "post",
+        url: API_BASE_URL + `/api/course/section/${sectionId}/add/task`,
+        data: data,
+        headers: {
+            "Content-Type": "multipart/form-data",
+            'Authorization': `${localStorage.getItem(ACCESS_TOKEN)}`,
+        }
+    });
+}
+
+CourseService.removeTaskToSection = async function (sectionId, taskId) {
+    return axios({
+        method: "post",
+        url: API_BASE_URL + `/api/course/section/${sectionId}/remove/task/${taskId}`,
+        headers: {
+            "Content-Type": "application/json",
+            'Authorization': `${localStorage.getItem(ACCESS_TOKEN)}`,
+        }
+    });
+}
+
 CourseService.registerUserToCourse = async function (id) {
     return axios({
         method: "post",
