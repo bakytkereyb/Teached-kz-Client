@@ -1,7 +1,7 @@
 import React from 'react';
 import cl from "./CoursePosts.module.css"
-import naruto from "../../images/naruto.jpg"
-import Text from "../UI/Text/Text";
+import naruto from "../../../images/naruto.jpg"
+import Text from "../../../components/UI/Text/Text";
 import PostFile from "./PostFile";
 
 const Post = ({post}) => {

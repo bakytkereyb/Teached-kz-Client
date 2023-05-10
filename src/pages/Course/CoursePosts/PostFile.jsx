@@ -1,6 +1,6 @@
 import React from 'react';
-import naruto from "../../images/naruto.jpg";
-import Text from "../UI/Text/Text";
+import naruto from "../../../images/naruto.jpg";
+import Text from "../../../components/UI/Text/Text";
 
 const PostFile = ({file}) => {
     return (
