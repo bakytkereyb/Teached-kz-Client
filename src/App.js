@@ -28,6 +28,8 @@ import CalendarPage from "./pages/Calendar/CalendarPage";
 import CourseView from "./pages/Course/CourseView/CourseView";
 import MyCoursesPage from './pages/MyCourses/MyCoursesPage';
 import ChatList from "./pages/Chat/ChatList";
+import TaskPage from './pages/Task/TaskPage';
+import TaskPagePrivate from './pages/Task/TaskPagePrivate/TaskPagePrivate';
 
 function App() {
     const {user, isLoading} = useSelector(state => state.user);
@@ -59,6 +61,13 @@ function App() {
                 <Route path='/questionnaire/:id/pass' element={user !== null ? <QuestionnairePass/> : <Navigate to="/login" replace />}/>
                 <Route path='/questionnaire/:id/view' element={user !== null ? <QuestionnaireView/> : <Navigate to="/login" replace />}/>
                 <Route path='/course/:id/' element={user !== null ? <CoursePage/> : <Navigate to="/login" replace />}/>
+                <Route path='/course/:id/section/:sectionId/task/:taskId'
+                       element={user !== null ? <TaskPage/> : <Navigate to="/login" replace />}/>
+                <Route path='/course/:id/section/:sectionId/task/:taskId/private' element={user !== null ?
+                    (user.admin || user.trainer) ?  <TaskPagePrivate/> : <Navigate to="/my" replace />
+                    :
+                    <Navigate to="/my" replace />
+                }/>
                 <Route path='/course/:id/view' element={user !== null ?
                     (user.admin || user.trainer) ?  <CourseView/> : <Navigate to="/my" replace />
                     :
