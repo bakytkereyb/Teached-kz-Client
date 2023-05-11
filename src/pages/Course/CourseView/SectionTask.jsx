@@ -1,6 +1,6 @@
 import React from 'react';
 import {useDispatch} from 'react-redux';
-import {useParams} from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 import {getCourseById, removeFileToSection, removeTaskToSection} from '../../../store/slices/course/courseSlice';
 import FlexBlock from '../../../components/UI/FlexBlock/FlexBlock';
 import Icon from '../../../components/UI/Icon/Icon';
@@ -15,6 +15,8 @@ const SectionTask = ({task, section}) => {
 
     const {id} = useParams();
 
+    const navigate = useNavigate();
+
     async function handleDeleteTask() {
         await dispatch(removeTaskToSection({sectionId: section.id, taskId: task.id}));
         await dispatch(getCourseById({id: id}));
@@ -28,7 +30,9 @@ const SectionTask = ({task, section}) => {
             justifyContent: "flex-start"
         }}>
             <Icon src={taskIcon}/>
-            <Text default normalWeight style={{cursor: "pointer"}}>{task?.name}</Text>
+            <Text onClick={() => {
+                navigate(`/course/${id}/section/${section.id}/task/${task.id}/private`)
+            }} default normalWeight style={{cursor: "pointer"}}>{task?.name}</Text>
 
             <Icon onClick={handleDeleteTask} style={{cursor: "pointer"}} src={trash}/>
         </FlexBlock>
