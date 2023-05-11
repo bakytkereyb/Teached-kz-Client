@@ -113,6 +113,7 @@ const eng = {
     disciplineNames: "Disciplines",
     userNotFound: "User not found",
     courseNotFound: "Course not found",
+    taskNotFound: "Task not found",
     courseFORBIDDEN: "You do not have access to this course",
     profile: "Profile",
     emailConfirm: "Email confirmation",
@@ -192,6 +193,7 @@ const eng = {
     certificate: "Certificate",
     telNumber: "Phone number",
     task: "Task",
+    taskName: "Task name",
     deadline: "Deadline",
 }
 
