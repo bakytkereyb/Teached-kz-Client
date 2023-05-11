@@ -13,6 +13,9 @@ import {useNavigate, useParams} from "react-router-dom";
 import {getCourseById} from "../../../store/slices/course/courseSlice";
 import BigText from "../../../components/UI/BigText/BigText";
 import CourseViewTasks from './CourseViewTasks';
+import CourseViewStudents from "./CourseViewStudents";
+import {changeCurrentPage} from "../../../store/slices/tableController/CourseStudentsViewController";
+import {getAllCourseStudents} from "../../../store/slices/courseStudentsSlice";
 
 const CourseView = () => {
 
@@ -66,6 +69,7 @@ const CourseView = () => {
                 <CourseViewButtons tabNum={tabNum} setTabNum={setTabNum}/>
 
                 {tabNum === 1 && <CourseViewLessons/>}
+                {tabNum === 2 && <CourseViewStudents/>}
                 {tabNum === 3 && <CourseViewTasks/>}
             </Block>
         </div>

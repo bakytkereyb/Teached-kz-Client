@@ -9,6 +9,7 @@ import courses from "./slices/coursesSlice";
 import trainersList from "./slices/trainerListSlice";
 import adminUser from "./slices/admin/adminUserSlice"
 import questionnaire from "./slices/anketaSlice"
+import courseStudents from "./slices/courseStudentsSlice"
 import adminCoursesTableController from "./slices/tableController/AdminCoursersTableController"
 import adminUsersTableController from "./slices/tableController/AdminUsersTableController"
 import coursesTableController from "./slices/tableController/CoursesTableController"
@@ -16,6 +17,7 @@ import myCoursesTableController from "./slices/tableController/MyCoursesTableCon
 import course from "./slices/course/courseSlice"
 import chatUsersTableController from "./slices/tableController/ChatUsersTableController";
 import task from "./slices/taskSlice";
+import courseStudentsViewController from "./slices/tableController/CourseStudentsViewController";
 
 export default configureStore({
     reducer: {
@@ -35,6 +37,8 @@ export default configureStore({
         myCoursesTableController: myCoursesTableController,
         course: course,
         chatUsersTableController: chatUsersTableController,
+        courseStudentsViewController: courseStudentsViewController,
         task: task,
+        courseStudents: courseStudents,
     },
 });
