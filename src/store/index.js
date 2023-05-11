@@ -17,6 +17,7 @@ import myCoursesTableController from "./slices/tableController/MyCoursesTableCon
 import course from "./slices/course/courseSlice"
 import chatUsersTableController from "./slices/tableController/ChatUsersTableController";
 import task from "./slices/taskSlice";
+import taskFiles from "./slices/taskFilesSlice";
 import courseStudentsViewController from "./slices/tableController/CourseStudentsViewController";
 
 export default configureStore({
@@ -39,6 +40,7 @@ export default configureStore({
         chatUsersTableController: chatUsersTableController,
         courseStudentsViewController: courseStudentsViewController,
         task: task,
+        taskFiles: taskFiles,
         courseStudents: courseStudents,
     },
 });

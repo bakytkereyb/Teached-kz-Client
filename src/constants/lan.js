@@ -174,6 +174,7 @@ const eng = {
     passed: "Passed",
     actions: "Actions",
     view: "View",
+    submission: "Submissions",
     activate: "Activate",
     deactivate: "Deactivate",
     pass: "Pass",
@@ -195,6 +196,10 @@ const eng = {
     task: "Task",
     taskName: "Task name",
     deadline: "Deadline",
+    grade: "Grade",
+    comment: "Comment",
+    selectedStudent: "Selected student",
+    submittedFiles: "Submitted files"
 }
 
 const kz = {
