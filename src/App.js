@@ -28,6 +28,11 @@ import MyCoursesPage from './pages/MyCourses/MyCoursesPage';
 import ChatList from "./pages/Chat/ChatList";
 import TaskPage from './pages/Task/TaskPage';
 import TaskPagePrivate from './pages/Task/TaskPagePrivate/TaskPagePrivate';
+import PostCourses from './pages/PostCourses/PostCourses';
+import AdminPostCourse from './pages/admin/PostCourse/AdminPostCourse';
+import PostCourseView from './pages/PostCourse/PostCourseView/PostCourseView';
+import PostCoursePage from './pages/PostCourse/PostCoursePage';
+import MyPostCourses from './pages/MyPostCourses/MyPostCourses';
 import TrainingCourses from "./pages/TrainingCourses/TrainingCourses";
 import Tasks from "./pages/Tasks/Tasks";
 
@@ -48,25 +53,28 @@ function App() {
             <NotificationContainer/>
             <Routes>
                 <Route path='/' element={<HomePage/>}/>
-                <Route path='/login' element={user === null ? <LoginPage/> : <Navigate to="/my" replace/>}/>
-                <Route path='/register' element={user === null ? <RegistrationPage/> : <Navigate to="/my" replace/>}/>
-                <Route path='/my' element={user !== null ? <DashboardPage/> : <Navigate to="/login" replace/>}/>
-                <Route path='/courses' element={user !== null ? <CoursesPage/> : <Navigate to="/login" replace/>}/>
-                <Route path='/courses/my' element={user !== null ? <MyCoursesPage/> : <Navigate to="/login" replace/>}/>
+                <Route path='/login' element={user === null ? <LoginPage/> : <Navigate to="/my" replace />}/>
+                <Route path='/register' element={user === null ? <RegistrationPage/> : <Navigate to="/my" replace />}/>
+                <Route path='/my' element={user !== null ? <DashboardPage/> : <Navigate to="/login" replace />}/>
+                <Route path='/courses' element={user !== null ? <CoursesPage/> : <Navigate to="/login" replace />}/>
+                <Route path='/post-courses' element={user !== null ? <PostCourses/> : <Navigate to="/login" replace />}/>
+                <Route path='/courses/my' element={user !== null ? <MyCoursesPage/> : <Navigate to="/login" replace />}/>
+                <Route path='/post-courses/my' element={user !== null ? <MyPostCourses/> : <Navigate to="/login" replace />}/>
                 <Route path='/chats' element={user !== null ? <ChatList/> : <Navigate to="/login" replace/>}/>
                 <Route path='/tasks' element={user !== null ? <Tasks/> : <Navigate to="/login" replace/>}/>
                 <Route path='/calendar' element={user !== null ? <CalendarPage/> : <Navigate to="/login" replace/>}/>
                 <Route path='/competence-map'
-                       element={user !== null ? <CompetenceMap/> : <Navigate to="/login" replace/>}/>
+                       element={user !== null ? <CompetenceMap/> : <Navigate to="/login" replace />}/>
                 <Route path='/competence-map/:id'
-                       element={user !== null ? <PublicCompetenceMap/> : <Navigate to="/login" replace/>}/>
+                       element={user !== null ? <PublicCompetenceMap/> : <Navigate to="/login" replace />}/>
                 <Route path='/competence-bank'
-                       element={user !== null ? <CompetenceBank/> : <Navigate to="/login" replace/>}/>
+                       element={user !== null ? <CompetenceBank/> : <Navigate to="/login" replace />}/>
                 <Route path='/questionnaire/:id/pass'
-                       element={user !== null ? <QuestionnairePass/> : <Navigate to="/login" replace/>}/>
+                       element={user !== null ? <QuestionnairePass/> : <Navigate to="/login" replace />}/>
                 <Route path='/questionnaire/:id/view'
-                       element={user !== null ? <QuestionnaireView/> : <Navigate to="/login" replace/>}/>
-                <Route path='/course/:id/' element={user !== null ? <CoursePage/> : <Navigate to="/login" replace/>}/>
+                       element={user !== null ? <QuestionnaireView/> : <Navigate to="/login" replace />}/>
+                <Route path='/course/:id/' element={user !== null ? <CoursePage/> : <Navigate to="/login" replace />}/>
+                <Route path='/post-course/:id/' element={user !== null ? <PostCoursePage/> : <Navigate to="/login" replace />}/>
                 <Route path='/course/:id/section/:sectionId/task/:taskId'
                        element={user !== null ? <TaskPage/> : <Navigate to="/login" replace/>}/>
                 <Route path='/course/:id/section/:sectionId/task/:taskId/private' element={user !== null ?
@@ -79,21 +87,24 @@ function App() {
                     :
                     <Navigate to="/my" replace/>
                 }/>
+                <Route path='/post-course/:id/view' element={user !== null ?
+                    (user.admin) ?  <PostCourseView/> : <Navigate to="/my" replace />
+                    :
+                    <Navigate to="/my" replace />
+                }/>
                 <Route path='/trainingCourses' element={user !== null ?
                     (user.trainer) ? <TrainingCourses/> : <Navigate to="/my" replace/>
                     :
                     <Navigate to="/my" replace/>
                 }/>
                 <Route path='/profile/:username'
-                       element={user !== null ? <ProfilePage/> : <Navigate to="/login" replace/>}/>
-                <Route path='/settings' element={user !== null ? <Settings/> : <Navigate to="/login" replace/>}/>
+                       element={user !== null ? <ProfilePage/> : <Navigate to="/login" replace />}/>
+                <Route path='/settings' element={user !== null ? <Settings/> : <Navigate to="/login" replace />}/>
                 <Route path='/admin'>
-                    <Route path='my'
-                           element={user !== null && user?.admin ? <AdminPage/> : <Navigate to="/login" replace/>}/>
-                    <Route path='course'
-                           element={user !== null && user?.admin ? <AdminCourse/> : <Navigate to="/login" replace/>}/>
-                    <Route path='users'
-                           element={user !== null && user?.admin ? <AdminUsers/> : <Navigate to="/login" replace/>}/>
+                    <Route path='my' element={user !== null && user?.admin ? <AdminPage/> : <Navigate to="/login" replace /> }/>
+                    <Route path='course' element={user !== null && user?.admin ? <AdminCourse/> : <Navigate to="/login" replace /> }/>
+                    <Route path='post-course' element={user !== null && user?.admin ? <AdminPostCourse/> : <Navigate to="/login" replace /> }/>
+                    <Route path='users' element={user !== null && user?.admin ? <AdminUsers/> : <Navigate to="/login" replace /> }/>
                 </Route>
                 <Route path='*' element={<Error/>}/>
                 <Route path='/logout' element={<Logout/>}/>
