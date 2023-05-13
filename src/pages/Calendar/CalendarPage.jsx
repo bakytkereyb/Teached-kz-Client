@@ -9,7 +9,13 @@ import {useNavigate} from "react-router-dom";
 import {getAllTasks} from "../../store/slices/tasksSlice";
 
 const CustomTaskBadge = (status) => {
-    return status === "NOT_SUBMITTED" ? "error" : "success"
+    if (status === 'NOT_SUBMITTED') {
+        return 'error';
+    }
+    if (status === 'SUBMITTED') {
+        return 'warning'
+    }
+    return 'success'
 }
 const getMonthData = (value) => {
     if (value.month() === 8) {
