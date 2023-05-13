@@ -13,6 +13,8 @@ import CourseViewInfo from './CourseView/CourseViewInfo';
 import CourseViewButtons from './CourseView/CourseViewButtons';
 import CourseViewLessons from './CourseView/CourseViewLessons';
 import CourseLessons from './CourseLessons/CourseLessons';
+import CourseViewStudents from './CourseView/CourseViewStudents';
+import CourseTasks from './CourseTasks/CourseTasks';
 
 const CoursePage = ({task, student, post, test, lesson}) => {
 
@@ -79,6 +81,8 @@ const CoursePage = ({task, student, post, test, lesson}) => {
                 <CourseViewButtons tabNum={tabNum} setTabNum={setTabNum}/>
 
                 {tabNum === 1 && <CourseLessons/>}
+                {tabNum === 2 && <CourseViewStudents/>}
+                {tabNum === 3 && <CourseTasks/>}
             </Block>
         </div>
     );
