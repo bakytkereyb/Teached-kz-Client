@@ -120,6 +120,7 @@ const eng = {
     profile: "Profile",
     emailConfirm: "Email confirmation",
     save: "Save",
+    send: "Send",
     create: "Create",
     firstName: "First name",
     secondName: "Second name",
@@ -215,6 +216,7 @@ const eng = {
     changeProfileImage: "Change profile image",
     profileImage: "Profile image",
     profileImageHasChanged: "Profile image has changed!",
+    confirmationMessageIsSent: "Confirmation message has been sent",
 }
 
 const kz = {

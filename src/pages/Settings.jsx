@@ -17,7 +17,7 @@ import {
     setBirthDay,
     setDegree,
     setDegreeAwarded,
-    setDisciplineNames,
+    setDisciplineNames, setEmail,
     setFirstName,
     setGraduationYear,
     setMiddleName,
@@ -29,12 +29,13 @@ import {
     setUniversityJobName,
     setUniversityName,
     updateUserByUsername
-} from "../store/slices/userSlice";
+} from '../store/slices/userSlice';
 import HorizontalDivider from "../components/UI/Divider/HorizontalDivider";
 import Alert from "../components/UI/Alert/Alert";
 import FileUploaderService from "../services/FileUploaderService";
 import ImageUploadService from "../services/ImageUploadService";
 import {NotificationManager} from "react-notifications";
+import EmailSendService from '../services/EmailSendService';
 
 const Settings = () => {
     const dispatch = useDispatch();
@@ -98,6 +99,12 @@ const Settings = () => {
                 setFile(null);
                 NotificationManager.success(lan.profileImageHasChanged);
             });
+    }
+
+    async function onSubmitEmail(e) {
+        e.preventDefault();
+        await EmailSendService.sendEmailConfirmation(user.id, editUser.email);
+        NotificationManager.success(lan.confirmationMessageIsSent);
     }
 
     return (
@@ -283,7 +290,24 @@ const Settings = () => {
                         </FormBlock>
                     </TabItem>
                     <TabItem item={1}>
-                        2
+
+                        <FormBlock onSubmit={onSubmitEmail}>
+                            <FormInput
+                                labelText={lan.email}
+                                value={editUser.email}
+                                onChange={(value) => {
+                                    dispatch(setEmail(value))
+                                }}
+                                id={"email"}
+                                type={"text"}
+                                required={true}
+                                maxWidth={"100%"}
+                            />
+                            {
+                                !user.isConfirmed &&
+                                <Button>{lan.send}</Button>
+                            }
+                        </FormBlock>
                     </TabItem>
                     <TabItem item={2}>
                         <FormBlock onSubmit={onSubmitProfileImage}>
