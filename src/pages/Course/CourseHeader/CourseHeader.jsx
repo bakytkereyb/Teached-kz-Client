@@ -8,6 +8,7 @@ import {lan} from '../../../constants/lan';
 const CourseHeader = () => {
 
     const {course, isLoading} = useSelector(state => state.course);
+    const {user} = useSelector(state => state.user);
 
     function getPercentage(num, max) {
         return (num / max) * 100;
@@ -28,12 +29,16 @@ const CourseHeader = () => {
             </div>
             <div className={cl.courseHeaderTextDiv}>
                 <Text style={{fontWeight: 400, fontSize: '1rem'}}>{lan.sections}</Text>
-                <Text style={{fontWeight: 600, fontSize: '1.2rem'}}>{course.maxProgress}</Text>
+                <Text style={{fontWeight: 600, fontSize: '1.2rem'}}>{course.sections.length}</Text>
             </div>
-            <div className={cl.courseHeaderTextDiv}>
-                <Text style={{fontWeight: 400, fontSize: '1rem'}}>{lan.progress}</Text>
-                <Text style={{fontWeight: 600, fontSize: '1.2rem'}}>{getPercentage(course.progress, course.maxProgress)} %</Text>
-            </div>
+            {
+                !user.admin && !user.trainer &&
+                <div className={cl.courseHeaderTextDiv}>
+                    <Text style={{fontWeight: 400, fontSize: '1rem'}}>{lan.progress}</Text>
+                    <Text style={{fontWeight: 600, fontSize: '1.2rem'}}>{getPercentage(course.progress, course.maxProgress)} %</Text>
+                </div>
+            }
+
         </div>
     );
 };
