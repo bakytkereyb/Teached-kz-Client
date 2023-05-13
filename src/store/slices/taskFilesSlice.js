@@ -22,7 +22,13 @@ export const getTaskFiles = createAsyncThunk(
 const taskFilesSlice = createSlice({
     name: 'taskFilesSlice',
     initialState,
-    reducers: {},
+    reducers: {
+        resetTaskFileState: (state) => {
+            state.taskFile = null;
+            state.isLoading = true;
+            state.isLoading = null;
+        }
+    },
     extraReducers: (builder) => {
         builder
             .addCase(getTaskFiles.pending, (state) => {
@@ -41,6 +47,6 @@ const taskFilesSlice = createSlice({
     }
 });
 
-export const {} = taskFilesSlice.actions;
+export const {resetTaskFileState} = taskFilesSlice.actions;
 
 export default taskFilesSlice.reducer;
