@@ -15,4 +15,34 @@ TaskFilesService.getTask = async function (studentId, taskId) {
     });
 }
 
+TaskFilesService.submitFiles = async function (courseId, sectionId, taskId, fileNames) {
+    let data = new FormData();
+    data.append("fileNames", fileNames);
+    return axios({
+        method: "post",
+        url: API_BASE_URL + `/api/course/${courseId}/section/${sectionId}/task/${taskId}/submit`,
+        data: data,
+        headers: {
+            "Content-Type": "multipart/form-data",
+            'Authorization': `${localStorage.getItem(ACCESS_TOKEN)}`,
+        }
+    });
+}
+
+TaskFilesService.gradeTaskByStudent = async function (courseId, sectionId, taskId, grade, comment, studentId) {
+    let data = new FormData();
+    data.append("grade", grade);
+    data.append("comment", comment);
+    data.append("studentId", studentId);
+    return axios({
+        method: "post",
+        url: API_BASE_URL + `/api/course/${courseId}/section/${sectionId}/task/${taskId}/grade`,
+        data: data,
+        headers: {
+            "Content-Type": "multipart/form-data",
+            'Authorization': `${localStorage.getItem(ACCESS_TOKEN)}`,
+        }
+    });
+}
+
 export default TaskFilesService;
