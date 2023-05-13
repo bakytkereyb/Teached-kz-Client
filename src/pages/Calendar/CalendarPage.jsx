@@ -71,12 +71,11 @@ const CalendarPage = () => {
         return (
             <ul className={style.events}>
                 {listData.map((item) => (
-                    <li key={item.content}>
+                    <li key={item.taskId}>
                         <Badge
                             status={item.type}
                             text={item.content}
                             style={{
-                                padding: '8px',
                                 textDecoration: isHovered === item.content ? 'underline' : 'none',
                             }}
                             onMouseEnter={() => handleMouseEnter(item.content)}
