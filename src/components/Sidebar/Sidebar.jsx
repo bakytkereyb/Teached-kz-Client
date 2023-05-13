@@ -12,8 +12,10 @@ import setting from '../../images/settings.svg'
 import logout from '../../images/logout.svg'
 import {lan} from "../../constants/lan";
 import FormSelect from '../Form/FormSelect';
+import {useSelector} from "react-redux";
 
 const Sidebar = ({isOpen}) => {
+    const user = useSelector(state => state.user.user);
     const changeLang = (selectedLang) => {
         localStorage.setItem('lan', selectedLang.value);
         setSelectedLan(selectedLang)
@@ -33,6 +35,7 @@ const Sidebar = ({isOpen}) => {
             <SidebarItem to={"/competence-map"} icon={competence} text={lan.competenceMap}/>
             <SidebarItem to={"/courses/my"} icon={courses} text={lan.coursesMy}/>
             <SidebarItem to={"/courses"} icon={courses} text={lan.coursesAll}/>
+            {user.trainer && <SidebarItem to={"/trainingCourses"} icon={courses} text={lan.trainingCourses}/>}
             <SidebarItem icon={tasks} text={lan.tasks}/>
             <SidebarItem to={"/chats"} icon={chats} text={lan.chats}/>
             <SidebarItem to={"/calendar"} icon={calendar} text={lan.calendar}/>

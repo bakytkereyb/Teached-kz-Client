@@ -19,6 +19,8 @@ import chatUsersTableController from "./slices/tableController/ChatUsersTableCon
 import task from "./slices/taskSlice";
 import taskFiles from "./slices/taskFilesSlice";
 import courseStudentsViewController from "./slices/tableController/CourseStudentsViewController";
+import trainingCourses from "./slices/trainingCoursesSlice"
+import trainingCoursesTableController from "./slices/tableController/TrainingCoursesTableController"
 
 export default configureStore({
     reducer: {
@@ -42,5 +44,7 @@ export default configureStore({
         task: task,
         taskFiles: taskFiles,
         courseStudents: courseStudents,
+        trainingCourses: trainingCourses,
+        trainingCoursesTableController: trainingCoursesTableController,
     },
 });

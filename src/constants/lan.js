@@ -204,7 +204,8 @@ const eng = {
     graded: "Graded",
     comment: "Comment",
     selectedStudent: "Selected student",
-    submittedFiles: "Submitted files"
+    submittedFiles: "Submitted files",
+    trainingCourses: "Training Courses",
 }
 
 const kz = {
