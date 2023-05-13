@@ -27,6 +27,7 @@ const SidebarAdmin = ({isOpen}) => {
             <br/>
             <SidebarItem to={"/admin/my"} icon={dashboard} text={lan.competenceBank}/>
             <SidebarItem to={"/admin/course"} icon={course} text={lan.courses}/>
+            <SidebarItem to={"/admin/post-course"} icon={course} text={lan.postCourses}/>
             <SidebarItem to={"/admin/users"} icon={profile} text={lan.users}/>
             <SidebarItem to={"/logout"} icon={logout} text={lan.logout}/>
             <br/>

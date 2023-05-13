@@ -39,7 +39,8 @@ const Sidebar = ({isOpen}) => {
             <SidebarItem to={"/tasks"} icon={tasks} text={lan.tasks}/>
             <SidebarItem to={"/chats"} icon={chats} text={lan.chats}/>
             <SidebarItem to={"/calendar"} icon={calendar} text={lan.calendar}/>
-            <SidebarItem icon={courses} text={lan.coursesPre}/>
+            <SidebarItem to={"/post-courses"} icon={courses} text={lan.postCourses}/>
+            <SidebarItem to={"/post-courses/my"} icon={courses} text={lan.postCoursesMy}/>
             <SidebarItem to={"/settings"} icon={setting} text={lan.setting}/>
             <SidebarItem to={"/logout"} icon={logout} text={lan.logout}/>
             <br/>
