@@ -3,7 +3,7 @@ import {BrowserRouter as Router, Navigate, Route, Routes} from "react-router-dom
 import LoginPage from "./pages/LoginPage";
 import Error from "./pages/Error";
 import RegistrationPage from "./pages/RegistrationPage";
-import DashboardPage from "./pages/DashboardPage";
+import DashboardPage from "./pages/Dashboard/DashboardPage";
 import CoursesPage from "./pages/Courses/CoursesPage";
 import CoursePage from "./pages/Course/CoursePage";
 import {useDispatch, useSelector} from "react-redux";

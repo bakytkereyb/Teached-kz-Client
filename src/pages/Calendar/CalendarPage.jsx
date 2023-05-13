@@ -1,33 +1,52 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {clrs} from "../../constants/colors";
-import {Badge, Calendar} from "antd";
+import {Badge, Calendar, Card} from "antd";
 import HeaderPlatform from "../../components/HeaderPlatform/HeaderPlatform";
 import Block from "../../components/UI/Block/Block";
 import style from "./Calendar.module.css";
-import data from './data.json';
-const getListData = (value) => {
-    const date = value.date();
-    const month = value.month();
+import {useDispatch, useSelector} from "react-redux";
+import {useNavigate} from "react-router-dom";
+import {getAllTasks} from "../../store/slices/tasksSlice";
 
-    const filteredData = data.filter(item => {
-        const itemDate = new Date(item.date);
-        return itemDate.getDate() === date && itemDate.getMonth() === month;
-    });
-
-    const listData = filteredData.map(item => ({
-        type: item.type,
-        content: item.content,
-    }));
-
-    return listData;
-};
-
+const CustomTaskBadge = (status) => {
+    return status === "NOT_SUBMITTED" ? "error" : "success"
+}
 const getMonthData = (value) => {
     if (value.month() === 8) {
         return 1394;
     }
 };
 const CalendarPage = () => {
+
+    const {tasks, isLoading, error} = useSelector(state => state.tasks)
+
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getAllTasks());
+    }, [navigate])
+    const getListData = (value) => {
+        const date = value.date();
+        const month = value.month();
+
+        const filteredData = tasks.filter(item => {
+            const itemDate = new Date(item.task.deadline);
+            return itemDate.getDate() === date && itemDate.getMonth() === month;
+        });
+
+        const listData = filteredData.map(item => ({
+            type: CustomTaskBadge(item.task.taskFiles.status),
+            content: item.task.name,
+            date: item.task.deadline,
+            taskId: item.task.id,
+            courseId: item.course.id,
+            sectionId: item.section.id
+        }));
+
+        return listData;
+    };
+
     const monthCellRender = (value) => {
         const num = getMonthData(value);
         return num ? (
@@ -62,7 +81,7 @@ const CalendarPage = () => {
                             }}
                             onMouseEnter={() => handleMouseEnter(item.content)}
                             onMouseLeave={handleMouseLeave}
-                            onClick={() => alert(item.content)}
+                            onClick={() => navigate(`/course/${item.courseId}/section/${item.sectionId}/task/${item.taskId}`)}
                         />
                     </li>
                 ))}
@@ -78,7 +97,9 @@ const CalendarPage = () => {
         <div style={{backgroundColor: clrs.whiter, width: "100%", minHeight: "100vh"}}>
             <HeaderPlatform/>
             <Block style={{marginTop: "10px"}}>
-                <Calendar cellRender={cellRender}/>
+                <Card>
+                    <Calendar cellRender={cellRender}/>
+                </Card>
             </Block>
         </div>
     );

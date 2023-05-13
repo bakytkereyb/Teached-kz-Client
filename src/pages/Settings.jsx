@@ -3,7 +3,7 @@ import {clrs} from "../constants/colors";
 import HeaderPlatform from "../components/HeaderPlatform/HeaderPlatform";
 import Block from "../components/UI/Block/Block";
 import MyMasonry from "../components/Masonry/MyMasonry";
-import MyTasks from "../components/MyTasksCard/MyTasks";
+import MyTasks from "./Dashboard/MyTasksCard/MyTasks";
 import Course from "../components/CourseCard/Course";
 import TabBlock from "../components/UI/TabBlock/TabBlock";
 import TabItem from "../components/UI/TabBlock/TabItem";

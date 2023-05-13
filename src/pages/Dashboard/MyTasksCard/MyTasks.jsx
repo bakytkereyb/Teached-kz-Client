@@ -1,7 +1,7 @@
 import React from 'react';
 import cl from './MyTasks.module.css'
-import Text from "../UI/Text/Text";
-import arrowRight from "../../images/arrow-circle-right.svg"
+import Text from "../../../components/UI/Text/Text";
+import arrowRight from "../../../images/arrow-circle-right.svg"
 import Task from "./Task";
 
 const MyTasks = () => {
