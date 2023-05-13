@@ -29,6 +29,7 @@ import ChatList from "./pages/Chat/ChatList";
 import TaskPage from './pages/Task/TaskPage';
 import TaskPagePrivate from './pages/Task/TaskPagePrivate/TaskPagePrivate';
 import TrainingCourses from "./pages/TrainingCourses/TrainingCourses";
+import Tasks from "./pages/Tasks/Tasks";
 
 function App() {
     const {user, isLoading} = useSelector(state => state.user);
@@ -53,6 +54,7 @@ function App() {
                 <Route path='/courses' element={user !== null ? <CoursesPage/> : <Navigate to="/login" replace/>}/>
                 <Route path='/courses/my' element={user !== null ? <MyCoursesPage/> : <Navigate to="/login" replace/>}/>
                 <Route path='/chats' element={user !== null ? <ChatList/> : <Navigate to="/login" replace/>}/>
+                <Route path='/tasks' element={user !== null ? <Tasks/> : <Navigate to="/login" replace/>}/>
                 <Route path='/calendar' element={user !== null ? <CalendarPage/> : <Navigate to="/login" replace/>}/>
                 <Route path='/competence-map'
                        element={user !== null ? <CompetenceMap/> : <Navigate to="/login" replace/>}/>
