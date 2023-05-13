@@ -6,6 +6,7 @@ import {clrs} from '../../../constants/colors';
 import Text from '../../../components/UI/Text/Text';
 import {lan} from '../../../constants/lan';
 import SectionFile from './SectionFile';
+import SectionTask from './SectionTask';
 
 const CourseSection = ({section, isCertificate}) => {
     const dispatch = useDispatch();
@@ -37,6 +38,13 @@ const CourseSection = ({section, isCertificate}) => {
                 section?.files?.map((file,i) => {
                     return (
                         <SectionFile key={file.id} file={file} section={section}/>
+                    )
+                })
+            }
+            {
+                section?.tasks.map((task, i) => {
+                    return (
+                        <SectionTask key={task.id} task={task} section={section}/>
                     )
                 })
             }
