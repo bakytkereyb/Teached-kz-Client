@@ -9,7 +9,7 @@ import Text from '../../../components/UI/Text/Text';
 import {LocalName} from '../../../utils/LocalName';
 import AddTaskModal from './AddTaskModal';
 import {getCourseById, removeTaskToSection} from '../../../store/slices/course/courseSlice';
-import {useParams} from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 
 const CourseViewTasks = () => {
     const [modal, setModal] = useState(false)
@@ -20,6 +20,7 @@ const CourseViewTasks = () => {
     const {id} = useParams();
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (course !== null) {
@@ -72,7 +73,9 @@ const CourseViewTasks = () => {
             title: lan.actions,
             render: (_, record) => (
                 <FlexBlock>
-                    <Text type={"button"}>{lan.view}</Text>
+                    <Text onClick={() => {
+                        navigate(`/course/${id}/section/${findSection(record)?.id}/task/${record.id}/private`)
+                    }} type={"button"}>{lan.view}</Text>
                     <Text type={"button-black"} onClick={() => {handleDeleteTask(record)}}>{lan.delete}</Text>
                 </FlexBlock>
             ),
