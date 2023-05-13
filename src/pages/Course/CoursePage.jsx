@@ -16,10 +16,7 @@ import CourseLessons from './CourseLessons/CourseLessons';
 import CourseViewStudents from './CourseView/CourseViewStudents';
 import CourseTasks from './CourseTasks/CourseTasks';
 
-const CoursePage = ({task, student, post, test, lesson}) => {
-
-    const [isComponent, setIsComponent] = useState(1);
-
+const CoursePage = () => {
     const {course, isLoading} = useSelector(state => state.course);
     const [tabNum, setTabNum] = useState(1);
 

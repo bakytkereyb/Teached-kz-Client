@@ -18,7 +18,7 @@ const PostCourseInfo = () => {
             flexDirection: "column",
             alignItems: "flex-start",
         }}>
-            <Text normalWeight default><b>{lan.course}:</b> {LocalName.getName(course)}</Text>
+            <Text normalWeight default><b>{lan.postCourse}:</b> {LocalName.getName(course)}</Text>
             <Text normalWeight default><b>{lan.description}:</b> {LocalName.getDescription(course)}</Text>
             <Text normalWeight default><b>{lan.sections}:</b> {course.sections.length}</Text>
         </FlexBlock>
