@@ -13,7 +13,7 @@ export const getAllCourseStudents = createAsyncThunk(
     async ({page, limit, id}, {getState, rejectWithValue, dispatch}) => {
         try {
             const response = await CourseStudentsService.getAllCourseStudents(page, limit, id);
-            return response.data;
+            return response;
         } catch (error) {
             return rejectWithValue(error?.response?.data);
         }
@@ -34,7 +34,7 @@ const courseStudentsSlice = createSlice({
             })
             .addCase(getAllCourseStudents.fulfilled, (state, action) => {
                 state.isLoading = false;
-                state.students = action.payload;
+                state.students = action.payload.data;
                 state.hasMore = action.payload.hasMore;
             })
             .addCase(getAllCourseStudents.rejected, (state, action) => {
