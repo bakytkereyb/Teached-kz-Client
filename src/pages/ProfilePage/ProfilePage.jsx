@@ -13,6 +13,7 @@ import {useNavigate, useParams} from "react-router-dom";
 import {getUserByUsername} from "../../store/slices/publicUserSlice";
 import Button from "../../components/UI/Button/Button";
 import FlexBlock from "../../components/UI/FlexBlock/FlexBlock";
+import {API_BASE_URL} from "../../constants/api";
 
 const ProfilePage = () => {
     const {user, isLoading} = useSelector(state => state.publicUser);
@@ -54,9 +55,8 @@ const ProfilePage = () => {
     return (
         <div style={{backgroundColor: clrs.whiter, width: "100%", minHeight: "100vh"}}>
             <HeaderPlatform/>
-            <Block style={{marginTop: "50px"}}>
-                <div className={`${style.info} ${style.generalInfo}`}>
-                    <img src={naruto} alt=""/>
+            <Block style={{marginTop: "50px"}}>                <div className={`${style.info} ${style.generalInfo}`}>
+                    <img src={`${API_BASE_URL}/api/file/get/${user?.imageFileName}`} alt=""/>
                     <div style={{display: "flex", flexDirection: "column", gap: "10px"}}>
                         <Text style={{fontSize: '1.1rem', textTransform: 'capitalize'}}>
                             {user.firstName} {user.secondName} {user.middleName}

@@ -2,36 +2,45 @@ import React, {useEffect, useState} from 'react';
 import {clrs} from "../constants/colors";
 import HeaderPlatform from "../components/HeaderPlatform/HeaderPlatform";
 import Block from "../components/UI/Block/Block";
-import MyMasonry from "../components/Masonry/MyMasonry";
-import MyTasks from "./Dashboard/MyTasksCard/MyTasks";
-import Course from "../components/CourseCard/Course";
 import TabBlock from "../components/UI/TabBlock/TabBlock";
 import TabItem from "../components/UI/TabBlock/TabItem";
 import {useDispatch, useSelector} from "react-redux";
-import {setTab} from "../store/slices/tabBlock/tabBlockSlice";
 import {lan} from "../constants/lan";
-import BigText from "../components/UI/BigText/BigText";
 import Text from "../components/UI/Text/Text";
 import FormInput from "../components/Form/FormInput";
 import Button from "../components/UI/Button/Button";
 import FormBlock from "../components/Form/FormBlock";
 import {useNavigate} from "react-router-dom";
 import {
-    getUserByToken,
-    resetEditUser, setAdmissionDate,
-    setBirthDay, setDegree, setDegreeAwarded, setDisciplineNames,
-    setFirstName, setGraduationYear,
-    setMiddleName, setPosition, setRank,
-    setSecondName, setSpecializationName, setTelNumber, setUniversityJobName,
-    setUniversityName, updateUserByUsername
+    resetEditUser,
+    setAdmissionDate,
+    setBirthDay,
+    setDegree,
+    setDegreeAwarded,
+    setDisciplineNames,
+    setFirstName,
+    setGraduationYear,
+    setMiddleName,
+    setPosition,
+    setRank,
+    setSecondName,
+    setSpecializationName,
+    setTelNumber,
+    setUniversityJobName,
+    setUniversityName,
+    updateUserByUsername
 } from "../store/slices/userSlice";
 import HorizontalDivider from "../components/UI/Divider/HorizontalDivider";
 import Alert from "../components/UI/Alert/Alert";
+import FileUploaderService from "../services/FileUploaderService";
+import ImageUploadService from "../services/ImageUploadService";
 
 const Settings = () => {
     const dispatch = useDispatch();
 
     const editUser = useSelector(state => state.user.editUser);
+    const user = useSelector(state => state.user.user);
+    const [file, setFile] = useState(null);
 
     const navigate = useNavigate();
 
@@ -64,12 +73,25 @@ const Settings = () => {
         await dispatch(resetEditUser());
     }
 
+    async function onSubmitProfileImage(e) {
+        e.preventDefault();
+        await FileUploaderService.uploadFile(file)
+            .then(async (r) => {
+                const fileName = r.data;
+                console.log(user.id)
+                await ImageUploadService.uploadProfileImage(user.id, fileName)
+            })
+            .finally(() => {
+                setFile(null);
+            });
+    }
+
     return (
         <div style={{backgroundColor: clrs.whiter, width: "100%", minHeight: "100vh"}}>
             <HeaderPlatform/>
             <Block style={{marginTop: "50px", alignItems: "flex-start"}}>
                 <Text style={{textTransform: "uppercase", fontSize: "1rem"}}>{lan.setting}</Text>
-                <TabBlock headers={[lan.profile, lan.emailConfirm]}>
+                <TabBlock headers={[lan.profile, lan.emailConfirm, lan.changeProfileImage]}>
                     <TabItem item={0}>
                         <FormBlock onSubmit={onSubmitProfile}>
                             <Alert>{lan.fillAllFields}</Alert>
@@ -77,7 +99,9 @@ const Settings = () => {
                             <FormInput
                                 labelText={lan.firstName}
                                 value={editUser.firstName}
-                                onChange={(value) => {dispatch(setFirstName(value))}}
+                                onChange={(value) => {
+                                    dispatch(setFirstName(value))
+                                }}
                                 id={"firstName"}
                                 type={"text"}
                                 required={true}
@@ -86,7 +110,9 @@ const Settings = () => {
                             <FormInput
                                 labelText={lan.secondName}
                                 value={editUser.secondName}
-                                onChange={(value) => {dispatch(setSecondName(value))}}
+                                onChange={(value) => {
+                                    dispatch(setSecondName(value))
+                                }}
                                 id={"secondName"}
                                 type={"text"}
                                 required={true}
@@ -95,7 +121,9 @@ const Settings = () => {
                             <FormInput
                                 labelText={lan.middleName}
                                 value={editUser.middleName}
-                                onChange={(value) => {dispatch(setMiddleName(value))}}
+                                onChange={(value) => {
+                                    dispatch(setMiddleName(value))
+                                }}
                                 id={"middleName"}
                                 type={"text"}
                                 required={false}
@@ -104,7 +132,9 @@ const Settings = () => {
                             <FormInput
                                 labelText={lan.birthDate}
                                 value={editUser.birthDay}
-                                onChange={(value) => {dispatch(setBirthDay(value))}}
+                                onChange={(value) => {
+                                    dispatch(setBirthDay(value))
+                                }}
                                 id={"birthDate"}
                                 type={"date"}
                                 required={false}
@@ -113,7 +143,9 @@ const Settings = () => {
                             <FormInput
                                 labelText={lan.telNumber}
                                 value={editUser.telNumber}
-                                onChange={(value) => {dispatch(setTelNumber(value))}}
+                                onChange={(value) => {
+                                    dispatch(setTelNumber(value))
+                                }}
                                 id={"telNumber"}
                                 type={"text"}
                                 required={false}
@@ -124,7 +156,9 @@ const Settings = () => {
                             <FormInput
                                 labelText={lan.universityName}
                                 value={editUser.universityName}
-                                onChange={(value) => {dispatch(setUniversityName(value))}}
+                                onChange={(value) => {
+                                    dispatch(setUniversityName(value))
+                                }}
                                 id={"universityName"}
                                 type={"text"}
                                 required={false}
@@ -133,7 +167,9 @@ const Settings = () => {
                             <FormInput
                                 labelText={lan.specialization}
                                 value={editUser.specializationName}
-                                onChange={(value) => {dispatch(setSpecializationName(value))}}
+                                onChange={(value) => {
+                                    dispatch(setSpecializationName(value))
+                                }}
                                 id={"specializationName"}
                                 type={"text"}
                                 required={false}
@@ -142,7 +178,9 @@ const Settings = () => {
                             <FormInput
                                 labelText={lan.admissionDate}
                                 value={editUser.admissionDate}
-                                onChange={(value) => {dispatch(setAdmissionDate(value))}}
+                                onChange={(value) => {
+                                    dispatch(setAdmissionDate(value))
+                                }}
                                 id={"admissionDate"}
                                 type={"date"}
                                 required={false}
@@ -151,7 +189,9 @@ const Settings = () => {
                             <FormInput
                                 labelText={lan.graduationYear}
                                 value={editUser.graduationYear}
-                                onChange={(value) => {dispatch(setGraduationYear(value))}}
+                                onChange={(value) => {
+                                    dispatch(setGraduationYear(value))
+                                }}
                                 id={"graduationYear"}
                                 type={"number"}
                                 required={false}
@@ -160,7 +200,9 @@ const Settings = () => {
                             <FormInput
                                 labelText={lan.degreeAwarded}
                                 value={editUser.degreeAwarded}
-                                onChange={(value) => {dispatch(setDegreeAwarded(value))}}
+                                onChange={(value) => {
+                                    dispatch(setDegreeAwarded(value))
+                                }}
                                 id={"degreeAwarded"}
                                 type={"text"}
                                 required={false}
@@ -171,7 +213,9 @@ const Settings = () => {
                             <FormInput
                                 labelText={lan.universityJobName}
                                 value={editUser.universityJobName}
-                                onChange={(value) => {dispatch(setUniversityJobName(value))}}
+                                onChange={(value) => {
+                                    dispatch(setUniversityJobName(value))
+                                }}
                                 id={"universityJobName"}
                                 type={"text"}
                                 required={false}
@@ -180,7 +224,9 @@ const Settings = () => {
                             <FormInput
                                 labelText={lan.position}
                                 value={editUser.position}
-                                onChange={(value) => {dispatch(setPosition(value))}}
+                                onChange={(value) => {
+                                    dispatch(setPosition(value))
+                                }}
                                 id={"position"}
                                 type={"text"}
                                 required={false}
@@ -189,7 +235,9 @@ const Settings = () => {
                             <FormInput
                                 labelText={lan.degree}
                                 value={editUser.degree}
-                                onChange={(value) => {dispatch(setDegree(value))}}
+                                onChange={(value) => {
+                                    dispatch(setDegree(value))
+                                }}
                                 id={"degree"}
                                 type={"text"}
                                 required={false}
@@ -198,7 +246,9 @@ const Settings = () => {
                             <FormInput
                                 labelText={lan.rank}
                                 value={editUser.rank}
-                                onChange={(value) => {dispatch(setRank(value))}}
+                                onChange={(value) => {
+                                    dispatch(setRank(value))
+                                }}
                                 id={"rank"}
                                 type={"text"}
                                 required={false}
@@ -207,17 +257,33 @@ const Settings = () => {
                             <FormInput
                                 labelText={lan.disciplineNames}
                                 value={editUser.disciplineNames}
-                                onChange={(value) => {dispatch(setDisciplineNames(value))}}
+                                onChange={(value) => {
+                                    dispatch(setDisciplineNames(value))
+                                }}
                                 id={"disciplineNames"}
                                 type={"text"}
                                 required={false}
                                 maxWidth={"100%"}
                             />
-                            <Button >{lan.save}</Button>
+                            <Button>{lan.save}</Button>
                         </FormBlock>
                     </TabItem>
                     <TabItem item={1}>
                         2
+                    </TabItem>
+                    <TabItem item={2}>
+                        <FormBlock onSubmit={onSubmitProfileImage}>
+                            <Text style={{textTransform: "uppercase", fontSize: "1rem"}}>{lan.changeProfileImage}</Text>
+                            <FormInput
+                                labelText={lan.profileImage}
+                                onChange={setFile}
+                                id={"profileImage"}
+                                type={"file"}
+                                required={true}
+                                maxWidth={"100%"}
+                            />
+                            <Button>{lan.save}</Button>
+                        </FormBlock>
                     </TabItem>
                 </TabBlock>
             </Block>

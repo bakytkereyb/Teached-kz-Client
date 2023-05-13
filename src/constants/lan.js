@@ -212,6 +212,8 @@ const eng = {
     selectedStudent: "Selected student",
     submittedFiles: "Submitted files",
     trainingCourses: "Training Courses",
+    changeProfileImage: "Change profile image",
+    profileImage: "Profile image"
 }
 
 const kz = {
