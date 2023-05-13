@@ -16,10 +16,13 @@ import Button from '../../../components/UI/Button/Button';
 import {changeCurrentPage} from "../../../store/slices/tableController/CourseStudentsViewController";
 import {getAllCourseStudents} from "../../../store/slices/courseStudentsSlice";
 import TableWithPagination from "../../../components/TableWithPagination/TableWithPagination";
-import {getTaskFiles} from "../../../store/slices/taskFilesSlice";
+import {getTaskFiles, resetTaskFileState} from '../../../store/slices/taskFilesSlice';
 import FormBlock from "../../../components/Form/FormBlock";
 import FormInput from "../../../components/Form/FormInput";
 import SectionFile from "../../Course/CourseSection/SectionFile";
+import FileUploaderService from '../../../services/FileUploaderService';
+import TaskFilesService from '../../../services/TaskFilesService';
+import {NotificationManager} from 'react-notifications';
 
 const TaskPagePrivate = () => {
     const data = useSelector(state => state.courseStudents)
@@ -38,16 +41,26 @@ const TaskPagePrivate = () => {
     const {sectionId} = useParams();
     const {taskId} = useParams();
 
-    const [selectedStudent, setSelectedStudent] = useState(null)
+    const [selectedStudent, setSelectedStudent] = useState(null);
+
+    const [submitFilesLoading, setSubmitFilesLoading] = useState(false);
 
     useEffect(() => {
+        setSelectedStudent(null);
+        dispatch(resetTaskFileState());
+        setGrade('');
+        setComment('');
         dispatch(getCourseById({id: id}));
         dispatch(getTask({courseId: id, sectionId, taskId}))
         dispatch(changeCurrentPage({page: 1, limit: 5}));
         dispatch(getAllCourseStudents({page: 1, limit: 5, id: id}));
+
     }, [navigate])
 
     useEffect(() => {
+        dispatch(resetTaskFileState());
+        setGrade('');
+        setComment('');
         if (selectedStudent) {
             dispatch(getTaskFiles({studentId: selectedStudent.id, taskId}))
         }
@@ -65,28 +78,14 @@ const TaskPagePrivate = () => {
         dispatch(changeCurrentPage({page: page, pageSize: pageSize}));
     };
 
-    if (isLoading) {
-        return (
-            <div style={{backgroundColor: clrs.whiter, width: "100%", minHeight: "100vh"}}>
-                <HeaderPlatform/>
-                <Block style={{marginTop: "50px"}}>
-                    <Card type={"horizontal-small"}/>
-                    <Card type={"horizontal"}/>
-                    <Card type={"horizontal-big"}/>
-                </Block>
-            </div>
-        );
-    }
-
-    if (task === null) {
-        return (
-            <div style={{backgroundColor: clrs.whiter, width: "100%", minHeight: "100vh"}}>
-                <HeaderPlatform/>
-                <Block style={{marginTop: "50px"}}>
-                    <BigText>{lan.taskNotFound}</BigText>
-                </Block>
-            </div>
-        );
+    function getStatusString(status) {
+        if (status === 'NOT_SUBMITTED') {
+            return lan.notSubmitted
+        }
+        if (status === 'SUBMITTED') {
+            return lan.submitted;
+        }
+        return lan.graded
     }
 
     const columns = [
@@ -108,7 +107,50 @@ const TaskPagePrivate = () => {
     ];
 
     async function handleOnSubmit(e) {
-        alert("Hi")
+        e.preventDefault();
+        try {
+            setSubmitFilesLoading(true);
+            await TaskFilesService.gradeTaskByStudent(id, sectionId, taskId, grade, comment, selectedStudent.id)
+                .finally(async () => {
+                    setSubmitFilesLoading(false);
+                    setSelectedStudent(null);
+                    setGrade('');
+                    setComment('');
+                    await dispatch(resetTaskFileState())
+                    await dispatch(getCourseById({id: id}));
+                    await dispatch(getTask({courseId: id, sectionId, taskId}))
+                    await dispatch(changeCurrentPage({page: 1, limit: 5}));
+                    await dispatch(getAllCourseStudents({page: 1, limit: 5, id: id}));
+                    NotificationManager.success(lan.graded);
+                });
+        } catch (e) {
+            setSubmitFilesLoading(false);
+            NotificationManager.error(lan.error);
+        }
+    }
+
+    if (isLoading) {
+        return (
+            <div style={{backgroundColor: clrs.whiter, width: "100%", minHeight: "100vh"}}>
+                <HeaderPlatform/>
+                <Block style={{marginTop: "50px"}}>
+                    <Card type={"horizontal-small"}/>
+                    <Card type={"horizontal"}/>
+                    <Card type={"horizontal-big"}/>
+                </Block>
+            </div>
+        );
+    }
+
+    if (task === null || course === null) {
+        return (
+            <div style={{backgroundColor: clrs.whiter, width: "100%", minHeight: "100vh"}}>
+                <HeaderPlatform/>
+                <Block style={{marginTop: "50px"}}>
+                    <BigText>{lan.taskNotFound}</BigText>
+                </Block>
+            </div>
+        );
     }
 
     return (
@@ -160,39 +202,63 @@ const TaskPagePrivate = () => {
                     flexDirection: "column",
                     alignItems: "flex-start",
                 }}>
-                    {selectedStudent &&
+                    {taskFile && selectedStudent &&
                         (
                             <>
-                                <Text normalWeight default><b>{lan.selectedStudent}:</b> {selectedStudent?.fullName}
-                                </Text>
+                                <Text normalWeight default><b>{lan.selectedStudent}:</b> {selectedStudent?.fullName}</Text>
+                                <Text default normalWeight><b>{lan.status}:</b> {getStatusString(taskFile.status)}</Text>
+                                <Text default normalWeight><b>{lan.grade}:</b> {taskFile.grade}</Text>
+                                <Text default normalWeight><b>{lan.comment}:</b> {taskFile.comment}</Text>
                                 <Text normalWeight default><b>{lan.submittedFiles}:</b></Text>
                                 {/*{taskFile?.files?.map(item => (*/}
-                                <SectionFile file={{fileName: '123.docx', label: 'Dias Utebayev'}}/>
-                                <SectionFile file={{fileName: '123.docx', label: 'Batyrbek Mal'}}/>
-                                {/*))}*/}
-                                <FormBlock onSubmit={handleOnSubmit}>
-                                    <FormInput
-                                        labelText={lan.grade}
-                                        id={"grade"}
-                                        type={"number"}
-                                        min={0}
-                                        max={100}
-                                        required={true}
-                                        maxWidth={"100%"}
-                                        value={grade}
-                                        onChange={setGrade}
-                                    />
-                                    <FormInput
-                                        labelText={lan.comment}
-                                        id={"comment"}
-                                        type={"text"}
-                                        required={false}
-                                        maxWidth={"100%"}
-                                        value={comment}
-                                        onChange={setComment}
-                                    />
-                                    <Button>{lan.grade}</Button>
-                                </FormBlock>
+                                <FlexBlock style={{
+                                    backgroundColor: clrs.whiter,
+                                    borderRadius: "15px",
+                                    padding: "15px 0",
+                                    flexDirection: "column",
+                                    alignItems: "flex-start",
+                                    gap: "0px"
+                                }}>
+                                    {
+                                        taskFile.files.map((file) => {
+                                            return <SectionFile file={file}/>
+                                        })
+                                    }
+                                </FlexBlock>
+
+                                <FlexBlock style={{
+                                    backgroundColor: clrs.whiter,
+                                    borderRadius: "15px",
+                                    width: "calc(100% - 30px)",
+                                    padding: "15px",
+                                    flexDirection: "column",
+                                    alignItems: "flex-start",
+                                    gap: "0px"
+                                }}>
+                                    <FormBlock onSubmit={handleOnSubmit}>
+                                        <FormInput
+                                            labelText={lan.grade}
+                                            id={"grade"}
+                                            type={"number"}
+                                            min={0}
+                                            max={100}
+                                            required={true}
+                                            maxWidth={"100%"}
+                                            value={grade}
+                                            onChange={setGrade}
+                                        />
+                                        <FormInput
+                                            labelText={lan.comment}
+                                            id={"comment"}
+                                            type={"text"}
+                                            required={false}
+                                            maxWidth={"100%"}
+                                            value={comment}
+                                            onChange={setComment}
+                                        />
+                                        <Button>{lan.grade}</Button>
+                                    </FormBlock>
+                                </FlexBlock>
                             </>
 
                         )
