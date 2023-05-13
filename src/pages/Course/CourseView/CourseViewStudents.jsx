@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {useNavigate, useParams} from "react-router-dom";
+import {Link, useNavigate, useParams} from 'react-router-dom';
 import {changeCurrentPage} from "../../../store/slices/tableController/CourseStudentsViewController";
 import {getAllCourseStudents} from "../../../store/slices/courseStudentsSlice";
 import {lan} from "../../../constants/lan";
@@ -22,9 +22,6 @@ const CourseViewStudents = () => {
         dispatch(getAllCourseStudents({page: 1, limit: 5, id: id}));
     }, [])
 
-    useEffect(() => {
-        console.log(students)
-    }, [students])
     const fetchData = async (params) => {
         return dispatch(getAllCourseStudents({...params, id}));
     };
@@ -38,6 +35,13 @@ const CourseViewStudents = () => {
             title: lan.fullName + ` (${lan.username})`,
             render: (_, record) => <Text normalWeight>{record.fullName} <b>({record.username})</b></Text>,
         },
+        {
+            title: lan.profile,
+            render: (_, record) => (
+                <Link to={`/profile/${record.username}`} target="_blank">{lan.view}</Link>
+            ),
+            width: '5%',
+        },
     ];
     return (
         <FlexBlock style={{
@@ -48,6 +52,7 @@ const CourseViewStudents = () => {
             flexDirection: "column",
             alignItems: "flex-start",
         }}>
+            <Text default>{lan.students}</Text>
             <TableWithPagination
                 isLoading={isLoading}
                 dataSource={students}
