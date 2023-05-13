@@ -213,7 +213,8 @@ const eng = {
     submittedFiles: "Submitted files",
     trainingCourses: "Training Courses",
     changeProfileImage: "Change profile image",
-    profileImage: "Profile image"
+    profileImage: "Profile image",
+    profileImageHasChanged: "Profile image has changed!",
 }
 
 const kz = {

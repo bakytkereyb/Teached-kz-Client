@@ -34,6 +34,7 @@ import HorizontalDivider from "../components/UI/Divider/HorizontalDivider";
 import Alert from "../components/UI/Alert/Alert";
 import FileUploaderService from "../services/FileUploaderService";
 import ImageUploadService from "../services/ImageUploadService";
+import {NotificationManager} from "react-notifications";
 
 const Settings = () => {
     const dispatch = useDispatch();
@@ -41,6 +42,7 @@ const Settings = () => {
     const editUser = useSelector(state => state.user.editUser);
     const user = useSelector(state => state.user.user);
     const [file, setFile] = useState(null);
+    const [imageSrc, setImageSrc] = useState(null);
 
     const navigate = useNavigate();
 
@@ -73,6 +75,17 @@ const Settings = () => {
         await dispatch(resetEditUser());
     }
 
+    useEffect(() => {
+        const reader = new FileReader();
+        reader.onload = () => {
+            setImageSrc(reader.result);
+        };
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+
+    }, [file])
+
     async function onSubmitProfileImage(e) {
         e.preventDefault();
         await FileUploaderService.uploadFile(file)
@@ -83,6 +96,7 @@ const Settings = () => {
             })
             .finally(() => {
                 setFile(null);
+                NotificationManager.success(lan.profileImageHasChanged);
             });
     }
 
@@ -274,6 +288,15 @@ const Settings = () => {
                     <TabItem item={2}>
                         <FormBlock onSubmit={onSubmitProfileImage}>
                             <Text style={{textTransform: "uppercase", fontSize: "1rem"}}>{lan.changeProfileImage}</Text>
+                            {file &&
+                                <img
+                                    src={imageSrc}
+                                    style={{
+                                        width: "200px",
+                                        height: "200px",
+                                        objectFit: "cover"
+                                    }}
+                                    alt="Image Preview"/>}
                             <FormInput
                                 labelText={lan.profileImage}
                                 onChange={setFile}
