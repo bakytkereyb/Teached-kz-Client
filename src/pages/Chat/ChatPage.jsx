@@ -21,6 +21,8 @@ import ChatService from '../../services/ChatService';
 const {Content} = Layout;
 
 const ChatPage = () => {
+
+
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const {id} = useParams();
@@ -54,7 +56,7 @@ const ChatPage = () => {
                     function (greeting) {
                         let message = JSON.parse(greeting.body);
                         console.log(message);
-                        setMessageList([...messageList, message]);
+                        setMessageList(oldList => [...oldList, message]);
                     },
                     {
                         'chatId': `${id}`,
@@ -63,7 +65,7 @@ const ChatPage = () => {
                 );
             });
         }
-    }, [stompClient])
+    }, [stompClient]);
 
     //------------------------
 
@@ -73,14 +75,18 @@ const ChatPage = () => {
         setMessage(e.target.value);
     };
 
-    function handleSendMessage(e) {
+    async function handleSendMessage(e) {
         e.preventDefault();
-        ChatService.sendMessageToChat(id, message)
-            .then((r) => {
-                setMessageList([...messageList, r.data]);
-            })
+        await ChatService.sendMessageToChat(id, message);
         setMessage('');
     }
+
+    const myRef = useRef(null);
+    useEffect(() => {
+        if (myRef.current) {
+            myRef.current.scrollTop = myRef.current.scrollHeight;
+        }
+    }, [messageList])
 
     if (isLoading) {
         return (
@@ -106,6 +112,9 @@ const ChatPage = () => {
     }
 
 
+
+
+
     return (
         <div style={{backgroundColor: clrs.whiter, width: '100%', minHeight: '100vh'}}>
             <HeaderPlatform/>
@@ -118,13 +127,14 @@ const ChatPage = () => {
                     padding: "20px",
                     width: "calc(100% - 40px)",
                 }}>
-                    <FlexBlock style={{overflowY: "auto", height: "100%", backgroundColor: clrs.whiter,}}>
+                    <div ></div>
+                    <FlexBlock ref={myRef} style={{overflowY: "auto", height: "100%", backgroundColor: clrs.whiter,}}>
                         <List
                             style={{
                                 width: "calc(100% - 30px)",
                                 padding: "25px 15px",
                                 height: "100%"
-                        }}
+                            }}
                             dataSource={messageList}
                             renderItem={(item) => (
                                 item.user.id === user.id ?

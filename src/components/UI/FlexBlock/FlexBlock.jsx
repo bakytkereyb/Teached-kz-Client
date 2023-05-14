@@ -1,12 +1,10 @@
-import React from 'react';
+import React, {forwardRef} from 'react';
 import classes from './FlexBlock.module.css';
 
-const FlexBlock = ({children, style}) => {
-    return (
-        <div className={classes.flexBlock} style={style}>
-            {children}
-        </div>
-    );
-};
+const FlexBlock = forwardRef((props, ref) => (
+    <div ref={ref} className={classes.flexBlock} style={props.style}>
+        {props.children}
+    </div>
+));
 
 export default FlexBlock;
