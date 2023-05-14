@@ -35,6 +35,7 @@ import PostCoursePage from './pages/PostCourse/PostCoursePage';
 import MyPostCourses from './pages/MyPostCourses/MyPostCourses';
 import TrainingCourses from "./pages/TrainingCourses/TrainingCourses";
 import Tasks from "./pages/Tasks/Tasks";
+import ChatPage from './pages/Chat/ChatPage';
 
 function App() {
     const {user, isLoading} = useSelector(state => state.user);
@@ -61,6 +62,7 @@ function App() {
                 <Route path='/courses/my' element={user !== null ? <MyCoursesPage/> : <Navigate to="/login" replace />}/>
                 <Route path='/post-courses/my' element={user !== null ? <MyPostCourses/> : <Navigate to="/login" replace />}/>
                 <Route path='/chats' element={user !== null ? <ChatList/> : <Navigate to="/login" replace/>}/>
+                <Route path='/chat/:id' element={user !== null ? <ChatPage/> : <Navigate to="/login" replace/>}/>
                 <Route path='/tasks' element={user !== null ? <Tasks/> : <Navigate to="/login" replace/>}/>
                 <Route path='/calendar' element={user !== null ? <CalendarPage/> : <Navigate to="/login" replace/>}/>
                 <Route path='/competence-map'
