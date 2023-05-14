@@ -26,6 +26,9 @@ import taskFiles from "./slices/taskFilesSlice";
 import courseStudentsViewController from "./slices/tableController/CourseStudentsViewController";
 import trainingCourses from "./slices/trainingCoursesSlice"
 import trainingCoursesTableController from "./slices/tableController/TrainingCoursesTableController"
+import chats from "./slices/chat/chatsSlice"
+import chat from "./slices/chat/chatSlice"
+import myChatsTableController from './slices/tableController/MyChatsTableController';
 
 export default configureStore({
     reducer: {
@@ -56,5 +59,8 @@ export default configureStore({
         postCourseStudents: postCourseStudents,
         trainingCourses: trainingCourses,
         trainingCoursesTableController: trainingCoursesTableController,
+        myChatsTableController: myChatsTableController,
+        chats: chats,
+        chat: chat,
     },
 });
