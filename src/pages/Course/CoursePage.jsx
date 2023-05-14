@@ -11,7 +11,6 @@ import BigText from '../../components/UI/BigText/BigText';
 import {lan} from '../../constants/lan';
 import CourseViewInfo from './CourseView/CourseViewInfo';
 import CourseViewButtons from './CourseView/CourseViewButtons';
-import CourseViewLessons from './CourseView/CourseViewLessons';
 import CourseLessons from './CourseLessons/CourseLessons';
 import CourseViewStudents from './CourseView/CourseViewStudents';
 import CourseTasks from './CourseTasks/CourseTasks';

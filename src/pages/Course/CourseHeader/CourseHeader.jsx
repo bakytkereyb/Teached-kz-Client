@@ -4,6 +4,7 @@ import Text from "../../../components/UI/Text/Text";
 import cl from "./CourseHeader.module.css"
 import {useSelector} from "react-redux";
 import {lan} from '../../../constants/lan';
+import {API_BASE_URL} from "../../../constants/api";
 
 const CourseHeader = () => {
 
@@ -17,7 +18,7 @@ const CourseHeader = () => {
     return (
         <div className={cl.courseHeader}>
             <div className={cl.image}>
-                <img src={teacher} alt="avatar"/>
+                <img src={`${API_BASE_URL}/api/file/get/${course.trainer?.imageFileName}`} alt="avatar"/>
             </div>
             <div className={cl.courseHeaderTextDiv}>
                 <Text style={{fontWeight: 400, fontSize: '1rem'}}>{lan.trainer}</Text>
