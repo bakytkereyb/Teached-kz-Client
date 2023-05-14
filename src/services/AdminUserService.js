@@ -18,6 +18,20 @@ AdminUserService.getAllUsers = async function (page, limit) {
     return { data, hasMore };
 }
 
+AdminUserService.getAllUsersByName = async function (name, page, limit) {
+    const response = await axios({
+        method: "get",
+        url: API_BASE_URL + `/api/user/search?page=${page - 1}&limit=${limit}&name=${name}`,
+        headers: {
+            "Content-Type": "application/json",
+            'Authorization': `${localStorage.getItem(ACCESS_TOKEN)}`,
+        }
+    });
+    const data = response.data.list;
+    const hasMore = response.data.hasMore;
+    return { data, hasMore };
+}
+
 AdminUserService.createAdmin = async function (username, firstName, secondName, password, email) {
 
     let data = new FormData();

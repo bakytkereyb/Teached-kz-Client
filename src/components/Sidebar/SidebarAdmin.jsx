@@ -8,6 +8,8 @@ import profile from '../../images/profile.svg';
 import logout from '../../images/logout.svg'
 import {lan} from "../../constants/lan";
 import FormSelect from '../Form/FormSelect';
+import chats from '../../images/comment.svg';
+import setting from '../../images/settings.svg';
 
 const SidebarAdmin = ({isOpen}) => {
     const changeLang = (selectedLang) => {
@@ -29,6 +31,8 @@ const SidebarAdmin = ({isOpen}) => {
             <SidebarItem to={"/admin/course"} icon={course} text={lan.courses}/>
             <SidebarItem to={"/admin/post-course"} icon={course} text={lan.postCourses}/>
             <SidebarItem to={"/admin/users"} icon={profile} text={lan.users}/>
+            <SidebarItem to={"/chats"} icon={chats} text={lan.chats}/>
+            <SidebarItem to={"/settings"} icon={setting} text={lan.setting}/>
             <SidebarItem to={"/logout"} icon={logout} text={lan.logout}/>
             <br/>
             <FormSelect

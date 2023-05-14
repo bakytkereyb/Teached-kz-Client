@@ -24,6 +24,18 @@ export const getAllUsers = createAsyncThunk(
     },
 );
 
+export const getAllUsersByName = createAsyncThunk(
+    'getAllUsersByName',
+    async ({ page, limit, name }, { getState, rejectWithValue, dispatch }) => {
+        try {
+            const response = await AdminUserService.getAllUsersByName(name, page, limit);
+            return response;
+        } catch (error) {
+            return rejectWithValue(error?.response?.data);
+        }
+    },
+);
+
 export const createUserAdmin = createAsyncThunk(
     'createUserAdmin',
     async ({username, firstName, secondName, password, email}, {
@@ -59,7 +71,21 @@ export const createUserTrainer = createAsyncThunk(
 const adminUserSlice = createSlice({
     name: 'adminUserSlice',
     initialState,
-    reducers: {},
+    reducers: {
+        setLoading: (state, action) => {
+            state.isLoading = action.payload;
+        },
+        resetState: (state) => {
+            state.users = [];
+            state.isLoading = false;
+            state.error = null;
+            state.hasMore = false;
+            state.isLoadingCreateAdmin = false;
+            state.errorCreateAdmin = null;
+            state.isLoadingCreateTrainer = false;
+            state.errorCreateTrainer = null;
+        },
+    },
     extraReducers: (builder) => {
         builder
             .addCase(getAllUsers.pending, (state) => {
@@ -74,6 +100,21 @@ const adminUserSlice = createSlice({
                 state.hasMore = action.payload.hasMore;
             })
             .addCase(getAllUsers.rejected, (state, action) => {
+                state.isLoading = false;
+                state.error = action.payload;
+            })
+            .addCase(getAllUsersByName.pending, (state) => {
+                state.isLoading = true;
+                state.error = null;
+                state.hasMore = false;
+                state.users = [];
+            })
+            .addCase(getAllUsersByName.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.users = action.payload.data;
+                state.hasMore = action.payload.hasMore;
+            })
+            .addCase(getAllUsersByName.rejected, (state, action) => {
                 state.isLoading = false;
                 state.error = action.payload;
             })
@@ -102,6 +143,6 @@ const adminUserSlice = createSlice({
     }
 });
 
-export const {} = adminUserSlice.actions;
+export const {setLoading, resetState} = adminUserSlice.actions;
 
 export default adminUserSlice.reducer;

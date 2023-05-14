@@ -1,5 +1,5 @@
-import React, {useEffect, useRef, useState} from 'react';
-import {Button, Col, Input, Layout, List, Row} from 'antd';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
+import { Col, Layout, List, Row} from 'antd';
 import {clrs} from "../../constants/colors";
 import HeaderPlatform from "../../components/HeaderPlatform/HeaderPlatform";
 import Message from "./Message";
@@ -17,6 +17,9 @@ import {getChatById} from '../../store/slices/chat/chatSlice';
 import BigText from '../../components/UI/BigText/BigText';
 import {lan} from '../../constants/lan';
 import ChatService from '../../services/ChatService';
+import FormBlock from '../../components/Form/FormBlock';
+import FormInput from '../../components/Form/FormInput';
+import Button from '../../components/UI/Button/Button';
 
 const {Content} = Layout;
 
@@ -65,7 +68,7 @@ const ChatPage = () => {
                 );
             });
         }
-    }, [stompClient]);
+    }, [stompClient, navigate]);
 
     //------------------------
 
@@ -112,6 +115,9 @@ const ChatPage = () => {
     }
 
 
+
+
+
     return (
         <div style={{backgroundColor: clrs.whiter, width: '100%', minHeight: '100vh'}}>
             <HeaderPlatform/>
@@ -124,7 +130,6 @@ const ChatPage = () => {
                     padding: "20px",
                     width: "calc(100% - 40px)",
                 }}>
-                    <div></div>
                     <FlexBlock ref={myRef} style={{overflowY: "auto", height: "100%", backgroundColor: clrs.whiter,}}>
                         <List
                             style={{
@@ -179,22 +184,26 @@ const ChatPage = () => {
                     </FlexBlock>
 
                     <FlexBlock>
-                        <form style={{
-                            display: 'flex',
+                        <FormBlock style={{
+                            flexDirection: 'row',
                             gap: "20px",
-                            width: '100%'
+                            width: '100%',
+                            alignItems: "flex-end",
                         }} onSubmit={handleSendMessage}>
-                            <Input
+                            <FormInput
+                                labelText={lan.message}
+                                id={"message"}
+                                type={"text"}
+                                required={true}
                                 value={message}
-                                onChange={handleMessageChange}
-                                placeholder="Type your message"
-                                style={{flex: 1, marginRight: '16px'}}
+                                onChange={setMessage}
+                                maxWidth={"100%"}
+                                withoutLabel={true}
                             />
                             <Button type="primary">
-                                Send
+                                {lan.send}
                             </Button>
-                        </form>
-
+                        </FormBlock>
                     </FlexBlock>
                 </FlexBlock>
 

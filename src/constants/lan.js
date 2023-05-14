@@ -65,6 +65,7 @@ const eng = {
     coursesPre: "Pre-courses",
     competenceMap: "Competence Map",
     myTasks: "My Tasks",
+    chat: "Chat",
     chats: "Chats",
     calendar: "Calendar",
     setting: "Settings",
@@ -218,6 +219,8 @@ const eng = {
     profileImage: "Profile image",
     profileImageHasChanged: "Profile image has changed!",
     confirmationMessageIsSent: "Confirmation message has been sent",
+    search: "Search",
+    message: "Message",
 }
 
 const kz = {
