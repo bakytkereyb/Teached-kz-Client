@@ -3,30 +3,26 @@ import cl from "./Course.module.css"
 import Text from "../UI/Text/Text";
 import arrowRight from "../../images/arrow-circle-right.svg"
 import {lan} from "../../constants/lan";
+import {LocalName} from '../../utils/LocalName';
+import {useNavigate} from 'react-router-dom';
 
-const Course = ({taskDone, taskTotal, pre}) => {
+const Course = ({course}) => {
 
-    if(pre) {
-        return (
-            <div className={cl.card}>
-                <div className={cl.top__card}>
-                    <Text>Course 1</Text>
-                    <img src={arrowRight} alt=""/>
-                </div>
-                <br/>
-            </div>
-        );
+    const navigate = useNavigate();
+
+    function getPercentage(num, max) {
+        return (num / max) * 100;
     }
 
     return (
-        <div className={cl.card}>
+        <div onClick={() => {navigate(`/course/${course.id}`)}} className={cl.card} style={{cursor: "pointer"}}>
             <div className={cl.top__card}>
-                <Text>Course 1</Text>
+                <Text>{LocalName.getName(course)}</Text>
                 <img src={arrowRight} alt=""/>
             </div>
             <br/>
-            <Text>{lan.taskDone} : 25/50</Text>
-            <progress className={cl.progressBar} value={25} max={50}/>
+            <Text>{lan.progress} : {getPercentage(course.progress, course.maxProgress)} %</Text>
+            <progress className={cl.progressBar} value={course.progress} max={course.maxProgress}/>
         </div>
     );
 };

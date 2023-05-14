@@ -10,22 +10,30 @@ import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
 import MiniCalendar from "./MiniCalendar";
 import {getAllTasks} from "../../store/slices/tasksSlice";
+import {getAllMyCourses} from '../../store/slices/coursesSlice';
 
 const DashboardPage = () => {
         const [isLoading, setLoading] = useState(false);
         const {admin} = useSelector(state => state.user.user);
 
+        const courses = useSelector(state => state.courses);
+
         const dispatch = useDispatch();
         const navigate = useNavigate();
+
+        useEffect(() => {
+            console.log(courses);
+        }, [courses])
 
         useEffect(() => {
             if (admin) {
                 navigate('/admin/my');
             }
             dispatch(getAllTasks())
+            dispatch(getAllMyCourses({ page: 1, limit: 5 }));
         }, [admin, navigate])
 
-        if (isLoading) {
+        if (courses.isLoading) {
             return (
                 <div style={{backgroundColor: clrs.whiter, width: "100%", minHeight: "100vh"}}>
                     <HeaderPlatform/>
@@ -51,12 +59,13 @@ const DashboardPage = () => {
                     <MyMasonry>
                         <MiniCalendar/>
                         <MyTasks/>
-                        <Course/>
-                        <Course/>
-                        {/*<Course/>*/}
-                        <Course pre={1}/>
-                        {/*<Course pre={1}/>*/}
-                        {/*<MyTasks/>*/}
+                        {
+                            courses.courses.map(course => {
+                                return (
+                                    <Course course={course} key={course.id}/>
+                                )
+                            })
+                        }
                     </MyMasonry>
                 </Block>
             </div>
