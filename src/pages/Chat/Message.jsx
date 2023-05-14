@@ -6,7 +6,7 @@ const Message = ({ content, sender, timestamp }) => {
         <div className={style.message}>
             <div className={style.sender}>{sender}</div>
             <div className={style.content}>{content}</div>
-            <div className={style.timestamp}>{timestamp}</div>
+            <div className={style.timestamp}>{new Date(timestamp).toLocaleString()}</div>
         </div>
     );
 };
