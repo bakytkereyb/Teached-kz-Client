@@ -1,8 +1,9 @@
 .message {
     background-color: white;
     padding: 10px;
-    border-radius: 1.125rem 1.125rem 1.125rem 0;
+    border-radius: 1.125rem;
     margin-bottom: 10px;
+    max-width: 500px;
 }
 
 .sender {
@@ -12,6 +13,7 @@
 
 .content {
     margin-bottom: 4px;
+    word-wrap: break-word;
 }
 
 .timestamp {

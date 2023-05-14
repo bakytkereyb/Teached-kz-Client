@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {Button, Col, Input, Layout, List, Row} from 'antd';
 import {clrs} from "../../constants/colors";
 import HeaderPlatform from "../../components/HeaderPlatform/HeaderPlatform";
@@ -112,9 +112,6 @@ const ChatPage = () => {
     }
 
 
-
-
-
     return (
         <div style={{backgroundColor: clrs.whiter, width: '100%', minHeight: '100vh'}}>
             <HeaderPlatform/>
@@ -127,7 +124,7 @@ const ChatPage = () => {
                     padding: "20px",
                     width: "calc(100% - 40px)",
                 }}>
-                    <div ></div>
+                    <div></div>
                     <FlexBlock ref={myRef} style={{overflowY: "auto", height: "100%", backgroundColor: clrs.whiter,}}>
                         <List
                             style={{
@@ -138,7 +135,7 @@ const ChatPage = () => {
                             dataSource={messageList}
                             renderItem={(item) => (
                                 item.user.id === user.id ?
-                                    <Row justify='end' align="bottom">
+                                    <Row justify='end' align="bottom" gutter={8}>
                                         <Col>
                                             <Message
                                                 sender={item.user.username}
@@ -147,13 +144,27 @@ const ChatPage = () => {
                                             />
                                         </Col>
                                         <Col>
-                                            <img src={icon} alt="" style={{ width: '40px' }} />
+                                            <img src={user.imageFileName ? `${API_BASE_URL}/api/file/get/${user?.imageFileName}` : icon} alt=""
+                                                 style={{
+                                                     width: '40px',
+                                                     height: '40px',
+                                                     borderRadius: "50%",
+                                                     objectFit: "cover",
+                                                 }}/>
                                         </Col>
                                     </Row>
                                     :
-                                    <Row justify='start' align="bottom">
+                                    <Row justify='start' align="bottom" gutter={8}>
                                         <Col>
-                                            <img src={icon} alt="" style={{ width: '40px' }} />
+                                            <img
+                                                src={item.user.imageFileName ? `${API_BASE_URL}/api/file/get/${item.user?.imageFileName}` : icon}
+                                                alt=""
+                                                style={{
+                                                    width: '40px',
+                                                    height: '40px',
+                                                    borderRadius: "50%",
+                                                    objectFit: "cover",
+                                                }}/>
                                         </Col>
                                         <Col>
                                             <Message
