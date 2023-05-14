@@ -114,6 +114,7 @@ const eng = {
     disciplineNames: "Disciplines",
     userNotFound: "User not found",
     courseNotFound: "Course not found",
+    chatNotFound: "Chat not found",
     postCourseNotFound: "Post-Course not found",
     taskNotFound: "Task not found",
     courseFORBIDDEN: "You do not have access to this course",
