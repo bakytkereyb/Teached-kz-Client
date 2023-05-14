@@ -18,8 +18,8 @@ const MyTasks = () => {
         <div className={cl.card}>
             <div className={cl.card__header}>
                 <div style={{display: "flex", flexDirection: 'row', gap: '6px'}}>
-                    <Text style={{fontWeight: '800'}}>My Tasks</Text>
-                    <Text style={{color: '#65676D'}}>(04)</Text>
+                    <Text style={{fontWeight: '800'}}>{lan.myTasks}</Text>
+                    <Text style={{color: '#65676D'}}>({filteredTasks.length})</Text>
                 </div>
                 <img style={{cursor: 'pointer'}} src={arrowRight} onClick={() => navigate("/tasks")} alt={lan.tasks}/>
             </div>
