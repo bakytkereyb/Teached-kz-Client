@@ -36,6 +36,8 @@ import MyPostCourses from './pages/MyPostCourses/MyPostCourses';
 import TrainingCourses from "./pages/TrainingCourses/TrainingCourses";
 import Tasks from "./pages/Tasks/Tasks";
 import ChatPage from './pages/Chat/ChatPage';
+import Application from "./pages/Applications/Application";
+import AdminApplication from "./pages/admin/AdminApplications/AdminApplication";
 
 function App() {
     const {user, isLoading} = useSelector(state => state.user);
@@ -64,6 +66,7 @@ function App() {
                 <Route path='/chats' element={user !== null ? <ChatList/> : <Navigate to="/login" replace/>}/>
                 <Route path='/chat/:id' element={user !== null ? <ChatPage/> : <Navigate to="/login" replace/>}/>
                 <Route path='/tasks' element={user !== null ? <Tasks/> : <Navigate to="/login" replace/>}/>
+                <Route path='/application' element={user !== null ? <Application/> : <Navigate to="/login" replace/>}/>
                 <Route path='/calendar' element={user !== null ? <CalendarPage/> : <Navigate to="/login" replace/>}/>
                 <Route path='/competence-map'
                        element={user !== null ? <CompetenceMap/> : <Navigate to="/login" replace />}/>
@@ -107,6 +110,7 @@ function App() {
                     <Route path='course' element={user !== null && user?.admin ? <AdminCourse/> : <Navigate to="/login" replace /> }/>
                     <Route path='post-course' element={user !== null && user?.admin ? <AdminPostCourse/> : <Navigate to="/login" replace /> }/>
                     <Route path='users' element={user !== null && user?.admin ? <AdminUsers/> : <Navigate to="/login" replace /> }/>
+                    <Route path='applications' element={user !== null && user?.admin ? <AdminApplication/> : <Navigate to="/login" replace /> }/>
                 </Route>
                 <Route path='*' element={<Error/>}/>
                 <Route path='/logout' element={<Logout/>}/>

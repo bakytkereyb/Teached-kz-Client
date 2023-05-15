@@ -6,6 +6,7 @@ import dashboard from '../../images/dashboard.svg';
 import course from '../../images/courses.svg';
 import profile from '../../images/profile.svg';
 import logout from '../../images/logout.svg'
+import task from '../../images/tasks.svg'
 import {lan} from "../../constants/lan";
 import FormSelect from '../Form/FormSelect';
 import chats from '../../images/comment.svg';
@@ -31,6 +32,7 @@ const SidebarAdmin = ({isOpen}) => {
             <SidebarItem to={"/admin/course"} icon={course} text={lan.courses}/>
             <SidebarItem to={"/admin/post-course"} icon={course} text={lan.postCourses}/>
             <SidebarItem to={"/admin/users"} icon={profile} text={lan.users}/>
+            <SidebarItem to={"/admin/applications"} icon={task} text={lan.applications}/>
             <SidebarItem to={"/chats"} icon={chats} text={lan.chats}/>
             <SidebarItem to={"/settings"} icon={setting} text={lan.setting}/>
             <SidebarItem isRed={true}  to={"/logout"} icon={logout} text={lan.logout}/>

@@ -19,7 +19,7 @@ const FormSelect = ({labelText, values, onChange, id, required, maxWidth, paddin
                 <option disabled selected={selectedValue?.value === null || selectedValue?.value === ''} value=""></option>
                 {values.map((value) => {
                     if (selectedValue?.value != null && selectedValue?.value !== '') {
-                        if (value.value.includes(selectedValue.value)) {
+                        if (value.value === (selectedValue.value)) {
                             return <option label={value.label} selected={true} key={labelText + new Date() + value.value} value={value.value}>{value.label}</option>
                         }
                     }

@@ -22,6 +22,8 @@ import postCourse from "./slices/postCourse/postCourseSlice"
 import chatUsersTableController from "./slices/tableController/ChatUsersTableController";
 import task from "./slices/taskSlice";
 import tasks from "./slices/tasksSlice";
+import applications from "./slices/applicationSlice"
+import adminApplications from "./slices/admin/adminApplicationSlice"
 import taskFiles from "./slices/taskFilesSlice";
 import courseStudentsViewController from "./slices/tableController/CourseStudentsViewController";
 import trainingCourses from "./slices/trainingCoursesSlice"
@@ -29,6 +31,8 @@ import trainingCoursesTableController from "./slices/tableController/TrainingCou
 import chats from "./slices/chat/chatsSlice"
 import chat from "./slices/chat/chatSlice"
 import myChatsTableController from './slices/tableController/MyChatsTableController';
+import applicationsTableController from "./slices/tableController/ApplicationsTableController";
+import adminApplicationsTableController from "./slices/tableController/AdminApplicationsTableController";
 
 export default configureStore({
     reducer: {
@@ -59,6 +63,10 @@ export default configureStore({
         postCourseStudents: postCourseStudents,
         trainingCourses: trainingCourses,
         trainingCoursesTableController: trainingCoursesTableController,
+        applications: applications,
+        adminApplications: adminApplications,
+        applicationsTableController: applicationsTableController,
+        adminApplicationsTableController: adminApplicationsTableController,
         myChatsTableController: myChatsTableController,
         chats: chats,
         chat: chat,

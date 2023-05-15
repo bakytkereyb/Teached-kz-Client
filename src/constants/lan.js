@@ -225,6 +225,9 @@ const eng = {
     confirmationMessageIsSent: "Confirmation message has been sent",
     search: "Search",
     message: "Message",
+    title: "Title",
+    body: "Body",
+    changeStatus: "Change status",
 }
 
 const kz = {

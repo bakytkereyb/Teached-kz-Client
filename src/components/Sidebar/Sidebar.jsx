@@ -41,6 +41,7 @@ const Sidebar = ({isOpen}) => {
             <SidebarItem to={"/calendar"} icon={calendar} text={lan.calendar}/>
             <SidebarItem to={"/post-courses"} icon={courses} text={lan.postCourses}/>
             <SidebarItem to={"/post-courses/my"} icon={courses} text={lan.postCoursesMy}/>
+            <SidebarItem to={"/application"} icon={tasks} text={lan.application}/>
             <SidebarItem to={"/settings"} icon={setting} text={lan.setting}/>
             <SidebarItem isRed={true} to={"/logout"} icon={logout} text={lan.logout}/>
             <br/>
