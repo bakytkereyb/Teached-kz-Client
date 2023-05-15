@@ -5,7 +5,7 @@ import Block from "../../components/UI/Block/Block";
 import Text from "../../components/UI/Text/Text";
 import {lan} from "../../constants/lan";
 import FlexBlock from "../../components/UI/FlexBlock/FlexBlock";
-import {Table} from "antd";
+import {Badge, Table} from 'antd';
 import {useDispatch, useSelector} from "react-redux";
 import Card from "../../components/LoadingComponents/Card";
 import {useNavigate} from "react-router-dom";
@@ -19,6 +19,16 @@ const Tasks = () => {
 
     console.log(tasks)
 
+    const CustomTaskBadge = (status) => {
+        if (status === 'NOT_SUBMITTED') {
+            return <Badge text={lan.notSubmitted} status={'error'}/>
+        }
+        if (status === 'SUBMITTED') {
+            return <Badge text={lan.submitted} status={'warning'}/>
+        }
+        return <Badge text={lan.graded} status={'success'}/>
+    }
+
 
     useEffect(() => {
         dispatch(getAllTasks());
@@ -27,6 +37,23 @@ const Tasks = () => {
         {
             title: lan.taskName,
             render: (_, record) => <Text>{record.task.name}</Text>,
+        },
+        {
+            title: lan.deadline,
+            render: (_, record) => <Text>{new Date(record.task.deadline).toLocaleString()}</Text>,
+            width: '15%',
+        },
+        {
+            title: lan.status,
+            render: (_, record) => (
+                CustomTaskBadge(record.task.taskFiles.status)
+            ),
+            width: '15%',
+        },
+        {
+            title: lan.grade,
+            render: (_, record) => <Text>{record.task.taskFiles.grade}</Text>,
+            width: '10%',
         },
         {
             title: lan.actions,
