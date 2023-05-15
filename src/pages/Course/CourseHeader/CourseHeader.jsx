@@ -12,7 +12,7 @@ const CourseHeader = () => {
     const {user} = useSelector(state => state.user);
 
     function getPercentage(num, max) {
-        return (num / max) * 100;
+        return ((num / max) * 100).toFixed(2);
     }
 
     return (

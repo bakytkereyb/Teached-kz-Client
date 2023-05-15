@@ -3,7 +3,7 @@ import {clrs} from "../../constants/colors";
 import HeaderPlatform from "../../components/HeaderPlatform/HeaderPlatform";
 import Block from "../../components/UI/Block/Block";
 import MyTasks from "./MyTasksCard/MyTasks";
-import Course from "../../components/CourseCard/Course";
+import Course from "./CourseCard/Course";
 import MyMasonry from "../../components/Masonry/MyMasonry";
 import Card from "../../components/LoadingComponents/Card";
 import {useDispatch, useSelector} from "react-redux";

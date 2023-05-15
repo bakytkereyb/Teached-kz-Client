@@ -1,9 +1,9 @@
 import React from 'react';
 import cl from "./Course.module.css"
-import Text from "../UI/Text/Text";
-import arrowRight from "../../images/arrow-circle-right.svg"
-import {lan} from "../../constants/lan";
-import {LocalName} from '../../utils/LocalName';
+import Text from "../../../components/UI/Text/Text";
+import arrowRight from "../../../images/arrow-circle-right.svg"
+import {lan} from "../../../constants/lan";
+import {LocalName} from '../../../utils/LocalName';
 import {useNavigate} from 'react-router-dom';
 
 const Course = ({course}) => {
@@ -11,7 +11,7 @@ const Course = ({course}) => {
     const navigate = useNavigate();
 
     function getPercentage(num, max) {
-        return (num / max) * 100;
+        return ((num / max) * 100).toFixed(2);
     }
 
     return (
