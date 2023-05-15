@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import FormBlock from "../../components/Form/FormBlock";
 import FormInput from "../../components/Form/FormInput";
 import {lan} from "../../constants/lan";
@@ -7,6 +7,7 @@ import Button from "../../components/UI/Button/Button";
 import {useDispatch} from "react-redux";
 import {createApplication} from "../../store/slices/applicationSlice";
 import {setTab} from "../../store/slices/tabBlock/tabBlockSlice";
+import FormTextField from '../../components/Form/FormTextField';
 
 const CreateApplication = () => {
     const [title, setTitle] = useState('');
@@ -33,12 +34,11 @@ const CreateApplication = () => {
                 required={true}
                 maxWidth={"100%"}
             />
-            <FormInput
+            <FormTextField
                 labelText={lan.body}
                 value={body}
                 onChange={setBody}
                 id={"body"}
-                type={"text"}
                 required={true}
                 maxWidth={"100%"}
             />
