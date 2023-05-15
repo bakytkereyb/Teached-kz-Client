@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
-import {getAllApplications} from "../../../store/slices/admin/adminApplicationSlice";
+import {getAllApplications, updateApplication} from "../../../store/slices/admin/adminApplicationSlice";
 import {changeCurrentPage} from "../../../store/slices/tableController/AdminApplicationsTableController";
 import FlexBlock from "../../../components/UI/FlexBlock/FlexBlock";
 import TableWithPagination from "../../../components/TableWithPagination/TableWithPagination";
@@ -13,6 +13,7 @@ import Text from "../../../components/UI/Text/Text";
 import {getApplicationById} from "../../../store/slices/applicationSlice";
 import Button from "../../../components/UI/Button/Button";
 import FormSelect from "../../../components/Form/FormSelect";
+import {NotificationManager} from "react-notifications";
 
 const AdminApplication = () => {
 
@@ -47,6 +48,23 @@ const AdminApplication = () => {
         dispatch(changeCurrentPage({page: page, pageSize: pageSize}));
     };
 
+    function getStatusString(status) {
+        if (status === 'APPROVED') {
+            return lan.approved
+        }
+        if (status === 'NOT_APPROVED') {
+            return lan.notApproved;
+        }
+        if (status === 'IN_PROGRESS') {
+            return lan.inProgress;
+        }
+        if (status === 'UNDER_CONSIDERATION') {
+            return lan.underConsideration;
+        }
+        return lan.awaiting
+    }
+
+
     const columns = [
         {
             title: lan.fullName,
@@ -63,7 +81,7 @@ const AdminApplication = () => {
         {
             title: lan.status,
             render: (_, record) => (
-                <Text normalWeight>{record.status}</Text>
+                <Text normalWeight>{getStatusString(record.status)}</Text>
             ),
             width: '20%',
         },
@@ -80,7 +98,12 @@ const AdminApplication = () => {
 
     async function handleOnSubmit(e) {
         e.preventDefault();
-        console.log(applicationStatus)
+        if(applicationStatus && selectedApplication) {
+            await dispatch(updateApplication({id: selectedApplication?.id, status: applicationStatus.value}))
+            NotificationManager.success(lan.statusChanged);
+            dispatch(getAllApplications({page: currentPage, limit: 5}));
+            dispatch(getApplicationById(selectedApplication?.id))
+        }
     }
 
     return (
@@ -114,11 +137,20 @@ const AdminApplication = () => {
                         flexDirection: "column",
                         alignItems: "flex-start",
                     }}>
-                        <Text default normalWeight><b>{lan.selectedStudent}:</b> {selectedApplication?.user.fullName}
-                        </Text>
+                        <FlexBlock style={{
+                            justifyContent: "flex-start",
+                            alignItems: "center"
+                        }}>
+                            <Text default normalWeight><b>{lan.selectedStudent}:</b> {selectedApplication?.user.fullName}
+                            </Text>
+                            <Text onClick={() => {
+                                navigate(`/profile/${selectedApplication?.user.username}`)
+                            }} type={"button"}>{lan.profile}</Text>
+                        </FlexBlock>
+
                         <Text default normalWeight><b>{lan.title}:</b> {selectedApplication?.title}</Text>
                         <Text default normalWeight><b>{lan.body}:</b> {selectedApplication?.body}</Text>
-                        <Text default normalWeight><b>{lan.status}:</b> {selectedApplication?.status}</Text>
+                        <Text default normalWeight><b>{lan.status}:</b> {getStatusString(selectedApplication?.status)}</Text>
                         <FormSelect
                             labelText={lan.status}
                             values={[
