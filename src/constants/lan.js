@@ -228,6 +228,12 @@ const eng = {
     title: "Title",
     body: "Body",
     changeStatus: "Change status",
+    statusChanged: "Status changed!",
+    approved: "Approved",
+    notApproved: "Not approved",
+    underConsideration: "Under consideration",
+    awaiting: "Awaiting",
+
 }
 
 const kz = {
