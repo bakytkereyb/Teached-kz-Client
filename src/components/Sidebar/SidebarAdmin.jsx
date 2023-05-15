@@ -33,7 +33,7 @@ const SidebarAdmin = ({isOpen}) => {
             <SidebarItem to={"/admin/users"} icon={profile} text={lan.users}/>
             <SidebarItem to={"/chats"} icon={chats} text={lan.chats}/>
             <SidebarItem to={"/settings"} icon={setting} text={lan.setting}/>
-            <SidebarItem to={"/logout"} icon={logout} text={lan.logout}/>
+            <SidebarItem isRed={true}  to={"/logout"} icon={logout} text={lan.logout}/>
             <br/>
             <FormSelect
                 labelText={"Язык"}

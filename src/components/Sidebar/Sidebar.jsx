@@ -42,7 +42,7 @@ const Sidebar = ({isOpen}) => {
             <SidebarItem to={"/post-courses"} icon={courses} text={lan.postCourses}/>
             <SidebarItem to={"/post-courses/my"} icon={courses} text={lan.postCoursesMy}/>
             <SidebarItem to={"/settings"} icon={setting} text={lan.setting}/>
-            <SidebarItem to={"/logout"} icon={logout} text={lan.logout}/>
+            <SidebarItem isRed={true} to={"/logout"} icon={logout} text={lan.logout}/>
             <br/>
             <FormSelect
                 labelText={"Язык"}

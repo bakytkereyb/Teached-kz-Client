@@ -3,7 +3,7 @@
     top: 90px;
     left: -300px;
     width: 275px;
-    height: calc(100vh - 90px - 50px);
+    height: calc(100vh - 90px - 60px);
     padding: 25px 0;
     background: white;
     z-index: 9999;
@@ -62,4 +62,14 @@
 .itemIcon img {
     max-width: 100%;
     max-height: 100%;
+}
+
+.itemRed {
+    background-color: #153C6B !important;
+    color: white !important;
+    border-right: 5px solid #E5B600 !important;
+}
+.itemRed:hover {
+    transition: 0.3s;
+    background: #2d2d2d !important;
 }
