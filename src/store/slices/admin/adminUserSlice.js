@@ -10,6 +10,8 @@ let initialState = {
     errorCreateAdmin: null,
     isLoadingCreateTrainer: false,
     errorCreateTrainer: null,
+    isLoadingChangeRole: false,
+    errorChangeRole: null,
 }
 
 export const getAllUsers = createAsyncThunk(
@@ -68,6 +70,23 @@ export const createUserTrainer = createAsyncThunk(
         }
     },
 );
+
+export const changeUserRole = createAsyncThunk(
+    'changeUserRole',
+    async ({id, roleName}, {
+        getState,
+        rejectWithValue,
+        dispatch
+    }) => {
+        try {
+            const response = await AdminUserService.changeUserRole(id, roleName);
+            return response?.data;
+        } catch (error) {
+            return rejectWithValue(error?.response?.data);
+        }
+    },
+);
+
 const adminUserSlice = createSlice({
     name: 'adminUserSlice',
     initialState,
@@ -139,6 +158,17 @@ const adminUserSlice = createSlice({
             .addCase(createUserTrainer.rejected, (state, action) => {
                 state.isLoadingCreateTrainer = false;
                 state.errorCreateTrainer = action.payload;
+            })
+            .addCase(changeUserRole.pending, (state) => {
+                state.isLoadingChangeRole = true;
+                state.errorChangeRole = null;
+            })
+            .addCase(changeUserRole.fulfilled, (state, action) => {
+                state.isLoadingChangeRole = false;
+            })
+            .addCase(changeUserRole.rejected, (state, action) => {
+                state.isLoadingChangeRole = false;
+                state.errorChangeRole = action.payload;
             })
     }
 });

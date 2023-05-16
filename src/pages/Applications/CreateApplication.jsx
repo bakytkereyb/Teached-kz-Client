@@ -1,13 +1,13 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import FormBlock from "../../components/Form/FormBlock";
 import FormInput from "../../components/Form/FormInput";
 import {lan} from "../../constants/lan";
-import FormSelect from "../../components/Form/FormSelect";
 import Button from "../../components/UI/Button/Button";
 import {useDispatch} from "react-redux";
 import {createApplication} from "../../store/slices/applicationSlice";
 import {setTab} from "../../store/slices/tabBlock/tabBlockSlice";
 import FormTextField from '../../components/Form/FormTextField';
+import {NotificationManager} from "react-notifications";
 
 const CreateApplication = () => {
     const [title, setTitle] = useState('');
@@ -16,11 +16,17 @@ const CreateApplication = () => {
 
     async function handleOnSubmit(e) {
         e.preventDefault();
-        await dispatch(createApplication({
-            title: title,
-            body: body
-        }))
-        await dispatch(setTab(1));
+        try {
+            await dispatch(createApplication({
+                title: title,
+                body: body
+            }))
+            NotificationManager.success(lan.applicationSuccessCreated)
+            await dispatch(setTab(1));
+        } catch (e) {
+            NotificationManager.error(lan.applicationErrorCreated)
+        }
+
     }
 
     return (

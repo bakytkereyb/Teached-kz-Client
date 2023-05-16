@@ -73,5 +73,20 @@ AdminUserService.createTrainer = async function (username, firstName, secondName
     });
 }
 
+AdminUserService.changeUserRole = async function (id, roleName) {
+    let data = new FormData();
+    data.append("roleName", roleName);
+
+    return axios({
+        method: "patch",
+        url: API_BASE_URL + `/api/user/${id}/role/add`,
+        data: data,
+        headers: {
+            "Content-Type": "multipart/form-data",
+            'Authorization': `${localStorage.getItem(ACCESS_TOKEN)}`,
+        }
+    });
+}
+
 
 export default AdminUserService;

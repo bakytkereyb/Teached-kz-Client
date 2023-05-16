@@ -8,6 +8,7 @@ import FormSelect from "../../../../components/Form/FormSelect";
 import Button from "../../../../components/UI/Button/Button";
 import Text from "../../../../components/UI/Text/Text";
 import {createUserAdmin, createUserTrainer} from "../../../../store/slices/admin/adminUserSlice";
+import {NotificationManager} from "react-notifications";
 
 const AdminUserCreate = () => {
 
@@ -54,9 +55,10 @@ const AdminUserCreate = () => {
                 value: null,
                 label: null
             });
+            NotificationManager.success(lan.userSuccessCreated);
             await dispatch(setTab(0));
         } else {
-            alert("Password incorrect")
+            NotificationManager.error(lan.userErrorCreated);
         }
     }
 

@@ -1,16 +1,8 @@
-import forecasting from "../images/forecasting-model.svg";
-import concept from "../images/concept.svg";
-import rise from "../images/selection-raise-symbolic.svg";
-import course from "../images/e-learning-completed-course.svg";
-import practice from "../images/clipboard-alt.svg";
-import innovation from "../images/innovation.svg";
-import software from "../images/software-layout-header-complex2.svg";
-
 const ru = {
-    aboutUs:"О Нас",
-    team:"Команда",
-    publications:"Публикаций",
-    contacts:"Контакты",
+    aboutUs: "О Нас",
+    team: "Команда",
+    publications: "Публикаций",
+    contacts: "Контакты",
     aboutUs_forecasting: "Система прогнозирования и поддержки развития",
     aboutUs_concept: "Концепция развития методической компетентности",
     aboutUs_rise: "Курсы повышения квалификации для преподавателей",
@@ -47,10 +39,10 @@ const ru = {
 }
 
 const eng = {
-    aboutUs:"About Us",
-    team:"Team",
-    publications:"Publications",
-    contacts:"Contacts",
+    aboutUs: "About Us",
+    team: "Team",
+    publications: "Publications",
+    contacts: "Contacts",
     levelCompetence: "Do you want to know the level of your competence?",
     projectTeam: "Project Team",
     noAccount: "I don't have an account",
@@ -233,11 +225,21 @@ const eng = {
     notApproved: "Not approved",
     underConsideration: "Under consideration",
     awaiting: "Awaiting",
+    littleCourse: 'course',
+    littlePostCourse: 'post-course',
+    littleTrainingCourse: 'training',
+    applicationSuccessCreated: "Application created!",
+    userSuccessCreated: "User created!",
+    applicationErrorCreated: "Application creation failed!",
+    userErrorCreated: "User creation failed!",
+    roleChanged: "Role changed!",
+    roleChangeFail: "Role change failed!",
+    roleName: "Role name",
 
 }
 
 const kz = {
-    aboutUs:"Біз туралы",
+    aboutUs: "Біз туралы",
     education: "Білім",
     jobInformation: "Жұмыс туралы мәліметтер",
     generalInformation: "Жалпы мәліметтер",
