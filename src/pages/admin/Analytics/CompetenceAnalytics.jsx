@@ -39,6 +39,11 @@ const CompetenceAnalytics = () => {
                 yaxis: {
                     max:userAnalytics ? userAnalytics?.analytics?.total : 100,
                     min:0,
+                    labels: {
+                        formatter: function(val) {
+                            return val.toFixed(0)
+                        }
+                    },
                 },
             },
 
@@ -64,6 +69,11 @@ const CompetenceAnalytics = () => {
                     yaxis: {
                         max:userAnalytics ? userAnalytics?.analytics?.total : 100,
                         min:0,
+                        labels: {
+                            formatter: function(val) {
+                                return val.toFixed(0)
+                            }
+                        },
                     },
                 },
 
@@ -85,6 +95,11 @@ const CompetenceAnalytics = () => {
                     yaxis: {
                         max:userAnalytics ? userAnalytics?.analytics?.total : 100,
                         min:0,
+                        labels: {
+                            formatter: function(val) {
+                                return val.toFixed(0)
+                            }
+                        },
                     },
                 },
 
@@ -110,6 +125,11 @@ const CompetenceAnalytics = () => {
                 yaxis: {
                     max:userAnalytics ? userAnalytics?.analytics?.total : 100,
                     min:0,
+                    labels: {
+                        formatter: function(val) {
+                            return val.toFixed(0)
+                        }
+                    },
                 },
             },
 
