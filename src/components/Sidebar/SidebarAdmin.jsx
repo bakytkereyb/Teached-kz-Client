@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import classes from './Sidebar.module.css';
 import Logo from "../Logo/Logo";
 import SidebarItem from "./SidebarItem";
+import analytics from '../../images/bar-chart.svg';
 import dashboard from '../../images/dashboard.svg';
 import course from '../../images/courses.svg';
 import profile from '../../images/profile.svg';
@@ -28,6 +29,7 @@ const SidebarAdmin = ({isOpen}) => {
         <div className={classes.sidebar} opened={isOpen ? "true" : "false"}>
             <Logo/>
             <br/>
+            <SidebarItem to={"/admin/analytics"} icon={analytics} text={lan.analytics}/>
             <SidebarItem to={"/admin/my"} icon={dashboard} text={lan.competenceBank}/>
             <SidebarItem to={"/admin/course"} icon={course} text={lan.courses}/>
             <SidebarItem to={"/admin/post-course"} icon={course} text={lan.postCourses}/>

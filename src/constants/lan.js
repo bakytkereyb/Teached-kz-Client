@@ -235,6 +235,7 @@ const eng = {
     roleChanged: "Role changed!",
     roleChangeFail: "Role change failed!",
     roleName: "Role name",
+    analytics: "Analytics",
 
 }
 
