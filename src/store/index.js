@@ -33,6 +33,7 @@ import chat from "./slices/chat/chatSlice"
 import myChatsTableController from './slices/tableController/MyChatsTableController';
 import applicationsTableController from "./slices/tableController/ApplicationsTableController";
 import adminApplicationsTableController from "./slices/tableController/AdminApplicationsTableController";
+import analytics from "./slices/admin/analyticsSlice";
 
 export default configureStore({
     reducer: {
@@ -70,5 +71,6 @@ export default configureStore({
         myChatsTableController: myChatsTableController,
         chats: chats,
         chat: chat,
+        analytics: analytics,
     },
 });

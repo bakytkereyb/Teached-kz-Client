@@ -121,7 +121,9 @@ const eng = {
     middleName: "Middle name",
     fillAllFields: "Fill in all the fields",
     admin: "Admin",
+    admins: "Admins",
     trainer: "Trainer",
+    trainers: "Trainers",
     role: "Role",
     competenceBank: "Competence Bank",
     createComponentBank: "Create Component",
@@ -236,7 +238,12 @@ const eng = {
     roleChangeFail: "Role change failed!",
     roleName: "Role name",
     analytics: "Analytics",
-
+    totalNumberOfUsers: "Total number of users",
+    totalNumberOfStudents: "Total number of students",
+    numOfPassedUsersByQuestionnaires: "Number of passed users by questionnaires",
+    empty: "Empty",
+    passedStudents: "Passed students",
+    notPassedStudents: "Not passed students",
 }
 
 const kz = {

@@ -1,0 +1,8 @@
+.myPie {
+    width: 500px;
+}
+@media screen and (max-width: 500px) {
+    .myPie {
+        width: 300px;
+    }
+}

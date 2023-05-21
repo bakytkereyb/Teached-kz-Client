@@ -38,6 +38,7 @@ import Tasks from "./pages/Tasks/Tasks";
 import ChatPage from './pages/Chat/ChatPage';
 import Application from "./pages/Applications/Application";
 import AdminApplication from "./pages/admin/AdminApplications/AdminApplication";
+import AnalyticsPage from './pages/admin/Analytics/AnalyticsPage';
 
 function App() {
     const {user, isLoading} = useSelector(state => state.user);
@@ -111,6 +112,7 @@ function App() {
                     <Route path='post-course' element={user !== null && user?.admin ? <AdminPostCourse/> : <Navigate to="/login" replace /> }/>
                     <Route path='users' element={user !== null && user?.admin ? <AdminUsers/> : <Navigate to="/login" replace /> }/>
                     <Route path='applications' element={user !== null && user?.admin ? <AdminApplication/> : <Navigate to="/login" replace /> }/>
+                    <Route path='analytics' element={user !== null && user?.admin ? <AnalyticsPage/> : <Navigate to="/login" replace /> }/>
                 </Route>
                 <Route path='*' element={<Error/>}/>
                 <Route path='/logout' element={<Logout/>}/>
