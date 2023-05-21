@@ -13,6 +13,7 @@ import {getCompetenceBank} from "../../store/slices/competenceSlice";
 import Card from "../../components/LoadingComponents/Card";
 import {LocalName} from "../../utils/LocalName";
 import Button from "../../components/UI/Button/Button";
+import classes from './competence.module.css';
 
 const CompetenceMap = () => {
 
@@ -167,7 +168,7 @@ const CompetenceMap = () => {
                         options={config.options}
                         series={config.series}
                         type="radar"
-                        width={1000}
+                        className={classes.myChart}
                     />
                 </FlexBlock>
 
@@ -181,7 +182,7 @@ const CompetenceMap = () => {
                         options={config2.options}
                         series={config2.series}
                         type="bar"
-                        width={1000}
+                        className={classes.myChart}
                     />
                 </FlexBlock>
 

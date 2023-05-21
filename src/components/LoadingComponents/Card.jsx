@@ -77,6 +77,16 @@ const Card = ({type}) => {
         );
     }
 
+    if (type === "big-card-2") {
+        return (
+            <div className={classes.loader} style={{height: "300px"}}>
+                <div className={classes.wrapper}>
+                    <div className={classes.line3}></div>
+                </div>
+            </div>
+        );
+    }
+
     return (
         <div className={classes.loader}>
             <div className={classes.wrapper}>

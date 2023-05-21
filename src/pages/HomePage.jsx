@@ -29,6 +29,7 @@ import education from '../images/school.svg';
 import practice from '../images/clipboard-alt.svg';
 import innovation from '../images/innovation.svg';
 import software from '../images/software-layout-header-complex2.svg';
+import classes from './CompetenceMap/competence.module.css';
 
 
 
@@ -136,7 +137,7 @@ const HomePage = () => {
                     options={config.options}
                     series={config.series}
                     type="radar"
-                    width={1000}
+                    className={classes.myChart}
                 />
             </Block>
 

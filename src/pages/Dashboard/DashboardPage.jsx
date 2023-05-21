@@ -14,6 +14,7 @@ import {getAllMyCourses} from '../../store/slices/coursesSlice';
 import {getAllTrainingCourses} from "../../store/slices/trainingCoursesSlice";
 import {getAllMyPostCourses} from "../../store/slices/postCoursesSlice";
 import {lan} from "../../constants/lan";
+import CompetenceMap from './competenceMap/CompetenceMap';
 
 const DashboardPage = () => {
         const [isLoading, setLoading] = useState(false);
@@ -64,6 +65,7 @@ const DashboardPage = () => {
                 <HeaderPlatform/>
                 <Block style={{marginTop: "50px"}}>
                     <MyMasonry>
+                        <CompetenceMap/>
                         <MiniCalendar/>
                         <MyTasks/>
                         {

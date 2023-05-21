@@ -1,0 +1,25 @@
+.myChart {
+    width: 1000px;
+}
+
+.myChart2 {
+    width: 100%;
+}
+
+@media screen and (max-width: 800px){
+    .myChart {
+        width: 700px;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .myChart {
+        width: 600px;
+    }
+}
+
+@media screen and (max-width: 390px){
+    .myChart {
+        width: 500px;
+    }
+}
