@@ -204,6 +204,8 @@ const ru = {
     empty: "Пусто",
     passedStudents: "Студенты, которые прошли",
     notPassedStudents: "Студенты, которые не прошли",
+    recommendation: "Рекомендация",
+    weRecommend: "Рекомендуем пройти курс",
 }
 
 const eng = {
@@ -412,6 +414,8 @@ const eng = {
     empty: "Empty",
     passedStudents: "Passed students",
     notPassedStudents: "Not passed students",
+    recommendation: "Recommendation",
+    weRecommend: "We recommend taking the course",
 }
 
 const kz = {
@@ -620,6 +624,8 @@ const kz = {
     empty: "Бос",
     passedStudents: "Өткен оқушылар",
     notPassedStudents: "Өткен емес оқушылар",
+    recommendation: "Ұсыныс",
+    weRecommend: "Курсты өтуді ұсынамыз",
 }
 
 

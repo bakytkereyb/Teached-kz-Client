@@ -53,6 +53,14 @@ const CompetenceBank = () => {
             render: (_, record) => <Text>{LocalName.getName(record)}</Text>,
         },
         {
+            title: lan.recommendation,
+            render: (_, record) => (
+                record?.course !== null &&
+                <Text normalWeight>{lan.weRecommend} "{LocalName.getName(record?.course)}"</Text>
+            ),
+            width: '15%',
+        },
+        {
             title: lan.status,
             render: (_, record) => (
                 record.status === 'FINISHED' ?

@@ -74,6 +74,11 @@ const CompetenceBank = () => {
             render: (_, record) => <Text>{LocalName.getName(record)}</Text>,
         },
         {
+            title: lan.recommendation,
+            render: (_, record) => <Text>{LocalName.getName(record?.course)}</Text>,
+            width: '15%',
+        },
+        {
             title: lan.maxPoint,
             render: (_, record) => <Text>{record.maxPoint}</Text>,
             width: '10%',
