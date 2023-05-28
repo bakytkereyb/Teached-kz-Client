@@ -34,6 +34,7 @@ import myChatsTableController from './slices/tableController/MyChatsTableControl
 import applicationsTableController from "./slices/tableController/ApplicationsTableController";
 import adminApplicationsTableController from "./slices/tableController/AdminApplicationsTableController";
 import analytics from "./slices/admin/analyticsSlice";
+import adminPublicCourses from "./slices/admin/AdminPublicCoursesSlice";
 
 export default configureStore({
     reducer: {
@@ -72,5 +73,6 @@ export default configureStore({
         chats: chats,
         chat: chat,
         analytics: analytics,
+        adminPublicCourses: adminPublicCourses,
     },
 });

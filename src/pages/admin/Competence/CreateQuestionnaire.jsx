@@ -26,10 +26,17 @@ const CreateQuestionnaire = () => {
         label: null
     });
 
+    const [selectedCourse, setSelectedCourse] = useState({
+        value: null,
+        label: null
+    });
+
     const dispatch = useDispatch();
     const {competenceBank, isLoading} = useSelector(state => state.competenceBank);
+    const publicCourses = useSelector(state => state.adminPublicCourses);
 
     const [components, setComponents] = useState([]);
+    const [courses, setCourses] = useState([]);
 
     const [sections, setSections] = useState([]);
     const [questions, setQuestions] = useState([]);
@@ -109,6 +116,17 @@ const CreateQuestionnaire = () => {
         }
 
     }, [competenceBank]);
+
+    useEffect(() => {
+        if (publicCourses.courses.length > 0) {
+            setCourses(publicCourses.courses.map(item => {
+                return {
+                    value: item.id,
+                    label: LocalName.getName(item)
+                }
+            }))
+        }
+    }, [publicCourses.courses])
 
     function validateForm() {
         if (!selectedComponent.value && !selectedComponent.label) {
@@ -191,7 +209,8 @@ const CreateQuestionnaire = () => {
                             }
                         })
                     }
-                })
+                }),
+                "courseId": selectedCourse.value
             }
 
             console.log(data)
@@ -205,6 +224,10 @@ const CreateQuestionnaire = () => {
             setQuestions([]);
             setAnswers([]);
             setSelectedComponent({
+                value: null,
+                label: null
+            });
+            setSelectedCourse({
                 value: null,
                 label: null
             });
@@ -263,6 +286,15 @@ const CreateQuestionnaire = () => {
                 required={true}
                 maxWidth={"100%"}
                 selectedValue={selectedComponent}
+            />
+            <FormSelect
+                labelText={lan.course}
+                values={courses}
+                onChange={setSelectedCourse}
+                id={"selectedCourse"}
+                required={true}
+                maxWidth={"100%"}
+                selectedValue={selectedCourse}
             />
             <FormInput
                 labelText={lan.nameEng}

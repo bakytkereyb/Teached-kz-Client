@@ -18,6 +18,17 @@ AdminCourseService.getAllCourses = async function (page, limit) {
     return { data, hasMore };
 }
 
+AdminCourseService.getAllPublicCoursesWithoutPage = async function () {
+    return axios({
+        method: "get",
+        url: API_BASE_URL + `/api/course/get/withoutPage?status=PUBLIC`,
+        headers: {
+            "Content-Type": "application/json",
+            'Authorization': `${localStorage.getItem(ACCESS_TOKEN)}`,
+        }
+    });
+}
+
 AdminCourseService.deleteCourseById = async function (id) {
     return axios({
         method: "delete",

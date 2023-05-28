@@ -13,6 +13,7 @@ import CompetenceBank from "./Competence/CompetenceBank";
 import BlockLoading from "../../components/LoadingComponents/BlockLoading";
 import CreateQuestionnaire from "./Competence/CreateQuestionnaire";
 import {NotificationContainer} from "react-notifications";
+import {getAllPublicCoursesWithoutPage} from '../../store/slices/admin/AdminPublicCoursesSlice';
 
 const AdminPage = () => {
 
@@ -24,6 +25,9 @@ const AdminPage = () => {
     useEffect(() => {
         if (tabNum === 0 || tabNum === 2) {
             dispatch(getCompetenceBank());
+        }
+        if (tabNum === 2) {
+            dispatch(getAllPublicCoursesWithoutPage());
         }
     }, [tabNum])
 
