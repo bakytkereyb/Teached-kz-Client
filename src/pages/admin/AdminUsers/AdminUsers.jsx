@@ -19,7 +19,6 @@ const AdminUsers = () => {
 
     useEffect(() => {
         if (tabNum === 0) {
-            dispatch(changeCurrentPage({page: 1, limit: 5}));
             dispatch(getAllUsers({page: 1, limit: 5}));
         }
     }, [tabNum])

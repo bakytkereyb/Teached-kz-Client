@@ -25,7 +25,6 @@ const AdminUsersList = () => {
     };
 
     const changeRole = async (id, role) => {
-        console.log(role)
         try {
             await dispatch(changeUserRole({id, roleName: role}))
             dispatch(getAllUsers({page: currentPage, limit: pageSize}));
