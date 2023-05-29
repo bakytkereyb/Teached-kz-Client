@@ -131,7 +131,7 @@ const HomePage = () => {
                     <InfoItem image={software} text={lan.aboutUs_software}/>
                 </InfoList>
             </Block>
-            <Block>
+            <Block style={{overflow: "hidden"}}>
                 <BigText>{lan.levelCompetence}</BigText>
                 <Chart
                     options={config.options}
