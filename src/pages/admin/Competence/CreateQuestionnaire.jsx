@@ -96,7 +96,23 @@ const CreateQuestionnaire = () => {
                     return {
                         id: id,
                         answerText: answerText,
-                        isCorrect: answer.isCorrect,
+                        point: answer.point,
+                        questionId: answer.questionId
+                    }
+                }
+                return answer
+            })
+        )
+    }
+
+    function onChangeAnswerPoint(id, point) {
+        setAnswers(
+            answers.map(answer => {
+                if (answer.id === id) {
+                    return {
+                        id: id,
+                        answerText: answer.answerText,
+                        point: point,
                         questionId: answer.questionId
                     }
                 }
@@ -198,13 +214,13 @@ const CreateQuestionnaire = () => {
                                     questionAnswers.map((answer) => {
                                         return {
                                             "answer": answer.answerText,
-                                            "isCorrect": answer.isCorrect
+                                            "point": answer.point
                                         }
                                     })
                                     :
                                     [{
                                         "answer": "OPEN",
-                                        "isCorrect": true
+                                        "point": 1.0
                                     }]
                             }
                         })
@@ -266,11 +282,11 @@ const CreateQuestionnaire = () => {
         }]))
     }
 
-    function addAnswer(questionId, isCorrect) {
+    function addAnswer(questionId) {
         setAnswers(answers.concat([{
             id: uuidv4(),
             answerText: '',
-            isCorrect: isCorrect,
+            point: 0.0,
             questionId: questionId
         }]))
     }
@@ -292,7 +308,7 @@ const CreateQuestionnaire = () => {
                 values={courses}
                 onChange={setSelectedCourse}
                 id={"selectedCourse"}
-                required={true}
+                required={false}
                 maxWidth={"100%"}
                 selectedValue={selectedCourse}
             />
@@ -398,8 +414,7 @@ const CreateQuestionnaire = () => {
                                                         <FlexBlock style={{
                                                             flexWrap: "wrap"
                                                         }}>
-                                                            <Text onClick={() => {addAnswer(question.id, true)}} type={'button-green'}>{lan.addCorrectAnswer}</Text>
-                                                            <Text onClick={() => {addAnswer(question.id, false)}} type={'button-red'}>{lan.addInCorrectAnswer}</Text>
+                                                            <Text onClick={() => {addAnswer(question.id)}} type={'button-grey'}>{lan.addAnswer}</Text>
                                                         </FlexBlock>
                                                     }
 
@@ -419,11 +434,15 @@ const CreateQuestionnaire = () => {
                                                                     if (answer.questionId === question.id) {
                                                                         return (
                                                                             <FlexBlock key={answer.id}>
-                                                                                <div style={{
-                                                                                    backgroundColor: answer.isCorrect ? clrs.green : clrs.red,
-                                                                                    width: "25px",
-                                                                                    height: "25px"
-                                                                                }}/>
+                                                                                <FormInput
+                                                                                    labelText={lan.point}
+                                                                                    value={answer.point}
+                                                                                    onChange={(value) => {onChangeAnswerPoint(answer.id, value)}}
+                                                                                    id={answer.id}
+                                                                                    type={"number"}
+                                                                                    required={true}
+                                                                                    maxWidth={"10%"}
+                                                                                />
                                                                                 <FormInput
                                                                                     labelText={lan.answer}
                                                                                     value={answer.answerText}

@@ -54,6 +54,12 @@ const Text = ({children, to, type, ...props}) => {
         );
     }
 
+    if (type === 'button-grey') {
+        return (
+            <p onClick={props.onClick} style={{backgroundColor: clrs.silver, color: clrs.white}} className={classes.button}>{children}</p>
+        );
+    }
+
     if (props.default || props.normalWeight) {
         return (
             <p style={{...propsToAdd, ...props.style}} onClick={props.onClick} className={classes.text}>{children}</p>

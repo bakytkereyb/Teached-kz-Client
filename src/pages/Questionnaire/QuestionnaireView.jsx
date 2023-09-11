@@ -92,7 +92,7 @@ const QuestionnaireView = () => {
                                                                     {
                                                                         question.answerBankList.map((answer, i) => {
                                                                             return (
-                                                                                <Radio style={{fontSize: "1rem"}} key={answer.id} value={answer.id}>{answer?.answer} {answer.isCorrectPublic ? <CheckOutlined /> : <CloseOutlined />}</Radio>
+                                                                                <Radio style={{fontSize: "1rem"}} key={answer.id} value={answer.id}>{answer?.answer}</Radio>
                                                                             )
                                                                         })
                                                                     }
@@ -108,7 +108,7 @@ const QuestionnaireView = () => {
                                                                     {
                                                                         question.answerBankList.map((answer, i) => {
                                                                             return (
-                                                                                <Checkbox style={{fontSize: "1rem"}} value={answer.id}>{answer.answer} {answer.isCorrectPublic ? <CheckOutlined /> : <CloseOutlined />}</Checkbox>
+                                                                                <Checkbox style={{fontSize: "1rem"}} value={answer.id}>{answer.answer}</Checkbox>
                                                                             )
                                                                         })
                                                                     }
