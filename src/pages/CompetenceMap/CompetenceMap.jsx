@@ -87,6 +87,24 @@ const CompetenceMap = () => {
                     },
                 },
             },
+            tooltip: {
+                custom: function({series, seriesIndex, dataPointIndex, w}) {
+                    // var data = w.globals.initialSeries[seriesIndex].data[dataPointIndex];
+                    //
+                    // console.log("_________")
+                    // console.log(competenceBank.componentBankList[dataPointIndex]);
+                    // console.log(series)
+                    // console.log(seriesIndex)
+                    // console.log(dataPointIndex) // index
+                    // console.log(w)
+
+                    const resultString = ReactDOMServer.renderToString(<Tooltip
+                        componentName={LocalName.getName(competenceBank.componentBankList[dataPointIndex])}
+                        realResult={competenceBank.componentBankList[dataPointIndex].averagePoint}/>);
+
+                    return resultString;
+                }
+            }
         },
 
         series: [
