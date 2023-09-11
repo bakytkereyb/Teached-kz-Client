@@ -14,6 +14,9 @@ import Card from "../../components/LoadingComponents/Card";
 import {LocalName} from "../../utils/LocalName";
 import Button from "../../components/UI/Button/Button";
 import classes from './competence.module.css';
+import Tooltip from "./Tooltip";
+import ReactDOMServer from 'react-dom/server';
+
 
 const CompetenceMap = () => {
 
@@ -24,6 +27,7 @@ const CompetenceMap = () => {
 
     const [labels, setLabels] = useState([]);
     const [data, setData] = useState([]);
+    const [realData, setRealData] = useState([]);
     const [dataRequired, setDataRequired] = useState([]);
 
 
@@ -41,6 +45,12 @@ const CompetenceMap = () => {
                     return 0;
                 }
                 return Number((component.averagePoint / component.maxPoint * 100).toFixed(2));
+            }));
+            setRealData(competenceBank.componentBankList.map(component => {
+                if (component.maxPoint === 0.0) {
+                    return 0;
+                }
+                return Number(component.averagePoint);
             }));
             // setDataRequired(competenceBank.componentBankList.map(component => {
             //     return 100;
@@ -127,6 +137,24 @@ const CompetenceMap = () => {
                     },
                 },
             },
+            tooltip: {
+                custom: function({series, seriesIndex, dataPointIndex, w}) {
+                    // var data = w.globals.initialSeries[seriesIndex].data[dataPointIndex];
+                    //
+                    // console.log("_________")
+                    // console.log(competenceBank.componentBankList[dataPointIndex]);
+                    // console.log(series)
+                    // console.log(seriesIndex)
+                    // console.log(dataPointIndex) // index
+                    // console.log(w)
+
+                    const resultString = ReactDOMServer.renderToString(<Tooltip
+                        componentName={LocalName.getName(competenceBank.componentBankList[dataPointIndex])}
+                        realResult={competenceBank.componentBankList[dataPointIndex].averagePoint}/>);
+
+                    return resultString;
+                }
+            }
         },
 
         series: [

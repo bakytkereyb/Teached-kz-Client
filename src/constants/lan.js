@@ -207,6 +207,7 @@ const ru = {
     notPassedStudents: "Студенты, которые не прошли",
     recommendation: "Рекомендация",
     weRecommend: "Рекомендуем пройти курс",
+    yourResult: "Ваш результат",
 }
 
 const eng = {
@@ -418,6 +419,7 @@ const eng = {
     notPassedStudents: "Not passed students",
     recommendation: "Recommendation",
     weRecommend: "We recommend taking the course",
+    yourResult: "Your result",
 }
 
 const kz = {
@@ -629,6 +631,7 @@ const kz = {
     notPassedStudents: "Өткен емес оқушылар",
     recommendation: "Ұсыныс",
     weRecommend: "Курсты өтуді ұсынамыз",
+    yourResult: "Сіздің нәтижеңіз",
 }
 
 
