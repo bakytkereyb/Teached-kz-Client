@@ -165,10 +165,28 @@ const CompetenceMap = () => {
                     // console.log(seriesIndex)
                     // console.log(dataPointIndex) // index
                     // console.log(w)
-
+                    let level = '';
+                    const averagePoint = competenceBank.componentBankList[dataPointIndex].averagePoint;
+                    if (averagePoint <= 30) {
+                        level = lan.lowLevel;
+                    }
+                    if (averagePoint >= 31 && averagePoint <= 44) {
+                        level = lan.acceptableLevel;
+                    }
+                    if (averagePoint >= 45 && averagePoint <= 50) {
+                        level = lan.averageLevel;
+                    }
+                    if (averagePoint >= 51 && averagePoint <= 56) {
+                        level = lan.advancedLevel;
+                    }
+                    if (averagePoint >= 57 && averagePoint <= 60) {
+                        level = lan.expertLevel;
+                    }
                     const resultString = ReactDOMServer.renderToString(<Tooltip
                         componentName={LocalName.getName(competenceBank.componentBankList[dataPointIndex])}
-                        realResult={competenceBank.componentBankList[dataPointIndex].averagePoint}/>);
+                        realResult={competenceBank.componentBankList[dataPointIndex].averagePoint + " / " + competenceBank.componentBankList[dataPointIndex].maxPoint}
+                        level={level}
+                    />);
 
                     return resultString;
                 }

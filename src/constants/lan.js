@@ -208,6 +208,12 @@ const ru = {
     recommendation: "Рекомендация",
     weRecommend: "Рекомендуем пройти курс",
     yourResult: "Ваш результат",
+    yourLevel: "Ваш уровень",
+    lowLevel: "Низкий",
+    acceptableLevel: "Допустимый",
+    averageLevel: "Средний",
+    advancedLevel: "Продвинутый",
+    expertLevel: "Экспертный",
 }
 
 const eng = {
@@ -420,6 +426,12 @@ const eng = {
     recommendation: "Recommendation",
     weRecommend: "We recommend taking the course",
     yourResult: "Your result",
+    yourLevel: "Your level",
+    lowLevel: "Low",
+    acceptableLevel: "Acceptable",
+    averageLevel: "Average",
+    advancedLevel: "Advanced",
+    expertLevel: "Expert",
 }
 
 const kz = {
@@ -632,6 +644,12 @@ const kz = {
     recommendation: "Ұсыныс",
     weRecommend: "Курсты өтуді ұсынамыз",
     yourResult: "Сіздің нәтижеңіз",
+    yourLevel: "Сіздің деңгейіңіз",
+    lowLevel: "Төмен",
+    acceptableLevel: "Қолайлы",
+    averageLevel: "Орташа",
+    advancedLevel: "Жетілдірілген",
+    expertLevel: "Мамандық",
 }
 
 
