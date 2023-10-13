@@ -9,6 +9,7 @@ import adminPostCourse from "./slices/admin/adminPostCourseSlice";
 import courses from "./slices/coursesSlice";
 import postCourses from "./slices/postCoursesSlice";
 import trainersList from "./slices/trainerListSlice";
+import universityList from "./slices/universityListSlice";
 import adminUser from "./slices/admin/adminUserSlice"
 import questionnaire from "./slices/anketaSlice"
 import courseStudents from "./slices/courseStudentsSlice"
@@ -48,6 +49,7 @@ export default configureStore({
         courses: courses,
         post_courses: postCourses,
         trainersList: trainersList,
+        universityList: universityList,
         adminUser: adminUser,
         questionnaire: questionnaire,
         adminCoursesTableController: adminCoursesTableController,

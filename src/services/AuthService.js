@@ -17,13 +17,14 @@ AuthService.login = async function (username, password) {
     });
 }
 
-AuthService.register = async function(username, password, firstName, secondName, email) {
+AuthService.register = async function(username, password, firstName, secondName, email, universityId) {
     let data = new FormData();
     data.append("username", username);
     data.append("password", password);
     data.append("firstName", firstName);
     data.append("secondName", secondName);
     data.append("email", email);
+    data.append("universityId", universityId);
 
     return axios({
         method: "post",
