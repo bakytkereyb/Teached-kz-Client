@@ -98,9 +98,30 @@ const CompetenceMap = () => {
                     // console.log(dataPointIndex) // index
                     // console.log(w)
 
+                    let level = '';
+                    const averagePoint = competenceBank.componentBankList[dataPointIndex].averagePoint;
+                    const maxPoint = competenceBank.componentBankList[dataPointIndex].maxPoint;
+                    const percent = (averagePoint / maxPoint) * 100;
+                    if (percent <= 50) {
+                        level = lan.lowLevel;
+                    }
+                    if (percent > 50 && percent < 75) {
+                        level = lan.acceptableLevel;
+                    }
+                    if (percent >= 75 && percent < 85) {
+                        level = lan.averageLevel;
+                    }
+                    if (percent >= 85 && percent < 95) {
+                        level = lan.advancedLevel;
+                    }
+                    if (percent >= 95) {
+                        level = lan.expertLevel;
+                    }
                     const resultString = ReactDOMServer.renderToString(<Tooltip
                         componentName={LocalName.getName(competenceBank.componentBankList[dataPointIndex])}
-                        realResult={competenceBank.componentBankList[dataPointIndex].averagePoint}/>);
+                        realResult={competenceBank.componentBankList[dataPointIndex].averagePoint + " / " + competenceBank.componentBankList[dataPointIndex].maxPoint}
+                        level={level}
+                    />);
 
                     return resultString;
                 }
