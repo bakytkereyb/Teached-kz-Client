@@ -65,11 +65,11 @@
 }
 
 .itemRed {
-    background-color: #153C6B !important;
+    background-color: #E83151 !important;
     color: white !important;
-    border-right: 5px solid #E5B600 !important;
+    border-right: 5px solid #ffa4b1 !important;
 }
 .itemRed:hover {
     transition: 0.3s;
-    background: #2d2d2d !important;
+    background: #ff3d63 !important;
 }

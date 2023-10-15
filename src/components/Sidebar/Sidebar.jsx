@@ -32,7 +32,7 @@ const Sidebar = ({isOpen}) => {
             <Logo/>
             <br/>
             <SidebarItem to={"/my"} icon={dashboard} text={lan.dashboard}/>
-            <SidebarItem to={"/competence-map"} icon={competence} text={lan.competenceMap}/>
+            <SidebarItem to={"/competence-map"} isRed={true} icon={competence} text={lan.competenceMap}/>
             <SidebarItem to={"/courses/my"} icon={courses} text={lan.coursesMy}/>
             <SidebarItem to={"/courses"} icon={courses} text={lan.coursesAll}/>
             {user.trainer && <SidebarItem to={"/trainingCourses"} icon={courses} text={lan.trainingCourses}/>}
