@@ -139,7 +139,8 @@ const CompetenceMap = () => {
             annotations: {
                 xaxis: [
                     {
-                        x: 0,
+
+                        x: 49,
                         x2: 50,
                         borderColor: '#153C6B',
                         // fillColor: '#B3F7CA',
@@ -170,7 +171,8 @@ const CompetenceMap = () => {
                                 fontWeight: 600,
                             },
                             orientation: "horizontal",
-                            text: lan.acceptableLevel
+                            text: lan.acceptableLevel,
+                            offsetX: 135,
                         }
                     },
                     {
@@ -187,7 +189,8 @@ const CompetenceMap = () => {
                                 fontWeight: 600,
                             },
                             orientation: "horizontal",
-                            text: lan.averageLevel
+                            text: lan.averageLevel,
+                            offsetX: 35,
                         }
                     },
                     {
@@ -204,7 +207,8 @@ const CompetenceMap = () => {
                                 fontWeight: 600,
                             },
                             orientation: "horizontal",
-                            text: lan.advancedLevel
+                            text: lan.advancedLevel,
+                            offsetX: 20,
                         }
                     },
                     {
@@ -221,8 +225,10 @@ const CompetenceMap = () => {
                                 fontWeight: 600,
                             },
                             orientation: "horizontal",
-                            text: lan.expertLevel
-                        }
+                            text: lan.expertLevel,
+                            offsetX: 20,
+                        },
+
                     },
 
                 ]
