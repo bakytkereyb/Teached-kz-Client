@@ -148,56 +148,54 @@ const HomePage = () => {
                 <InfoList>
                     <TeamMember
                         image={tm1}
-                        fullName={"Мухатаев Айдос"}
-                        position={"Руководитель проекта, к.п.н., доцент."}
-                        description={"Директор НЦРВО МНВО РК"}/>
+                        fullName={lan.muhataevAidos}
+                        position={lan.muhataevAidosPos}
+                        description={lan.muhataevAidosDesc}/>
                     <TeamMember
                         image={tm2}
-                        fullName={"Омирбаев Серик"}
-                        position={"СНС, д.э.н., профессор."}
-                        description={"Первый проректор Astana IT University"}/>
+                        fullName={lan.omirbayevSerik}
+                        position={lan.omirbayevSerikPos}
+                        description={lan.omirbayevSerikDesc}/>
                     <TeamMember
                         image={tm3}
-                        fullName={"Белощицкий Андрей"}
-                        position={"СНС, д.т.н., профессор."}
-                        description={"Проректор по науке и инновациям Astana IT University"}/>
+                        fullName={lan.beloshitski}
+                        position={lan.beloshitskiPos}
+                        description={lan.beloshitskiDesc}/>
                     <TeamMember
                         image={tm4}
-                        fullName={"Касенов Ханат"}
-                        position={"НС, PhD of Education."}
-                        description={"Директор департамента обеспечения качества AITU"}/>
+                        fullName={lan.kasenov}
+                        position={lan.kasenovPos}
+                        description={lan.kasenovDesc}/>
                     <TeamMember
                         image={tm5}
-                        fullName={"Куангалиева Турсынзада"}
-                        position={"НС, к.эн., доцент."}
-                        description={"Проректор по академической деятельности APEMS"}/>
+                        fullName={lan.kuangalieva}
+                        position={lan.kuangalievaPos}
+                        description={lan.kuangalievaDesc}/>
                     <TeamMember
                         image={tm6}
-                        fullName={"Токсанов Сапар"}
-                        position={"МНС, PhD candidate."}
-                        description={"Директор Центра компетенций и совершенства AITU"}/>
+                        fullName={lan.sapar}
+                        position={lan.saparPos}
+                        description={lan.saparDesc}/>
                     <TeamMember
                         image={tm7}
-                        fullName={"Файзуллин Адиль"}
-                        position={"МНС, PhD candidate."}
-                        description={"Директор департамента стратегии и корпоративного управления AITU"}/>
+                        fullName={lan.faizullin}
+                        position={lan.faizullinPos}
+                        description={lan.faizullinDesc}/>
                     <TeamMember
                         image={tm8}
-                        fullName={"Омарова Сафура"}
-                        position={"МНС, PhD докторант"}
-                        description={"ЕНУ им. Л.Н.Гумилева"}/>
+                        fullName={lan.omarova}
+                        position={lan.omirbayevSerikPos}
+                        description={lan.omirbayevSerikDesc}/>
                 </InfoList>
             </Block>
 
             <Block id={"publications"}>
                 <BigText>{lan.publications}</BigText>
                 <InfoList>
-                    <Publication text={"Correspondence between dental and skeletal maturity parameters among patients with different sagittal relationships at the end of puberty period, Journal of International Dental and Medical Research, 2020, 13(1), pp. 223–228"}/>
-                    <Publication text={"Correspondence between dental and skeletal maturity parameters among patients with different sagittal relationships at the end of puberty period, Journal of International Dental and Medical Research, 2020, 13(1), pp. 223–228"}/>
-                    <Publication text={"Correspondence between dental and skeletal maturity parameters among patients with different sagittal relationships at the end of puberty period, Journal of International Dental and Medical Research, 2020, 13(1), pp. 223–228"}/>
-                    <Publication text={"Correspondence between dental and skeletal maturity parameters among patients with different sagittal relationships at the end of puberty period, Journal of International Dental and Medical Research, 2020, 13(1), pp. 223–228"}/>
-                    <Publication text={"Correspondence between dental and skeletal maturity parameters among patients with different sagittal relationships at the end of puberty period, Journal of International Dental and Medical Research, 2020, 13(1), pp. 223–228"}/>
-                    <Publication text={"Correspondence between dental and skeletal maturity parameters among patients with different sagittal relationships at the end of puberty period, Journal of International Dental and Medical Research, 2020, 13(1), pp. 223–228"}/>
+                    <Publication text={"Domestic and international experience in organizing the process of professional competence development of teachers"}/>
+                    <Publication text={"Structural model of the system for the development of methodological competence of teachers of IT disciplines based on lifelong learning"}/>
+                    <Publication text={"Methodical competence of a computer science teacher in education"}/>
+                    <Publication text={"Digital transformation of higher education: key factors"}/>
                 </InfoList>
 
             </Block>
