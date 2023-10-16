@@ -48,7 +48,9 @@ const CreateQuestionnaire = () => {
                 if (section.id === id) {
                     return {
                         id: id,
-                        name: name
+                        name: name,
+                        nameKz: section.nameKz,
+                        nameRu: section.nameRu,
                     }
                 }
                 return section
@@ -56,7 +58,39 @@ const CreateQuestionnaire = () => {
         )
     }
 
-    function onChangeQuestion(id, questionText, type) {
+    function onChangeSectionsKz(id, nameKz) {
+        setSections(
+            sections.map(section => {
+                if (section.id === id) {
+                    return {
+                        id: id,
+                        name: section.name,
+                        nameKz: nameKz,
+                        nameRu: section.nameRu,
+                    }
+                }
+                return section
+            })
+        )
+    }
+
+    function onChangeSectionsRu(id, nameRu) {
+        setSections(
+            sections.map(section => {
+                if (section.id === id) {
+                    return {
+                        id: id,
+                        name: section.name,
+                        nameKz: section.nameKz,
+                        nameRu: nameRu,
+                    }
+                }
+                return section
+            })
+        )
+    }
+
+    function onChangeQuestion(id, questionText, questionKzText, questionRuText, type) {
         if (type !== null) {
             setQuestions(
                 questions.map(question => {
@@ -64,6 +98,8 @@ const CreateQuestionnaire = () => {
                         return {
                             id: id,
                             questionText: question.questionText,
+                            questionKzText: question.questionKzText,
+                            questionRuText: question.questionRuText,
                             type: type,
                             sectionId: question.sectionId
                         }
@@ -79,6 +115,8 @@ const CreateQuestionnaire = () => {
                         return {
                             id: id,
                             questionText: questionText,
+                            questionKzText: question.questionKzText,
+                            questionRuText: question.questionRuText,
                             type: question.type,
                             sectionId: question.sectionId
                         }
@@ -87,22 +125,95 @@ const CreateQuestionnaire = () => {
                 })
             )
         }
+        if (questionKzText !== null) {
+            setQuestions(
+                questions.map(question => {
+                    if (question.id === id) {
+                        return {
+                            id: id,
+                            questionText: question.questionText,
+                            questionKzText: questionKzText,
+                            questionRuText: question.questionRuText,
+                            type: question.type,
+                            sectionId: question.sectionId
+                        }
+                    }
+                    return question
+                })
+            )
+        }
+        if (questionRuText !== null) {
+            setQuestions(
+                questions.map(question => {
+                    if (question.id === id) {
+                        return {
+                            id: id,
+                            questionText: question.questionText,
+                            questionKzText: question.questionKzText,
+                            questionRuText: questionRuText,
+                            type: question.type,
+                            sectionId: question.sectionId
+                        }
+                    }
+                    return question
+                })
+            )
+        }
+
     }
 
-    function onChangeAnswer(id, answerText) {
-        setAnswers(
-            answers.map(answer => {
-                if (answer.id === id) {
-                    return {
-                        id: id,
-                        answerText: answerText,
-                        point: answer.point,
-                        questionId: answer.questionId
+    function onChangeAnswer(id, answerText, answerKzText, answerRuText) {
+        if (answerText !== null) {
+            setAnswers(
+                answers.map(answer => {
+                    if (answer.id === id) {
+                        return {
+                            id: id,
+                            answerText: answerText,
+                            answerKzText: answer.answerKzText,
+                            answerRuText: answer.answerRuText,
+                            point: answer.point,
+                            questionId: answer.questionId
+                        }
                     }
-                }
-                return answer
-            })
-        )
+                    return answer
+                })
+            )
+        }
+        if (answerKzText !== null) {
+            setAnswers(
+                answers.map(answer => {
+                    if (answer.id === id) {
+                        return {
+                            id: id,
+                            answerText: answer.answerText,
+                            answerKzText: answerKzText,
+                            answerRuText: answer.answerRuText,
+                            point: answer.point,
+                            questionId: answer.questionId
+                        }
+                    }
+                    return answer
+                })
+            )
+        }
+        if (answerRuText !== null) {
+            setAnswers(
+                answers.map(answer => {
+                    if (answer.id === id) {
+                        return {
+                            id: id,
+                            answerText: answer.answerText,
+                            answerKzText: answer.answerKzText,
+                            answerRuText: answerRuText,
+                            point: answer.point,
+                            questionId: answer.questionId
+                        }
+                    }
+                    return answer
+                })
+            )
+        }
     }
 
     function onChangeAnswerPoint(id, point) {
@@ -112,6 +223,8 @@ const CreateQuestionnaire = () => {
                     return {
                         id: id,
                         answerText: answer.answerText,
+                        answerKzText: answer.answerKzText,
+                        answerRuText: answer.answerRuText,
                         point: point,
                         questionId: answer.questionId
                     }
@@ -168,10 +281,22 @@ const CreateQuestionnaire = () => {
             if (section.name === '' || section.name === undefined) {
                 throw new Error("Incorrectly formed questionnaire")
             }
+            if (section.nameKz === '' || section.nameKz === undefined) {
+                throw new Error("Incorrectly formed questionnaire")
+            }
+            if (section.nameRu === '' || section.nameRu === undefined) {
+                throw new Error("Incorrectly formed questionnaire")
+            }
         })
         questions.map((question) => {
             if (sections.find(item => item.id === question.sectionId)) {
                 if (question.questionText === '' || question.questionText === undefined) {
+                    throw new Error("Incorrectly formed questionnaire")
+                }
+                if (question.questionKzText === '' || question.questionKzText === undefined) {
+                    throw new Error("Incorrectly formed questionnaire")
+                }
+                if (question.questionRuText === '' || question.questionRuText === undefined) {
                     throw new Error("Incorrectly formed questionnaire")
                 }
                 if (question.type !== 'OPEN') {
@@ -187,6 +312,12 @@ const CreateQuestionnaire = () => {
         answers.map((answer) => {
             if (questions.find(item => item.id === answer.questionId && item.type !== 'OPEN')) {
                 if (answer.answerText === '' || answer.answerText === undefined) {
+                    throw new Error("Incorrectly formed questionnaire")
+                }
+                if (answer.answerKzText === '' || answer.answerKzText === undefined) {
+                    throw new Error("Incorrectly formed questionnaire")
+                }
+                if (answer.answerRuText === '' || answer.answerRuText === undefined) {
                     throw new Error("Incorrectly formed questionnaire")
                 }
             }
@@ -205,15 +336,21 @@ const CreateQuestionnaire = () => {
                     const sectionsQuestions = questions.filter(item => item.sectionId === section.id);
                     return {
                         "name" : section.name,
+                        "nameKz" : section.nameKz,
+                        "nameRu" : section.nameRu,
                         "questions" : sectionsQuestions.map((question) => {
                             const questionAnswers = answers.filter(item => item.questionId === question.id);
                             return {
                                 "question": question.questionText,
+                                "questionKz": question.questionKzText,
+                                "questionRu": question.questionRuText,
                                 "type": question.type,
                                 "answers" : question.type !== 'OPEN' ?
                                     questionAnswers.map((answer) => {
                                         return {
                                             "answer": answer.answerText,
+                                            "answerKz": answer.answerKzText,
+                                            "answerRu": answer.answerRuText,
                                             "point": answer.point
                                         }
                                     })
@@ -257,7 +394,9 @@ const CreateQuestionnaire = () => {
     function addSection() {
         setSections(sections.concat([{
             id: uuidv4(),
-            name: ''
+            name: '',
+            nameKz: '',
+            nameRu: '',
         }]))
     }
 
@@ -277,6 +416,8 @@ const CreateQuestionnaire = () => {
         setQuestions(questions.concat([{
             id: uuidv4(),
             questionText: '',
+            questionKzText: '',
+            questionRuText: '',
             type: '',
             sectionId: sectionId
         }]))
@@ -286,6 +427,8 @@ const CreateQuestionnaire = () => {
         setAnswers(answers.concat([{
             id: uuidv4(),
             answerText: '',
+            answerKzText: '',
+            answerRuText: '',
             point: 0.0,
             questionId: questionId
         }]))
@@ -361,6 +504,24 @@ const CreateQuestionnaire = () => {
                                 required={true}
                                 maxWidth={"100%"}
                             />
+                            <FormInput
+                                labelText={lan.sectionName + " KZ"}
+                                value={section.nameKz}
+                                onChange={(value) => {onChangeSectionsKz(section.id, value)}}
+                                id={section.id + 1}
+                                type={"text"}
+                                required={true}
+                                maxWidth={"100%"}
+                            />
+                            <FormInput
+                                labelText={lan.sectionName + " RU"}
+                                value={section.nameRu}
+                                onChange={(value) => {onChangeSectionsRu(section.id, value)}}
+                                id={section.id + 2}
+                                type={"text"}
+                                required={true}
+                                maxWidth={"100%"}
+                            />
                                 {
                                     questions.map((question, i) => {
                                         if (question.sectionId === section.id) {
@@ -378,8 +539,26 @@ const CreateQuestionnaire = () => {
                                                     <FormInput
                                                         labelText={lan.question}
                                                         value={question.questionText}
-                                                        onChange={(value) => {onChangeQuestion(question.id, value, null)}}
+                                                        onChange={(value) => {onChangeQuestion(question.id, value, null, null, null)}}
                                                         id={question.id}
+                                                        type={"text"}
+                                                        required={true}
+                                                        maxWidth={"100%"}
+                                                    />
+                                                    <FormInput
+                                                        labelText={lan.question + " KZ"}
+                                                        value={question.questionKzText}
+                                                        onChange={(value) => {onChangeQuestion(question.id, null, value, null, null)}}
+                                                        id={question.id + 1}
+                                                        type={"text"}
+                                                        required={true}
+                                                        maxWidth={"100%"}
+                                                    />
+                                                    <FormInput
+                                                        labelText={lan.question + " RU"}
+                                                        value={question.questionRuText}
+                                                        onChange={(value) => {onChangeQuestion(question.id, null, null, value, null)}}
+                                                        id={question.id + 2}
                                                         type={"text"}
                                                         required={true}
                                                         maxWidth={"100%"}
@@ -400,7 +579,7 @@ const CreateQuestionnaire = () => {
                                                             //     label: 'OPEN'
                                                             // }
                                                         ]}
-                                                        onChange={(value) => {onChangeQuestion(question.id, null, value.value)}}
+                                                        onChange={(value) => {onChangeQuestion(question.id, null, null, null, value.value)}}
                                                         id={question.id + 1}
                                                         required={true}
                                                         maxWidth={"100%"}
@@ -443,15 +622,36 @@ const CreateQuestionnaire = () => {
                                                                                     required={true}
                                                                                     maxWidth={"10%"}
                                                                                 />
-                                                                                <FormInput
-                                                                                    labelText={lan.answer}
-                                                                                    value={answer.answerText}
-                                                                                    onChange={(value) => {onChangeAnswer(answer.id, value)}}
-                                                                                    id={answer.id}
-                                                                                    type={"text"}
-                                                                                    required={true}
-                                                                                    maxWidth={"100%"}
-                                                                                />
+                                                                                <FlexBlock style={{flexDirection: "column"}}>
+                                                                                    <FormInput
+                                                                                        labelText={lan.answer}
+                                                                                        value={answer.answerText}
+                                                                                        onChange={(value) => {onChangeAnswer(answer.id, value, null, null)}}
+                                                                                        id={answer.id}
+                                                                                        type={"text"}
+                                                                                        required={true}
+                                                                                        maxWidth={"100%"}
+                                                                                    />
+                                                                                    <FormInput
+                                                                                        labelText={lan.answer + " KZ"}
+                                                                                        value={answer.answerKzText}
+                                                                                        onChange={(value) => {onChangeAnswer(answer.id, null, value, null)}}
+                                                                                        id={answer.id + 1}
+                                                                                        type={"text"}
+                                                                                        required={true}
+                                                                                        maxWidth={"100%"}
+                                                                                    />
+                                                                                    <FormInput
+                                                                                        labelText={lan.answer + " RU"}
+                                                                                        value={answer.answerRuText}
+                                                                                        onChange={(value) => {onChangeAnswer(answer.id, null, null, value)}}
+                                                                                        id={answer.id + 2}
+                                                                                        type={"text"}
+                                                                                        required={true}
+                                                                                        maxWidth={"100%"}
+                                                                                    />
+                                                                                </FlexBlock>
+
                                                                                 <Text onClick={() => {deleteAnswer(answer.id)}} type={'button-black'}>{lan.delete}</Text>
                                                                             </FlexBlock>
                                                                         )

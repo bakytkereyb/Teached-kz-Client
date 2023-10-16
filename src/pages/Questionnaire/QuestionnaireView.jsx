@@ -67,7 +67,7 @@ const QuestionnaireView = () => {
                                         padding: "15px",
                                         flexDirection: "column",
                                     }}>
-                                        <Text style={{textTransform: "uppercase", fontSize: "1rem"}}>{section.name}</Text>
+                                        <Text style={{textTransform: "uppercase", fontSize: "1rem"}}>{LocalName.getName(section)}</Text>
                                     </FlexBlock>
                                     {
                                         section.questionBankList.map((question, i) => {
@@ -82,7 +82,7 @@ const QuestionnaireView = () => {
                                                         alignItems: "flex-start",
                                                         gap: "10px",
                                                     }}>
-                                                        <Text normalWeight default>{(i + 1) + ") " + question.question}</Text>
+                                                        <Text normalWeight default>{(i + 1) + ") " + LocalName.getQuestionText(question)}</Text>
                                                         {
                                                             question.type === 'LIST' &&
                                                             <Radio.Group
@@ -92,7 +92,7 @@ const QuestionnaireView = () => {
                                                                     {
                                                                         question.answerBankList.map((answer, i) => {
                                                                             return (
-                                                                                <Radio style={{fontSize: "1rem"}} key={answer.id} value={answer.id}>{answer?.answer}</Radio>
+                                                                                <Radio style={{fontSize: "1rem"}} key={answer.id} value={answer.id}>{LocalName.getAnswerText(answer)}</Radio>
                                                                             )
                                                                         })
                                                                     }
@@ -108,7 +108,7 @@ const QuestionnaireView = () => {
                                                                     {
                                                                         question.answerBankList.map((answer, i) => {
                                                                             return (
-                                                                                <Checkbox style={{fontSize: "1rem"}} value={answer.id}>{answer.answer}</Checkbox>
+                                                                                <Checkbox style={{fontSize: "1rem"}} value={answer.id}>{LocalName.getAnswerText(answer)}</Checkbox>
                                                                             )
                                                                         })
                                                                     }
