@@ -15,6 +15,10 @@ import {getAllTrainingCourses} from "../../store/slices/trainingCoursesSlice";
 import {getAllMyPostCourses} from "../../store/slices/postCoursesSlice";
 import {lan} from "../../constants/lan";
 import CompetenceMap from './competenceMap/CompetenceMap';
+import cl from "./CourseCard/Course.module.css";
+import Text from "../../components/UI/Text/Text";
+import arrowRight from "../../images/arrow-circle-right.svg";
+import arrowRightWhite from "../../images/arrow-circle-right-red.svg";
 
 const DashboardPage = () => {
         const [isLoading, setLoading] = useState(false);
@@ -65,6 +69,12 @@ const DashboardPage = () => {
                 <HeaderPlatform/>
                 <Block style={{marginTop: "50px"}}>
                     <MyMasonry>
+                        <div onClick={() => {navigate("/competence-map")}} className={cl.card} style={{cursor: "pointer", backgroundColor: clrs.red, color: "white"}}>
+                            <div className={cl.top__card}>
+                                <Text style={{fontSize: "1rem"}}>{lan.knowYourLevelCompetence}</Text>
+                                <img  src={arrowRightWhite} alt=""/>
+                            </div>
+                        </div>
                         <CompetenceMap/>
                         <MiniCalendar/>
                         <MyTasks/>

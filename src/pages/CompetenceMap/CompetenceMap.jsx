@@ -61,6 +61,7 @@ const CompetenceMap = () => {
 
     const config2 = {
         options: {
+
             plotOptions: {
 
                 bar: {
@@ -74,15 +75,24 @@ const CompetenceMap = () => {
             yaxis: {
                 max:100,
                 min:0,
+                labels: {
+                    style: {
+                        colors: ["#000000", "#000000","#000000", "#000000", "#000000","#000000"],
+                        fontSize: '15px',
+                        fontFamily: 'Montserrat, Arial, sans-serif',
+                        fontWeight: 600,
+                        cssClass: 'apexcharts-xaxis-label',
+                    },
+                },
             },
             xaxis: {
                 tickAmount: 10,
                 labels: {
                     style: {
                         colors: [],
-                        fontSize: '12px',
+                        fontSize: '15px',
                         fontFamily: 'Montserrat, Arial, sans-serif',
-                        fontWeight: 500,
+                        fontWeight: 600,
                         cssClass: 'apexcharts-xaxis-label',
                     },
                 },
@@ -125,7 +135,98 @@ const CompetenceMap = () => {
 
                     return resultString;
                 }
-            }
+            },
+            annotations: {
+                xaxis: [
+                    {
+                        x: 0,
+                        x2: 50,
+                        borderColor: '#153C6B',
+                        // fillColor: '#B3F7CA',
+                        label: {
+                            borderColor: '#153C6B',
+                            style: {
+                                color: '#fff',
+                                background: '#153C6B',
+                                fontSize: '15px',
+                                fontFamily: 'Montserrat, Arial, sans-serif',
+                                fontWeight: 600,
+                            },
+                            orientation: "horizontal",
+                            text: lan.lowLevel,
+                        }
+                    },
+                    {
+                        x: 51,
+                        x2: 74,
+                        borderColor: '#153C6B',
+                        label: {
+                            borderColor: '#153C6B',
+                            style: {
+                                color: '#fff',
+                                background: '#153C6B',
+                                fontSize: '15px',
+                                fontFamily: 'Montserrat, Arial, sans-serif',
+                                fontWeight: 600,
+                            },
+                            orientation: "horizontal",
+                            text: lan.acceptableLevel
+                        }
+                    },
+                    {
+                        x: 75,
+                        x2: 84,
+                        borderColor: '#153C6B',
+                        label: {
+                            borderColor: '#153C6B',
+                            style: {
+                                color: '#fff',
+                                background: '#153C6B',
+                                fontSize: '15px',
+                                fontFamily: 'Montserrat, Arial, sans-serif',
+                                fontWeight: 600,
+                            },
+                            orientation: "horizontal",
+                            text: lan.averageLevel
+                        }
+                    },
+                    {
+                        x: 85,
+                        x2: 94,
+                        borderColor: '#153C6B',
+                        label: {
+                            borderColor: '#153C6B',
+                            style: {
+                                color: '#fff',
+                                background: '#153C6B',
+                                fontSize: '15px',
+                                fontFamily: 'Montserrat, Arial, sans-serif',
+                                fontWeight: 600,
+                            },
+                            orientation: "horizontal",
+                            text: lan.advancedLevel
+                        }
+                    },
+                    {
+                        x: 100,
+                        x2: 95,
+                        borderColor: '#153C6B',
+                        label: {
+                            borderColor: '#153C6B',
+                            style: {
+                                color: '#fff',
+                                background: '#153C6B',
+                                fontSize: '15px',
+                                fontFamily: 'Montserrat, Arial, sans-serif',
+                                fontWeight: 600,
+                            },
+                            orientation: "horizontal",
+                            text: lan.expertLevel
+                        }
+                    },
+
+                ]
+            },
         },
 
         series: [
@@ -168,10 +269,10 @@ const CompetenceMap = () => {
             xaxis: {
                 labels: {
                     style: {
-                        colors: [],
-                        fontSize: '12px',
+                        colors: ["#000000", "#000000", "#000000", "#000000", "#000000", "#000000"],
+                        fontSize: '15px',
                         fontFamily: 'Montserrat, Arial, sans-serif',
-                        fontWeight: 500,
+                        fontWeight: 600,
                         cssClass: 'apexcharts-xaxis-label',
                     },
                 },

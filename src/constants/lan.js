@@ -16,6 +16,7 @@ const ru = {
     postCoursesMy: "Мои пост-курсы",
     coursesPre: "Предварительные курсы",
     competenceMap: "Карта компетенций",
+    knowYourLevelCompetence: "Узнать свой уровень методической компетентности",
     myTasks: "Мои задачи",
     chat: "Чат",
     chats: "Чаты",
@@ -217,6 +218,7 @@ const ru = {
 }
 
 const eng = {
+    knowYourLevelCompetence: "Find out your level of methodological competence",
     aboutUs: "About Us",
     team: "Team",
     publications: "Publications",
@@ -435,6 +437,8 @@ const eng = {
 }
 
 const kz = {
+    knowYourLevelCompetence: "Әдістемелік құзыреттілік деңгейіңізді анықтаңыз",
+
     aboutUs: "Біз туралы",
     team: "Топ",
     publications: "Жарияланымдар",
