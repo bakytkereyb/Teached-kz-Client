@@ -63,7 +63,7 @@
 }
 
 .topicFull {
-    width: calc(80% - 5px - 50px);
+    width: calc(100% - 50px);
     padding: 25px;
     border-radius: 25px;
     background-color: #0B7A75;

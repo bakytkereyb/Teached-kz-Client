@@ -12,37 +12,37 @@ import rise from '../../images/selection-raise-symbolic.svg';
 const ProjectAim = () => {
     return (
         <FlexBlock style={{alignItems: "flex-start", justifyContent: "flex-start", flexDirection: "column", fontSize: "1.1rem"}}>
-            <div className={classes.descBlock}>
-                <p>{lan.projectDesc}</p>
-            </div>
+            {/*<div className={classes.descBlock}>*/}
+            {/*    <p>{lan.projectDesc}</p>*/}
+            {/*</div>*/}
             <div className={classes.topicBlock}>
-                <p className={classes.topic}>{lan.projectTopic}</p>
-                <p className={classes.topicFull}>{lan.projectTopicFull}</p>
+                {/*<p className={classes.topic}>{lan.projectTopic}</p>*/}
+                <p className={classes.topicFull}>{lan.projectDesc}</p>
             </div>
             <div className={classes.aimBlock}>
                 <span style={{fontWeight: 800, textTransform: "uppercase"}}>{lan.projectAim} </span>
-                <span>{lan.projectAimFull}</span>
+                <span style={{textAlign: "justify"}}>{lan.projectAimFull}</span>
             </div>
             <p style={{fontWeight: 800, textTransform: "uppercase"}}>{lan.projectObjectives}:</p>
             <div className={classes.objBlock}>
                 <img src={lupa} alt=""/>
-                <p>{lan.obj1}</p>
+                <p style={{textAlign: "justify"}}>{lan.obj1}</p>
             </div>
             <div className={classes.objBlock}>
                 <img src={concept} alt=""/>
-                <p>{lan.obj2}</p>
+                <p style={{textAlign: "justify"}}>{lan.obj2}</p>
             </div>
             <div className={classes.objBlock}>
                 <img src={soft} alt=""/>
-                <p>{lan.obj3}</p>
+                <p style={{textAlign: "justify"}}>{lan.obj3}</p>
             </div>
             <div className={classes.objBlock}>
                 <img src={course} alt=""/>
-                <p>{lan.obj4}</p>
+                <p style={{textAlign: "justify"}}>{lan.obj4}</p>
             </div>
             <div className={classes.objBlock}>
                 <img src={rise} alt=""/>
-                <p>{lan.obj5}</p>
+                <p style={{textAlign: "justify"}}>{lan.obj5}</p>
             </div>
         </FlexBlock>
     );
