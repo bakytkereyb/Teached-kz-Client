@@ -2,6 +2,7 @@
     padding-left: 35px;
     width: calc(100% - 35px);
     position: relative;
+    margin-bottom: 15px;
 }
 
 .aimBlock::before {
@@ -12,6 +13,7 @@
     height: 100%;
     width: 15px;
     background-color: #0B7A75;
+
 }
 .objBlock {
     display: flex;
