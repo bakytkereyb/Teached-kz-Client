@@ -1,7 +1,7 @@
 .card {
     width: 300px;
     background-color: white;
-    height: 650px;
+    height: 675px;
 }
 
 .img {
@@ -19,7 +19,7 @@
     align-items: center;
     flex-direction: column;
     padding: 20px;
-    gap: 20px;
+    gap: 10px;
 }
 
 .text p {
