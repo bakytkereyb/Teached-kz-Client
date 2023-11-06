@@ -1,7 +1,11 @@
 .card {
     width: 100%;
+    min-height: 50px;
     max-width: 500px;
     padding: 20px;
     background-color: #0B7A75;
     color:white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
