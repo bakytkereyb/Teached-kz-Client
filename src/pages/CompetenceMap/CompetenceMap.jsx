@@ -350,7 +350,7 @@ const CompetenceMap = () => {
             <HeaderPlatform/>
             <Block style={{marginTop: "50px", alignItems: "flex-start", gap: "20px"}}>
                 <Text style={{textTransform: "uppercase", fontSize: "1rem"}}>{lan.competenceMap}</Text>
-                <Button onClick={() => {navigate('/competence-bank')}}>{lan.competenceBank}</Button>
+                <Button onClick={() => {navigate('/competence-bank')}}>{lan.takeAnketa}</Button>
                 <Alert>{lan.competenceMap}</Alert>
                 <FlexBlock style={{
                     backgroundColor: clrs.white,

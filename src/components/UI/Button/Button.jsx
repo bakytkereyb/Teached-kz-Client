@@ -5,14 +5,14 @@ const Button = ({children, type, ...props}) => {
 
     if (type === 2) {
         return (
-            <button onClick={props.onClick} className={cl.button} style={{backgroundColor: clrs.blackBlue, color: clrs.white}}>
+            <button onClick={props.onClick} className={cl.button} style={{...props.style,backgroundColor: clrs.blackBlue, color: clrs.white}}>
                 {children}
             </button>
         );
     }
 
     return (
-        <button onClick={props.onClick} className={cl.button} style={{backgroundColor: clrs.red, color: clrs.white}}>
+        <button onClick={props.onClick} className={cl.button} style={{...props.style, backgroundColor: clrs.red, color: clrs.white}}>
             {children}
         </button>
     );

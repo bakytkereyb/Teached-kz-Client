@@ -29,6 +29,14 @@ const CompetenceBank = () => {
         dispatch(getCompetenceBank());
     }, [navigate])
 
+    useEffect(() => {
+        competenceBank?.componentBankList.forEach((component, i) => {
+            if (i === 0) {
+                selectComponent(component);
+            }
+        })
+    }, [competenceBank]);
+
     function selectComponent(component) {
         setSelectedComponent(component);
         setAnketaList(component.questionnaireBankList);
@@ -40,7 +48,7 @@ const CompetenceBank = () => {
             <div style={{backgroundColor: clrs.whiter, width: "100%", minHeight: "100vh"}}>
                 <HeaderPlatform/>
                 <Block style={{marginTop: "50px", alignItems: "flex-start"}}>
-                    <Text style={{textTransform: "uppercase", fontSize: "1rem"}}>{lan.competenceBank}</Text>
+                    <Text style={{textTransform: "uppercase", fontSize: "1rem"}}>{lan.takeAnketa}</Text>
                     <Card type={"horizontal"}/>
                 </Block>
             </div>
@@ -98,7 +106,7 @@ const CompetenceBank = () => {
         <div style={{backgroundColor: clrs.whiter, width: "100%", minHeight: "100vh"}}>
             <HeaderPlatform/>
             <Block style={{marginTop: "50px", alignItems: "flex-start"}}>
-                <Text style={{textTransform: "uppercase", fontSize: "1rem"}}>{lan.competenceBank}</Text>
+                <Text style={{textTransform: "uppercase", fontSize: "1rem"}}>{lan.takeAnketa}</Text>
                 <FlexBlock style={{
                     backgroundColor: clrs.white,
                     borderRadius: "15px",
@@ -107,9 +115,9 @@ const CompetenceBank = () => {
                     flexDirection: "column",
                 }}>
                     <Text default>{lan.components}</Text>
-                    <FlexBlock style={{flexWrap: "wrap", justifyContent: "flex-start"}}>
+                    <FlexBlock style={{flexWrap: "wrap"}}>
                         {competenceBank?.componentBankList.map((component, i) => {
-                            return <Button type={selectedComponent?.id === component.id && 2} onClick={() => {selectComponent(component)}} key={new Date() + component.id + "_" + i}>{LocalName.getName(component)}</Button>
+                            return <Button style={{maxWidth: "100%", minWidth: "200px"}} type={selectedComponent?.id === component.id && 2} onClick={() => {selectComponent(component)}} key={new Date() + component.id + "_" + i}>{LocalName.getName(component)}</Button>
                         })}
                     </FlexBlock>
                     <HorizontalDivider/>
