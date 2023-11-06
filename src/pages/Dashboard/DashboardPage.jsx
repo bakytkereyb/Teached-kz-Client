@@ -69,6 +69,12 @@ const DashboardPage = () => {
                 <HeaderPlatform/>
                 <Block style={{marginTop: "50px"}}>
                     <MyMasonry>
+                        <div onClick={() => {navigate("/competence-bank")}} className={cl.card} style={{cursor: "pointer", backgroundColor: clrs.blackBlue, color: "white"}}>
+                            <div className={cl.top__card}>
+                                <Text style={{fontSize: "1rem"}}>{lan.takeAnketa}</Text>
+                                <img  src={arrowRightWhite} alt=""/>
+                            </div>
+                        </div>
                         <div onClick={() => {navigate("/competence-map")}} className={cl.card} style={{cursor: "pointer", backgroundColor: clrs.red, color: "white"}}>
                             <div className={cl.top__card}>
                                 <Text style={{fontSize: "1rem"}}>{lan.knowYourLevelCompetence}</Text>
