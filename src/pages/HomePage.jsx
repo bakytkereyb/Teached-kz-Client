@@ -132,10 +132,10 @@ const HomePage = () => {
                     <InfoItem image={software} text={lan.aboutUs_software}/>
                 </InfoList>
             </Block>
-            <Block>
+            <Block style={{padding: 0}}>
                 <ProjectAim/>
             </Block>
-            <Block style={{overflow: "hidden"}}>
+            <Block style={{overflow: "hidden", padding: 0}}>
                 <Chart
                     options={config.options}
                     series={config.series}

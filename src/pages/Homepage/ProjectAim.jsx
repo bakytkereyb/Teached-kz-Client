@@ -11,7 +11,7 @@ import rise from '../../images/selection-raise-symbolic.svg';
 
 const ProjectAim = () => {
     return (
-        <FlexBlock style={{alignItems: "flex-start", justifyContent: "flex-start", flexDirection: "column"}}>
+        <FlexBlock style={{alignItems: "flex-start", justifyContent: "flex-start", flexDirection: "column", fontSize: "1.1rem"}}>
             <div className={classes.descBlock}>
                 <p>{lan.projectDesc}</p>
             </div>
@@ -20,10 +20,10 @@ const ProjectAim = () => {
                 <p className={classes.topicFull}>{lan.projectTopicFull}</p>
             </div>
             <div className={classes.aimBlock}>
-                <span style={{fontWeight: 800}}>{lan.projectAim} </span>
+                <span style={{fontWeight: 800, textTransform: "uppercase"}}>{lan.projectAim} </span>
                 <span>{lan.projectAimFull}</span>
             </div>
-            <p style={{fontWeight: 800}}>{lan.projectObjectives}:</p>
+            <p style={{fontWeight: 800, textTransform: "uppercase"}}>{lan.projectObjectives}:</p>
             <div className={classes.objBlock}>
                 <img src={lupa} alt=""/>
                 <p>{lan.obj1}</p>
