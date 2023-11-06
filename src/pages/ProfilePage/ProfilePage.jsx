@@ -104,7 +104,7 @@ const ProfilePage = () => {
                 <div className={`${style.info} ${style.workInfo}`}>
                     <BigText style={{fontSize: '1.2rem'}}>{lan.jobInformation}</BigText>
                     <Text style={{fontSize: '1rem', fontWeight: 400}}>
-                        {lan.university}: {user.universityJobName}
+                        {lan.university}: {user.university?.name}
                     </Text>
                     <Text style={{fontSize: '1rem', fontWeight: 400}}>
                         {lan.position}: {user.position}
