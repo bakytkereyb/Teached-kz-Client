@@ -10,7 +10,7 @@ const TeamMember = ({image, fullName, position, description}) => {
             </div>
             <div className={cl.text}>
                 <p style={{fontWeight: 'bold'}}>{fullName}</p>
-                <p style={{fontWeight: 'bold'}}>{position}</p>
+                <p style={{fontStyle: 'italic'}}>{position}</p>
                 <p>{description}</p>
             </div>
         </div>
