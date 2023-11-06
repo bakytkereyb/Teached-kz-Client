@@ -16,7 +16,7 @@ import Chart from "react-apexcharts";
 import tm1 from '../images/tm1.png';
 import tm2 from '../images/tm2.jpg';
 import tm3 from '../images/tm3.jpg';
-import tm4 from '../images/tm4.png';
+import tm4 from '../images/hanat.jpg';
 import tm5 from '../images/tm5.jpeg';
 import tm6 from '../images/DSC02835.jpg';
 import tm7 from '../images/tm7.jpg';
