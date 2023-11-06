@@ -45,29 +45,29 @@ const Sidebar = ({isOpen}) => {
             <SidebarItem to={"/settings"} icon={setting} text={lan.setting}/>
             <SidebarItem isRed={true} to={"/logout"} icon={logout} text={lan.logout}/>
             <br/>
-            <FormSelect
-                labelText={"Язык"}
-                values={[
-                    {
-                        value: "ENG",
-                        label: "ENG"
-                    },
-                    {
-                        value: "РУС",
-                        label: "РУС"
-                    },
-                    {
-                        value: "ҚАЗ",
-                        label: "ҚАЗ"
-                    },
-                ]}
-                onChange={changeLang}
-                id={"lan"}
-                required={true}
-                maxWidth={"200px"}
-                selectedValue={selectedLan}
-                withoutLabel={true}
-            />
+            {/*<FormSelect*/}
+            {/*    labelText={"Язык"}*/}
+            {/*    values={[*/}
+            {/*        {*/}
+            {/*            value: "ENG",*/}
+            {/*            label: "ENG"*/}
+            {/*        },*/}
+            {/*        {*/}
+            {/*            value: "РУС",*/}
+            {/*            label: "РУС"*/}
+            {/*        },*/}
+            {/*        {*/}
+            {/*            value: "ҚАЗ",*/}
+            {/*            label: "ҚАЗ"*/}
+            {/*        },*/}
+            {/*    ]}*/}
+            {/*    onChange={changeLang}*/}
+            {/*    id={"lan"}*/}
+            {/*    required={true}*/}
+            {/*    maxWidth={"200px"}*/}
+            {/*    selectedValue={selectedLan}*/}
+            {/*    withoutLabel={true}*/}
+            {/*/>*/}
         </div>
     );
 };

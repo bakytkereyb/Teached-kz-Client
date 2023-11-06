@@ -39,6 +39,7 @@ import ChatPage from './pages/Chat/ChatPage';
 import Application from "./pages/Applications/Application";
 import AdminApplication from "./pages/admin/AdminApplications/AdminApplication";
 import AnalyticsPage from './pages/admin/Analytics/AnalyticsPage';
+import LanguageButton from "./components/Lan/LanguageButton";
 
 function App() {
     const {user, isLoading} = useSelector(state => state.user);
@@ -58,6 +59,7 @@ function App() {
 
     return (
         <Router>
+            <LanguageButton/>
             <NotificationContainer/>
             <Routes>
                 <Route path='/' element={<HomePage/>}/>

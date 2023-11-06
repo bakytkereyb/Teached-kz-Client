@@ -53,29 +53,29 @@ const Header = () => {
                 </div>
                 <div className={cl.header__right}>
                     <Text style={{color: clrs.blackBlue}}>teached.kz@gmail.com</Text>
-                    <FormSelect
-                        labelText={"Язык"}
-                        values={[
-                            {
-                                value: "ENG",
-                                label: "ENG"
-                            },
-                            {
-                                value: "РУС",
-                                label: "РУС"
-                            },
-                            {
-                                value: "ҚАЗ",
-                                label: "ҚАЗ"
-                            },
-                        ]}
-                        onChange={changeLang}
-                        id={"lan"}
-                        required={true}
-                        maxWidth={"200px"}
-                        selectedValue={selectedLan}
-                        withoutLabel={true}
-                    />
+                    {/*<FormSelect*/}
+                    {/*    labelText={"Язык"}*/}
+                    {/*    values={[*/}
+                    {/*        {*/}
+                    {/*            value: "ENG",*/}
+                    {/*            label: "ENG"*/}
+                    {/*        },*/}
+                    {/*        {*/}
+                    {/*            value: "РУС",*/}
+                    {/*            label: "РУС"*/}
+                    {/*        },*/}
+                    {/*        {*/}
+                    {/*            value: "ҚАЗ",*/}
+                    {/*            label: "ҚАЗ"*/}
+                    {/*        },*/}
+                    {/*    ]}*/}
+                    {/*    onChange={changeLang}*/}
+                    {/*    id={"lan"}*/}
+                    {/*    required={true}*/}
+                    {/*    maxWidth={"200px"}*/}
+                    {/*    selectedValue={selectedLan}*/}
+                    {/*    withoutLabel={true}*/}
+                    {/*/>*/}
                     {
                         user === null ?
                             // <Button onClick={() => {

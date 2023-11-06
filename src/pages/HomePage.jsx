@@ -195,10 +195,10 @@ const HomePage = () => {
             <Block id={"publications"}>
                 <BigText>{lan.publications}</BigText>
                 <InfoList>
-                    <Publication text={"Domestic and international experience in organizing the process of professional competence development of teachers"}/>
-                    <Publication text={"Structural model of the system for the development of methodological competence of teachers of IT disciplines based on lifelong learning"}/>
-                    <Publication text={"Methodical competence of a computer science teacher in education"}/>
-                    <Publication text={"Digital transformation of higher education: key factors"}/>
+                    <Publication link={'https://vestnik-pedagogic.tou.edu.kz/storage/articles/811d1e9d60cb89dbec731159f2213f7c/%D0%9A%D0%B0%D1%81%D0%B5%D0%BD%D0%BE%D0%B2_%D0%A5._%D0%9D.,_%D0%9C%D1%83%D1%85%D0%B0%D1%82%D0%B0%D0%B5%D0%B2_%D0%90._%D0%90.,_%D0%9E%D0%BC%D0%B8%D1%80%D0%B1%D0%B0%D0%B5%D0%B2_%D0%A1._%D0%9C.,_%D0%9E%D0%BC%D0%B0%D1%80%D0%BE%D0%B2%D0%B0_%D0%A1._%D0%9A.,_%D0%A2%D0%BE%D0%BA%D1%81%D0%B0%D0%BD%D0%BE%D0%B2_%D0%A1._%D0%9D..pdf'} text={"Domestic and international experience in organizing the process of professional competence development of teachers"}/>
+                    <Publication link={'https://sj.astanait.edu.kz/wp-content/uploads/2023/02/Journal_AITU_12vol_dec22-122-138.pdf'} text={"Structural model of the system for the development of methodological competence of teachers of IT disciplines based on lifelong learning"}/>
+                    <Publication link={'https://journals.uran.ua/eejet/article/view/289045/283703'} text={"Methodical competence of a computer science teacher in education"}/>
+                    <Publication link={'https://bulpedps.enu.kz/index.php/main/article/download/507/192/2959'} text={"Digital transformation of higher education: key factors"}/>
                 </InfoList>
 
             </Block>

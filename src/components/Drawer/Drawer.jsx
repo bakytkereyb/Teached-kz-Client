@@ -32,29 +32,29 @@ const Drawer = ({isOpen}) => {
             <DrawerItem to={"/#footer"} text={lan.contacts}/>
             <br/>
             <div style={{display: "flex", flexDirection: "column", gap: '20px'}}>
-                <FormSelect
-                    labelText={"Язык"}
-                    values={[
-                        {
-                            value: "ENG",
-                            label: "ENG"
-                        },
-                        {
-                            value: "РУС",
-                            label: "РУС"
-                        },
-                        {
-                            value: "ҚАЗ",
-                            label: "ҚАЗ"
-                        },
-                    ]}
-                    onChange={changeLang}
-                    id={"lan"}
-                    required={true}
-                    maxWidth={"200px"}
-                    selectedValue={selectedLan}
-                    withoutLabel={true}
-                />
+                {/*<FormSelect*/}
+                {/*    labelText={"Язык"}*/}
+                {/*    values={[*/}
+                {/*        {*/}
+                {/*            value: "ENG",*/}
+                {/*            label: "ENG"*/}
+                {/*        },*/}
+                {/*        {*/}
+                {/*            value: "РУС",*/}
+                {/*            label: "РУС"*/}
+                {/*        },*/}
+                {/*        {*/}
+                {/*            value: "ҚАЗ",*/}
+                {/*            label: "ҚАЗ"*/}
+                {/*        },*/}
+                {/*    ]}*/}
+                {/*    onChange={changeLang}*/}
+                {/*    id={"lan"}*/}
+                {/*    required={true}*/}
+                {/*    maxWidth={"200px"}*/}
+                {/*    selectedValue={selectedLan}*/}
+                {/*    withoutLabel={true}*/}
+                {/*/>*/}
                 {
                     user === null ?
                         <MyLink to={"/login"}>{lan.log_in}</MyLink>
