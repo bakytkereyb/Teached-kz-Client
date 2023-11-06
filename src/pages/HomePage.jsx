@@ -184,8 +184,8 @@ const HomePage = () => {
                     <TeamMember
                         image={tm8}
                         fullName={lan.omarova}
-                        position={lan.omirbayevSerikPos}
-                        description={lan.omirbayevSerikDesc}/>
+                        position={lan.omarovaPos}
+                        description={lan.omarovaDesc}/>
                 </InfoList>
             </Block>
 
