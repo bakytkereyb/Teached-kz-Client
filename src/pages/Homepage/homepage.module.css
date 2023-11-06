@@ -1,0 +1,85 @@
+.aimBlock {
+    padding-left: 35px;
+    width: calc(100% - 35px);
+    position: relative;
+}
+
+.aimBlock::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 15px;
+    background-color: #0B7A75;
+}
+.objBlock {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    position: relative;
+    width: 100%;
+}
+
+.objBlock img {
+    width: 50px;
+    height: 50px;
+}
+
+.objBlock p {
+    width: calc(100% - 10px - 50px);
+}
+
+.descBlock {
+    border-top: 15px solid #0B7A75;
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-style: italic;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.topicBlock {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    position: relative;
+}
+
+.topic {
+    width: calc(30% - 5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.topicFull {
+    width: calc(70% - 5px - 50px);
+    padding: 25px;
+    border-radius: 25px;
+    background-color: #0B7A75;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+@media screen and (max-width: 500px) {
+    .topicBlock {
+        flex-direction: column;
+    }
+    .topic {
+        width: 100%;
+    }
+    .topicFull {
+        width: calc(100% - 50px);
+    }
+}

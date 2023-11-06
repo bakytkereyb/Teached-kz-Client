@@ -30,6 +30,7 @@ import practice from '../images/clipboard-alt.svg';
 import innovation from '../images/innovation.svg';
 import software from '../images/software-layout-header-complex2.svg';
 import classes from './CompetenceMap/competence.module.css';
+import ProjectAim from "./Homepage/ProjectAim";
 
 
 
@@ -131,8 +132,10 @@ const HomePage = () => {
                     <InfoItem image={software} text={lan.aboutUs_software}/>
                 </InfoList>
             </Block>
+            <Block>
+                <ProjectAim/>
+            </Block>
             <Block style={{overflow: "hidden"}}>
-                <BigText>{lan.levelCompetence}</BigText>
                 <Chart
                     options={config.options}
                     series={config.series}
