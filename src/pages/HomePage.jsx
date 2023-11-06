@@ -18,7 +18,7 @@ import tm2 from '../images/tm2.jpg';
 import tm3 from '../images/tm3.jpg';
 import tm4 from '../images/tm4.png';
 import tm5 from '../images/tm5.jpeg';
-import tm6 from '../images/tm6.jpg';
+import tm6 from '../images/DSC02835.jpg';
 import tm7 from '../images/tm7.jpg';
 import tm8 from '../images/tm8.jpg';
 import forecasting from '../images/forecasting-model.svg';
