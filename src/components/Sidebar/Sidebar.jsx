@@ -29,7 +29,7 @@ const Sidebar = ({isOpen}) => {
 
     return (
         <div className={classes.sidebar} opened={isOpen ? "true" : "false"} >
-            <Logo/>
+            <Logo to={'/'}/>
             <br/>
             <SidebarItem to={"/my"} icon={dashboard} text={lan.dashboard}/>
             <SidebarItem to={"/competence-map"} isRed={true} icon={competence} text={lan.competenceMap}/>

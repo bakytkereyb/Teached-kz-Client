@@ -52,7 +52,7 @@ const Header = () => {
                     <Logo to={"/"}/>
                 </div>
                 <div className={cl.header__right}>
-                    <Text style={{color: clrs.blackBlue}}>teached@gmail.com</Text>
+                    <Text style={{color: clrs.blackBlue}}>teached.kz@gmail.com</Text>
                     <FormSelect
                         labelText={"Язык"}
                         values={[

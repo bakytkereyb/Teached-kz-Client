@@ -18,7 +18,7 @@ const Footer = () => {
                     <Text to={"/#publications"} style={{color: clrs.blackBlue}}>{lan.publications}</Text>
                 </div>
                 <div className={cl.footer__right}>
-                    <Text style={{color:clrs.blackBlue}}>teached@gmail.com</Text>
+                    <Text style={{color:clrs.blackBlue}}>teached.kz@gmail.com</Text>
                 </div>
             </div>
         </footer>

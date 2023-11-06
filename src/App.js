@@ -46,6 +46,10 @@ function App() {
 
     useEffect(() => {
         dispatch(getUserByToken());
+        if (localStorage.getItem('version') !== '1.0') {
+            localStorage.setItem('version', '1.0');
+            window.reload();
+        }
     }, []);
 
     if (isLoading) {

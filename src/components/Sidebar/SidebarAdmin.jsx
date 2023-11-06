@@ -27,7 +27,7 @@ const SidebarAdmin = ({isOpen}) => {
 
     return (
         <div className={classes.sidebar} opened={isOpen ? "true" : "false"}>
-            <Logo/>
+            <Logo to={'/'}/>
             <br/>
             <SidebarItem to={"/admin/analytics"} icon={analytics} text={lan.analytics}/>
             <SidebarItem to={"/admin/my"} icon={dashboard} text={lan.competenceBank}/>
