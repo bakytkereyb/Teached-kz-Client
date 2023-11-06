@@ -162,16 +162,6 @@ const HomePage = () => {
                         position={lan.beloshitskiPos}
                         description={lan.beloshitskiDesc}/>
                     <TeamMember
-                        image={tm4}
-                        fullName={lan.kasenov}
-                        position={lan.kasenovPos}
-                        description={lan.kasenovDesc}/>
-                    <TeamMember
-                        image={tm5}
-                        fullName={lan.kuangalieva}
-                        position={lan.kuangalievaPos}
-                        description={lan.kuangalievaDesc}/>
-                    <TeamMember
                         image={tm6}
                         fullName={lan.sapar}
                         position={lan.saparPos}
@@ -181,6 +171,19 @@ const HomePage = () => {
                         fullName={lan.faizullin}
                         position={lan.faizullinPos}
                         description={lan.faizullinDesc}/>
+
+                    <TeamMember
+                        image={tm4}
+                        fullName={lan.kasenov}
+                        position={lan.kasenovPos}
+                        description={lan.kasenovDesc}/>
+                    <TeamMember
+                        image={tm5}
+                        fullName={lan.kuangalieva}
+                        position={lan.kuangalievaPos}
+                        description={lan.kuangalievaDesc}/>
+
+
                     <TeamMember
                         image={tm8}
                         fullName={lan.omarova}
