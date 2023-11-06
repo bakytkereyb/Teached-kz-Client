@@ -47,8 +47,8 @@ function App() {
 
     useEffect(() => {
         dispatch(getUserByToken());
-        if (localStorage.getItem('version') !== '1.0') {
-            localStorage.setItem('version', '1.0');
+        if (localStorage.getItem('version') !== '1.1') {
+            localStorage.setItem('version', '1.1');
             window.reload();
         }
     }, []);
