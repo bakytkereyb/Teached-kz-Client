@@ -31,6 +31,8 @@ import innovation from '../images/innovation.svg';
 import software from '../images/software-layout-header-complex2.svg';
 import classes from './CompetenceMap/competence.module.css';
 import ProjectAim from "./Homepage/ProjectAim";
+import {Link} from "react-router-dom";
+import {API_BASE_URL} from "../constants/api";
 
 
 
@@ -123,7 +125,10 @@ const HomePage = () => {
                 <BigText>{lan.aboutUs}</BigText>
                 <InfoList>
                     <InfoItem image={forecasting} text={lan.aboutUs_forecasting}/>
-                    <InfoItem image={concept} text={lan.aboutUs_concept}/>
+                    <Link target={'_blank'} to={API_BASE_URL + '/api/file/get/792a2bb2-a380-411b-837c-0cbd657e5328.docx'}>
+                        <InfoItem image={concept} text={lan.aboutUs_concept}/>
+                    </Link>
+
                     <InfoItem image={rise} text={lan.aboutUs_rise}/>
                     <InfoItem image={course} text={lan.aboutUs_course}/>
                     <InfoItem image={education} text={lan.aboutUs_education}/>
