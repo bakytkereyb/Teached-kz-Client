@@ -47,6 +47,7 @@ const Header = () => {
                     <Text to={"/#team"} style={{color: clrs.blackBlue}}>{lan.team}</Text>
                     <Text to={"/#publications"} style={{color: clrs.blackBlue}}>{lan.publications}</Text>
                     <Text to={"/#footer"} style={{color: clrs.blackBlue}}>{lan.contacts}</Text>
+                    <Text to={"/bibliography"} style={{color: clrs.blackBlue}}>{lan.bibliography}</Text>
                 </div>
                 <div className={cl.header__svg}>
                     <Logo to={"/"}/>

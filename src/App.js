@@ -40,6 +40,7 @@ import Application from "./pages/Applications/Application";
 import AdminApplication from "./pages/admin/AdminApplications/AdminApplication";
 import AnalyticsPage from './pages/admin/Analytics/AnalyticsPage';
 import LanguageButton from "./components/Lan/LanguageButton";
+import Bibliography from "./pages/Bibliography";
 
 function App() {
     const {user, isLoading} = useSelector(state => state.user);
@@ -63,6 +64,7 @@ function App() {
             <NotificationContainer/>
             <Routes>
                 <Route path='/' element={<HomePage/>}/>
+                <Route path='/bibliography' element={<Bibliography/>}/>
                 <Route path='/login' element={user === null ? <LoginPage/> : <Navigate to="/my" replace />}/>
                 <Route path='/register' element={user === null ? <RegistrationPage/> : <Navigate to="/my" replace />}/>
                 <Route path='/my' element={user !== null ? <DashboardPage/> : <Navigate to="/login" replace />}/>

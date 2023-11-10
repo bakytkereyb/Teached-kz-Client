@@ -30,6 +30,7 @@ const Drawer = ({isOpen}) => {
             <DrawerItem to={"/#team"} text={lan.team}/>
             <DrawerItem to={"/#publications"} text={lan.publications}/>
             <DrawerItem to={"/#footer"} text={lan.contacts}/>
+            <DrawerItem to={"/bibliography"} text={lan.bibliography}/>
             <br/>
             <div style={{display: "flex", flexDirection: "column", gap: '20px'}}>
                 {/*<FormSelect*/}
