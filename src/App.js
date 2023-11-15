@@ -41,6 +41,7 @@ import AdminApplication from "./pages/admin/AdminApplications/AdminApplication";
 import AnalyticsPage from './pages/admin/Analytics/AnalyticsPage';
 import LanguageButton from "./components/Lan/LanguageButton";
 import Bibliography from "./pages/Bibliography";
+import {message} from "antd";
 
 function App() {
     const {user, isLoading} = useSelector(state => state.user);
@@ -54,12 +55,15 @@ function App() {
         // }
     }, []);
 
+    const [messageApi, contextHolder] = message.useMessage();
+
     if (isLoading) {
         return <FullLoading/>;
     }
 
     return (
         <Router>
+            {contextHolder}
             <LanguageButton/>
             <NotificationContainer/>
             <Routes>

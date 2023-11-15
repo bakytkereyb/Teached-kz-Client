@@ -17,10 +17,10 @@ import CompetenceService from "../../../services/CompetenceService";
 import {message} from "antd";
 
 const CompetenceAnalytics = () => {
+    const [messageApi, contextHolder] = message.useMessage();
 
     const {analytics, isLoading} = useSelector(state => state.analytics.competenceBank);
     const userAnalytics = useSelector(state => state.analytics.users);
-
 
     useEffect(() => {
         console.log(analytics);
@@ -28,7 +28,6 @@ const CompetenceAnalytics = () => {
 
     const [selectedComponent, setSelectedComponent] = useState(null);
 
-    const [messageApi, contextHolder] = message.useMessage();
 
     const generateExcelFile = async () => {
         await AdminUserService.getAllUsers(1, 1000)
