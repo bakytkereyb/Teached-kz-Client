@@ -256,11 +256,17 @@ const ru = {
     weRecommend: "Рекомендуем пройти курс",
     yourResult: "Ваш результат",
     yourLevel: "Ваш уровень",
+    yourLevelCompetence: "Ваш уровень методической компетентности",
     lowLevel: "Низкий",
     acceptableLevel: "Допустимый",
     averageLevel: "Средний",
     advancedLevel: "Продвинутый",
     expertLevel: "Экспертный",
+
+    zeroLevel: "Нулевой",
+    situationalLevel: "Ситуативный",
+    developingLevel: "Развивающийся",
+
 }
 
 const eng = {
@@ -523,11 +529,16 @@ const eng = {
     weRecommend: "We recommend taking the course",
     yourResult: "Your result",
     yourLevel: "Your level",
+    yourLevelCompetence: "Your level of methodological competence",
     lowLevel: "Low",
     acceptableLevel: "Acceptable",
     averageLevel: "Average",
     advancedLevel: "Advanced",
     expertLevel: "Expert",
+
+    zeroLevel: "Zero",
+    situationalLevel: "Situational",
+    developingLevel: "Developing",
 }
 
 const kz = {
@@ -790,11 +801,16 @@ const kz = {
     weRecommend: "Курсты өтуді ұсынамыз",
     yourResult: "Сіздің нәтижеңіз",
     yourLevel: "Сіздің деңгейіңіз",
+    yourLevelCompetence: "Әдістемелік құзыреттілік деңгейіңіз",
     lowLevel: "Төмен",
     acceptableLevel: "Қолайлы",
     averageLevel: "Орташа",
     advancedLevel: "Жетілдірілген",
     expertLevel: "Мамандық",
+
+    zeroLevel: "Нөл",
+    situationalLevel: "Ситуациялық",
+    developingLevel: "Дамуда",
 }
 
 

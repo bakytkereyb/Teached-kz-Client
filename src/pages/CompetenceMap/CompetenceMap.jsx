@@ -16,6 +16,7 @@ import Button from "../../components/UI/Button/Button";
 import classes from './competence.module.css';
 import Tooltip from "./Tooltip";
 import ReactDOMServer from 'react-dom/server';
+import {Card as AntdCard} from 'antd';
 
 
 const CompetenceMap = () => {
@@ -40,18 +41,43 @@ const CompetenceMap = () => {
             setLabels(competenceBank.componentBankList.map(component => {
                 return LocalName.getName(component);
             }))
+            // setData(competenceBank.componentBankList.map(component => {
+            //     if (component.maxPoint === 0.0) {
+            //         return 0;
+            //     }
+            //     return Number((component.averagePoint / component.maxPoint * 100).toFixed(2));
+            // }));
+            // setRealData(competenceBank.componentBankList.map(component => {
+            //     if (component.maxPoint === 0.0) {
+            //         return 0;
+            //     }
+            //     return Number(component.averagePoint);
+            // }));
             setData(competenceBank.componentBankList.map(component => {
-                if (component.maxPoint === 0.0) {
-                    return 0;
-                }
-                return Number((component.averagePoint / component.maxPoint * 100).toFixed(2));
-            }));
-            setRealData(competenceBank.componentBankList.map(component => {
                 if (component.maxPoint === 0.0) {
                     return 0;
                 }
                 return Number(component.averagePoint);
             }));
+            setRealData(competenceBank.componentBankList.map(component => {
+                if (component.maxPoint === 0.0) {
+                    return 0;
+                }
+                if (component.nameRu === "Дидактический") {
+                    return Number(component.averagePoint);
+                }
+                if (component.nameRu === "Проектировочный") {
+                    return Number(component.averagePoint) * 1.2;
+                }
+                if (component.nameRu === "Мониторинговый") {
+                    return Number(component.averagePoint);
+                }
+                if (component.nameRu === "Личностный") {
+                    return Number(component.averagePoint) * 0.8;
+                }
+                return Number(component.averagePoint);
+            }));
+
             // setDataRequired(competenceBank.componentBankList.map(component => {
             //     return 100;
             // }));
@@ -73,7 +99,7 @@ const CompetenceMap = () => {
             colors: [clrs.red],
             labels: labels,
             yaxis: {
-                max:100,
+                max:20,
                 min:0,
                 labels: {
                     style: {
@@ -110,26 +136,42 @@ const CompetenceMap = () => {
 
                     let level = '';
                     const averagePoint = competenceBank.componentBankList[dataPointIndex].averagePoint;
-                    const maxPoint = competenceBank.componentBankList[dataPointIndex].maxPoint;
-                    const percent = (averagePoint / maxPoint) * 100;
-                    if (percent <= 50) {
-                        level = lan.lowLevel;
+                    // const maxPoint = competenceBank.componentBankList[dataPointIndex].maxPoint;
+                    // const percent = (averagePoint / maxPoint) * 100;
+                    if (averagePoint <= 5) {
+                        level = lan.zeroLevel;
                     }
-                    if (percent > 50 && percent < 75) {
-                        level = lan.acceptableLevel;
+                    if (averagePoint > 5 && averagePoint < 11) {
+                        level = lan.situationalLevel;
                     }
-                    if (percent >= 75 && percent < 85) {
-                        level = lan.averageLevel;
+                    if (averagePoint >= 11 && averagePoint < 15) {
+                        level = lan.developingLevel;
                     }
-                    if (percent >= 85 && percent < 95) {
+                    if (averagePoint >= 15 && averagePoint < 19) {
                         level = lan.advancedLevel;
                     }
-                    if (percent >= 95) {
+                    if (averagePoint >= 19) {
                         level = lan.expertLevel;
+                    }
+                    let averageLevel = competenceBank.componentBankList[dataPointIndex].averagePoint;
+                    let maxLevel = competenceBank.componentBankList[dataPointIndex].maxPoint;
+                    if (competenceBank.componentBankList[dataPointIndex].nameRu === "Дидактический") {
+
+                    }
+                    if (competenceBank.componentBankList[dataPointIndex].nameRu === "Проектировочный") {
+                        averageLevel *= 1.2;
+                        maxLevel *= 1.2;
+                    }
+                    if (competenceBank.componentBankList[dataPointIndex].nameRu === "Мониторинговый") {
+
+                    }
+                    if (competenceBank.componentBankList[dataPointIndex].nameRu === "Личностный") {
+                        averageLevel *= 0.8;
+                        maxLevel *= 0.8;
                     }
                     const resultString = ReactDOMServer.renderToString(<Tooltip
                         componentName={LocalName.getName(competenceBank.componentBankList[dataPointIndex])}
-                        realResult={competenceBank.componentBankList[dataPointIndex].averagePoint + " / " + competenceBank.componentBankList[dataPointIndex].maxPoint}
+                        realResult={averageLevel.toFixed(2) + " / " + maxLevel}
                         level={level}
                     />);
 
@@ -140,8 +182,8 @@ const CompetenceMap = () => {
                 xaxis: [
                     {
 
-                        x: 49,
-                        x2: 50,
+                        x: 4,
+                        x2: 5,
                         borderColor: '#153C6B',
                         // fillColor: '#B3F7CA',
                         label: {
@@ -154,12 +196,12 @@ const CompetenceMap = () => {
                                 fontWeight: 600,
                             },
                             orientation: "horizontal",
-                            text: lan.lowLevel,
+                            text: lan.zeroLevel,
                         }
                     },
                     {
-                        x: 51,
-                        x2: 74,
+                        x: 6,
+                        x2: 10,
                         borderColor: '#153C6B',
                         label: {
                             borderColor: '#153C6B',
@@ -171,13 +213,13 @@ const CompetenceMap = () => {
                                 fontWeight: 600,
                             },
                             orientation: "horizontal",
-                            text: lan.acceptableLevel,
-                            offsetX: 135,
+                            text: lan.situationalLevel,
+                            // offsetX: 135,
                         }
                     },
                     {
-                        x: 75,
-                        x2: 84,
+                        x: 11,
+                        x2: 14,
                         borderColor: '#153C6B',
                         label: {
                             borderColor: '#153C6B',
@@ -189,13 +231,13 @@ const CompetenceMap = () => {
                                 fontWeight: 600,
                             },
                             orientation: "horizontal",
-                            text: lan.averageLevel,
-                            offsetX: 35,
+                            text: lan.developingLevel,
+                            // offsetX: 35,
                         }
                     },
                     {
-                        x: 85,
-                        x2: 94,
+                        x: 15,
+                        x2: 18,
                         borderColor: '#153C6B',
                         label: {
                             borderColor: '#153C6B',
@@ -208,12 +250,12 @@ const CompetenceMap = () => {
                             },
                             orientation: "horizontal",
                             text: lan.advancedLevel,
-                            offsetX: 20,
+                            // offsetX: 20,
                         }
                     },
                     {
-                        x: 100,
-                        x2: 95,
+                        x: 20,
+                        x2: 19,
                         borderColor: '#153C6B',
                         label: {
                             borderColor: '#153C6B',
@@ -226,7 +268,7 @@ const CompetenceMap = () => {
                             },
                             orientation: "horizontal",
                             text: lan.expertLevel,
-                            offsetX: 20,
+                            // offsetX: 20,
                         },
 
                     },
@@ -268,7 +310,7 @@ const CompetenceMap = () => {
                 size: 5,
             },
             yaxis: {
-                max:100,
+                max:20,
                 min:0,
                 tickAmount: 5,
             },
@@ -295,26 +337,42 @@ const CompetenceMap = () => {
                     // console.log(w)
                     let level = '';
                     const averagePoint = competenceBank.componentBankList[dataPointIndex].averagePoint;
-                    const maxPoint = competenceBank.componentBankList[dataPointIndex].maxPoint;
-                    const percent = (averagePoint / maxPoint) * 100;
-                    if (percent <= 50) {
-                        level = lan.lowLevel;
+                    // const maxPoint = competenceBank.componentBankList[dataPointIndex].maxPoint;
+                    // const percent = (averagePoint / maxPoint) * 100;
+                    if (averagePoint <= 5) {
+                        level = lan.zeroLevel;
                     }
-                    if (percent > 50 && percent < 75) {
-                        level = lan.acceptableLevel;
+                    if (averagePoint > 5 && averagePoint < 11) {
+                        level = lan.situationalLevel;
                     }
-                    if (percent >= 75 && percent < 85) {
-                        level = lan.averageLevel;
+                    if (averagePoint >= 11 && averagePoint < 15) {
+                        level = lan.developingLevel;
                     }
-                    if (percent >= 85 && percent < 95) {
+                    if (averagePoint >= 15 && averagePoint < 19) {
                         level = lan.advancedLevel;
                     }
-                    if (percent >= 95) {
+                    if (averagePoint >= 19) {
                         level = lan.expertLevel;
+                    }
+                    let averageLevel = competenceBank.componentBankList[dataPointIndex].averagePoint;
+                    let maxLevel = competenceBank.componentBankList[dataPointIndex].maxPoint;
+                    if (competenceBank.componentBankList[dataPointIndex].nameRu === "Дидактический") {
+
+                    }
+                    if (competenceBank.componentBankList[dataPointIndex].nameRu === "Проектировочный") {
+                        averageLevel *= 1.2;
+                        maxLevel *= 1.2;
+                    }
+                    if (competenceBank.componentBankList[dataPointIndex].nameRu === "Мониторинговый") {
+
+                    }
+                    if (competenceBank.componentBankList[dataPointIndex].nameRu === "Личностный") {
+                        averageLevel *= 0.8;
+                        maxLevel *= 0.8;
                     }
                     const resultString = ReactDOMServer.renderToString(<Tooltip
                         componentName={LocalName.getName(competenceBank.componentBankList[dataPointIndex])}
-                        realResult={competenceBank.componentBankList[dataPointIndex].averagePoint + " / " + competenceBank.componentBankList[dataPointIndex].maxPoint}
+                        realResult={averageLevel.toFixed(2) + " / " + maxLevel}
                         level={level}
                     />);
 
@@ -330,6 +388,38 @@ const CompetenceMap = () => {
             },
         ]
     };
+
+    function getLevelCompetence() {
+        let level = 0;
+        competenceBank.componentBankList.forEach(component => {
+            if (component.nameRu === "Дидактический") {
+                level += Number(component.averagePoint);
+            }
+            if (component.nameRu === "Проектировочный") {
+                level += Number(component.averagePoint) * 1.2;
+            }
+            if (component.nameRu === "Мониторинговый") {
+                level += Number(component.averagePoint);
+            }
+            if (component.nameRu === "Личностный") {
+                level += Number(component.averagePoint) * 0.8;
+            }
+        });
+
+        if (level <= 20) {
+            return lan.zeroLevel;
+        }
+        if (level >= 21 && level <= 40) {
+            return lan.situationalLevel;
+        }
+        if (level >= 41 && level <= 56) {
+            return lan.developingLevel;
+        }
+        if (level >= 57 && level <= 72) {
+            return lan.advancedLevel;
+        }
+        return lan.expertLevel;
+    }
 
     if (isLoading) {
         return (
@@ -352,6 +442,7 @@ const CompetenceMap = () => {
                 <Text style={{textTransform: "uppercase", fontSize: "1rem"}}>{lan.competenceMap}</Text>
                 <Button onClick={() => {navigate('/competence-bank')}}>{lan.takeAnketa}</Button>
                 <Alert>{lan.competenceMap}</Alert>
+                <AntdCard style={{width: "100%", fontSize: "1rem"}}><b>{lan.yourLevelCompetence}:</b> {getLevelCompetence()}</AntdCard>
                 <FlexBlock style={{
                     backgroundColor: clrs.white,
                     borderRadius: "15px",
