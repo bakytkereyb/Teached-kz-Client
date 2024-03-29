@@ -107,7 +107,7 @@ const CompetenceMap = () => {
                 labels: {
                     style: {
                         colors: ["#000000", "#000000","#000000", "#000000", "#000000","#000000"],
-                        fontSize: '15px',
+                        fontSize: '10px',
                         fontFamily: 'Montserrat, Arial, sans-serif',
                         fontWeight: 600,
                         cssClass: 'apexcharts-xaxis-label',
@@ -118,8 +118,8 @@ const CompetenceMap = () => {
                 tickAmount: 10,
                 labels: {
                     style: {
-                        colors: [],
-                        fontSize: '15px',
+                        colors: ["#e2e1e1"],
+                        fontSize: '10px',
                         fontFamily: 'Montserrat, Arial, sans-serif',
                         fontWeight: 600,
                         cssClass: 'apexcharts-xaxis-label',

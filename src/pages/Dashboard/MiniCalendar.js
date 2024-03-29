@@ -92,6 +92,7 @@ const MiniCalendar = () => {
 
     return (
         <Calendar
+            style={{minHeight: 468, borderRadius: 20, padding: 10}}
             headerRender={({value, type, onChange, onTypeChange}) => {
                 const start = 0;
                 const end = 12;

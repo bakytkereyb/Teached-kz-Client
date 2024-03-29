@@ -19,6 +19,7 @@ import cl from "./CourseCard/Course.module.css";
 import Text from "../../components/UI/Text/Text";
 import arrowRight from "../../images/arrow-circle-right.svg";
 import arrowRightWhite from "../../images/arrow-circle-right-red.svg";
+import FlexBlock from "../../components/UI/FlexBlock/FlexBlock";
 
 const DashboardPage = () => {
         const [isLoading, setLoading] = useState(false);
@@ -68,37 +69,44 @@ const DashboardPage = () => {
             <div style={{backgroundColor: clrs.whiter, width: "100%", minHeight: "100vh"}}>
                 <HeaderPlatform/>
                 <Block style={{marginTop: "50px"}}>
-                    <MyMasonry>
-                        <div onClick={() => {navigate("/competence-map")}} className={cl.card} style={{cursor: "pointer", backgroundColor: clrs.red, color: "white"}}>
+                    <FlexBlock style={{width: "calc(100% - 24px)", paddingLeft: 12, paddingRight: 12}}>
+                        <div onClick={() => {
+                            navigate("/competence-map")
+                        }} className={cl.card} style={{cursor: "pointer", backgroundColor: clrs.red, color: "white"}}>
                             <div className={cl.top__card}>
                                 <Text style={{fontSize: "1rem"}}>{lan.knowYourLevelCompetence}</Text>
-                                <img  src={arrowRightWhite} alt=""/>
+                                <img src={arrowRightWhite} alt=""/>
                             </div>
                         </div>
+                    </FlexBlock>
+                    <MyMasonry>
+
                         <CompetenceMap/>
                         <MiniCalendar/>
-                        <MyTasks/>
-                        {
-                            courses.courses.map(course => {
-                                return (
-                                    <Course course={course} key={course.id} type={lan.littleCourse}/>
-                                )
-                            })
-                        }
-                        {
-                            trainingCourses.trainingCourses.map(course => {
-                                return (
-                                    <Course course={course} key={course.id} showProgress={false} type={lan.littleTrainingCourse}/>
-                                )
-                            })
-                        }
-                        {
-                            postCourses?.courses.map(course => {
-                                return (
-                                    <Course course={course} key={course.id} showProgress={false} type={lan.littlePostCourse}/>
-                                )
-                            })
-                        }
+                        {/*<MyTasks/>*/}
+                        {/*{*/}
+                        {/*    courses.courses.map(course => {*/}
+                        {/*        return (*/}
+                        {/*            <Course course={course} key={course.id} type={lan.littleCourse}/>*/}
+                        {/*        )*/}
+                        {/*    })*/}
+                        {/*}*/}
+                        {/*{*/}
+                        {/*    trainingCourses.trainingCourses.map(course => {*/}
+                        {/*        return (*/}
+                        {/*            <Course course={course} key={course.id} showProgress={false}*/}
+                        {/*                    type={lan.littleTrainingCourse}/>*/}
+                        {/*        )*/}
+                        {/*    })*/}
+                        {/*}*/}
+                        {/*{*/}
+                        {/*    postCourses?.courses.map(course => {*/}
+                        {/*        return (*/}
+                        {/*            <Course course={course} key={course.id} showProgress={false}*/}
+                        {/*                    type={lan.littlePostCourse}/>*/}
+                        {/*        )*/}
+                        {/*    })*/}
+                        {/*}*/}
                     </MyMasonry>
                 </Block>
             </div>
