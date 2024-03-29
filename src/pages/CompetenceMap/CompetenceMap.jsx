@@ -17,6 +17,7 @@ import classes from './competence.module.css';
 import Tooltip from "./Tooltip";
 import ReactDOMServer from 'react-dom/server';
 import {Card as AntdCard} from 'antd';
+import useWindowSize from "../../hooks/useWindowSize";
 
 
 const CompetenceMap = () => {
@@ -30,6 +31,8 @@ const CompetenceMap = () => {
     const [data, setData] = useState([]);
     const [realData, setRealData] = useState([]);
     const [dataRequired, setDataRequired] = useState([]);
+
+    const size = useWindowSize();
 
 
     useEffect(() => {
@@ -182,8 +185,8 @@ const CompetenceMap = () => {
                 xaxis: [
                     {
 
-                        x: 4,
-                        x2: 5,
+                        x: 0,
+                        x2: 0.1,
                         borderColor: '#153C6B',
                         // fillColor: '#B3F7CA',
                         label: {
@@ -191,24 +194,25 @@ const CompetenceMap = () => {
                             style: {
                                 color: '#fff',
                                 background: '#153C6B',
-                                fontSize: '15px',
+                                fontSize: '10px',
                                 fontFamily: 'Montserrat, Arial, sans-serif',
                                 fontWeight: 600,
                             },
                             orientation: "horizontal",
                             text: lan.zeroLevel,
+                            // offsetX: -25,
                         }
                     },
                     {
                         x: 6,
-                        x2: 10,
+                        x2: 6.1,
                         borderColor: '#153C6B',
                         label: {
                             borderColor: '#153C6B',
                             style: {
                                 color: '#fff',
                                 background: '#153C6B',
-                                fontSize: '15px',
+                                fontSize: '10px',
                                 fontFamily: 'Montserrat, Arial, sans-serif',
                                 fontWeight: 600,
                             },
@@ -219,14 +223,14 @@ const CompetenceMap = () => {
                     },
                     {
                         x: 11,
-                        x2: 14,
+                        x2: 11.1,
                         borderColor: '#153C6B',
                         label: {
                             borderColor: '#153C6B',
                             style: {
                                 color: '#fff',
                                 background: '#153C6B',
-                                fontSize: '15px',
+                                fontSize: '10px',
                                 fontFamily: 'Montserrat, Arial, sans-serif',
                                 fontWeight: 600,
                             },
@@ -237,14 +241,14 @@ const CompetenceMap = () => {
                     },
                     {
                         x: 15,
-                        x2: 18,
+                        x2: 15.1,
                         borderColor: '#153C6B',
                         label: {
                             borderColor: '#153C6B',
                             style: {
                                 color: '#fff',
                                 background: '#153C6B',
-                                fontSize: '15px',
+                                fontSize: '10px',
                                 fontFamily: 'Montserrat, Arial, sans-serif',
                                 fontWeight: 600,
                             },
@@ -254,15 +258,15 @@ const CompetenceMap = () => {
                         }
                     },
                     {
-                        x: 20,
-                        x2: 19,
+                        x: 19,
+                        x2: 19.1,
                         borderColor: '#153C6B',
                         label: {
                             borderColor: '#153C6B',
                             style: {
                                 color: '#fff',
                                 background: '#153C6B',
-                                fontSize: '15px',
+                                fontSize: '10px',
                                 fontFamily: 'Montserrat, Arial, sans-serif',
                                 fontWeight: 600,
                             },
@@ -287,6 +291,11 @@ const CompetenceMap = () => {
 
     const config = {
         options: {
+            plotOptions: {
+                radar: {
+                    size: size.width >= 1440 ? 150 : size.width >= 1300 ? 140 : size.width >= 1100 ? 120 : size.width >= 1024 ? 100 : size.width >= 860 ? 200 : size.width >= 673 ? 150 : size.width >= 565 ? 100 : 50,
+                }
+            },
             chart: {
                 dropShadow: {
                     enabled: true,
@@ -427,7 +436,7 @@ const CompetenceMap = () => {
                 <HeaderPlatform/>
                 <Block style={{marginTop: "50px", alignItems: "flex-start"}}>
                     <Text style={{textTransform: "uppercase", fontSize: "1rem"}}>{lan.competenceMap}</Text>
-                    <Alert>{lan.competenceMap}</Alert>
+                    {/*<Alert>{lan.competenceMap}</Alert>*/}
                     <Card type={"horizontal-big"}/>
                     <Card type={"horizontal-big"}/>
                 </Block>
@@ -440,36 +449,41 @@ const CompetenceMap = () => {
             <HeaderPlatform/>
             <Block style={{marginTop: "50px", alignItems: "flex-start", gap: "20px"}}>
                 <Text style={{textTransform: "uppercase", fontSize: "1rem"}}>{lan.competenceMap}</Text>
-                <Button onClick={() => {navigate('/competence-bank')}}>{lan.takeAnketa}</Button>
-                <Alert>{lan.competenceMap}</Alert>
-                <AntdCard style={{width: "100%", fontSize: "1rem"}}><b>{lan.yourLevelCompetence}:</b> {getLevelCompetence()}</AntdCard>
-                <FlexBlock style={{
-                    backgroundColor: clrs.white,
-                    borderRadius: "15px",
-                    paddingTop: "50px",
-                    paddingBottom: "50px"
-                }}>
-                    <Chart
-                        options={config.options}
-                        series={config.series}
-                        type="radar"
-                        className={classes.myChart}
-                    />
+                <FlexBlock style={{flexDirection: size.width >= 1024 ? 'row': 'column'}}>
+                    <Button style={{minWidth: 300, height: 50}} onClick={() => {navigate('/competence-bank')}}>{lan.takeAnketa}</Button>
+                    <AntdCard bodyStyle={{padding: "10px 35px", fontSize: "0.9rem", height: 50, display: "flex", alignItems: "center", gap: 10}} style={{width: "100%", fontSize: "1rem", backgroundColor: clrs.blackBlue, color: "white"}}><b>{lan.yourLevelCompetence}:</b> {getLevelCompetence()}</AntdCard>
+                </FlexBlock>
+                {/*<Alert>{lan.competenceMap}</Alert>*/}
+                <FlexBlock style={{flexDirection: size.width >= 1024 ? 'row': 'column'}}>
+                    <FlexBlock style={{
+                        backgroundColor: clrs.white,
+                        borderRadius: "15px",
+                        paddingTop: "50px",
+                        paddingBottom: "50px"
+                    }}>
+                        <Chart
+                            options={config.options}
+                            series={config.series}
+                            type="radar"
+                            className={classes.myChart}
+                        />
+                    </FlexBlock>
+
+                    <FlexBlock style={{
+                        backgroundColor: clrs.white,
+                        borderRadius: "15px",
+                        paddingTop: "50px",
+                        paddingBottom: "50px"
+                    }}>
+                        <Chart
+                            options={config2.options}
+                            series={config2.series}
+                            type="bar"
+                            className={classes.myChart}
+                        />
+                    </FlexBlock>
                 </FlexBlock>
 
-                <FlexBlock style={{
-                    backgroundColor: clrs.white,
-                    borderRadius: "15px",
-                    paddingTop: "50px",
-                    paddingBottom: "50px"
-                }}>
-                    <Chart
-                        options={config2.options}
-                        series={config2.series}
-                        type="bar"
-                        className={classes.myChart}
-                    />
-                </FlexBlock>
 
             </Block>
         </div>
