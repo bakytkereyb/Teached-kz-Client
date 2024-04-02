@@ -14,13 +14,16 @@ import * as XLSX from 'xlsx';
 import UserService from "../../../services/UserService";
 import AdminUserService from "../../../services/AdminUserService";
 import CompetenceService from "../../../services/CompetenceService";
-import {message} from "antd";
+import {message, notification} from "antd";
+import BlockLoading from "../../../components/LoadingComponents/BlockLoading";
 
 const CompetenceAnalytics = () => {
     const [messageApi, contextHolder] = message.useMessage();
 
     const {analytics, isLoading} = useSelector(state => state.analytics.competenceBank);
     const userAnalytics = useSelector(state => state.analytics.users);
+
+    const [downloadLoading, setDownloadLoading] = useState(false);
 
     useEffect(() => {
         console.log(analytics);
@@ -32,11 +35,16 @@ const CompetenceAnalytics = () => {
     const generateExcelFile = async () => {
         await AdminUserService.getAllUsers(1, 1000)
             .then(async (r) => {
-                messageApi.open({
-                    type: 'loading',
-                    content: 'Загрузка...',
-                    duration: 0,
-                });
+                // messageApi.open({
+                //     type: 'loading',
+                //     content: 'Загрузка...',
+                //     duration: 0,
+                // });
+                // notification.info({
+                //     message: 'Загрузка...',
+                //     placement: 'topRight'
+                // })
+                setDownloadLoading(true);
                 console.log(r.data.length)
                 let usersList = [];
                 for (const user of r.data) {
@@ -47,12 +55,12 @@ const CompetenceAnalytics = () => {
                                     "ФИО": user.fullName,
                                     "Имя пользователя": user.username,
                                     "Университет": user.university?.name,
-                                    "Дидактический":Number((r.data.componentBankList[0]?.averagePoint / r.data.componentBankList[0]?.maxPoint * 100).toFixed(2)),
-                                    "Проектировочный":Number((r.data.componentBankList[1]?.averagePoint / r.data.componentBankList[1]?.maxPoint * 100).toFixed(2)),
-                                    "Коммуникативный":Number((r.data.componentBankList[2]?.averagePoint / r.data.componentBankList[2]?.maxPoint * 100).toFixed(2)),
-                                    "Рефлексивный":Number((r.data.componentBankList[3]?.averagePoint / r.data.componentBankList[3]?.maxPoint * 100).toFixed(2)),
-                                    "Мониторинговый":Number((r.data.componentBankList[4]?.averagePoint / r.data.componentBankList[4]?.maxPoint * 100).toFixed(2)),
-                                    "Личностно-мотивационный":Number((r.data.componentBankList[5]?.averagePoint / r.data.componentBankList[5]?.maxPoint * 100).toFixed(2)),
+                                    "Дидактический": r.data.componentBankList[0]?.averagePoint == 0 ? 0 : Number((r.data.componentBankList[0]?.averagePoint / r.data.componentBankList[0]?.maxPoint * 100).toFixed(2)),
+                                    "Проектировочный": r.data.componentBankList[1]?.averagePoint == 0 ? 0 : Number((r.data.componentBankList[1]?.averagePoint / r.data.componentBankList[1]?.maxPoint * 100).toFixed(2)),
+                                    "Мониторинговый": r.data.componentBankList[2]?.averagePoint == 0 ? 0 : Number((r.data.componentBankList[2]?.averagePoint / r.data.componentBankList[2]?.maxPoint * 100).toFixed(2)),
+                                    "Личностный": r.data.componentBankList[3]?.averagePoint == 0 ? 0 : Number((r.data.componentBankList[3]?.averagePoint / r.data.componentBankList[3]?.maxPoint * 100).toFixed(2)),
+                                    // "Мониторинговый":Number((r.data.componentBankList[4]?.averagePoint / r.data.componentBankList[4]?.maxPoint * 100).toFixed(2)),
+                                    // "Личностно-мотивационный":Number((r.data.componentBankList[5]?.averagePoint / r.data.componentBankList[5]?.maxPoint * 100).toFixed(2)),
                                 }
                             )
                         })
@@ -69,12 +77,9 @@ const CompetenceAnalytics = () => {
                 // Save the file
                 XLSX.writeFile(wb, 'stats.xlsx');
 
-                messageApi.destroy();
-                messageApi.open({
-                    type: 'success',
-                    content: 'Успешно',
-                    duration: 5,
-                });
+                // message.destroy();
+                // message.success('Успешно', 5);
+                setDownloadLoading(false);
             })
             .catch(() => {
 
@@ -203,7 +208,7 @@ const CompetenceAnalytics = () => {
 
     return (
         <FlexBlock style={{flexDirection: "column", alignItems: "flex-start"}}>
-            {contextHolder}
+            <BlockLoading isLoading={downloadLoading}/>
             <Button onClick={generateExcelFile} type={2}>Скачать статистику</Button>
             <Text default>{lan.components} :</Text>
             <FlexBlock style={{flexWrap: "wrap", justifyContent: "flex-start"}}>
