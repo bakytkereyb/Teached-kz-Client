@@ -51,13 +51,13 @@ const HomePage = () => {
             },
             colors: ["#bf8e35", "#292318"],
             labels: [
-                "Knowledgeable",
+                "Didactic",
                 "Design",
-                "Informational",
-                "Communicative",
-                "Reflective",
+                // "Informational",
+                // "Communicative",
+                // "Reflective",
                 "Monitoring",
-                "Personal-motivational",
+                "Personal",
             ],
             dataLabels: {
                 enabled: true
@@ -72,7 +72,7 @@ const HomePage = () => {
                 size: 5,
             },
             yaxis: {
-                max:100,
+                max:20,
                 min:0,
                 tickAmount: 5,
             },
@@ -93,25 +93,19 @@ const HomePage = () => {
             {
                 name: "Achieved",
                 data: [
-                    50.5,
-                    70.1,
-                    80.6,
-                    66.8,
-                    30.98,
-                    88,
-                    100,
+                    17.5,
+                    16.1,
+                    15.0,
+                    10,
                 ]
             },
             {
                 name: "Required",
                 data: [
-                    100,
-                    100,
-                    100,
-                    100,
-                    100,
-                    100,
-                    100,
+                    20,
+                    20,
+                    20,
+                    20,
                 ]
             }
         ]
@@ -220,7 +214,7 @@ const HomePage = () => {
                     <Publication link={'https://vestnik-pedagogic.tou.edu.kz/storage/articles/811d1e9d60cb89dbec731159f2213f7c/%D0%9A%D0%B0%D1%81%D0%B5%D0%BD%D0%BE%D0%B2_%D0%A5._%D0%9D.,_%D0%9C%D1%83%D1%85%D0%B0%D1%82%D0%B0%D0%B5%D0%B2_%D0%90._%D0%90.,_%D0%9E%D0%BC%D0%B8%D1%80%D0%B1%D0%B0%D0%B5%D0%B2_%D0%A1._%D0%9C.,_%D0%9E%D0%BC%D0%B0%D1%80%D0%BE%D0%B2%D0%B0_%D0%A1._%D0%9A.,_%D0%A2%D0%BE%D0%BA%D1%81%D0%B0%D0%BD%D0%BE%D0%B2_%D0%A1._%D0%9D..pdf'} text={"Domestic and international experience in organizing the process of professional competence development of teachers"}/>
                     <Publication link={'https://sj.astanait.edu.kz/wp-content/uploads/2023/02/Journal_AITU_12vol_dec22-122-138.pdf'} text={"A structural model for building a system for the development of methodological competence and methods for evaluating its effectiveness\n"}/>
                     <Publication link={'https://journals.uran.ua/eejet/article/view/289045/283703'} text={"Methodical competence of a computer science teacher in education"}/>
-                    <Publication link={'https://bulpedps.enu.kz/index.php/main/article/download/507/192/2959'} text={"Key factors of digital transformation of higher education"}/>
+                    <Publication link={'https://bulpedps.enu.kz/index.php/main/article/view/507/221'} text={"Key factors of digital transformation of higher education"}/>
                 </InfoList>
 
             </Block>
